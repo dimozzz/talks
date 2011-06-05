@@ -1,0 +1,229 @@
+\begin{frame}
+    \frametitle{Задача поиска выполняющего набора}
+
+    \pause
+    \begin{task}
+        По булевой формуле $\varphi(x_1, x_2 \dots, x_n)$ найти
+        набор $c_1, c_2, \dots, c_n$ такой, что $\varphi(c_1, c_2
+        \dots, c_n) = 1$.
+    \end{task}
+
+    \pause
+    \begin{itemize}
+        \item Задача поиска выполняющего набора $NP$-полная.
+		\pause
+    	\item Множество промышленных задач сводится к задачи поиска
+		    выполняющего набора.
+        \pause
+        \item SAT competition.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Классы формул}
+
+    \pause
+    Для многие классов булевых формул известны эффективные алгоритмы
+    для нахождения выполняющего набора:
+    \begin{itemize}
+        \pause
+ 		\item $2$-КНФ формулы;
+    	\pause
+    	\item хорновские формулы;
+	    \pause
+    	\item цейтинские формулы;
+    	\item ...
+    \end{itemize}
+
+    \pause
+   	Будем рассматривать $d$-КНФ формулы~--- в каждом дизъюнкте не
+    более $d$ переменных.
+    
+    \pause
+    $(x_1 \vee x_3 \vee \neg x_5) \wedge (x_2 \vee \neg x_3) \wedge
+    (\neg x_2 \vee x_4 \vee x_5) \wedge (x_1 \vee \neg x_4 \vee x_6)$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Эвристические DPLL алгоритмы}
+
+   	\input{pics/tree.tex}
+    
+	\pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \begin{itemize}
+        \item Эвристика $\mathbf{A}$ выбирает переменную.
+    	\pause
+	    \item Эвристика $\mathbf{B}$ выбирает первое значение.
+    \end{itemize}
+
+    \pause
+    Разрешим алгоритму ошибаться.
+
+    \pause
+    \pause
+    \begin{itemize}
+	    \item Эвристика $\mathbf{C}$ обрезает ветви.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Близорукие эвристики}
+    \pause
+    
+    \begin{definition}
+        Близорукая эвристика:
+        \pause
+        \begin{itemize}
+	        \item видит структуру формулы;
+        	\pause
+        	\item не видит знаков отрицаний;
+        	\item<6-> на каждом шаге может запросить знаки отрицания в
+        		$K = n^{o(n)}$ дизъюнктах.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    $\begin{array}{l}
+        (x_1 \vee x_3 \vee x_5) \\
+        \alert<7->{(x_2 \vee x_3)} \\
+        (x_2 \vee x_4 \vee x_5) \\
+        \alert<7->{(x_1 \vee x_4 \vee x_6)} \\
+    \end{array}
+    \pause
+    \pause
+    \pause
+    \Rightarrow
+    \begin{array}{l}
+        (x_1 \vee x_3 \vee x_5) \\
+        (x_2 \vee \alert{\neg} x_3) \\
+        (x_2 \vee x_4 \vee x_5) \\
+        (x_1 \vee \alert{\neg} x_4 \vee x_6) \\
+    \end{array}$
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Близорукие алгоритмы}
+
+    \pause
+
+    \begin{definition}
+		Близорукие алгоритмы:
+        \begin{itemize}
+            \pause
+	        \item $\mathbf{A}$~--- детерминированная, полиномиальная.
+            \pause
+        	\item $\mathbf{B}$~--- произвольная.
+        	\pause
+        	\item $\mathbf{C}$~--- близорукая.
+        \end{itemize}
+	\end{definition}
+
+    \pause
+    Если $\mathbf{C} = 1$, то известны некоторые оценки: 
+
+    \pause
+    \begin{columns}
+        \begin{column}{5cm}
+            
+            полиномиальное время (верхняя оценка):
+        \end{column}
+        \begin{column}{5cm}
+            
+            экспоненциальное время (нижняя оценка):
+        \end{column}
+    \end{columns}
+
+    \pause
+    \begin{columns}
+        \begin{column}{5cm}
+            \begin{itemize}
+		 		\item $2$-КНФ формулы;
+			    \pause
+    			\item цейтинские формулы (у которых есть выполняющий
+			        набор).
+            \end{itemize}
+        \end{column}
+        \begin{column}{5cm}
+            \begin{itemize}
+	            \pause
+    	        \item различные классы невыполнимых формул;
+        		\pause
+            	\item формулы, кодирующие линейные системы уравнений.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Функция Голдрейха}
+	$f:\{0, 1\}^n \rightarrow \{0, 1\}^n$
+
+    \pause
+
+    \begin{columns}
+    	\begin{column}{5.5cm}
+            \input{pics/function_graph.tex}
+        \end{column}
+
+        \pause
+        \pause
+        \begin{column}{5.5cm}
+            \begin{itemize}
+	            \item $f$~--- линейная;
+            	\pause
+                \item $\forall y \in Y ~~ deg(y) \le d$
+            	\pause
+            	\item $d$~--- константа.
+            \end{itemize}
+        \end{column}
+	\end{columns}
+    
+	\pause
+	\begin{remark}
+	    По уравнению $f_{G, P}(x) = b$ можно построить булеву формулу
+		в КНФ, эквивалентную данной системе и формула будет содержать
+        не более $2^dn$ дизъюнктов.
+	\end{remark}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Граф зависимостей}
+
+    Двудольный граф $(X, Y, E)$
+    \pause
+    \begin{itemize}
+	    \item Полный ранг матрицы смежности.
+    	\pause
+        \item Ограниченная степень всех вершин.
+    	\pause
+        \item Свойства экспандера.
+    \end{itemize}
+
+    \pause
+
+    \begin{columns}
+        \begin{column}{5cm}
+            \input{pics/expander.tex}
+        \end{column}
+
+        \pause
+        \pause
+        \pause
+        \begin{column}{5cm}
+            \begin{itemize}
+                \item $\forall y \in Y ~~ deg(y) \le d$
+            	\pause
+	            \item $\forall J \subset Y, ~
+            		|J| < r \Rightarrow \Gamma(J) \ge \frac{3}{4}d|J|$
+            \end{itemize}
+		\end{column}
+    \end{columns}
+
+\end{frame}
+
