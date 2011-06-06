@@ -33,10 +33,11 @@
 
     \pause
     \begin{itemize}
-	    \item $f$ вычисляется схемами константной глубины;
+	    \item $f$ computed by constant depth boolean circuit;
     	\pause
-	    \item{} [Crypto] Если есть односторонние функции, то есть и те,
-		    которые вычисляются схемами константной глубины.
+	    \item{} [Applebaum, Ishai, Kushilevitz~2006]  If there are
+		    exist one-way functions then exits one-way function that
+            can be computed by constant depth boolean circuit.
     \end{itemize}
 \end{frame}
 
@@ -67,6 +68,7 @@
 \begin{frame}
     \frametitle{Lower bounds}
 
+    \pause
 	\begin{itemize}
 		\item Unsatisfiable formulas
 		\begin{itemize}
@@ -204,7 +206,7 @@
     Goldreich's properties:
     \pause
     \begin{itemize}
-	    \item ``almost'' bijection;
+	    \item ``almost'' bijection, $\forall x ~ |f^{-1}f(x)| \le 2^{o(n)}$;
     	\pause
         \item graph $G$ is an expander.
     \end{itemize}
@@ -235,20 +237,47 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Main theorem}
+	\frametitle{Our results}
 
 	$P(x_1, \ldots, x_d) = x_1 \oplus x_2 \oplus \ldots \oplus x_{d - k} \oplus 
 	Q(x_{d - k + 1}, \ldots, x_d)$, $Q$ --- arbitrary.
 
 	\pause
 	\begin{theorem}
-		Существует явная конструкция графа $G$ такая, что:
+		There are exist an explicit construction of graph $G$ such, that:
 		\begin{itemize}
-			\item $\forall$ ``близорукого'' алгоритма
-        	$A,~ Pr_{x, r}[t(A_m(G, P, b)) \ge 2^{\Omega(n)}] \ge 1 - 2^{-\Omega(n)}$
+			\item $\forall$ myopic algorithms $A$,
+        		 $\Pr\limits_{x, r}[t(A(G, P, b)) \ge 2^{\Omega(n)}] \ge 1 - 2^{-\Omega(n)}$
 		\end{itemize}
 	\end{theorem}
 
+    \pause
+    \begin{itemize}
+	    \item Explicit (or random) graph $G$.
+    	\pause
+    	\item $K = n^{1 - \epsilon}$
+    	\pause
+    	\item much simpler than in previous work.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Graph constrution}
+
+    \pause
+    \input{pics/construction_graph.tex}
+
+    \begin{itemize}
+	    \item $G$~--- expander;
+   		\pause
+        \pause
+        \item $G + T$~--- full rank. $\forall y \in Y \subset T, ~
+		    deg(y) = 1$;
+        \pause
+        \pause
+        \item $R$~--- unlinear edges. $|\{x \mid x \in X, ~ deg(x)
+		    \ne 0\}| \le n^{\epsilon}$.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -256,13 +285,13 @@
 
 	\begin{itemize}
 		\pause
-		\item Время работы DPLL алгоритмов на невыполнимой формуле не менее $2^{\Omega(n)}$
+		\item Lower bounds for unsatisfiable formulas.
 		\pause
-		\item With probability $2^{-\Omega(n)}$ after several subtitutions 
-    	После нескольких шагов алгоритма вероятность того, что частичная подстановка согласована
-			с конкретным прообразом не более $2^{-\Omega(n)}$
+		\item With probability $2^{-\Omega(n)}$ after several step
+    		partial subtitution matches with concrete satisfying
+            assignment.
 		\pause
-		\item $G$ такой, что число прообразов не более $2^{o(n)}$
+		\item $G$ provides ``almost bijection''.
 	\end{itemize}
    
 \end{frame}

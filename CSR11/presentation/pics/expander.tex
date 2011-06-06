@@ -8,6 +8,7 @@
 	\tikzstyle{endG} = [color = black, circle, minimum width = 4pt,
 	    fill, inner sep = 1pt, opacity = 1]
     \tikzstyle{edge} = [draw = black, opacity = 0]
+    \tikzstyle{end7} = [circle, inner sep = 0pt, opacity = 0]
 }
 \only<6->{
   	\tikzstyle{endY} = [color = red, circle, minimum width = 4pt,
@@ -18,6 +19,7 @@
 \only<7->{
   	\tikzstyle{endG} = [color = green, circle, minimum width = 4pt,
 	    fill, inner sep = 1pt, opacity = 1]
+    \tikzstyle{end7} = [circle, inner sep = 0pt, opacity = 1]
 }
             
 \tikzstyle{level 1} = [level distance = 0.1cm, sibling distance = 0.4cm]
@@ -71,5 +73,5 @@
 
     \path [opacity = 0](y7) -- (y8) node [start, midway] (mid){};
     \node <.(2)-> at (mid.east) [right = 0.05cm] {$J$};
-    \node <.(3)-> at (x4.west) [left = 0.05cm] {$\Gamma(J)$};
+    \node at (x4.west) [end7, left = 0.05cm] {$\Gamma(J)$};
 \end{tikzpicture}
