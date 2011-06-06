@@ -1,51 +1,47 @@
 \begin{frame}
-    \frametitle{Задача поиска выполняющего набора}
+	\frametitle{Goldreich's function}
+	$f:\{0, 1\}^n \rightarrow \{0, 1\}^n$
 
     \pause
-    \begin{task}
-        По булевой формуле $\varphi(x_1, x_2 \dots, x_n)$ найти
-        набор $c_1, c_2, \dots, c_n$ такой, что $\varphi(c_1, c_2
-        \dots, c_n) = 1$.
-    \end{task}
 
-    \pause
-    \begin{itemize}
-        \item Задача поиска выполняющего набора $NP$-полная.
-		\pause
-    	\item Множество промышленных задач сводится к задачи поиска
-		    выполняющего набора.
+    \begin{columns}
+    	\begin{column}{5.5cm}
+            \input{pics/function_graph.tex}
+        \end{column}
+
         \pause
-        \item SAT competition.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Классы формул}
-
-    \pause
-    Для многие классов булевых формул известны эффективные алгоритмы
-    для нахождения выполняющего набора:
-    \begin{itemize}
         \pause
- 		\item $2$-КНФ формулы;
-    	\pause
-    	\item хорновские формулы;
-	    \pause
-    	\item цейтинские формулы;
-    	\item ...
-    \end{itemize}
-
-    \pause
-   	Будем рассматривать $d$-КНФ формулы~--- в каждом дизъюнкте не
-    более $d$ переменных.
+        \begin{column}{5.5cm}
+            \begin{itemize}
+	            \item $G(X, Y, E)$~--- bipartite graph;
+            	\pause
+                \item $\forall y \in Y ~~ deg(y) \le d$
+            	\pause
+            	\item $d$ is a constant.
+            \end{itemize}
+        \end{column}
+	\end{columns}
     
+	\pause
+
+    Goldreich's conjecture:
+    \begin{itemize}
+	    \item $P$ is a random predicate;
+    	\item $G$ is an expander;
+    \end{itemize}
+    then function $f$ is a one-way.
+
     \pause
-    $(x_1 \vee x_3 \vee \neg x_5) \wedge (x_2 \vee \neg x_3) \wedge
-    (\neg x_2 \vee x_4 \vee x_5) \wedge (x_1 \vee \neg x_4 \vee x_6)$
+    \begin{itemize}
+	    \item $f$ вычисляется схемами константной глубины;
+    	\pause
+	    \item{} [Crypto] Если есть односторонние функции, то есть и те,
+		    которые вычисляются схемами константной глубины.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Эвристические DPLL алгоритмы}
+	\frametitle{DPLL algorithms}
 
    	\input{pics/tree.tex}
     
@@ -55,27 +51,84 @@
     \pause
     \pause
     \begin{itemize}
-        \item Эвристика $\mathbf{A}$ выбирает переменную.
+        \item Heuristic $\mathbf{A}$ chooses variable.
     	\pause
-	    \item Эвристика $\mathbf{B}$ выбирает первое значение.
+	    \item Heuristic $\mathbf{B}$ chooses first value.
+    	\pause
+    	\item Simplification rules:
+	    \begin{itemize}
+            \item unit clause elimination;
+        	\item pure literal rule.
+    	\end{itemize}
     \end{itemize}
 
-    \pause
-    Разрешим алгоритму ошибаться.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Lower bounds}
+
+	\begin{itemize}
+		\item Unsatisfiable formulas
+		\begin{itemize}
+			\item Lower bounds for resolution proof system.
+			\item{} [Tseitin, 1968] ... [Pudlak, Implagliazzo, 2000].
+			\item{} Exponential lower bounds for resolution refutations
+				of unsatisfiable formulas translate to backtracking
+                algorithms.
+		\end{itemize}
+        \pause
+		\item Satisfiable formulas
+		\begin{itemize}
+			\item If $\bf P = NP$ then no superpolynomial lower bounds
+		        for backtracking algorithms since heuristic $B$ may
+                choose corect value.
+            \pause
+			\item Inverting of functions corresponds to satisfiable
+		        formulas.
+            \pause
+            \item{} [Nikolenko, 2002], [Achilioptas,Beame, Molloy, 2003-2004]
+				exponential lower bound for specific backtracking
+                algoritms.
+            \item{} [Alekhnovich, Hirsch, Itsykson, 2005] Exponential lower bound 
+				for myopic and drunken algorithms.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Drunken algorithms}
+
+    \begin{definition}
+        Drunken DPLL algorithm:
+        \begin{itemize}
+	        \item $\mathbf{A}$~--- any.
+        	\item $\mathbf{B}$~--- uniformly random.
+        \end{itemize}
+    \end{definition}
 
     \pause
-    \pause
     \begin{itemize}
-	    \item Эвристика $\mathbf{C}$ обрезает ветви.
+    	\item{} [Alekhnovich, Hirsch, Itsykson~2005]
+            \begin{itemize}
+	            \item $P$~--- linear predicate.
+            	\item $G$~--- random graph.
+            \end{itemize}
+        \pause
+        \item{} [Itsykson~2010]
+            \begin{itemize}
+	            \item $P = x_1 + x_2 + \dots + x_{d - k} +
+            		Q(x_{d - k + 1}, \dots, x_d)$.
+            	\item $G$~--- random graph.
+            \end{itemize}
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Близорукие эвристики}
+	\frametitle{Myopic heuristic}
     \pause
     
     \begin{definition}
-        Близорукая эвристика:
+        Myopic heuristic:
         \pause
         \begin{itemize}
 	        \item видит структуру формулы;
@@ -107,102 +160,53 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Близорукие алгоритмы}
+    \frametitle{Myopic algorithms}
 
     \pause
 
     \begin{definition}
-		Близорукие алгоритмы:
+		Myopic algorithm:
         \begin{itemize}
-            \pause
-	        \item $\mathbf{A}$~--- детерминированная, полиномиальная.
-            \pause
-        	\item $\mathbf{B}$~--- произвольная.
-        	\pause
-        	\item $\mathbf{C}$~--- близорукая.
+	        \item $\mathbf{A}, \mathbf{B}$~--- myopic heurictic.
         \end{itemize}
 	\end{definition}
 
     \pause
-    Если $\mathbf{C} = 1$, то известны некоторые оценки: 
 
-    \pause
-    \begin{columns}
-        \begin{column}{5cm}
-            
-            полиномиальное время (верхняя оценка):
-        \end{column}
-        \begin{column}{5cm}
-            
-            экспоненциальное время (нижняя оценка):
-        \end{column}
-    \end{columns}
-
-    \pause
-    \begin{columns}
-        \begin{column}{5cm}
+    \begin{itemize}
+    	\item{} [Alekhnovich, Hirsch, Itsykson~2005]
             \begin{itemize}
-		 		\item $2$-КНФ формулы;
-			    \pause
-    			\item цейтинские формулы (у которых есть выполняющий
-			        набор).
+	            \item $P$~--- linear predicate.
+            	\item $G$~--- random graph.
             \end{itemize}
-        \end{column}
-        \begin{column}{5cm}
+        \pause
+        \item{} [J. Cook, Etesami, Miller, Trevisan~2009] 
             \begin{itemize}
-	            \pause
-    	        \item различные классы невыполнимых формул;
-        		\pause
-            	\item формулы, кодирующие линейные системы уравнений.
+                \pause
+   	            \item $P = x_1 + x_2 + \dots + x_{d - 2} + x_{d - 1}x_{d}$.
+	            \item In fact: $P = x_1 + x_2 + \dots + x_{d - k} +
+            		Q(x_{d - k + 1}, \dots, x_d)$.
+                \pause
+            	\item $G$~--- random graph.
+            	\pause
+            	\item $K$ is a constant.
+            	\pause
+            	\item Too complicated proof.
             \end{itemize}
-        \end{column}
-    \end{columns}
+    \end{itemize}
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Функция Голдрейха}
-	$f:\{0, 1\}^n \rightarrow \{0, 1\}^n$
+    \frametitle{Function properties}
 
     \pause
-
-    \begin{columns}
-    	\begin{column}{5.5cm}
-            \input{pics/function_graph.tex}
-        \end{column}
-
-        \pause
-        \pause
-        \begin{column}{5.5cm}
-            \begin{itemize}
-	            \item $f$~--- линейная;
-            	\pause
-                \item $\forall y \in Y ~~ deg(y) \le d$
-            	\pause
-            	\item $d$~--- константа.
-            \end{itemize}
-        \end{column}
-	\end{columns}
-    
-	\pause
-	\begin{remark}
-	    По уравнению $f_{G, P}(x) = b$ можно построить булеву формулу
-		в КНФ, эквивалентную данной системе и формула будет содержать
-        не более $2^dn$ дизъюнктов.
-	\end{remark}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Граф зависимостей}
-
-    Двудольный граф $(X, Y, E)$
+    Goldreich's properties:
     \pause
     \begin{itemize}
-	    \item Полный ранг матрицы смежности.
+	    \item ``almost'' bijection;
     	\pause
-        \item Ограниченная степень всех вершин.
-    	\pause
-        \item Свойства экспандера.
+        \item graph $G$ is an expander.
     \end{itemize}
 
     \pause
@@ -217,13 +221,48 @@
         \pause
         \begin{column}{5cm}
             \begin{itemize}
-                \item $\forall y \in Y ~~ deg(y) \le d$
+                \item $\forall y \in Y ~~ deg(y) = d$
             	\pause
 	            \item $\forall J \subset Y, ~
-            		|J| < r \Rightarrow \Gamma(J) \ge \frac{3}{4}d|J|$
+            		|J| < r \Rightarrow \Gamma(J) \ge \frac{2}{3}d|J|$
             \end{itemize}
 		\end{column}
     \end{columns}
 
+    \pause
+    In fact we are unable to check this properties in polynomial time.
+
 \end{frame}
 
+\begin{frame}
+	\frametitle{Main theorem}
+
+	$P(x_1, \ldots, x_d) = x_1 \oplus x_2 \oplus \ldots \oplus x_{d - k} \oplus 
+	Q(x_{d - k + 1}, \ldots, x_d)$, $Q$ --- arbitrary.
+
+	\pause
+	\begin{theorem}
+		Существует явная конструкция графа $G$ такая, что:
+		\begin{itemize}
+			\item $\forall$ ``близорукого'' алгоритма
+        	$A,~ Pr_{x, r}[t(A_m(G, P, b)) \ge 2^{\Omega(n)}] \ge 1 - 2^{-\Omega(n)}$
+		\end{itemize}
+	\end{theorem}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{План доказательства}
+
+	\begin{itemize}
+		\pause
+		\item Время работы DPLL алгоритмов на невыполнимой формуле не менее $2^{\Omega(n)}$
+		\pause
+		\item With probability $2^{-\Omega(n)}$ after several subtitutions 
+    	После нескольких шагов алгоритма вероятность того, что частичная подстановка согласована
+			с конкретным прообразом не более $2^{-\Omega(n)}$
+		\pause
+		\item $G$ такой, что число прообразов не более $2^{o(n)}$
+	\end{itemize}
+   
+\end{frame}
