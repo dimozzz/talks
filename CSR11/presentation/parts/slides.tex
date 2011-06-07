@@ -13,7 +13,7 @@
         \pause
         \begin{column}{5.5cm}
             \begin{itemize}
-	            \item $G(X, Y, E)$~--- bipartite graph;
+	            \item $G(X, Y, E)$ is a bipartite graph;
             	\pause
                 \item $\forall y \in Y ~~ deg(y) \le d$
             	\pause
@@ -33,11 +33,11 @@
 
     \pause
     \begin{itemize}
-	    \item $f$ computed by constant depth boolean circuit;
+	    \item $f$ is computed by constant depth circuit;
     	\pause
-	    \item{} [Applebaum, Ishai, Kushilevitz~2006]  If there are
-		    exist one-way functions then exits one-way function that
-            can be computed by constant depth boolean circuit.
+	    \item{} [Applebaum, Ishai, Kushilevitz~2006] If there are
+		    exist a one-way functions then there are exits a one-way function that
+            can be computed by constant depth circuit.
     \end{itemize}
 \end{frame}
 
@@ -52,7 +52,7 @@
     \pause
     \pause
     \begin{itemize}
-        \item Heuristic $\mathbf{A}$ chooses variable.
+        \item Heuristic $\mathbf{A}$ chooses a variable.
     	\pause
 	    \item Heuristic $\mathbf{B}$ chooses first value.
     	\pause
@@ -103,8 +103,8 @@
     \begin{definition}
         Drunken DPLL algorithm:
         \begin{itemize}
-	        \item $\mathbf{A}$~--- any.
-        	\item $\mathbf{B}$~--- uniformly random.
+	        \item $\mathbf{A}$ any.
+        	\item $\mathbf{B}$ uniformly random.
         \end{itemize}
     \end{definition}
 
@@ -112,15 +112,15 @@
     \begin{itemize}
     	\item{} [Alekhnovich, Hirsch, Itsykson~2005]
             \begin{itemize}
-	            \item $P$~--- linear predicate.
-            	\item $G$~--- random graph.
+	            \item $P$ is a linear predicate.
+            	\item $G$ is a random graph.
             \end{itemize}
         \pause
         \item{} [Itsykson~2010]
             \begin{itemize}
 	            \item $P = x_1 + x_2 + \dots + x_{d - k} +
             		Q(x_{d - k + 1}, \dots, x_d)$.
-            	\item $G$~--- random graph.
+            	\item $G$ is a random graph.
             \end{itemize}
     \end{itemize}
 \end{frame}
@@ -133,11 +133,10 @@
         Myopic heuristic:
         \pause
         \begin{itemize}
-	        \item видит структуру формулы;
+	        \item see formula structure;
         	\pause
-        	\item не видит знаков отрицаний;
-        	\item<6-> на каждом шаге может запросить знаки отрицания в
-        		$K = n^{o(n)}$ дизъюнктах.
+        	\item doesn't negations;
+        	\item<6-> request negations in $K = n^{o(n)}$ clause.
         \end{itemize}
     \end{definition}
 
@@ -169,7 +168,7 @@
     \begin{definition}
 		Myopic algorithm:
         \begin{itemize}
-	        \item $\mathbf{A}, \mathbf{B}$~--- myopic heurictic.
+	        \item $\mathbf{A}, \mathbf{B}$ are myopic heuristics.
         \end{itemize}
 	\end{definition}
 
@@ -178,8 +177,8 @@
     \begin{itemize}
     	\item{} [Alekhnovich, Hirsch, Itsykson~2005]
             \begin{itemize}
-	            \item $P$~--- linear predicate.
-            	\item $G$~--- random graph.
+	            \item $P$ is a linear predicate.
+            	\item $G$ is a random graph.
             \end{itemize}
         \pause
         \item{} [J. Cook, Etesami, Miller, Trevisan~2009] 
@@ -189,11 +188,15 @@
 	            \item In fact: $P = x_1 + x_2 + \dots + x_{d - k} +
             		Q(x_{d - k + 1}, \dots, x_d)$.
                 \pause
-            	\item $G$~--- random graph.
-            	\pause
-            	\item $K$ is a constant.
-            	\pause
-            	\item Too complicated proof.
+                \item Disadvantages:
+            		\pause
+		            \begin{itemize}
+   	            		\item $G$ is a random graph.
+		            	\pause
+        		    	\item $K$ is a constant.
+            			\pause
+		            	\item Too complicated proof.            
+		            \end{itemize}
             \end{itemize}
     \end{itemize}
 \end{frame}
@@ -257,7 +260,7 @@
     	\pause
     	\item $K = n^{1 - \epsilon}$
     	\pause
-    	\item much simpler than in previous work.
+    	\item Much simpler than in previous work.
     \end{itemize}
 \end{frame}
 
@@ -268,20 +271,20 @@
     \input{pics/construction_graph.tex}
 
     \begin{itemize}
-	    \item $G$~--- expander;
+	    \item $G$ is an expander;
    		\pause
         \pause
-        \item $G + T$~--- full rank. $\forall y \in Y \subset T, ~
+        \item $G + T$ has full rank. $\forall y \in Y \subset T, ~
 		    deg(y) = 1$;
         \pause
         \pause
-        \item $R$~--- unlinear edges. $|\{x \mid x \in X, ~ deg(x)
+        \item $R$ contains unlinear edges. $|\{x \mid x \in X, ~ deg(x)
 		    \ne 0\}| \le n^{\epsilon}$.
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{План доказательства}
+	\frametitle{Proof plan}
 
 	\begin{itemize}
 		\pause
@@ -290,8 +293,6 @@
 		\item With probability $2^{-\Omega(n)}$ after several step
     		partial subtitution matches with concrete satisfying
             assignment.
-		\pause
-		\item $G$ provides ``almost bijection''.
 	\end{itemize}
    
 \end{frame}
