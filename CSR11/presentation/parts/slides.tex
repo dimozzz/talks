@@ -15,7 +15,7 @@
             \begin{itemize}
 	            \item $G(X, Y, E)$ is a bipartite graph;
             	\pause
-                \item $\forall y \in Y ~~ deg(y) \le d$
+                \item $\forall y \in Y ~~ deg(y) = d$
             	\pause
             	\item $d$ is a constant.
             \end{itemize}
@@ -35,9 +35,9 @@
     \begin{itemize}
 	    \item $f$ is computed by constant depth circuit;
     	\pause
-	    \item{} [Applebaum, Ishai, Kushilevitz~2006] If there are
-		    exist a one-way functions then there are exits a one-way function that
-            can be computed by constant depth circuit.
+	    \item{} [Applebaum, Ishai, Kushilevitz~2006] If one-way
+		    functions exist then there is a one-way function that can
+            be computed by constant depth circuit.
     \end{itemize}
 \end{frame}
 
@@ -52,7 +52,7 @@
     \pause
     \pause
     \begin{itemize}
-        \item Heuristic $\mathbf{A}$ chooses a variable.
+        \item Heuristic $\mathbf{A}$ chooses a variable for splitting.
     	\pause
 	    \item Heuristic $\mathbf{B}$ chooses first value.
     	\pause
@@ -66,77 +66,63 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Lower bounds}
+    \frametitle{Lower bounds for DPLL algorithms}
 
     \pause
 	\begin{itemize}
 		\item Unsatisfiable formulas
 		\begin{itemize}
-			\item Lower bounds for resolution proof system.
-			\item{} [Tseitin, 1968] ... [Pudlak, Implagliazzo, 2000].
-			\item{} Exponential lower bounds for resolution refutations
+            \item{} Exponential lower bounds for resolution refutations
 				of unsatisfiable formulas translate to backtracking
                 algorithms.
+			\item{} [Tseitin, 1968] ... [Pudlak, Implagliazzo, 2000].
 		\end{itemize}
         \pause
 		\item Satisfiable formulas
 		\begin{itemize}
-			\item If $\bf P = NP$ then no superpolynomial lower bounds
-		        for backtracking algorithms since heuristic $B$ may
-                choose corect value.
+			\item If $\bf P = NP$ then there are no superpolynomial
+		        lower bounds for backtracking algorithms since
+                heuristic $\mathbf{B}$ may choose correct value.
             \pause
 			\item Inverting of functions corresponds to satisfiable
 		        formulas.
             \pause
-            \item{} [Nikolenko, 2002], [Achilioptas,Beame, Molloy, 2003-2004]
+            \item{} [Nikolenko~2002], [Achilioptas, Beame, Molloy~2003-2004]
 				exponential lower bound for specific backtracking
-                algoritms.
-            \item{} [Alekhnovich, Hirsch, Itsykson, 2005] Exponential lower bound 
+                algorithms.
+            \item{} [Alekhnovich, Hirsch, Itsykson~2005] Exponential lower bound 
 				for myopic and drunken algorithms.
+            \pause
+            \item{}  Exponential lower bound 
+		for inversion of Goldreich's function by myopic [J. Cook et al.~2009] 
+		and drunken [Itsykson~2010] algorithms.
+%            \item{}  Exponential lower bound 
+%				for inversion of Goldreich's function by drunken algorithms.
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Drunken algorithms}
+	\frametitle{Drunken and myopic algorithms}
+    \pause
 
     \begin{definition}
-        Drunken DPLL algorithm:
+        Drunken algorithms:
         \begin{itemize}
-	        \item $\mathbf{A}$ any.
-        	\item $\mathbf{B}$ uniformly random.
+	        \item $\mathbf{A}$: any;
+	        \item $\mathbf{B}$: random  50 : 50.
         \end{itemize}
     \end{definition}
 
     \pause
-    \begin{itemize}
-    	\item{} [Alekhnovich, Hirsch, Itsykson~2005]
-            \begin{itemize}
-	            \item $P$ is a linear predicate.
-            	\item $G$ is a random graph.
-            \end{itemize}
-        \pause
-        \item{} [Itsykson~2010]
-            \begin{itemize}
-	            \item $P = x_1 + x_2 + \dots + x_{d - k} +
-            		Q(x_{d - k + 1}, \dots, x_d)$.
-            	\item $G$ is a random graph.
-            \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Myopic heuristic}
-    \pause
-    
     \begin{definition}
         Myopic heuristic:
         \pause
         \begin{itemize}
-	        \item see formula structure;
+	        \item sees structure of the formula;
         	\pause
-        	\item doesn't negations;
-        	\item<6-> request negations in $K = n^{o(n)}$ clause.
+        	\item doesn't see negation signs;
+        	\item<6-> requests negations in $K = n^{1 - \epsilon}$ clause.
         \end{itemize}
     \end{definition}
 
@@ -170,6 +156,8 @@
         \begin{itemize}
 	        \item $\mathbf{A}, \mathbf{B}$ are myopic heuristics.
         \end{itemize}
+        
+%        $K$ is a heuristic parameter.
 	\end{definition}
 
     \pause
@@ -187,86 +175,73 @@
    	            \item $P = x_1 + x_2 + \dots + x_{d - 2} + x_{d - 1}x_{d}$.
 	            \item In fact: $P = x_1 + x_2 + \dots + x_{d - k} +
             		Q(x_{d - k + 1}, \dots, x_d)$.
-                \pause
-                \item Disadvantages:
-            		\pause
-		            \begin{itemize}
-   	            		\item $G$ is a random graph.
-		            	\pause
-        		    	\item $K$ is a constant.
-            			\pause
-		            	\item Too complicated proof.            
-		            \end{itemize}
             \end{itemize}
-    \end{itemize}
-\end{frame}
 
-
-\begin{frame}
-    \frametitle{Function properties}
-
-    \pause
-    Goldreich's properties:
-    \pause
-    \begin{itemize}
-	    \item ``almost'' bijection, $\forall x ~ |f^{-1}f(x)| \le 2^{o(n)}$;
-    	\pause
-        \item graph $G$ is an expander.
-    \end{itemize}
-
-    \pause
-
-    \begin{columns}
-        \begin{column}{5cm}
-            \input{pics/expander.tex}
-        \end{column}
-
-        \pause
-        \pause
-        \pause
-        \begin{column}{5cm}
-            \begin{itemize}
-                \item $\forall y \in Y ~~ deg(y) = d$
             	\pause
-	            \item $\forall J \subset Y, ~
-            		|J| < r \Rightarrow \Gamma(J) \ge \frac{2}{3}d|J|$
-            \end{itemize}
-		\end{column}
-    \end{columns}
-
-    \pause
-    In fact we are unable to check this properties in polynomial time.
-
+                \begin{columns}            
+            	    \begin{column}{4cm}
+                	    Disadvantages:
+		            	\pause
+           		        \begin{itemize}
+		   	            	\item $G$ is a random graph.
+				           	\pause
+        				   	\item $K$ is a constant.
+            				\pause
+				           	\item Too complicated proof.            
+				        \end{itemize}
+                    \end{column}
+                        
+                   	\begin{column}{4cm}
+                       	In our work:
+	            		\pause
+       		            \begin{itemize}
+	   	            		\item \alert{$G$ is based on expander.}
+			            	\pause
+       				    	\item \alert{$K = n^{1 - \epsilon}$.}
+           					\pause
+			            	\item \alert{``Simple'' proof}.
+			            \end{itemize}
+                    \end{column}
+                \end{columns}
+    \end{itemize}
 \end{frame}
+
 
 \begin{frame}
 	\frametitle{Our results}
 
-	$P(x_1, \ldots, x_d) = x_1 \oplus x_2 \oplus \ldots \oplus x_{d - k} \oplus 
-	Q(x_{d - k + 1}, \ldots, x_d)$, $Q$ --- arbitrary.
+	$P(x_1, \ldots, x_d) = x_1 \oplus x_2 \oplus \ldots \oplus
+    x_{d - k} \oplus Q(x_{d - k + 1}, \ldots, x_d)$, $Q$ is an
+    arbitrary, $k < d / 4$.
 
 	\pause
 	\begin{theorem}
-		There are exist an explicit construction of graph $G$ such, that:
-		\begin{itemize}
-			\item $\forall$ myopic algorithms $A$,
-        		 $\Pr\limits_{x, r}[t(A(G, P, b)) \ge 2^{\Omega(n)}] \ge 1 - 2^{-\Omega(n)}$
-		\end{itemize}
+		There exists \alert{an explicit} graph $G$ such that
+		every myopic or drunken DPLL algorithm makes at least $2^{n^{\Omega(1)}}$
+		steps on ``$f(x) = f(a)$'' for almost all $a \in \{0, 1\}^n$.
 	\end{theorem}
 
     \pause
     \begin{itemize}
-	    \item Explicit (or random) graph $G$.
+	    \item $G$ is based on expander instead of random graph.
     	\pause
-    	\item $K = n^{1 - \epsilon}$
+	    \item For drunken algorithms the proof follows
+    		[Itsykson, CSR-2010] 
     	\pause
-    	\item Much simpler than in previous work.
+	    \item For myopic 
+    	\begin{itemize}
+ 	       \item we simplify previous proof and 
+     	   \item $K = n^{1 - \epsilon}$
+    	\end{itemize}
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Graph constrution}
+    \frametitle{Graph construction}
 
+    $P(x_1, \ldots, x_d) = \alert<2-5>{x_1 \oplus x_2 \oplus \ldots \oplus x_{d - k}} \oplus 
+	\alert<6->{Q(x_{d - k + 1}, \ldots, x_d)}$
+    
     \pause
     \input{pics/construction_graph.tex}
 
@@ -277,22 +252,45 @@
         \item $G + T$ has full rank. $\forall y \in Y \subset T, ~
 		    deg(y) = 1$;
         \pause
+        \begin{itemize}
+	        \item $G + T$ is an expander.
+        \end{itemize}
         \pause
-        \item $R$ contains unlinear edges. $|\{x \mid x \in X, ~ deg(x)
+        \item $R$ contains nonlinear edges. $|\{x \mid x \in X, ~ deg(x)
 		    \ne 0\}| \le n^{\epsilon}$.
+        \begin{itemize}
+	        \item $G + T + R$ is an expander.
+        	\pause
+            \item Size of preimages no more than
+				$2^{n^{\epsilon}}$.
+        \end{itemize}
     \end{itemize}
+    We can invert $f_{G + T + R, P}$ in time $poly(n) 2^{n^{\epsilon}}$,
+	but this is still much! 
 \end{frame}
 
 \begin{frame}
-	\frametitle{Proof plan}
+	\frametitle{Plan of the proof}
 
-	\begin{itemize}
+	\begin{itemize}	       
 		\pause
 		\item Lower bounds for unsatisfiable formulas.
+			\pause
+            \begin{itemize}
+	            \item $G$ is an expander.
+	            \item $P$ is almost linear.
+	            \item Lower bounds for resolution proofs
+            \end{itemize}
 		\pause
-		\item With probability $2^{-\Omega(n)}$ after several step
-    		partial subtitution matches with concrete satisfying
-            assignment.
+		\item With probability $1 - 2^{-\Omega(n)}$ after several steps
+		        current formula becomes unsatisfiable.
+            \pause
+            \begin{itemize}
+	            \item $G$ is an expander.
+	            \item $f$ is almost bijection.
+	            \item Myopic algorithm can't recognize different
+		            absolute terms.
+            \end{itemize}
 	\end{itemize}
    
 \end{frame}
