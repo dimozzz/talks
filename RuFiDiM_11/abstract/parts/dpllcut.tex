@@ -1,0 +1,86 @@
+We introduce a lower bounds on the time complexity of DPLL
+algorithms that solve the satisfiability problem using a splitting
+strategy. We prove the theorem about effectiveness vs. correctness
+trade-off for deterministic myopic DPLL algorithms with cut heuristic.
+
+DPLL (are named by the authors: Davis, Putnam, Logemann and Loveland)
+algorithms are one of the most popular approach to the problem of
+satisfiability of Boolean formulas (SAT). DPLL algorithm is a
+recursive algorithm that takes the input formula $\phi$, uses a
+procedure $\mathbf{A}$ to choose a variable $x$, uses a procedure
+$\mathbf{B}$ that chooses the value $a \in \{0, 1\}$ for the variable
+$x$ that would be investigated first, and makes two recursive calls on
+inputs $\phi[x := a]$ the $\phi[x := 1 - a]$.  Note that the second
+call is not necessary if the first one returns the result, that the
+formula is satisfiable.
+
+There is a number of works concerning lower bounds for DPLL
+algorithms: for unsatisfiable formulas exponential lower bounds follow
+from lower bounds on the complexity of resolution proofs \cite{Urq87},
+\cite{Tse68}. In case of satisfiable formulas we have no hope to prove
+superpolynomial lower bound since if $\P = \NP$, then procedure
+$\mathbf{B}$ may always choose the correct value of the variable
+according to some satisfying assignment. The paper \cite{AHI05} gives
+an exponential lower bounds for two wide enough classes of DPLL
+algorithms: myopic and drunken algorithms.  In the myopic case
+procedures $\mathbf{A}$ and $\mathbf{B}$ can see formula with erased
+signs of negation, they can request the number of positive and
+negative occurrences for every variable and also may read $K = n^{1 -
+\epsilon}$ clauses precisely.  The paper \cite{CEMT09} shows that
+myopic algorithms invert Goldreich's function (\cite{Gol00}) based on
+a random graph in at least exponential time, \cite{I10} extends this
+result for drunken algorithms.  The paper \cite{IS11} presents the
+explicit Goldreich's function based on any expander that is hard to
+invert for drunken and myopic algorithms.
+
+All lower bounds for satisfiable instances are based on the fact that
+during several first steps algorithm falls into a hard unsatisfiale
+formula, and algorithm should investigate the whole it' splitting
+tree.  In this work we extend the class of DPLL algorithms by adding
+the procedure $\mathbf{C}$ that may decide that some branch of the
+splitting tree will not be investigated since it is not too
+``perspective''.  More precisely, before each recursive call an
+algorithm calls the procedure $\mathbf{C}$ that decides whether to
+make this recursive call or not.  DPLL algorithms with cut heuristic
+are always give a correct answer on unsatisfiable formulas; however
+they may err on satisfiable formulas. On the other hand if the
+presence of a cut heuristic gives the substantial improvement on the
+time complexity while the bad instances (i.e. instances on which the
+algorithm errs) are not easy to find, then such algorithms become
+reasonable.
+
+In this work we show that it is possible to construct the family of
+unsatisfiable formulas $\Phi^{(n)}$ in polynomial time such that for
+every myopic deterministic heuristics $\mathbf{A}$ and $\mathbf{C}$
+there exists a polynomial time samplable ensemble of distributions
+$R_n$ such that the DPLL algorithm based on procedures $\mathbf{A, B}$
+and $\mathbf{C}$ for some $\mathbf{B}$ either errs on $99\%$ of random
+inputs according $R_n$ or runs exponential time on formulas
+$\Phi^{(n)}$.  In case $\mathbf{A}$ and $\mathbf{C}$ are not
+restricted we show that a statement similar to above is equivalent to
+$\P \neq \NP$.  The case of randomized myopic procedures $\mathbf{A}$
+and $\mathbf{C}$ is left open.
+
+
+\paragraph{Heuristic acceptors.}  The study of DPLL algorithms with
+cut heuristic was also motivated by the study of heuristic acceptors.
+\cite{HI10}, \cite{HIMS10}
+The distributional proving problem is a pair $(L, D)$ of a language
+$L$ and a polynomial time samplable distribution $D$ concentrated on
+the complement of $D$. An algorithm $A$ is called a heuristic acceptor
+if it has additional input $d$ that represents the parameter of the
+error and for every $x \in L$ and $d \in \mathbb{N}$, $A(x, d)$
+returns $1$ and $\Pr_{x\gets D_n}[A(x) = 1] < 1/d$ for every integer
+$n$.  We call an acceptor polynomially bounded if for every $x \in L$
+running time of $A(x, d)$ is bounded by polynomial in $|x| \cdot d$.
+The paper \cite{HIMS10} shows that the existence of distributed proving
+problems that have no polynomially bounded acceptors is equivalent to
+the existence of infinitely often one-way functions.
+
+Let $D$ be some distribution concentrated on satisfiable formulas. We
+consider DPLL algorithm with a cut heuristic supplied with an
+additional parameter $d$ that is available for procedures $\mathbf{A,
+B, C}$. We call such an algorithm a heuristic DPLL acceptor if it
+satisfies the definition of a heuristic acceptor. Our result implies
+that there are no deterministic polynomially bounded myopic DPLL
+acceptors for the proving problem $(UNSAT, Q)$.
