@@ -15,7 +15,7 @@
     \end{itemize}
 
     \pause
-    It's allowed algogithm to have an error.
+    It's allowed algorithm to have an error.
 
     \pause
     \pause
@@ -139,10 +139,10 @@
         \begin{column}{5cm}
             \begin{itemize}
 	            \pause
-    	        \item some classes of unsatifiable formulas;
+    	        \item some classes of unsatisfiable formulas;
         		\pause
             	\item formulas, which encode system of linear
-		            equatitions.
+		            equations.
             \end{itemize}
         \end{column}
     \end{columns}
@@ -151,24 +151,37 @@
 \begin{frame}
 	\frametitle{Main theorem}
 	\pause
+    \begin{theorem} \label{main}
+	There exists a polynomial time algorithm that outputs
+unsatisfiable formula $\Phi^{(n)}$ in polynomial in $n$ time. There
+exists $\delta>0$ such that for every myopic polynomial time
+procedures $\mathbf{A}$ and $\mathbf{C}$ there exists
+polynomial time sampable ensemble of distributions $R_n$ concentrated
+on satisfiable formulas such that if for some procedure
+$\mathbf{B}$ and some $\epsilon>0$ the inequality
+$\Pr_{\phi\gets R_n}[\mathcal{D}_{\mathbf{A},\mathbf{B},\mathbf{C}}(\phi)=1]\ge 1-\epsilon$
+is satisfied, then running time of
+$\mathcal{D}_{\mathbf{A},\mathbf{B},\mathbf{C}}(\Phi)$ is at least
+$(1-\epsilon)2^N$, where $N=min\{n^\delta, r/K\}$ and $r=\Omega(n)$.
+\end{theorem}
 	\begin{theorem}
-        Для любой детерминированной полиномиальной эвристики $\mathbf{A}$
-        существует семейство $(\Phi_n, \mathcal{D}_n)$ и $\delta \ne
-        \delta(n)$ такие, что:
+        For all deterministic heuristic $\mathbf{A}$
+        exist an assemblage $(\Phi_n, \mathcal{D}_n)$ and $\delta \ne
+        \delta(n)$ that:
         \pause
 		\begin{itemize}
-            \item $\Phi_n$~--- невыполнимая формула, которую можно
-		        построить полиномиальным алгоритмом.
+            \item $\Phi_n$ is an unsatisfiable formula.
+        	\item $\Phi_n$ can be creates in polynomial time.
             \pause
-            \item $\mathcal{D}_n$~--- распределение на выполнимых
-		        формулах, которое моделируется полиномиальным алгоритмом.
+            \item $\mathcal{D}_n$ is a distribution concentrated on
+		        satisfiable formulas.
             \pause
 			\item $\forall \mathbf{B}, \mathbf{C}$,
 				$\Pr\limits_{x \gets \mathcal{D}_n}[\mathcal{A}(x)
                 \ne 0] > 1 - \epsilon \Rightarrow
                 t(\mathcal{A}(\Phi_n)) \ge 2^{\Omega(min(n^\delta,
-                \frac{n}{K}))}$, где $\mathcal{A}$~--- близорукий
-			    алгоритм $\mathcal{A}(\mathbf{A}, \mathbf{B},\mathbf{C})$.
+                \frac{n}{K}))}$, where $\mathcal{A}$ is a myopic algorithm
+			    $\mathcal{A}(\mathbf{A}, \mathbf{B},\mathbf{C})$.
 		\end{itemize}
 	\end{theorem}
 \end{frame}
@@ -177,23 +190,23 @@
     \frametitle{Distribution for all algorithms}
 
     \begin{theorem}
-        Существует семейство $(\Phi_n, \mathcal{D}_n)$ и $\delta \ne
-        \delta(n)$ такие, что:
+        exist an assemblage $(\Phi_n, \mathcal{D}_n)$ and $\delta \ne
+        \delta(n)$ that:
         \pause
         \begin{itemize}
-	        \item $\Phi_n$~--- невыполнимая формула, которую можно
-		        построить полиномиальным алгоритмом.
-            \pause
-            \item $\mathcal{D}_n$~--- распределение на выполнимых
-		        формулах, которое моделируется полиномиальным алгоритмом.
+            \item $\Phi_n$ is an unsatisfiable formula.
+        	\item $\Phi_n$ can be creates in polynomial time.
+        	\pause
+            \item $\mathcal{D}_n$ is a distribution concentrated on
+		        satisfiable formulas.
             \pause
             \item $\forall \mathbf{A}, \mathbf{B}, \mathbf{C}$ 
-		        если $\exists n_0, \epsilon$ такие, что:
+		        if $\exists n_0, \epsilon$ that:
 				$\forall n > n_0, ~~ \Pr\limits_{x \gets \mathcal{D}_n}[\mathcal{A}(x)
-                \ne 0] > 1 - \epsilon$, то
+                \ne 0] > 1 - \epsilon$, then
                 $\forall n > n_0, ~~ t(\mathcal{A}(\Phi_n)) \ge 2^{\Omega(min(n^\delta,
-                \frac{n}{K}))}$, где $\mathcal{A}$~--- близорукий
-			    алгоритм $\mathcal{A}(\mathbf{A}, \mathbf{B},\mathbf{C})$.
+                \frac{n}{K}))}$, where $\mathcal{A}$ is a myopic algorithm
+			    $\mathcal{A}(\mathbf{A}, \mathbf{B},\mathbf{C})$.
         \end{itemize}
     \end{theorem}
 \end{frame}
@@ -235,7 +248,7 @@
 \begin{frame}
     \frametitle{Dependencies graph}
 
-    Bipartite grapth $(X, Y, E)$
+    Bipartite graph $(X, Y, E)$
     \pause
     \begin{itemize}
 	    \item Full rank of adjacency matrix (over $\mathbb{F}_2$).
@@ -265,46 +278,29 @@
 		\end{column}
     \end{columns}
 
+    \pause
+    Our construction is based on Wigderson's expander construction.
 \end{frame}
 
 \begin{frame}
 	\frametitle{Idea of the proof}
 
     \pause
-    Носитель распределения на выполнимых формулах состоит из
-    модификаций невыполнимой формулы.
+    Distribution is concentrate on modification of unsatisfiable formula.
 	\pause
     \begin{itemize}
-        \item $\Phi_n$ кодирует задачу обращения функции Голдрейха.
+        \item $\Phi_n$ encode task of Goldreich's function inversion.
     	\pause
     	\item $\Phi_n \mapsto \mathcal{D}_n, ~ |supp(\mathcal{D}_n)| =
-		    2^{min(n^\delta, \Omega(\frac{n}{K}))}$ так, чтобы корректная
-		    работа на конкретной выполнимой формуле означала
-            ``увеличение времени работы на 1''.
+		    2^{min(n^\delta, \Omega(\frac{n}{K}))}$ that correct work
+            on concrete formula increase time on $\Phi_n$ by 1.
 	\end{itemize}
 
     \pause
-    Построение единого распределения для всех близоруких DPLL
-    алгоритмов:
+    Common distribution creation:
     
     \pause
     \begin{itemize}
-        \item комбинирование распределений из основной теоремы.
+        \item combine distribution from main theorem.
     \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Результаты}
-
-    \pause
-    \begin{enumerate}
-	    \item Теорема о ``компромиссе''. Если близорукий алгоритм работает
-		    корректно на построенном распределении, то он работает долго, на
-		    построенной формуле.
-        \pause
-        \item Построение единого распределения для всех близоруких алгоритмов.
-        \pause
-        \item Конструкция экспандеров с полным рангом и ограниченной
-		    степенью всех вершин.
-    \end{enumerate}
 \end{frame}
