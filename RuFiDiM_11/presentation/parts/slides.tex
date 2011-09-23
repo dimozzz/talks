@@ -15,7 +15,7 @@
     \end{itemize}
 
     \pause
-    It's allowed algorithm to have an error.
+    Algorithm is allowed to have an error.
 
     \pause
     \pause
@@ -43,9 +43,6 @@
 		        lower bounds for backtracking algorithms since
                 heuristic $\mathbf{B}$ may choose correct value.
             \pause
-			\item Inverting of functions corresponds to satisfiable
-		        formulas.
-            \pause
             \item{} [Nikolenko~2002], [Achilioptas, Beame, Molloy~2003-2004]
 				exponential lower bound for specific backtracking
                 algorithms.
@@ -66,6 +63,9 @@
 	\frametitle{Myopic heuristics}
     \pause
 
+    It's consider only formulas in CNF.
+
+    \pause
     \begin{definition}
         Myopic heuristic:
         \pause
@@ -78,13 +78,13 @@
     \end{definition}
 
     \pause
+    \pause
     $\begin{array}{l}
         (x_1 \vee x_3 \vee x_5) \\
-        \alert<7->{(x_2 \vee x_3)} \\
+        \alert<8->{(x_2 \vee x_3)} \\
         (x_2 \vee x_4 \vee x_5) \\
-        \alert<7->{(x_1 \vee x_4 \vee x_6)} \\
+        \alert<8->{(x_1 \vee x_4 \vee x_6)} \\
     \end{array}
-    \pause
     \pause
     \pause
     \Rightarrow
@@ -106,23 +106,21 @@
 		Myopic algorithm:
         \begin{itemize}
             \pause
-	        \item $\mathbf{A}, \mathbf{C}$ are myopic, polynomial, determinate heuristic.
+	        \item $\mathbf{A}, \mathbf{C}$ are myopic, polynomial, deterministic heuristic.
             \pause
-        	\item $\mathbf{B}$ can be any.
+        	\item $\mathbf{B}$ can be any heuristic.
         \end{itemize}
 	\end{definition}
 
     \pause
-    If $\mathbf{C} = 1$, then there exist some bounds: 
+    If $\mathbf{C} = 1$, then some bounds exist there:
 
     \pause
     \begin{columns}
         \begin{column}{5cm}
-            
             polynomial time (upper bound):
         \end{column}
         \begin{column}{5cm}
-            
             exponential time (lower bound):
         \end{column}
     \end{columns}
@@ -133,7 +131,7 @@
             \begin{itemize}
 		 		\item $2$-CNF formulas;
 			    \pause
-    			\item horn formulas.
+    			\item Horn formulas.
             \end{itemize}
         \end{column}
         \begin{column}{5cm}
@@ -151,27 +149,14 @@
 \begin{frame}
 	\frametitle{Main theorem}
 	\pause
-    \begin{theorem} \label{main}
-	There exists a polynomial time algorithm that outputs
-unsatisfiable formula $\Phi^{(n)}$ in polynomial in $n$ time. There
-exists $\delta>0$ such that for every myopic polynomial time
-procedures $\mathbf{A}$ and $\mathbf{C}$ there exists
-polynomial time sampable ensemble of distributions $R_n$ concentrated
-on satisfiable formulas such that if for some procedure
-$\mathbf{B}$ and some $\epsilon>0$ the inequality
-$\Pr_{\phi\gets R_n}[\mathcal{D}_{\mathbf{A},\mathbf{B},\mathbf{C}}(\phi)=1]\ge 1-\epsilon$
-is satisfied, then running time of
-$\mathcal{D}_{\mathbf{A},\mathbf{B},\mathbf{C}}(\Phi)$ is at least
-$(1-\epsilon)2^N$, where $N=min\{n^\delta, r/K\}$ and $r=\Omega(n)$.
-\end{theorem}
 	\begin{theorem}
         For all deterministic heuristic $\mathbf{A}$
-        exist an assemblage $(\Phi_n, \mathcal{D}_n)$ and $\delta \ne
+        exists an assemblage $(\Phi_n, \mathcal{D}_n)$ and $\delta \ne
         \delta(n)$ that:
         \pause
 		\begin{itemize}
             \item $\Phi_n$ is an unsatisfiable formula.
-        	\item $\Phi_n$ can be creates in polynomial time.
+        	\item $\Phi_n$ can be created in polynomial time.
             \pause
             \item $\mathcal{D}_n$ is a distribution concentrated on
 		        satisfiable formulas.
@@ -190,12 +175,12 @@ $(1-\epsilon)2^N$, where $N=min\{n^\delta, r/K\}$ and $r=\Omega(n)$.
     \frametitle{Distribution for all algorithms}
 
     \begin{theorem}
-        exist an assemblage $(\Phi_n, \mathcal{D}_n)$ and $\delta \ne
+        Exists an assemblage $(\Phi_n, \mathcal{D}_n)$ and $\delta \ne
         \delta(n)$ that:
         \pause
         \begin{itemize}
             \item $\Phi_n$ is an unsatisfiable formula.
-        	\item $\Phi_n$ can be creates in polynomial time.
+        	\item $\Phi_n$ can be created in polynomial time.
         	\pause
             \item $\mathcal{D}_n$ is a distribution concentrated on
 		        satisfiable formulas.
@@ -286,14 +271,14 @@ $(1-\epsilon)2^N$, where $N=min\{n^\delta, r/K\}$ and $r=\Omega(n)$.
 	\frametitle{Idea of the proof}
 
     \pause
-    Distribution is concentrate on modification of unsatisfiable formula.
+    Distribution is concentrated on modification of unsatisfiable formula.
 	\pause
     \begin{itemize}
-        \item $\Phi_n$ encode task of Goldreich's function inversion.
+        \item $\Phi_n$ encodes task of Goldreich's function inversion.
     	\pause
     	\item $\Phi_n \mapsto \mathcal{D}_n, ~ |supp(\mathcal{D}_n)| =
 		    2^{min(n^\delta, \Omega(\frac{n}{K}))}$ that correct work
-            on concrete formula increase time on $\Phi_n$ by 1.
+            on concrete formula increases time on $\Phi_n$ by 1.
 	\end{itemize}
 
     \pause
@@ -301,6 +286,6 @@ $(1-\epsilon)2^N$, where $N=min\{n^\delta, r/K\}$ and $r=\Omega(n)$.
     
     \pause
     \begin{itemize}
-        \item combine distribution from main theorem.
+        \item combines distribution from main theorem.
     \end{itemize}
 \end{frame}
