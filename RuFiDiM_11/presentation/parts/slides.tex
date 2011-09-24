@@ -164,7 +164,7 @@
 			\item $\forall \mathbf{B}, \mathbf{C}$,
 				$\Pr\limits_{x \gets \mathcal{D}_n}[\mathcal{A}(x)
                 \ne 0] > 1 - \epsilon \Rightarrow
-                t(\mathcal{A}(\Phi_n)) \ge 2^{\Omega(min(n^\delta,
+                time(\mathcal{A}(\Phi_n)) \ge (1 - \epsilon) 2^{\Omega(min(n^\delta,
                 \frac{n}{K}))}$, where $\mathcal{A}$ is a myopic algorithm
 			    $\mathcal{A}(\mathbf{A}, \mathbf{B},\mathbf{C})$.
 		\end{itemize}
@@ -189,15 +189,16 @@
 		        if $\exists n_0, \epsilon$ that:
 				$\forall n > n_0, ~~ \Pr\limits_{x \gets \mathcal{D}_n}[\mathcal{A}(x)
                 \ne 0] > 1 - \epsilon$, then
-                $\forall n > n_0, ~~ t(\mathcal{A}(\Phi_n)) \ge 2^{\Omega(min(n^\delta,
-                \frac{n}{K}))}$, where $\mathcal{A}$ is a myopic algorithm
-			    $\mathcal{A}(\mathbf{A}, \mathbf{B},\mathbf{C})$.
+                $\forall n > n_0, ~~ time(\mathcal{A}(\Phi_n)) \ge (1
+                - \epsilon)2^{\Omega(min(n^\delta, \frac{n}{K}))}$,
+                where $\mathcal{A}$ is a myopic algorithm
+                $\mathcal{A}(\mathbf{A}, \mathbf{B},\mathbf{C})$.
         \end{itemize}
     \end{theorem}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Goldreich's function}
+	\frametitle{Linear Goldreich's function}
 	$f:\{0, 1\}^n \rightarrow \{0, 1\}^n$
 
     \pause
@@ -263,8 +264,6 @@
 		\end{column}
     \end{columns}
 
-    \pause
-    Our construction is based on Wigderson's expander construction.
 \end{frame}
 
 \begin{frame}
