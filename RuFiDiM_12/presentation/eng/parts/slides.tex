@@ -1,0 +1,125 @@
+\begin{frame}
+    \frametitle{План}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof systems}
+
+    \begin{definition}
+        Proof system for language $L$:
+        \begin{itemize}
+            \item Polynomially bounded algoithm $\Pi$;
+            \item $\forall x \in L~ \exists \omega \in \{0, 1\}^{*}, \Pi(x, \omega) = 1$;
+        	\item $\forall x \notin L~ \forall \omega \in \{0, 1\}^{*}, 
+        		\Pi(x, \omega) = 0$.
+        \end{itemize}
+    \end{definition}
+
+    Proof system is polynomially bounded is there exists such polynomial $p$ that:
+    $\forall x \in L~ \exists \omega \in \{0, 1\}^{p(|x|)}, \Pi(x, \omega) = 1$.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Heuristic proof system}
+
+    $L$ is a language, $D$ is a distributional on comlement $L$.
+
+    Allow proof system to have a mistakes on complement $L$.
+
+    
+    
+    %НЕФОРМАЛЬНО%
+
+    %ФОРМАЛЬНО%
+
+    %Нет примеров%
+\end{frame}
+
+\begin{frame}
+    \frametitle{Вспомогательная задача. Подсчет среднего}
+
+    $f:\{0, 1\}^{n} \rightarrow \{0, 1\}$
+    $\overline{f} = \frac{\sum\limits_{i = 0}^{2^n - 1}f(i)}{2^n}$
+
+    $f$ can be computed by deterministic algorithm in time $t$.
+
+    \begin{proposition}%[]
+        There exists algorithm $A$ that:
+        \begin{itemize}
+	        \item $A$ is polynomially bounded in $t\frac{n}{\epsilon\delta}$
+        	\item $A$ uses $n$ random bits.
+        	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
+		        \delta$
+        \end{itemize}
+    \end{proposition}
+
+    Define language $L_f$.
+
+    $L_f = \bigcup\limits_{n \in \mathbb{N}}{r \in {0, 1}^n \mid 0.r < \overline{f}}$
+
+    \begin{lemma}
+        $L_f \in HeurP$
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Nondeterministic case}
+
+    \begin{proposition}%[]
+        There exists nondeterministic algorithm $A$ that:
+        \begin{itemize}
+	        \item $A$ is polynomially bounded in $t\frac{n}{\epsilon\delta}$
+        	\item $A$ uses $n$ random bits.
+        	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
+		        \delta$
+        \end{itemize}
+    \end{proposition}
+
+    $L_f = \bigcup\limits_{n \in \mathbb{N}}\{r \in {0, 1}^n \mid 0.r < \overline{f}\}$
+	$Y = \{(C, x) \mid C$ is a circuit $x \in \{0, 1\}^n, x \in L_{C}\}$
+    
+    \begin{lemma}
+        $Y \in HeurNP$
+    \end{lemma}
+
+    \begin{proposition}
+        $Y \in SpanP-complete$
+    \end{proposition}
+    
+    $\#P \in SpanP$, $Perm \in \#P$
+\end{frame}
+
+\begin{frame}
+    \frametitle{Graph nonisomorphism}
+
+    $GNI \in coNP$
+    
+    $GNI \in NP$ is an open question. We have no polynomially bounded proof systems
+    for $GNI$ in classical case.
+
+    Define new language.
+
+    \begin{definition}
+        $GNI_{pad} = \{(G_1, G_2, r) \mid (G_1, G_2) \in GNI,
+        r \in \{0, 1\}^{q(n)}\}$, $q$ is a polynomial.
+    \end{definition}
+
+    \begin{lemma}
+        If there exists polynomially bounded proof system for
+        $GNI_{pad}$, then $GNI \in NP$.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Результаты про неизоморфизм}
+
+    \begin{theorem}
+        Существует полиномиально ограниченная эвристическая система доказальств для
+        $GNI_{pad}$.
+    \end{theorem}
+
+    \begin{proof}[sketch]
+        $GNI \in AM$
+    \end{proof}
+    $GNI \in AM$
+\end{frame}

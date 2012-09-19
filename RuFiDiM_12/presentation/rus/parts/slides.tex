@@ -1,0 +1,127 @@
+\begin{frame}
+    \frametitle{План}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Системы доказательств}
+
+    \begin{definition}
+        Полиномиально ограниченый алгоритм $\Pi$~--- система доказательств для языка
+        $L$, если:
+        \begin{itemize}
+            \item $\forall x \in L~ \exists \omega \in \{0, 1\}^{*}, \Pi(x, \omega) = 1$;
+        	\item $\forall x \notin L~ \forall \omega \in \{0, 1\}^{*}, 
+        		\Pi(x, \omega) = 0$.
+        \end{itemize}
+    \end{definition}
+
+    Система доказательств полиномиально ограничена, если существует такой полином
+    $p$, что:
+    $\forall x \in L~ \exists \omega \in \{0, 1\}^{p(|x|)}, \Pi(x, \omega) = 1$.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Эвристические системы доказательств}
+
+    $L$~--- язык, $D$~--- распределение на дополнении $L$.
+
+    Разрешим системе доказательств ошибаться на небольшой доле долнения языка $L$.
+
+    
+    
+    %НЕФОРМАЛЬНО%
+
+    %ФОРМАЛЬНО%
+
+    %Нет примеров%
+\end{frame}
+
+\begin{frame}
+    \frametitle{Вспомогательная задача. Подсчет среднего}
+
+    $f:\{0, 1\}^{n} \rightarrow \{0, 1\}$
+    $\overline{f} = \frac{\sum\limits_{i = 0}^{2^n - 1}f(i)}{2^n}$
+
+    $f$ может быть посчитана детерминированным алгоритмом за время $t$.
+
+    \begin{proposition}%[]
+        Существует такой алгоритм $A$, что:
+        \begin{itemize}
+	        \item $A$ полиноален относительно $\frac{n}{\epsilon\delta}$
+        	\item $A$ использует $n$ случайных битов.
+        	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
+		        \delta$
+        \end{itemize}
+    \end{proposition}
+
+    Определим язык $L_f$.
+
+    $L_f = \bigcup\limits_{n \in \mathbb{N}}{r \in {0, 1}^n \mid 0.r < \overline{f}}$
+
+    \begin{lemma}
+        $L_f \in HeurP$
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Вспомогательная задача. Подсчет среднего}
+
+    Данный результат можно обобщить на случай недетерминированной функции.
+
+    \begin{proposition}%[]
+        Существует недетерминированный такой алгоритм $A$, что:
+        \begin{itemize}
+	        \item $A$ полиномиален относительно $\frac{n}{\epsilon\delta}$
+        	\item $A$ использует $n$ случайных битов.
+        	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
+		        \delta$
+        \end{itemize}
+    \end{proposition}
+
+    $L_f = \bigcup\limits_{n \in \mathbb{N}}\{r \in {0, 1}^n \mid 0.r < \overline{f}\}$
+	$Y = \{(C, x) \mid C$~--- схема $x \in \{0, 1\}^n, x \in L_{C}\}$
+    
+    \begin{lemma}
+        $Y \in HeurNP$
+    \end{lemma}
+
+    \begin{proposition}
+        $Y \in SpanP-complete$
+    \end{proposition}
+    $\#P \in SpanP$, $Perm \in \#P$
+\end{frame}
+
+\begin{frame}
+    \frametitle{Неизоморфизм}
+
+    $GNI \in coNP$
+    
+    $GNI \in NP$~--- открытый вопрос. Следовательно нет примеров полиномиально
+    ограниченных систем доказательств.
+
+    Определим новый язык.
+
+    \begin{definition}
+        $GNI_{pad} = \{(G_1, G_2, r) \mid (G_1, G_2) \in GNI,
+        r \in \{0, 1\}^{q(n)}\}$, $q$~--- полином.
+    \end{definition}
+
+    \begin{lemma}
+        Если существует полиномально ограниченная системадоказательств для
+        $GNI_{pad}$, то $GNI \in NP$.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Результаты про неизоморфизм}
+
+    \begin{theorem}
+        Существует полиномиально ограниченная эвристическая система доказальств для
+        $GNI_{pad}$.
+    \end{theorem}
+
+    \begin{proof}[sketch]
+        $GNI \in AM$
+    \end{proof}
+    $GNI \in AM$
+\end{frame}
