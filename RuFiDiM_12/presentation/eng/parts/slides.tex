@@ -3,9 +3,9 @@
 
     \begin{enumerate}
 	    \item Proof systems. Classical and heuristic case.
-    	\item Auxilary problem. Calculation the average value of function.
-    	\item Graph nonisomorphisms (GNI) problem and its modification.
-    	\item Application methos to GNI.
+    	\item Auxiliary problem. Calculation the average value of function.
+    	\item Graph nonisomorphism (GNI) problem and its modification.
+    	\item Application methods to GNI.
     \end{enumerate}
 \end{frame}
 
@@ -15,7 +15,7 @@
     \begin{definition}
         Proof system for language $L$:
         \begin{itemize}
-            \item Polynomially bounded algoithm $\Pi$;
+            \item Polynomially bounded algorithm $\Pi$;
             \item $\forall x \in L~ \exists \omega \in \{0, 1\}^{*}, \Pi(x, \omega) = 1$;
         	\item $\forall x \notin L~ \forall \omega \in \{0, 1\}^{*}, 
         		\Pi(x, \omega) = 0$.
@@ -37,28 +37,34 @@
 \begin{frame}
     \frametitle{Heuristic proof system}
 
-    $L$ is a language, $D$ is a distributional on comlement $L$.
+    $L$ is a language, $D$ is a distributional.
 
-    Allow proof system to have a mistakes on complement $L$.
+    Allow algorithm to have a mistakes.
+
+    \begin{itemize}
+	    \item Algorithm running time is polynomially bonded in $\frac{n}{\delta}$
+    	\item Probability of incorrect answer according to $D$ less than $\delta$.
+    \end{itemize}
+    
+    If there exists polynomial bounded:
+    \begin{itemize}
+        \item heuristic algorithm for $L$ then $L \in HeurP$
+	    \item heuristic proof system for $L$ then $L \in HeurNP$
+    \end{itemize}
+    
 
     
-    
-    %НЕФОРМАЛЬНО%
-
-    %ФОРМАЛЬНО%
-
-    %Нет примеров%
 \end{frame}
 
 \begin{frame}
-    \frametitle{Auxilary problem. Computation the average value}
+    \frametitle{Auxiliary problem. Computation the average value}
 
     $f:\{0, 1\}^{n} \rightarrow \{0, 1\}$
     $\overline{f} = \frac{\sum\limits_{i = 0}^{2^n - 1}f(i)}{2^n}$
 
     $f$ can be computed by deterministic algorithm in time $t$.
 
-    \begin{proposition}%[]
+    \begin{statement}%[]
         There exists algorithm $A$ that:
         \begin{itemize}
 	        \item $A$ is polynomially bounded in $t\frac{n}{\epsilon\delta}$
@@ -66,7 +72,7 @@
         	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
 		        \delta$
         \end{itemize}
-    \end{proposition}
+    \end{statement}
 
     Define language $L_f$.
 
@@ -79,14 +85,14 @@
 
 
 \begin{frame}
-    \frametitle{Alogorithm for auxilary problem}
+    \frametitle{Algorithm for auxiliary problem}
 
     
 \end{frame}
 \begin{frame}
     \frametitle{Nondeterministic case}
 
-    \begin{proposition}%[]
+    \begin{statement}%[]
         There exists nondeterministic algorithm $A$ that:
         \begin{itemize}
 	        \item $A$ is polynomially bounded in $t\frac{n}{\epsilon\delta}$
@@ -94,7 +100,7 @@
         	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
 		        \delta$
         \end{itemize}
-    \end{proposition}
+    \end{statement}
 
     $L_f = \bigcup\limits_{n \in \mathbb{N}}\{r \in {0, 1}^n \mid 0.r < \overline{f}\}$
 	$Y = \{(C, x) \mid C$ is a circuit $x \in \{0, 1\}^n, x \in L_{C}\}$
@@ -103,9 +109,9 @@
         $Y \in HeurNP$
     \end{lemma}
 
-    \begin{proposition}
+    \begin{statement}
         $Y \in SpanP-complete$
-    \end{proposition}
+    \end{statement}
     
     $\#P \in SpanP$, $Perm \in \#P$
 \end{frame}
@@ -141,9 +147,9 @@
     \begin{proof}
         \begin{enumerate}
 	        \item If $G_1 \sim G_2$ then there exists $\frac{n!}{Aut(G_1)}$ different
-		        graphs that can be recieved by permutation.
+		        graphs that can be received by permutation.
             \item If $G_1 \nsim G_2$ then there exists $\frac{n!}{Aut(G_1)} +
-		        \frac{n!}{Aut(G_2)}$ different graphs that can be recieved by permutation.
+		        \frac{n!}{Aut(G_2)}$ different graphs that can be received by permutation.
             \item Increase gap between cases.
         	\item Compute average value of different graphs.
         \end{enumerate}
