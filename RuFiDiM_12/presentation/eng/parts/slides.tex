@@ -1,5 +1,12 @@
 \begin{frame}
-    \frametitle{План}
+    \frametitle{Plan}
+
+    \begin{enumerate}
+	    \item Proof systems. Classical and heuristic case.
+    	\item Auxilary problem. Calculation the average value of function.
+    	\item Graph nonisomorphisms (GNI) problem and its modification.
+    	\item Application methos to GNI.
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}
@@ -17,6 +24,14 @@
 
     Proof system is polynomially bounded is there exists such polynomial $p$ that:
     $\forall x \in L~ \exists \omega \in \{0, 1\}^{p(|x|)}, \Pi(x, \omega) = 1$.
+
+
+    If there exists polynomial bounded:
+    \begin{itemize}
+        \item algorithm for $L$ then $L \in P$
+	    \item proof system for $L$ then $L \in NP$
+    \end{itemize}
+
 \end{frame}
 
 \begin{frame}
@@ -36,7 +51,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Вспомогательная задача. Подсчет среднего}
+    \frametitle{Auxilary problem. Computation the average value}
 
     $f:\{0, 1\}^{n} \rightarrow \{0, 1\}$
     $\overline{f} = \frac{\sum\limits_{i = 0}^{2^n - 1}f(i)}{2^n}$
@@ -55,13 +70,19 @@
 
     Define language $L_f$.
 
-    $L_f = \bigcup\limits_{n \in \mathbb{N}}{r \in {0, 1}^n \mid 0.r < \overline{f}}$
+    $L_f = \bigcup\limits_{n \in \mathbb{N}}\{r \in \{0, 1\}^n \mid 0.r < \overline{f}\}$
 
     \begin{lemma}
         $L_f \in HeurP$
     \end{lemma}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Alogorithm for auxilary problem}
+
+    
+\end{frame}
 \begin{frame}
     \frametitle{Nondeterministic case}
 
@@ -111,15 +132,20 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Результаты про неизоморфизм}
+    \frametitle{Results for nonisomorphism}
 
     \begin{theorem}
-        Существует полиномиально ограниченная эвристическая система доказальств для
-        $GNI_{pad}$.
+        There exists polynomially bounded proof system for $GNI_{pad}$.
     \end{theorem}
 
-    \begin{proof}[sketch]
-        $GNI \in AM$
+    \begin{proof}
+        \begin{enumerate}
+	        \item If $G_1 \sim G_2$ then there exists $\frac{n!}{Aut(G_1)}$ different
+		        graphs that can be recieved by permutation.
+            \item If $G_1 \nsim G_2$ then there exists $\frac{n!}{Aut(G_1)} +
+		        \frac{n!}{Aut(G_2)}$ different graphs that can be recieved by permutation.
+            \item Increase gap between cases.
+        	\item Compute average value of different graphs.
+        \end{enumerate}
     \end{proof}
-    $GNI \in AM$
 \end{frame}
