@@ -15,7 +15,7 @@
     \begin{definition}
         Proof system for language $L$:
         \begin{itemize}
-            \item Polynomially bounded algorithm $\Pi$;
+            \item Polynomial time algorithm $\Pi$;
             \item $\forall x \in L~ \exists \omega \in \{0, 1\}^{*}, \Pi(x, \omega) = 1$;
         	\item $\forall x \notin L~ \forall \omega \in \{0, 1\}^{*}, 
         		\Pi(x, \omega) = 0$.
@@ -41,6 +41,15 @@
 
     Allow algorithm to have a mistakes.
 
+    \begin{definition}
+        Proof system for language $L$:
+        \begin{itemize}
+            \item Polynomial time algorithm $\Pi$;
+            \item $\forall x \in L~ \exists \omega \in \{0, 1\}^{*}, \Pi(x, \omega) = 1$;
+        	\item $\forall x \notin L~ \forall \omega \in \{0, 1\}^{*}, 
+        		\Pi(x, \omega) = 0$.
+        \end{itemize}
+    \end{definition}
     \begin{itemize}
 	    \item Algorithm running time is polynomially bonded in $\frac{n}{\delta}$
     	\item Probability of incorrect answer according to $D$ less than $\delta$.
@@ -52,10 +61,24 @@
 	    \item heuristic proof system for $(L, D)$ then $(L, D) \in HeurNP$
     \end{itemize}
     
+\end{frame}
+
+\begin{frame}
+    \frametitle{Motivation}
+
+    \pause
+    \begin{itemize}
+	    \item Structural properties (optimal acceptor, hierachy theorem, complete
+    		language...).
+        \pause
+    	\item Practice.
+    	\pause
+        \item New methods and bounds for clasical case.
+    \end{itemize}
+
     \begin{statement}
-        There is no example with gap between classical and heuristic proof system.
+        There is no {\it natural} example with gap between classical and heuristic proof system.
     \end{statement}
-    
 \end{frame}
 
 \begin{frame}
