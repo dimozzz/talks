@@ -1,0 +1,247 @@
+\begin{frame}
+    \frametitle{Plan}
+
+    \begin{enumerate}
+	    \item Proof systems. Classical and heuristic case.
+    	\item Auxiliary problem. Calculation the average value of function.
+    	\item Graph nonisomorphism (GNI) problem and its modification.
+    	\item Application methods to GNI.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof systems}
+
+    \begin{definition}
+        Proof system for language $L$:
+        \begin{itemize}
+            \item Polynomial time algorithm $\Pi$;
+            \item $\forall x \in L~ \exists \omega \in \{0, 1\}^{*}, \Pi(x, \omega) = 1$;
+        	\item $\forall x \notin L~ \forall \omega \in \{0, 1\}^{*}, 
+        		\Pi(x, \omega) = 0$.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    Proof system is polynomially bounded is there exists such polynomial $p$ that:
+    $\forall x \in L~ \exists \omega \in \{0, 1\}^{p(|x|)}, \Pi(x, \omega) = 1$.
+
+
+    \pause
+    If there exists polynomially bounded:
+    \begin{itemize}
+        \item algorithm for $L$ then $L \in P$
+	    \item proof system for $L$ then $L \in NP$
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Heuristic classes}
+
+    $L$ is a language, $D = {D_n}$ is a family of distributions.
+
+    Allow algorithm to have a mistakes.
+
+    \pause
+    \begin{definition}
+        $L \in HeurP$:
+        \begin{itemize}
+            \item Algorithm $\Pi(x, 1^n, \delta)$ is polynomially bounded in $\frac{n}{\delta}$;
+            \item $\Pr\limits_{x \gets D_n}[\Pi(x, 1^n, \delta)] \neq
+        		L(x)] < \delta$.
+        \end{itemize}
+    \end{definition}
+
+    Define $HeurNP$ by analogy.
+
+    \pause
+
+    \vspace{0.5cm}
+    $(P, U) \subset HeurP \subseteq (EXP, U)$
+    
+    $(NP, U) \subset HeurNP \subseteq (NEXP, U)$
+\end{frame}
+
+\begin{frame}
+    \frametitle{Heuristic proof system}
+
+    $L$ is a language, $D = {D_n}$ is a family of distributions on
+    complement $L$.
+
+    \pause
+    \begin{definition}
+        $\Pi$ is a prof system for $L$:
+        \begin{itemize}
+            \item $\Pi$ is polynomially bunded by $\frac{n}{\delta}$;
+            \item $x \in L \Rightarrow \exists \omega~\Pi(x, \omega,
+        		1^n, \delta) = 1$;
+            \item $x \notin L \Rightarrow
+        		\Pr\limits_{x \gets D_n}[\exists \omega~
+                \Pi(x, \omega, 1^n, \delta) = 1] < \delta$.
+        \end{itemize}
+    \end{definition}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Motivation}
+
+    \pause
+    \begin{itemize}
+	    \item Structural properties (optimal acceptor, hierachy theorem, complete
+    		language...).
+        \pause
+    	\item Practice.
+    	\pause
+        \item New methods and bounds for clasical case.
+    \end{itemize}
+
+    \begin{statement}
+        There is no {\it natural} example with gap between classical and heuristic proof system.
+    \end{statement}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Results}
+
+    $L$ is a language.
+    $L_{pad} = \{(x, r) \mid x \in L, |r| \in \{0, 1 \}^{p(|x|)}\}$.
+    
+    \pause
+    \begin{enumerate}
+		\item $\exists L \in PP-complete, \forall D,
+    		(L_{pad}, D \times U) \in HeurP$.
+
+            \pause
+            If $P \neq NP$ then $L, L_{pad} \notin P$.
+    	\pause
+    	\item $\exists L \in (PP \cdot NP)-complete, \forall D,
+		    (L_{pad}, D \times U) \in HeurNP$.
+
+    	\pause
+    	\item $\forall L \in AM \Rightarrow \forall D,
+    		(L_{pad}, D \times U) \in HeurNP$.
+
+            \pause
+            
+            \vspace{0.5cm}
+            Generalization:
+		    $\forall L \in BP \cdot \mathfrak{C}P \Rightarrow L_{pad}
+            \in Heur\mathfrak{C}P$ ($\mathfrak{C}$ is a computation
+            model).    
+    \end{enumerate}
+
+    \pause
+    \begin{example}
+        $GNI \in AM \Rightarrow (GNI_{pad}, U) \in HeurNP$
+    \end{example}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Auxiliary problem. Computation the average value}
+
+    $f:\{0, 1\}^{n} \rightarrow \{0, 1\}$
+    
+    $\overline{f} = \frac{\sum\limits_{i = 0}^{2^n - 1}f(i)}{2^n}$
+
+    $L_f = \bigcup\limits_{n \in \mathbb{N}}\{r \in \{0, 1\}^n \mid 0.r < \overline{f}\}$
+
+    \begin{lemma}
+        If $f$ can be computed in polynomial time than $L_f \in HeurP$.
+    \end{lemma}
+
+    \begin{statement}
+        There exists algorithm $A$ that:
+        \begin{itemize}
+	        \item $A$ is polynomially bounded in $\frac{n}{\epsilon\delta}$
+        	\item $A$ uses $n$ random bits.
+        	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
+		        \delta$
+        \end{itemize}
+    \end{statement}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Algorithm for auxiliary problem}
+
+    \begin{statement}
+        There exists algorithm $A$ that:
+        \begin{itemize}
+	        \item $A$ is polynomially bounded in $\frac{n}{\epsilon\delta}$
+        	\item $A$ uses $n$ random bits.
+        	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
+		        \delta$
+        \end{itemize}
+    \end{statement}
+
+    \begin{enumerate}
+ 		\item Create an expander ({\it ``random''}) graph on $2^n$ vertexes.
+    	\item Pick a random vertex $v$ (we use $n$ random bits).
+    	\item Average out value of function in points on distance $t$ from $v$.
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Nondeterministic case}
+
+    $L_f = \bigcup\limits_{n \in \mathbb{N}}\{r \in \{0, 1\}^n \mid 0.r <
+    \overline{f}\}$
+
+    \begin{lemma}
+        If $f$ can be computed in polynomial time by nondeterministic algorithm than
+        $L_f \in HeurNP$.
+    \end{lemma}
+    
+	$Y = \{(C, x) \mid C$ is a circuit $x \in \{0, 1\}^n, x \in L_{C}\}$
+    
+    \begin{lemma}
+        $Y \in HeurNP$, $Y \in \#P-hard$
+    \end{lemma}
+
+    \begin{itemize}
+	    \item $Perm \in \#P$
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Graph nonisomorphism}
+
+    $GNI \in coNP$
+    
+    $GNI \in NP$ is an open question. We have no polynomially bounded proof systems
+    for $GNI$ in classical case.
+
+
+    \begin{definition}
+        $GNI_{pad} = \{(G_1, G_2, r) \mid (G_1, G_2) \in GNI,
+        r \in \{0, 1\}^{q(n)}\}$, $q$ is a polynomial.
+    \end{definition}
+
+    \begin{lemma}
+        If there exists polynomially bounded proof system for
+        $GNI_{pad}$, then $GNI \in NP$.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Results for nonisomorphism}
+
+    \begin{theorem}
+        There exists polynomially bounded proof system for $GNI_{pad}$.
+    \end{theorem}
+
+    \begin{proof}
+        \begin{enumerate}
+	        \item If $G_1 \sim G_2$ then there exists $\frac{n!}{Aut(G_1)}$ different
+		        graphs that can be received by permutation.
+            \item If $G_1 \nsim G_2$ then there exists $\frac{n!}{Aut(G_1)} +
+		        \frac{n!}{Aut(G_2)}$ different graphs that can be received by permutation.
+            \item Increase gap between cases.
+        	\item Compute average value of different graphs (use padding as random bits).
+        \end{enumerate}
+    \end{proof}
+\end{frame}
