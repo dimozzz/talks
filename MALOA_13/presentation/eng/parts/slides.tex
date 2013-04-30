@@ -71,9 +71,9 @@
 
     \pause
     \begin{definition}
-        $\Pi$ is a prof system for $L$:
+        $\Pi$ is a heuristic proof system for $L$:
         \begin{itemize}
-            \item $\Pi$ is polynomially bunded by $\frac{n}{\delta}$;
+            \item $\Pi$ is polynomially bounded by $\frac{n}{\delta}$;
             \item $x \in L \Rightarrow \exists \omega~\Pi(x, \omega,
         		1^n, \delta) = 1$;
             \item $x \notin L \Rightarrow
@@ -89,12 +89,12 @@
 
     \pause
     \begin{itemize}
-	    \item Structural properties (optimal acceptor, hierachy theorem, complete
-    		language...).
+	    \item Structural properties (optimal randomized acceptor,
+		    hierarchy theorem, complete language...).
         \pause
     	\item Practice.
     	\pause
-        \item New methods and bounds for clasical case.
+        \item New methods and bounds for classical case.
     \end{itemize}
 
     \begin{statement}
@@ -110,13 +110,13 @@
     
     \pause
     \begin{enumerate}
-		\item $\exists L \in PP-complete, \forall D,
+		\item $\exists L \in PP$-complete, $\forall D~
     		(L_{pad}, D \times U) \in HeurP$.
 
             \pause
             If $P \neq NP$ then $L, L_{pad} \notin P$.
     	\pause
-    	\item $\exists L \in (PP \cdot NP)-complete, \forall D,
+    	\item $\exists L \in (PP \cdot NP)$-complete, $\forall D~
 		    (L_{pad}, D \times U) \in HeurNP$.
 
     	\pause
@@ -136,6 +136,77 @@
     \begin{example}
         $GNI \in AM \Rightarrow (GNI_{pad}, U) \in HeurNP$
     \end{example}
+\end{frame}
+
+\begin{frame}
+    \frametitle{AM}
+    
+    \begin{definition}
+    	$L \in AM$ iff there exists polynomial randomized algorithm
+        $M$:
+        \begin{itemize}
+			\item $x \in L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] 
+        		> \frac{2}{3}$;
+            \item $x \notin L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] 
+        		< \frac{1}{3}$;
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    \begin{theorem}
+        $L \in AM$ iff there exists polynomial $p$, constant $c$ and
+        polynomial randomized algorithm $M$ with $c p(|x|)$ random
+        bits:
+        \begin{itemize}
+			\item $x \in L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] = 1$;
+            \item $x \notin L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] 
+        		< \frac{1}{2^{p(|x|)}}$;
+        \end{itemize}
+    \end{theorem}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Graph nonisomorphism}
+
+    $GNI \in coNP$
+    
+    $GNI \in NP$ is an open question. We have no polynomially bounded proof systems
+    for $GNI$ in classical case.
+
+	\pause
+    \begin{definition}
+        $GNI_{pad} = \{(G_1, G_2, r) \mid (G_1, G_2) \in GNI,
+        r \in \{0, 1\}^{q(n)}\}$, $q$ is a polynomial.
+    \end{definition}
+
+    \pause
+    \begin{lemma}
+        If there exists polynomially bounded proof system for
+        $GNI_{pad}$, then $GNI \in NP$.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Results for nonisomorphism}
+
+    \begin{theorem}
+        There exists polynomially bounded proof system for $GNI_{pad}$.
+    \end{theorem}
+
+    \begin{proof}
+        \begin{enumerate}
+	        \item If $G_1 \sim G_2$ then there exists $\frac{n!}{Aut(G_1)}$ different
+		        graphs that can be received by permutation.
+            \item If $G_1 \nsim G_2$ then there exists $\frac{n!}{Aut(G_1)} +
+		        \frac{n!}{Aut(G_2)}$ different graphs that can be received by permutation.
+            \item Increase gap between cases.
+        	\item Compute average value of different graphs (use padding as random bits).
+        \end{enumerate}
+    \end{proof}
 \end{frame}
 
 \begin{frame}
@@ -205,43 +276,4 @@
 	    \item $Perm \in \#P$
     \end{itemize}
     
-\end{frame}
-
-\begin{frame}
-    \frametitle{Graph nonisomorphism}
-
-    $GNI \in coNP$
-    
-    $GNI \in NP$ is an open question. We have no polynomially bounded proof systems
-    for $GNI$ in classical case.
-
-
-    \begin{definition}
-        $GNI_{pad} = \{(G_1, G_2, r) \mid (G_1, G_2) \in GNI,
-        r \in \{0, 1\}^{q(n)}\}$, $q$ is a polynomial.
-    \end{definition}
-
-    \begin{lemma}
-        If there exists polynomially bounded proof system for
-        $GNI_{pad}$, then $GNI \in NP$.
-    \end{lemma}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Results for nonisomorphism}
-
-    \begin{theorem}
-        There exists polynomially bounded proof system for $GNI_{pad}$.
-    \end{theorem}
-
-    \begin{proof}
-        \begin{enumerate}
-	        \item If $G_1 \sim G_2$ then there exists $\frac{n!}{Aut(G_1)}$ different
-		        graphs that can be received by permutation.
-            \item If $G_1 \nsim G_2$ then there exists $\frac{n!}{Aut(G_1)} +
-		        \frac{n!}{Aut(G_2)}$ different graphs that can be received by permutation.
-            \item Increase gap between cases.
-        	\item Compute average value of different graphs (use padding as random bits).
-        \end{enumerate}
-    \end{proof}
 \end{frame}
