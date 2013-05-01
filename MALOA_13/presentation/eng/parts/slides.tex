@@ -3,9 +3,9 @@
 
     \begin{enumerate}
 	    \item Proof systems. Classical and heuristic case.
-    	\item Auxiliary problem. Calculation the average value of function.
+    	\item Results.
     	\item Graph nonisomorphism (GNI) problem and its modification.
-    	\item Application methods to GNI.
+    	\item Auxiliary problem. Calculation the average value of function.
     \end{enumerate}
 \end{frame}
 
@@ -58,9 +58,9 @@
     \pause
 
     \vspace{0.5cm}
-    $(P, U) \subset HeurP \subseteq (EXP, U)$
+    $\forall D~ (P, D) \subset HeurP \subseteq (EXP, U)$
     
-    $(NP, U) \subset HeurNP \subseteq (NEXP, U)$
+    $\forall D~ (NP, U) \subset HeurNP \subseteq (NEXP, U)$
 \end{frame}
 
 \begin{frame}
@@ -71,7 +71,7 @@
 
     \pause
     \begin{definition}
-        $\Pi$ is a heuristic proof system for $L$:
+        $\Pi$ is a heuristic proof system for $(L, D)$:
         \begin{itemize}
             \item $\Pi$ is polynomially bounded by $\frac{n}{\delta}$;
             \item $x \in L \Rightarrow \exists \omega~\Pi(x, \omega,
@@ -120,8 +120,8 @@
 		    (L_{pad}, D \times U) \in HeurNP$.
 
     	\pause
-    	\item $\forall L \in AM \Rightarrow \forall D,
-    		(L_{pad}, D \times U) \in HeurNP$.
+    	\item $\forall L \in AM$ there exists a polynomially bounded
+    		heuristic proof system for $L_{pad}$.
 
             \pause
             
@@ -188,30 +188,31 @@
         If there exists polynomially bounded proof system for
         $GNI_{pad}$, then $GNI \in NP$.
     \end{lemma}
-\end{frame}
 
-\begin{frame}
-    \frametitle{Results for nonisomorphism}
-
-    \begin{theorem}
-        There exists polynomially bounded proof system for $GNI_{pad}$.
+    \pause
+    \begin{theorem}[Goldwasser-Sipser, 89]
+    	$GNI \in AM$    
     \end{theorem}
-
-    \begin{proof}
-        \begin{enumerate}
-	        \item If $G_1 \sim G_2$ then there exists $\frac{n!}{Aut(G_1)}$ different
-		        graphs that can be received by permutation.
-            \item If $G_1 \nsim G_2$ then there exists $\frac{n!}{Aut(G_1)} +
-		        \frac{n!}{Aut(G_2)}$ different graphs that can be received by permutation.
-            \item Increase gap between cases.
-        	\item Compute average value of different graphs (use padding as random bits).
-        \end{enumerate}
-    \end{proof}
 \end{frame}
 
 \begin{frame}
     \frametitle{Auxiliary problem. Computation the average value}
 
+    \begin{theorem}
+        $L \in AM$ iff there exists polynomial $p$, constant $c$ and
+        polynomial randomized algorithm $M$ with $c p(|x|)$ random
+        bits:
+        \begin{itemize}
+			\item $x \in L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] = 1$
+                (perfect completeness theorem);
+            \item $x \notin L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] 
+        		< \frac{1}{2^{p(|x|)}}$;
+        \end{itemize}
+    \end{theorem}
+
+    \pause
     $f:\{0, 1\}^{n} \rightarrow \{0, 1\}$
     
     $\overline{f} = \frac{\sum\limits_{i = 0}^{2^n - 1}f(i)}{2^n}$
@@ -219,25 +220,16 @@
     $L_f = \bigcup\limits_{n \in \mathbb{N}}\{r \in \{0, 1\}^n \mid 0.r < \overline{f}\}$
 
     \begin{lemma}
-        If $f$ can be computed in polynomial time than $L_f \in HeurP$.
+        If $f$ can be computed in (nondeterministic)polynomial time then $L_f \in Heur(N)P$.
     \end{lemma}
 
-    \begin{statement}
-        There exists algorithm $A$ that:
-        \begin{itemize}
-	        \item $A$ is polynomially bounded in $\frac{n}{\epsilon\delta}$
-        	\item $A$ uses $n$ random bits.
-        	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
-		        \delta$
-        \end{itemize}
-    \end{statement}
 \end{frame}
 
 
 \begin{frame}
     \frametitle{Algorithm for auxiliary problem}
 
-    \begin{statement}
+    \begin{statement}[Goldreich]
         There exists algorithm $A$ that:
         \begin{itemize}
 	        \item $A$ is polynomially bounded in $\frac{n}{\epsilon\delta}$
@@ -269,7 +261,7 @@
 	$Y = \{(C, x) \mid C$ is a circuit $x \in \{0, 1\}^n, x \in L_{C}\}$
     
     \begin{lemma}
-        $Y \in HeurNP$, $Y \in \#P-hard$
+        $Y \in HeurNP$, $Y$ is $NP \cdot PP$-complete
     \end{lemma}
 
     \begin{itemize}
