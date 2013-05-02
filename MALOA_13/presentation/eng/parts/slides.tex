@@ -60,7 +60,7 @@
     \vspace{0.5cm}
     $\forall D~ (P, D) \subset HeurP \subseteq (EXP, U)$
     
-    $\forall D~ (NP, U) \subset HeurNP \subseteq (NEXP, U)$
+    $\forall D~ (NP, D) \subset HeurNP \subseteq (NEXP, U)$
 \end{frame}
 
 \begin{frame}
@@ -114,7 +114,7 @@
     		(L_{pad}, D \times U) \in HeurP$.
 
             \pause
-            If $P \neq NP$ then $L, L_{pad} \notin P$.
+            If $NP \neq co-NP$ then $L, L_{pad} \notin NP$.
     	\pause
     	\item $\exists L \in (PP \cdot NP)$-complete, $\forall D~
 		    (L_{pad}, D \times U) \in HeurNP$.
@@ -254,14 +254,15 @@
     \overline{f}\}$
 
     \begin{lemma}
-        If $f$ can be computed in polynomial time by nondeterministic algorithm than
-        $L_f \in HeurNP$.
+        If $f$ can be computed in polynomial time by nondeterministic
+        algorithm then $L_f \in HeurNP$.
     \end{lemma}
     
-	$Y = \{(C, x) \mid C$ is a circuit $x \in \{0, 1\}^n, x \in L_{C}\}$
+	$Y = \{(C, r) \mid C$ is a nondeterministic circuit $r \in \{0,
+    1\}^n, \#C > r\}$
     
     \begin{lemma}
-        $Y \in HeurNP$, $Y$ is $NP \cdot PP$-complete
+        $Y \in HeurNP$, $Y$ is $NP \cdot PP$-complete.
     \end{lemma}
 
     \begin{itemize}
