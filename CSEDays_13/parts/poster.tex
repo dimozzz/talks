@@ -1,96 +1,221 @@
 \begin{frame}{}
 
-      \begin{block}{Summary}
-        This is a poster containing text and other things
-        This part is the summary.  People might read this. $\alpha = 1$
-      \end{block}
-% 
-  \begin{columns}[t]
-% 
-%     %-- Column 1 ---------------------------------------------------
-    \begin{column}{0.32\linewidth}
+    \begin{block}{Abstract} \justifying
+        We consider heuristic proof
+		systems and give non-trivial examples of proof
+        systems of this kind. We give an example of a distributional problem $(Y,D)$
+        that is in the complexity class $\rm HeurNP$ but $Y\notin \rm NP$ if $\rm
+        NP \neq coNP$, and $(Y, D)\notin \rm HeurBPP$ if $(\rm NP, PSamp) \not
+        \subseteq HeurBPP$. 
 
-      %-- Block 1-1
-      \begin{block}{Summary}
-        This is a poster containing text and other things
-        This part is the summary.  People might read this
-      \end{block}
+		For a language $L$ and a polynomial $q$ we define the language $L_q$ composed
+        of pairs $(x, r)$ where $x$ is an element of $L$ and $r$ is an arbitrary
+        binary string of length $q(|x|)$.  If $D = \{D_n\}_{n=1}^\infty$ is an
+        ensemble of distributions on strings, let $D \times U^q$ be a distribution on
+        pairs $(x, r)$, where $x$ is distributed according to $D_n$ and $r$ is
+        uniformly distributed on strings of length $q(n)$.  We show that for every
+        language $L$ in $\rm AM$ there is a polynomial $q$ such that for every
+        distribution $D$ concentrated on the complement of $L$ the distributional
+        problem $(L_q, D \times U^q)$ has a polynomially bounded heuristic proof
+        system. Since graph non-isomorphism ($GNI$) is in $\rm AM$, the above result
+        is applicable to $GNI$.
+    \end{block}
 
-      %-- Block 1-2
-      \begin{block}{Motivation}
-        You can make a poster very quickly and easily by cutting and pasting
-        the \LaTeX~codes from the paper!
-      \end{block}
+    
+\begin{columns}[t]
+	\begin{column}{0.32\linewidth}
 
-      %-- Block 1-3
-      \begin{block}{Columns}
-        The columns will automatically align with each other and try to look
-%         as nice as possible.  You may have to add {\tt$\backslash$vspace\{1pt\}}
-        commands to adjust the spacing here and there.  Remember that you can
-        use positive or negative numbers.
-      \end{block}
+            
+		\begin{block}{Preliminaries}
+                {\bf \em An ensemble of distributions} $\{D_n\}_{n=1}^{\infty}$ is a
+                sequence of distributions $D_i : \{0,1\}^* \to [0, 1]$ with a finite
+                support. Here $n$ is a complexity parameter, it is called a security
+                parameter in cryptography. A support of a distribution $D_n$ is a set
+                of strings, such that $D_n(x) > 0$, we denote it as $\supp D_n$.
 
+                The ensemble $U$ denotes the uniform ensemble, that is $U_n(x) =
+                2^{-n}$ for all $x\in \{0,1\}^n$.
+
+				For two ensembles of distribution $D$ and $F$ we define an ensemble
+                $\alpha D + (1 - \alpha) F$ for $0 \le \alpha \le 1$ such that
+                $(\alpha D + (1 - \alpha) F)_n(x) = \alpha D_n(x) + (1 - \alpha)
+                F_n(x)$. We also define an ensemble of distributions $D \times F$
+                concentrated on pairs of strings as follows: $(D \times F)_n(x, y) =
+                D_n(x) F_n(y)$
+
+                {\bf \em A distributional (decision) problem} is a pair $(L, D)$
+                where $L$ is a language and $D$ is an ensemble of distributions.
+		\end{block}
+
+        \begin{block}{Heuristic classes}
+	        $\rm HeurP (HeurNP, HeurBPP)$ is a class of distributional decision
+            problems $(L,D)$ that have deterministic (non-deterministic and
+            randomized, respectively) algorithm $A(x, \delta; n)$ and polynomial
+            $p$ such that:
+			\begin{enumerate}
+				\item For all $x \in \supp D_n$ the running time of $A(x, \delta; n)$
+		            is bounded by  $p(\frac{n}{\delta})$; 
+				\item $\Pr_{x \gets D_n} [A(x, \delta; n) \neq L(x)] < \delta$, in
+		            the case of a randomized algorithm the probability is taken also
+                    on random bits of the algorithm $A$.
+			\end{enumerate}            
+        \end{block}
+
+        \begin{block}{Heuristic proof systems}
+            {\bf \em A distributional proving problem} is a pair $(L,D)$ where $L$ is a
+			language, $D$ is an ensemble of distributions concentrated in the
+            complement of the language $L$.
+
+			The following definition is a deterministic version of a randomized
+            heuristic proof system from \cite{HIMS12}.
+
+            {\bf A heuristic proof system} for a distributional proving problem
+            $(L, D)$ is an algorithm $\Pi(x, w, \delta; n)$ that satisfies the
+            following properties: 
+			\begin{enumerate}
+				\item For every $x \in L$ there is $w \in \{0, 1\}^*$, such that
+		            $\Pi(x, w, \delta; n)=1$;
+				\item $\Pr_{x\gets D_n}[\exists w \Pi(x, w, \delta; n] = 1) <
+		            \delta$;
+				\item The running time of $\Pi(x, w, \delta; n)$ is bounded by a
+		            polynomial in $\frac{n + |w|}{\delta}$. 
+			\end{enumerate}
+			A heuristic proof system is called polynomially bounded if there exists
+            such polynomial $p$ that for every $x\in L$ there is $w$ that 
+			$\Pi(x, w, \delta; n) = 1$ and the size of $w$ is bounded by
+            $p(\frac{n}{\delta})$.
+        \end{block}
+        
     \end{column}%1
 
     %-- Column 2 ---------------------------------------------------
-    \begin{column}{0.32\linewidth}
+	\begin{column}{0.32\linewidth}
+        
+		\begin{block}{Motivation}
+			\begin{itemize}
+			    \item Structural properties (optimal randomized acceptor, hierarchy
+		            theorem, complete language...). 
+		    	\item Practice.
+		        \item New methods and bounds for classical case.
+		    \end{itemize}
 
-      %-- Block 2-1
-      \begin{block}{Lists}
-        \begin{itemize}
-          \item You can make
-          \item lists, that
-          \item allow people to see quickly
-        \end{itemize}
-      \end{block}
+            Is there a gap between classical and heuristic case on {\em natural}
+            language?
+        \end{block}
 
-      %-- Block 2-2
-      \begin{block}{Math}
-        Include math within the text is as simple as $1+1=2$.  You can also
-        highlight more important equations like this:
-        \begin{equation}
-          \int_0^1\sin(x)+\cos^2(x)+\alpha x~d\!x
-        \end{equation}
-      \end{block}
+        \begin{block}{Results}
+            $L$ is a language.
+		    $L_{pad} = \{(x, r) \mid x \in L, |r| \in \{0, 1 \}^{p(|x|)}\}$.
+    
+		    \begin{enumerate}
+				\item $\exists L \in PP$-complete, $\forall D~
+		    		(L_{pad}, D \times U) \in HeurP$.
+		    	\item $\exists L \in (PP \cdot NP)$-complete, $\forall D~
+				    (L_{pad}, D \times U) \in HeurNP$.
+		    	\item $\forall L \in AM$ there exists a polynomially bounded
+    				heuristic proof system for $L_{pad}$.
+            \end{enumerate}
+        \end{block}
 
-      %-- Block 2-3
-      \begin{block}{Pictures}
-        %\begin{figure}[htb]
-        %  \centering
-        %  \includegraphics[width=1\columnwidth]{science}
-        %\end{figure}
-      \end{block}
+        \begin{alertblock}{Theorem}
+            Let $f:\{0,1\}^* \to \{0,1\}$ be a function. Denote the language
+            $L_f = \cup_{n \in \mathbb{N}} \{r \in \{0, 1\}^n \mid 0.r <
+            \overline{f_n} \}$, where $\overline{f_n} = \frac{1}{2^n}
+            \sum_{x \in \{0,1\}^n}f(x)$.
 
+            If $f$ is computed in (nondeterministic) polynomial time then $(L_f,U)
+            \in \rm Heur(N)P$. 
+        \end{alertblock}
+
+        \begin{block}{Algorithm for $L_{pad}$}
+            A Boolean sampler is a randomized algorithm $S$, which takes on the input
+			a integer number $n$ and rational numbers $\epsilon, \delta$.  $S$ has an
+            oracle access to a function $f:\{0,1\}^n \to \{0,1\}$; $S$ makes several
+            non-adaptive requests to the function $f$ and outputs a number in the
+            range $[0,1]$. Let's denote $\overline{f} =
+            \frac{1}{2^n}\sum_{x \in \{0,1\}^n}f(x)$. Every function
+            $f:\{0,1\}^n \to \{0,1\}$ must satisfy the following inequality: 
+			$\Pr[|S^f(n,\epsilon,\delta)-\overline{f}|\ge \epsilon]<\delta$.  A
+            Boolean sampler is called averaging if it outputs the arithmetical mean
+            of requested values.
+
+            We describe the algorithm $A(x,\delta)$  (we can omit $n$ as it equals to $|x|$).
+			Let $S$ be an averaging Boolean sampler \cite{Gol11}.
+            \begin{itemize}
+				\item If $\delta \le 2^{-n+2}$ then compute $\overline{f}$, and
+		            output $1$ if $0.x < \overline{f_n}$, and $0$ otherwise. 
+				\item Run the sampler $S^f(n, \delta / 4, \delta / 4)$ that uses the
+		            string $x$ instead of random bits.
+					Let $\nu_n$ be it`s result. If $\nu_n> 0.x$ then return $1$ else
+                    return $0$. 
+			\end{itemize}
+        \end{block}
+        
     \end{column}%2
 
     %-- Column 3 ---------------------------------------------------
     \begin{column}{0.32\linewidth}
+        \begin{block}{Languages}
+            Consider the language $X = \cup_{n \in \mathbb{N}}\{(C, r) \mid \mbox{$C$
+            is a circuit with $n$ inputs}, r \in \{0, 1\}^n, \sharp C > r\}$, where
+        	$\sharp C$ is a number of satisfying assignments of the circuit $C$. 
 
-      %-- Block 3-1
-      \begin{block}{Experiments}
-        Remember to put lots of figures on your poster... Nobody reads anymore!
-      \end{block}
+            Consider the language $Y = \cup_{n \in \mathbb{N}}\{(C,r) \mid \mbox{$C$
+            is a non-deterministic circuit with $n$ inputs}, r \in \{0, 1\}^n, \sharp
+          	C > r\}$, where $\sharp C$ is a number of satisfying assignments of the
+            circuit $C$, in other words, if the circuit $C$ uses $m$ bits of the
+            witness, then $\sharp C = |\{x \in \{0,1\}^n \mid \exists y \in
+            \{0,1\}^m: C(x,y) = 1\}|$.
+        \end{block}
 
-      %-- Block 3-2
-      \begin{block}{Conclusion}
-        Much less annoying than PowerPoint.  Copy and Paste from your
-        document. Overall, a great idea!
-      \end{block}
+        \begin{block}{$PP$, $PP \cdot NP$}
+            The complexity class $\rm PP$ consists of languages $L$ that 
+            have a randomized polynomial time Turing machine $M$ such that for every
+            $x$, $x \in L \iff \Pr_M[M(x) = L(x)] \ge 1 / 2$.
 
-      %-- Block 3-3
-      \begin{block}{Logo}
-        To change the logo (if you don't want to represent for Georgia Tech).
-        Replace the file {\tt logo.png} and with the logo of your choice!
-        Make sure the background is black.
-      \end{block}
+            The class $\rm PP \cdot NP$ consists of languages $L$ that have a
+			randomized polynomial time Turing machine $M$ such that for every $x$,
+            $x \in L$ if and only if $\Pr[M(x)\in SAT]\ge \frac12$, where $SAT$ is
+            the language of satisfiable propositional formulas.
+        \end{block}
 
+        \begin{alertblock}{Theorem}
+        	\begin{enumerate}
+				\item The language $X$ is $PP$-complete.
+		    	\item Let $D$ be a polynomially bounded ensemble and let a
+				    support of $D_n$ consist of circuits with $n$ inputs, then 
+		            $(X, D \times U) \in HeurP$.
+                \item The language $Y$ is $PP \cdot NP$-complete.
+		    	\item Let $D$ be a polynomially bounded ensemble and let a
+				    support of $D_n$ consist of circuits with $n$ inputs, then
+		            $(X, D \times U) \in HeurNP$.
+		    \end{enumerate}
+        \end{alertblock}
+
+        \begin{block}{Short proofs}
+            Let $q$ be a polynomial, for every language $L$ we denote $pad_q(L) = 
+			\{(x, r) \mid x \in L, r \in \{0, 1\}^* , |r| \ge q(|x|)\}$.
+        \end{block}
+
+        \begin{alertblock}{Theorem}
+            Let a language $L \in AM$ and let an ensemble $D$ be polynomially 
+		    bounded, then:
+		    \begin{enumerate}
+    			\item There is a polynomial $q$ such that for $(pad_q(L),
+				    D \times U(q)) \in HeurNP$.
+        		\item Then there is a polynomial $q$ such that for the distributional
+		            proving problem $(pad_q(L), D \times U(q))$ 
+        		    there is a polynomially bounded proof system.
+		    \end{enumerate}
+        \end{alertblock}
+
+
+        \begin{block}{}
+        	\bibliography{main}    
+        \end{block}
     \end{column}%3
 
-  \end{columns}
-
-	\begin{block}{Conclusion} \justifying
-Adaptive optics is a technique that allows to compensate the impact of atmospheric turbulence in real-time thus improving the quality of astronomical images. Design of the controller is the next stage of this research project.
-	\end{block}%-- Block 1-2
+\end{columns}
 
 \end{frame}
 
