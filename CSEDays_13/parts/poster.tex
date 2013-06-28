@@ -6,14 +6,7 @@
         systems of this kind. We give an example of a distributional problem $(Y,D)$
         that is in the complexity class $\rm HeurNP$ but $Y\notin \rm NP$ if $\rm
         NP \neq coNP$, and $(Y, D)\notin \rm HeurBPP$ if $(\rm NP, PSamp) \not
-        \subseteq HeurBPP$. 
-
-		For a language $L$ and a polynomial $q$ we define the language $L_q$ composed
-        of pairs $(x, r)$ where $x$ is an element of $L$ and $r$ is an arbitrary
-        binary string of length $q(|x|)$.  If $D = \{D_n\}_{n=1}^\infty$ is an
-        ensemble of distributions on strings, let $D \times U^q$ be a distribution on
-        pairs $(x, r)$, where $x$ is distributed according to $D_n$ and $r$ is
-        uniformly distributed on strings of length $q(n)$.  We show that for every
+        \subseteq HeurBPP$.   We show that for every
         language $L$ in $\rm AM$ there is a polynomial $q$ such that for every
         distribution $D$ concentrated on the complement of $L$ the distributional
         problem $(L_q, D \times U^q)$ has a polynomially bounded heuristic proof
@@ -85,13 +78,8 @@
 			$\Pi(x, w, \delta; n) = 1$ and the size of $w$ is bounded by
             $p(\frac{n}{\delta})$.
         \end{block}
-        
-    \end{column}%1
 
-    %-- Column 2 ---------------------------------------------------
-	\begin{column}{0.32\linewidth}
-        
-		\begin{block}{Motivation}
+        \begin{block}{Motivation}
 			\begin{itemize}
 			    \item Structural properties (optimal randomized acceptor, hierarchy
 		            theorem, complete language...). 
@@ -102,7 +90,12 @@
             Is there a gap between classical and heuristic case on {\em natural}
             language?
         \end{block}
+    \end{column}%1
 
+    %-- Column 2 ---------------------------------------------------
+	\begin{column}{0.32\linewidth}
+        
+		
         \begin{block}{Results}
             $L$ is a language.
 		    $L_{pad} = \{(x, r) \mid x \in L, |r| \in \{0, 1 \}^{p(|x|)}\}$.
@@ -150,11 +143,7 @@
                     return $0$. 
 			\end{itemize}
         \end{block}
-        
-    \end{column}%2
 
-    %-- Column 3 ---------------------------------------------------
-    \begin{column}{0.32\linewidth}
         \begin{block}{Languages}
             Consider the language $X = \cup_{n \in \mathbb{N}}\{(C, r) \mid \mbox{$C$
             is a circuit with $n$ inputs}, r \in \{0, 1\}^n, \sharp C > r\}$, where
@@ -167,6 +156,11 @@
             witness, then $\sharp C = |\{x \in \{0,1\}^n \mid \exists y \in
             \{0,1\}^m: C(x,y) = 1\}|$.
         \end{block}
+    \end{column}%2
+
+    %-- Column 3 ---------------------------------------------------
+    \begin{column}{0.32\linewidth}
+        
 
         \begin{block}{$PP$, $PP \cdot NP$}
             The complexity class $\rm PP$ consists of languages $L$ that 
@@ -211,6 +205,7 @@
 
 
         \begin{block}{}
+            \bibliographystyle{plain}
         	\bibliography{main}    
         \end{block}
     \end{column}%3

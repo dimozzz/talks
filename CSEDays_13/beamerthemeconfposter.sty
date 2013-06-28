@@ -185,15 +185,35 @@
 \setbeamertemplate{headline}{
  \leavevmode
   \begin{columns}
-   \begin{column}{\linewidth}
-    \vskip1cm
-    \centering
-    \usebeamercolor{title in headline}{\color{jblue}\Huge{\textbf{\inserttitle}}\\[0.5ex]}
-    \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
-    \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
-    \vskip1cm
-   \end{column}
-   \vspace{1cm}
+
+      \begin{column}{.015\paperwidth}
+      \end{column}
+      
+      \begin{column}{.09\paperwidth}
+        \centering
+        \vskip6ex
+        \includegraphics[height=0.09\paperwidth]{logo.png}
+      \end{column}
+      
+	\begin{column}{0.69\linewidth}
+    	\vskip1cm
+    	\centering
+    	\usebeamercolor{title in headline}{\color{jblue}\Huge{\textbf{\inserttitle}}\\[0.5ex]}
+    	\usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+    	\usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
+    	\vskip1cm
+   	\end{column}
+
+    \begin{column}{.09\paperwidth}
+        \centering
+        \vskip6ex
+        \includegraphics[height=0.09\paperwidth]{zoo.png}
+      \end{column}
+
+      \begin{column}{.07\paperwidth}
+      \end{column}
+
+    \vspace{0.9cm}
   \end{columns}
  \vspace{0.5in}
  \hspace{0.5in}\begin{beamercolorbox}[wd=47in,colsep=0.15cm]{cboxb}\end{beamercolorbox}
