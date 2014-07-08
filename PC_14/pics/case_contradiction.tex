@@ -11,26 +11,16 @@
 	\node [end] (z){}
         child {
         	node[end] (b) {}
+   		    child {
+		        node {\alert{(*)}}
+	            edge from parent
+		        node[left] {$x + y = 0$}
+            }
             child {
     			node {$\vdots$}
 		        edge from parent
-	    		node[left] {}
+	    		node[right] {}
 			}
-		    child {
-		        node[end] {}
-                child {
-                  	node {\alert{no sol.}}
-                    edge from parent
-                    node[left] {$y = 0$}
-                }
-                child {
-        			node {$\vdots$}
-		           	edge from parent
-        		    node[right] {}
-		        }
-	            edge from parent
-		        node[right] {$x + y = 1$}
-            }
            	edge from parent
             node[left] {$x = 0$}
         }

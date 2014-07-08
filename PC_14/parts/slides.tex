@@ -42,21 +42,35 @@
 
 
 \begin{frame}
-    \begin{columns}
+
+	\begin{columns}
         \begin{column}{3cm}
             Degenerate
-            
-			%\input{pics/c.tex}
+        \end{column}
+        \begin{column}{3cm}
+            Solution
+    \end{column}
+        \begin{column}{3cm}
+            Contradiction
+        \end{column}
+    \end{columns}
+
+    %\vspace{1cm}
+    
+    \begin{columns}
+        \begin{column}{3cm}
             \input{pics/case_degenerate.tex}
         \end{column}
         \begin{column}{3cm}
-            $DPLL_{lin}$ algorithm
+            \input{pics/case_solution.tex}
         \end{column}
         \begin{column}{3cm}
-            $DPLL_{lin}$ algorithm
-            
+            \input{pics/case_contradiction.tex}
         \end{column}
     \end{columns}
+
+    \vspace{3cm}
+    \alert{(*)} contradiction with clause $(\neg x \lor y)$
 
 \end{frame}
 
