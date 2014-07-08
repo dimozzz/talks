@@ -2,10 +2,59 @@
     \begin{columns}
         \begin{column}{5cm}
             Decision tree
-			\input{pics/decision_tree.tex}            
+            $(x \oplus y) \land t$
+            
+			\input{pics/decision_tree.tex}
         \end{column}
         \begin{column}{5cm}
             DPLL algorithm
+            
+            $x + y = 0$ ~~
+            $y + z = 0$ ~~
+            $x + z = 1$
+            
+            \input{pics/DPLL_tree.tex}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \begin{columns}
+        \begin{column}{5cm}
+            Parity decision tree
+            $(x \oplus y) \land t$
+            
+			\input{pics/p_decision_tree.tex}
+        \end{column}
+        \begin{column}{5cm}
+            $DPLL_{lin}$ algorithm
+            
+            $x + y = 0$ ~~
+            $y + z = 0$ ~~
+            $x + z = 1$
+            
+            \input{pics/p_DPLL_tree.tex}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+    \begin{columns}
+        \begin{column}{3cm}
+            Degenerate
+            
+			%\input{pics/c.tex}
+            \input{pics/case_degenerate.tex}
+        \end{column}
+        \begin{column}{3cm}
+            $DPLL_{lin}$ algorithm
+        \end{column}
+        \begin{column}{3cm}
+            $DPLL_{lin}$ algorithm
+            
         \end{column}
     \end{columns}
 
