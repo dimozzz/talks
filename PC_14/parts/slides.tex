@@ -43,6 +43,7 @@
 
 \begin{frame}
 
+    System: $(x + y = 1) \land (x + z) = 0$
 	\begin{columns}
         \begin{column}{3cm}
             Degenerate
@@ -69,8 +70,37 @@
         \end{column}
     \end{columns}
 
-    \vspace{3cm}
+    \vspace{2cm}
     \alert{(*)} contradiction with clause $(\neg x \lor y)$
 
 \end{frame}
 
+
+\begin{frame}
+
+    \begin{columns}
+        \begin{column}{2.5cm}
+            $f_1(x) = \alpha_1$
+
+            $f_2(x) = \alpha_2$
+
+            $f_3(x) = \alpha_3$
+
+            $\vdots$
+
+            $f_m(x) = \alpha_3$
+
+            \vspace{1.5cm}
+
+            $f_2(x) = x_1 + x_2$
+            $\alpha_2 = 0$
+        \end{column}
+        \begin{column}{7cm}
+            \input{pics/system.tex}
+	    \end{column}
+    \end{columns}
+
+    \alert{(*)} contradiction with clause $(\neg x_1 \lor \neg x_2)$
+
+    \alert{(**)} contradiction with clause $(x_1 \lor x_2)$
+\end{frame}
