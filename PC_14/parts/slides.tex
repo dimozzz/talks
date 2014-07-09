@@ -24,16 +24,18 @@
         \begin{column}{5cm}
             Parity decision tree
             $(x \oplus y) \land t$
-            
-			\input{pics/p_decision_tree.tex}
         \end{column}
         \begin{column}{5cm}
             $DPLL_{lin}$ algorithm
-            
-            $x + y = 0$ ~~
-            $y + z = 0$ ~~
-            $x + z = 1$
-            
+            $(x + y) \land (x \lor z)$
+        \end{column}
+    \end{columns}
+
+    \begin{columns}
+        \begin{column}{5cm}
+			\input{pics/p_decision_tree.tex}
+        \end{column}
+        \begin{column}{5cm}
             \input{pics/p_DPLL_tree.tex}
         \end{column}
     \end{columns}
@@ -86,14 +88,12 @@
             $\vdots$
 
             $f_m(x) = \alpha_3$
-
-            \vspace{1.5cm}
-
-            $f_2(x) = x_1 + x_2$
-            $\alpha_2 = 0$
         \end{column}
-        \begin{column}{7cm}
+        \begin{column}{9.5cm}
             \input{pics/system.tex}
 	    \end{column}
     \end{columns}
+
+    $f_2(x) = x_1 + x_2 + \dots + x_k$
+
 \end{frame}

@@ -12,30 +12,30 @@
            	child {
                	node[end] {}
                	child {
-                	node {\alert{no solution}}
+                	node {\alert{$(x \lor z)$}}
 	                edge from parent
-		            node[left] {$z = 0$}
+		            node[left] {$x = 0$}
 	            }
 			    child {
-	                node {\alert{no solution}}
+	                node[blue] {\begin{tabular}{c} $x = 1$ \\ $y = 0$ \\ $z = 1$ \end{tabular}}
 	                edge from parent
-		            node[right] {$z = 1$}
+		            node[right] {$x = 1$}
 	            }
                 edge from parent
-	            node[left] {$x + y + z = 0$}
+	            node[left] {$x + z = 0$}
             }
             child {
                	node {$\vdots$}
                 edge from parent
-	            node[right] {$x + y + z = 1$}
+	            node[right] {$x + z = 1$}
             }
            	edge from parent
-            node[left] {$x + y = 0$}
+            node[left] {$x + y = 1$}
         }
         child {
         	node (b) {$\vdots$}
            	edge from parent
-            node[right] {$x + y = 1$}
+            node[right] {$x + y = 0$}
         };
 \end{tikzpicture}
 

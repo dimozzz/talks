@@ -1,10 +1,11 @@
-\tikzstyle{end} = [circle, minimum size = 0.1cm, draw, inner sep = 0.1pt]
-\tikzstyle{leaf} = [circle, minimum size = 0.6cm, draw, inner sep = 0.1pt, blue]
+\tikzstyle{end} = [thin, circle, minimum size = 0.1cm, draw, inner sep = 0.1pt]
+\tikzstyle{leaf} = [thin, circle, minimum size = 0.6cm, draw, inner sep = 0.1pt, blue]
             
 \tikzstyle{level 1}=[level distance = 1cm, sibling distance = 1cm]
 \tikzstyle{level 2}=[level distance = 1.5cm, sibling distance = 1.5cm]
 \tikzstyle{level 3}=[level distance = 1.5cm, sibling distance = 1.8cm]
 
+\tikzstyle{edge from parent} = [thin, draw]
 
     
 \begin{tikzpicture}[label distance = 8mm]
@@ -13,7 +14,7 @@
         	node[end] (b) {}
    		    child {
 		        node {\alert{$(\neg x \lor y)$}}
-	            edge from parent
+	            edge from parent[ultra thick]
 		        node[left] {$x + y = 0$}
             }
             child {
@@ -21,7 +22,7 @@
 		        edge from parent
 	    		node[right] {}
 			}
-           	edge from parent
+           	edge from parent[ultra thick]
             node[left] {$x = 0$}
         }
         child {
