@@ -156,22 +156,24 @@
             witness, then $\sharp C = |\{x \in \{0,1\}^n \mid \exists y \in
             \{0,1\}^m: C(x,y) = 1\}|$.
         \end{block}
+
+        \begin{block}{$PP$, $PP \cdot NP$}
+            The complexity class $\rm PP$ consists of languages $L$ that 
+            have a randomized polynomial time Turing machine $M$ such that for every
+            $x$, $x \in L \iff \Pr_M[M(x) = L(x)] \ge 1 / 2$.
+        \end{block}
     \end{column}%2
 
     %-- Column 3 ---------------------------------------------------
     \begin{column}{0.32\linewidth}
         
 
-        \begin{block}{$PP$, $PP \cdot NP$}
-            The complexity class $\rm PP$ consists of languages $L$ that 
-            have a randomized polynomial time Turing machine $M$ such that for every
-            $x$, $x \in L \iff \Pr_M[M(x) = L(x)] \ge 1 / 2$.
-
+        %\begin{block}
             The class $\rm PP \cdot NP$ consists of languages $L$ that have a
 			randomized polynomial time Turing machine $M$ such that for every $x$,
             $x \in L$ if and only if $\Pr[M(x)\in SAT]\ge \frac12$, where $SAT$ is
             the language of satisfiable propositional formulas.
-        \end{block}
+        %\end{block}
 
         \begin{alertblock}{Theorem}
         	\begin{enumerate}
@@ -203,7 +205,10 @@
 		    \end{enumerate}
         \end{alertblock}
 
-
+        \begin{block}{}
+            The porster is based on joint work with Dmitry Itsykson.
+        \end{block}
+        
         \begin{block}{}
             \bibliographystyle{plain}
         	\bibliography{main}    
