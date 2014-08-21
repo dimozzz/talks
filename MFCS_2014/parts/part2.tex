@@ -7,12 +7,14 @@
 				\item Hard for resolution and DPLL
 				\item Easy for Linear splitting trees
 			\end{itemize}
-		\pitem Perfect matching principle for graphs with odd vertices
+        \pause
+		\item Perfect matching principle for graphs with odd vertices
 			\begin{itemize}
 				\item Hard for resolution and DPLL [Razborov, 2003]
 				\item Easy for Linear splitting trees
 			\end{itemize}
-		\pitem Pebbling contradictions
+        \pause
+		\item Pebbling contradictions
 			\begin{itemize}
 				\item For CNF $\phi$ we denote by $\phi^{\oplus}$ a CNF formula
 	            	obtained from $\phi$ by substituting $x_1\oplus x_2$ for each
@@ -75,7 +77,11 @@
 
 	\end{itemize}
     
-	\pause \myth The size of any LST of $PHP^m_n$ is at least $2^{\frac{n - 1}{2}}$.
+	\pause
+
+    \begin{theorem}
+        The size of any LST of $PHP^m_n$ is at least $2^{\frac{n - 1}{2}}$.
+    \end{theorem}
 
 \end{frame}
 
@@ -84,35 +90,45 @@
 \begin{frame}
     \frametitle{Lower bound for PHP}
 
-    \myth The size of any LST of $PHP^m_n$ is at least $2^{\frac{n-1}{2}}$.
+    \begin{theorem}
+        The size of any LST of $PHP^m_n$ is at least $2^{\frac{n - 1}{2}}$.
+    \end{theorem}
 
-	\dok
+
+	\mycolor{blue}{Proof.}
 	\begin{columns}
 		\begin{column}{8.5cm}
 			\begin{itemize}
 				\item $\pi$ is \mycolor{blue}{acceptable} if it satisfies all short
-		            clauses. 
-				\pitem Consider LST $T$ and cut off all vertices without acceptable
-	                solutions. Resulting tree $T'\neq \emptyset$. 
-				\pitem Every leaf in $T'$ refutes some long clause.
-				\pitem Consider a path $\ell$ in $T'$ from root to leaf. We claim
+		            clauses.
+               	\pause
+				\item Consider LST $T$ and cut off all vertices without acceptable
+	                solutions. Resulting tree $T'\neq \emptyset$.
+                \pause
+				\item Every leaf in $T'$ refutes some long clause.
+           		\pause
+				\item Consider a path $\ell$ in $T'$ from root to leaf. We claim
                 	that $\ell$ contains at least $\frac{n - 1}{2}$ splitting
                     points.
-				\pitem $\Phi_\ell$ is a set of equations followed by splitting points
+                \pause
+				\item $\Phi_\ell$ is a set of equations followed by splitting points
 	                along $\ell$. $\Phi_\ell$ has no acceptable solutions that sutisfies
     	            some long clause. 
 			\end{itemize}
 		\end{column}
 		\begin{column}{2cm}
-			\scalebox{0.6}{\includegraphics{php.jpg}}
+			\scalebox{0.6}{\includegraphics{pics/php.jpg}}
 		\end{column}
 	\end{columns}
     
-	\pause \mylem Let a linear system $Ap = b$ from variables
-    $p = (p_{i, j})_{i \in [m], j \in [n]}$ have  $k \le \frac{n - 1}{2}$ equations
-    and have an acceptable solution. Then  $\forall i \in [m] \exists \sigma:$
-    $\sigma$ is an acceptable solution and satisfies $p_{i, 1} \lor p_{i, 2} \lor
-    \dots \lor p_{i, n}$.
+	\pause
+    \begin{lemma}
+        Let a linear system $Ap = b$ from variables $p =
+        (p_{i, j})_{i \in [m], j \in [n]}$ have  $k \le \frac{n - 1}{2}$ equations
+        and have an acceptable solution. Then  $\forall i \in [m] \exists \sigma:$
+        $\sigma$ is an acceptable solution and satisfies $p_{i, 1} \lor p_{i, 2} \lor
+        \dots \lor p_{i, n}$.
+    \end{lemma}
 \end{frame}
 
 

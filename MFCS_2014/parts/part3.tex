@@ -1,26 +1,34 @@
 \begin{frame}
     \frametitle{Proof of the Lemma}
 
-    \mylem Let a linear system $Ap = b$ from variables
-    $p = (p_{i, j})_{i \in [m], j \in [n]}$ have $k\le \frac{n-1}{2}$
-    equations and have an acceptable solution. Then  $\forall i\in [m] \exists \sigma:$ 
-    $\sigma$ is an acceptable solution and satisfies $p_{i, 1} \lor
-    p_{i, 2} \lor \dots \lor p_{i,n}$.
-
+    \begin{lemma}
+    	Let a linear system $Ap = b$ from variables
+	    $p = (p_{i, j})_{i \in [m], j \in [n]}$ have $k \le \frac{n - 1}{2}$
+	    equations and have an acceptable solution. Then  $\forall i \in [m] \exists
+        \sigma:$ $\sigma$ is an acceptable solution and satisfies $p_{i, 1} \lor
+        p_{i, 2} \lor \dots \lor p_{i,n}$.
+    \end{lemma}
+    
+    \pause
 	\begin{itemize}
-		\pitem $1 \to 0$ can't violate the acceptability.
-		\pitem Let $\pi$ be acceptable solution with the minimal number of 1's.
-		\pitem $\pi$ contains at most $k$ ones.
+		\item $1 \to 0$ can't violate the acceptability.
+    	\pause
+		\item Let $\pi$ be acceptable solution with the minimal number of 1's.
+	    \pause
+		\item $\pi$ contains at most $k$ ones.
+	    	\pause
 			\begin{itemize}
-				\pitem Variables with value $1$ in $\pi$: $p_{j_1}, p_{j_2}, \dots,
+				\item Variables with value $1$ in $\pi$: $p_{j_1}, p_{j_2}, \dots,
 	                p_{j_{k + 1}}$ 
 				\item $\exists \tau \neq 0: A \tau = 0$ and support of $\tau$ is in
 		            $p_{j_1}, p_{j_2}, \dots, p_{j_{k + 1}}$. 
 				\item $A(\pi + \tau) = b$, $\pi + \tau$ is acceptable.
 			\end{itemize}
-		\pitem $\pi$ has $k + 1$ empty holes with numbers $\ell_1, \ell_2, \dots,
-    		\ell_{k + 1}$ 
-		\pitem $\exists \tau \neq 0: A \tau = 0$ and support of $\tau$ is in
+        \pause
+		\item $\pi$ has $k + 1$ empty holes with numbers $\ell_1, \ell_2, \dots,
+    		\ell_{k + 1}$
+        \pause
+		\item $\exists \tau \neq 0: A \tau = 0$ and support of $\tau$ is in
     		$p_{i, \ell_1}, p_{i, \ell_2}, \dots, p_{i, \ell_{k + 1}}$.
 		\item $A(\pi + \tau) = b$, $\pi + \tau$ is acceptable and satisfies $p_{i, 1}
 		    \lor p_{i, 2} \lor \dots \lor p_{i,n}$.
@@ -45,10 +53,12 @@
             [Beame, Pitassi, Segerlind, 2007].
 	\end{itemize}
 	\pause
-	\myth In time polynomial in $n$ one may construct a graph $G(V, E)$ on $n$
-    vertices with maximal degree bounded by a constant and a function $c: V \to
-    \mathbb{F}_2$ such that the size of any linear splitting tree of $TS^2_{(G,c)}$
-    is at least $\Omega\left(2^{n^{1 / 3} / \log^3(n)} \right)$.
+    \begin{theorem}
+        In time polynomial in $n$ one may construct a graph $G(V, E)$ on $n$ vertices
+        with maximal degree bounded by a constant and a function $c: V \to
+        \mathbb{F}_2$ such that the size of any linear splitting tree of
+        $TS^2_{(G,c)}$ is at least $\Omega\left(2^{n^{1 / 3} / \log^3(n)} \right)$.
+    \end{theorem}
 \end{frame}
 
 
@@ -61,8 +71,9 @@
     		$\lnot L = x_{1} + x_{2} + \dots + x_{k} = \alpha + 1$
 		\item Linear clause: $\bigvee_i x_{i, 1} + x_{i, 2} + \dots + x_{i, k_i} =
 		    \alpha_i$ or $\lnot \bigwedge x_{i, 1} + x_{i, 2} + \dots + x_{i, k_i} =
-            1 + \alpha_i$. 
-		\pitem Res-Lin:
+            1 + \alpha_i$.
+        \pause
+		\item Res-Lin:
 			\begin{itemize}
 				\item Resolution rule: $\frac{(f = 0) \lor D, (f = 1) \lor D'}
             		{D \lor D'}$ 
@@ -70,7 +81,7 @@
 			\end{itemize}
 		\item \mycolor{blue}{Tree-like} Res-Lin is equivalent to LST.
 	\end{itemize}
-	\only<2>{\scalebox{0.8}{\includegraphics{resdpll.jpg}}}
+	\only<2>{\scalebox{0.8}{\includegraphics{pics/resdpll.jpg}}}
 \end{frame}
 
 
@@ -87,9 +98,15 @@
 			\end{itemize}
 	\end{itemize}
 
-	\pause\myth Res-Lin p-simulates Sem-lin.
+	\pause
+    \begin{theorem}
+        Res-Lin p-simulates Sem-lin.
+    \end{theorem}
 
-	\pause\myex How to get $(x + y = 0)$ from $(x = 0)$ and $(y = 0)$ in Res-Lin?
+	\pause
+    \begin{block}
+        How to get $(x + y = 0)$ from $(x = 0)$ and $(y = 0)$ in Res-Lin?
+    \end{block}
     
 	\begin{itemize}
 		\item $\frac{(x = 0)}{(x + y = 0) \lor (y = 1)}$
@@ -97,10 +114,13 @@
 	\end{itemize}
 
 	\pause
-	\myth Res-Lin is implication complete.
+    \begin{theorem}
+        Res-Lin is implication complete.
+    \end{theorem}
 
 	\begin{itemize}
-		\pitem The weakening rule may be simulated by a polynomial number of pure
+        \pause
+		\item The weakening rule may be simulated by a polynomial number of pure
 	        syntactic rules:
 		\begin{itemize}
 			\item The simplification rule: $\frac{D \lor (0 = 1)}{D}$; 
@@ -127,7 +147,11 @@
 		\item Simplification rule: $\frac{B \lor (0 = c)}{B}$, where $c \neq 0$. 
 	\end{itemize}
 
-	\pause \myth R(lin) p-similates Res-Lin.
+	\pause
+    \begin{theorem}
+    	R(lin) p-similates Res-Lin.    
+    \end{theorem}
+    
 	\medskip
 
 	\pause
