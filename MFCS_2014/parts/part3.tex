@@ -1,39 +1,39 @@
-\begin{frame}
-    \frametitle{Proof of the Lemma}
+%\begin{frame}
+%    \frametitle{Proof of the Lemma}
 
-    \begin{lemma}
-    	Let a linear system $Ap = b$ from variables
-	    $p = (p_{i, j})_{i \in [m], j \in [n]}$ have $k \le \frac{n - 1}{2}$
-	    equations and have an acceptable solution. Then  $\forall i \in [m] \exists
-        \sigma:$ $\sigma$ is an acceptable solution and satisfies $p_{i, 1} \lor
-        p_{i, 2} \lor \dots \lor p_{i,n}$.
-    \end{lemma}
+%    \begin{lemma}
+%    	Let a linear system $Ap = b$ from variables
+%	    $p = (p_{i, j})_{i \in [m], j \in [n]}$ have $k \le \frac{n - 1}{2}$
+%	    equations and have an acceptable solution. Then  $\forall i \in [m] \exists
+%        \sigma:$ $\sigma$ is an acceptable solution and satisfies $p_{i, 1} \lor
+%        p_{i, 2} \lor \dots \lor p_{i,n}$.
+%    \end{lemma}
     
-    \pause
-	\begin{itemize}
-		\item $1 \to 0$ can't violate the acceptability.
-    	\pause
-		\item Let $\pi$ be acceptable solution with the minimal number of 1's.
-	    \pause
-		\item $\pi$ contains at most $k$ ones.
-	    	\pause
-			\begin{itemize}
-				\item Variables with value $1$ in $\pi$: $p_{j_1}, p_{j_2}, \dots,
-	                p_{j_{k + 1}}$ 
-				\item $\exists \tau \neq 0: A \tau = 0$ and support of $\tau$ is in
-		            $p_{j_1}, p_{j_2}, \dots, p_{j_{k + 1}}$. 
-				\item $A(\pi + \tau) = b$, $\pi + \tau$ is acceptable.
-			\end{itemize}
-        \pause
-		\item $\pi$ has $k + 1$ empty holes with numbers $\ell_1, \ell_2, \dots,
-    		\ell_{k + 1}$
-        \pause
-		\item $\exists \tau \neq 0: A \tau = 0$ and support of $\tau$ is in
-    		$p_{i, \ell_1}, p_{i, \ell_2}, \dots, p_{i, \ell_{k + 1}}$.
-		\item $A(\pi + \tau) = b$, $\pi + \tau$ is acceptable and satisfies $p_{i, 1}
-		    \lor p_{i, 2} \lor \dots \lor p_{i,n}$.
-	\end{itemize}
-\end{frame}
+%    \pause
+%	\begin{itemize}
+%		\item $1 \to 0$ can't violate the acceptability.
+%    	\pause
+%		\item Let $\pi$ be acceptable solution with the minimal number of 1's.
+%	    \pause
+%		\item $\pi$ contains at most $k$ ones.
+%	    	\pause
+%			\begin{itemize}
+%				\item Variables with value $1$ in $\pi$: $p_{j_1}, p_{j_2}, \dots,
+%	                p_{j_{k + 1}}$ 
+%				\item $\exists \tau \neq 0: A \tau = 0$ and support of $\tau$ is in
+%		            $p_{j_1}, p_{j_2}, \dots, p_{j_{k + 1}}$. 
+%				\item $A(\pi + \tau) = b$, $\pi + \tau$ is acceptable.
+%			\end{itemize}
+%        \pause
+%		\item $\pi$ has $k + 1$ empty holes with numbers $\ell_1, \ell_2, \dots,
+%   		\ell_{k + 1}$
+%        \pause
+%		\item $\exists \tau \neq 0: A \tau = 0$ and support of $\tau$ is in
+%    		$p_{i, \ell_1}, p_{i, \ell_2}, \dots, p_{i, \ell_{k + 1}}$.
+%		\item $A(\pi + \tau) = b$, $\pi + \tau$ is acceptable and satisfies $p_{i, 1}
+%		    \lor p_{i, 2} \lor \dots \lor p_{i,n}$.
+%	\end{itemize}
+%\end{frame}
 
 
 
@@ -104,14 +104,27 @@
     \end{theorem}
 
 	\pause
-    \begin{block}
+    \begin{block}{Example}
         How to get $(x + y = 0)$ from $(x = 0)$ and $(y = 0)$ in Res-Lin?
     \end{block}
-    
-	\begin{itemize}
-		\item $\frac{(x = 0)}{(x + y = 0) \lor (y = 1)}$
-		\item $\frac{(x + y = 0) \lor (y = 1),(y = 0)}{(x + y = 0)}$.
-	\end{itemize}
+
+
+    \begin{columns}
+		\begin{column}{5cm}
+            \begin{itemize}
+            	\item $\frac{(x = 0)}{(x + y = 0) \lor (y = 1)}$
+            \end{itemize}
+		\end{column}
+		\begin{column}{5cm}
+            \begin{itemize}
+            	\item $\frac{(x + y = 0) \lor (y = 1),(y = 0)}{(x + y = 0)}$
+            \end{itemize}
+		\end{column}
+	\end{columns}
+%	\begin{itemize}
+%		\item $\frac{(x = 0)}{(x + y = 0) \lor (y = 1)}$
+%		\item $\frac{(x + y = 0) \lor (y = 1),(y = 0)}{(x + y = 0)}$.
+%	\end{itemize}
 
 	\pause
     \begin{theorem}
@@ -121,14 +134,14 @@
 	\begin{itemize}
         \pause
 		\item The weakening rule may be simulated by a polynomial number of pure
-	        syntactic rules:
-		\begin{itemize}
-			\item The simplification rule: $\frac{D \lor (0 = 1)}{D}$; 
-			\item The syntactic weakening rule: $\frac{D}{D \lor (f = \alpha)}$;
-			\item The addition rule: $\frac{D \lor (f_1 = \alpha_1) \lor
-		        (f_2 = \alpha_2)}{D \lor (f_1 = \alpha_1) \lor
-                (f_1 + f_2 = \alpha_1 + \alpha_2 + 1)}$ 
-		\end{itemize}
+	        syntactic rules.
+%		 \begin{itemize}
+%			\item The simplification rule: $\frac{D \lor (0 = 1)}{D}$; 
+%			\item The syntactic weakening rule: $\frac{D}{D \lor (f = \alpha)}$;
+%			\item The addition rule: $\frac{D \lor (f_1 = \alpha_1) \lor
+%		        (f_2 = \alpha_2)}{D \lor (f_1 = \alpha_1) \lor
+%                (f_1 + f_2 = \alpha_1 + \alpha_2 + 1)}$ 
+%		\end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -159,7 +172,7 @@
 		\begin{column}{5cm}
 			$x_1 + x_2 + \dots + x_n \equiv 0 \bmod 2$:
 			$\left[\begin{aligned}
-            	x_1 + &\ dots + x_n = 0\\
+            	x_1 + &\dots + x_n = 0\\
                 x_1 + &\dots + x_n = 2\\
                 &\dots \\
                 x_1 + &\dots + x_n = 2 \lceil n / 2 \rceil

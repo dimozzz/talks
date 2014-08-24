@@ -87,49 +87,49 @@
 
 
 
-\begin{frame}
-    \frametitle{Lower bound for PHP}
+%\begin{frame}
+%    \frametitle{Lower bound for PHP}
 
-    \begin{theorem}
-        The size of any LST of $PHP^m_n$ is at least $2^{\frac{n - 1}{2}}$.
-    \end{theorem}
+%    \begin{theorem}
+%        The size of any LST of $PHP^m_n$ is at least $2^{\frac{n - 1}{2}}$.
+%    \end{theorem}
 
 
-	\mycolor{blue}{Proof.}
-	\begin{columns}
-		\begin{column}{8.5cm}
-			\begin{itemize}
-				\item $\pi$ is \mycolor{blue}{acceptable} if it satisfies all short
-		            clauses.
-               	\pause
-				\item Consider LST $T$ and cut off all vertices without acceptable
-	                solutions. Resulting tree $T'\neq \emptyset$.
-                \pause
-				\item Every leaf in $T'$ refutes some long clause.
-           		\pause
-				\item Consider a path $\ell$ in $T'$ from root to leaf. We claim
-                	that $\ell$ contains at least $\frac{n - 1}{2}$ splitting
-                    points.
-                \pause
-				\item $\Phi_\ell$ is a set of equations followed by splitting points
-	                along $\ell$. $\Phi_\ell$ has no acceptable solutions that sutisfies
-    	            some long clause. 
-			\end{itemize}
-		\end{column}
-		\begin{column}{2cm}
-			\scalebox{0.6}{\includegraphics{pics/php.jpg}}
-		\end{column}
-	\end{columns}
+%	\mycolor{blue}{Proof.}
+%	\begin{columns}
+%		\begin{column}{8.5cm}
+%			\begin{itemize}
+%				\item $\pi$ is \mycolor{blue}{acceptable} if it satisfies all short
+%		            clauses.
+%               	\pause
+%				\item Consider LST $T$ and cut off all vertices without acceptable
+%	                solutions. Resulting tree $T'\neq \emptyset$.
+%                \pause
+%				\item Every leaf in $T'$ refutes some long clause.
+%           		\pause
+%				\item Consider a path $\ell$ in $T'$ from root to leaf. We claim
+%                	that $\ell$ contains at least $\frac{n - 1}{2}$ splitting
+%                    points.
+%                \pause
+%				\item $\Phi_\ell$ is a set of equations followed by splitting points
+%	                along $\ell$. $\Phi_\ell$ has no acceptable solutions that sutisfies
+%    	            some long clause. 
+%			\end{itemize}
+%		\end{column}
+%		\begin{column}{2cm}
+%			\scalebox{0.6}{\includegraphics{pics/php.jpg}}
+%		\end{column}
+%	\end{columns}
     
-	\pause
-    \begin{lemma}
-        Let a linear system $Ap = b$ from variables $p =
-        (p_{i, j})_{i \in [m], j \in [n]}$ have  $k \le \frac{n - 1}{2}$ equations
-        and have an acceptable solution. Then  $\forall i \in [m] \exists \sigma:$
-        $\sigma$ is an acceptable solution and satisfies $p_{i, 1} \lor p_{i, 2} \lor
-        \dots \lor p_{i, n}$.
-    \end{lemma}
-\end{frame}
+%	\pause
+%    \begin{lemma}
+%        Let a linear system $Ap = b$ from variables $p =
+%        (p_{i, j})_{i \in [m], j \in [n]}$ have  $k \le \frac{n - 1}{2}$ equations
+%        and have an acceptable solution. Then  $\forall i \in [m] \exists \sigma:$
+%        $\sigma$ is an acceptable solution and satisfies $p_{i, 1} \lor p_{i, 2} \lor
+%        \dots \lor p_{i, n}$.
+%    \end{lemma}
+%\end{frame}
 
 
 %%% Local Variables: 

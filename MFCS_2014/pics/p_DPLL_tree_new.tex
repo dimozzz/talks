@@ -10,17 +10,17 @@
         child {
         	node[end] {}
            	child {
-               	node {\alert{$(x \lor t)$}}
+               	node {\alert{$(x \lor z)$}}
                 edge from parent
 	            node[left] {$x = 0$}
             }
             child[sibling distance = 2.5cm] {
-               	node {\alert{$(\neg x \lor \neg t)$}}
+               	node {\alert{$(\neg x \lor \neg z)$}}
                 edge from parent
 	            node[right] {$x = 1$}
             }
            	edge from parent
-            node[left] {$x + t = 0$}
+            node[left] {$x + z = 0$}
         }
         child {
         	node[end] {}
@@ -42,12 +42,12 @@
             child {
             	node[end] {}
                 child {
-            		node {\alert{$(\neg y \lor \neg t)$}}
+            		node {\alert{$(\neg y \lor \neg z)$}}
 	                edge from parent
     	            node[left] {$y = 1$}
         	    }
                 child {
-            		node {\alert{$(y \lor t)$}}
+            		node {\alert{$(y \lor z)$}}
                 	edge from parent
 	                node[right] {$y = 0$}
     	        }
@@ -55,7 +55,7 @@
                 node[right] {$x + y = 1$}
             }
            	edge from parent
-            node[right] {$x + t = 1$}
+            node[right] {$x + z = 1$}
         };
 \end{tikzpicture}
 
