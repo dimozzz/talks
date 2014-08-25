@@ -1,52 +1,15 @@
-%\begin{frame}
-%    \frametitle{Proof of the Lemma}
-
-%    \begin{lemma}
-%    	Let a linear system $Ap = b$ from variables
-%	    $p = (p_{i, j})_{i \in [m], j \in [n]}$ have $k \le \frac{n - 1}{2}$
-%	    equations and have an acceptable solution. Then  $\forall i \in [m] \exists
-%        \sigma:$ $\sigma$ is an acceptable solution and satisfies $p_{i, 1} \lor
-%        p_{i, 2} \lor \dots \lor p_{i,n}$.
-%    \end{lemma}
-    
-%    \pause
-%	\begin{itemize}
-%		\item $1 \to 0$ can't violate the acceptability.
-%    	\pause
-%		\item Let $\pi$ be acceptable solution with the minimal number of 1's.
-%	    \pause
-%		\item $\pi$ contains at most $k$ ones.
-%	    	\pause
-%			\begin{itemize}
-%				\item Variables with value $1$ in $\pi$: $p_{j_1}, p_{j_2}, \dots,
-%	                p_{j_{k + 1}}$ 
-%				\item $\exists \tau \neq 0: A \tau = 0$ and support of $\tau$ is in
-%		            $p_{j_1}, p_{j_2}, \dots, p_{j_{k + 1}}$. 
-%				\item $A(\pi + \tau) = b$, $\pi + \tau$ is acceptable.
-%			\end{itemize}
-%        \pause
-%		\item $\pi$ has $k + 1$ empty holes with numbers $\ell_1, \ell_2, \dots,
-%   		\ell_{k + 1}$
-%        \pause
-%		\item $\exists \tau \neq 0: A \tau = 0$ and support of $\tau$ is in
-%    		$p_{i, \ell_1}, p_{i, \ell_2}, \dots, p_{i, \ell_{k + 1}}$.
-%		\item $A(\pi + \tau) = b$, $\pi + \tau$ is acceptable and satisfies $p_{i, 1}
-%		    \lor p_{i, 2} \lor \dots \lor p_{i,n}$.
-%	\end{itemize}
-%\end{frame}
-
-
-
 \begin{frame}
     \frametitle{Lower bound for 2-fold Tseitin formulas}
 
     \begin{itemize}
 		\item For unsatisfiable $\phi$ a search problem $Search_\phi$: find a
-		    falsified clause given a variable assignment.  
+		    falsified clause given a variable assignment.
+        \pause 
 		\item We prove that it is possible to transform a splitting tree $T$ into a
 		    randomized communication protocol for the problem $Search_\phi$ of depth
 	        $O(\log |T| \log\log |T|)$ if some variables are known by Alice and other
 	        variables are known by Bob.
+        \pause
 		\item Use a lower bound on the randomized communication complexity of the
 		    problem $Search_{TS^2_{G,c}}$ for a 2-fold Tseitin formula $TS^2_{G,c}$
             that follows from [Kalyanasundaram, Schintger 1992] and
@@ -189,6 +152,35 @@
             \end{aligned}\right.$
 		\end{column}
 	\end{columns}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Space vs. Size Tradeoff}
+
+    \pause
+    \begin{itemize}
+    	\item Write a basic clause to memory.
+    	\item Remove a clause from memory.
+    	\item Deduce a clause from clauses in memory and add it in memory.
+    \end{itemize}
+
+    \pause
+    $CS(\pi)$ is a maximal number of clauses in memory in proof $\pi$.
+
+    \pause
+    \begin{theorem}
+        Let $\pi$ is a Res-lin proof of formula $\phi$ then $R_{1 / 3}(Search_{\phi})
+        = O(\mu(\pi) \log(\mu(\pi)))$, where $\mu(\pi) = CS(\pi) \log(size(\pi))$.
+    \end{theorem}
+
+    $R_{1 / 3}$ is a complexity of a randomized communication protocol.
+    
+    \pause
+
+    $R_{1 / 3}(Search_{TS_{G,c}^2}) = \Omega{n^{1 / 3} / \log^2(n)}$
 \end{frame}
 
 
