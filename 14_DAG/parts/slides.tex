@@ -1,0 +1,280 @@
+\begin{frame}
+    \frametitle{Plan}
+
+    \begin{enumerate}
+	    \item Proof systems. Classical and heuristic case.
+    	\item \textit{Hard} languages in $HeurP$ and $HeurNP$.
+    	\item Graph nonisomorphism (GNI) problem and its modification. Short proofs.
+    \end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Heuristic classes}
+
+    $L$ is a language, $D = {D_n}$ is a family of distributions.
+
+    Allow algorithm to have a mistakes.
+
+    \pause
+    \begin{definition}
+        $L \in Heur\only<3->{\alert{N}}P$:
+        \begin{itemize}
+            \item \only<3->{\alert{Non}deterministic} \only<-2>{Deterministic}
+		        algorithm $\Pi(x, 1^n, \delta)$ is polynomially bounded in
+                $\frac{n}{\delta}$;
+            \item $\Pr\limits_{x \gets D_n}[\Pi(x, 1^n, \delta)] \neq
+        		L(x)] < \delta$.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+
+%    \vspace{0.5cm}
+%    $\forall D~ (P, D) \subset HeurP \subseteq (EXP, U)$
+    
+%    $\forall D~ (NP, D) \subset HeurNP \subseteq (NEXP, U)$
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Proof systems}
+
+    \begin{definition}
+        Proof system for language $L$:
+        \begin{itemize}
+            \item Polynomial time algorithm $\Pi$;
+            \item $\forall x \in L~ \exists \omega \in \{0, 1\}^{*}, \Pi(x, \omega) = 1$;
+        	\item $\forall x \notin L~ \forall \omega \in \{0, 1\}^{*}, 
+        		\Pi(x, \omega) = 0$.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    Proof system is polynomially bounded is there exists such polynomial $p$ that:
+    $\forall x \in L~ \exists \omega \in \{0, 1\}^{p(|x|)}, \Pi(x, \omega) = 1$.
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Heuristic proof system}
+
+    $L$ is a language, $D = {D_n}$ is a family of distributions on
+    complement $L$.
+
+    \pause
+    \begin{definition}
+        $\Pi$ is a heuristic proof system for $(L, D)$:
+        \begin{itemize}
+            \item $x \in L \Rightarrow \exists \omega~\Pi(x, \omega,
+        		1^n, \delta) = 1$;
+            \item $x \notin L \Rightarrow
+        		\Pr\limits_{x \gets D_n}[\exists \omega~
+                \Pi(x, \omega, 1^n, \delta) = 1] < \delta$;
+             \item $\Pi$ is polynomially bounded by $\frac{n}{\delta}$.
+        \end{itemize}
+    \end{definition}
+
+    $L \in HeurNP \Rightarrow L$ has a heuristic proof system which polynomially
+    bounded on \textit{almost all} elements.
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\textit{Hard} languages}
+
+    $L$ is a language.
+    $L_{pad} = \{(x, r) \mid x \in L, |r| \in \{0, 1 \}^{p(|x|)}\}$.
+
+    \begin{theorem}
+        \begin{enumerate}
+            \item $\exists X \in PP$-complete, $\forall D~
+	    		(X_{pad}, D \times U) \in HeurP$.
+    		\pause
+    		\item $\exists Y \in (PP \cdot NP)$-complete:
+		        \begin{itemize}
+        	        \item $\forall D~ (Y_{pad}, D \times U) \in HeurNP$;
+                	\item $(NP, PSamp) \notin HeurBPP \Rightarrow \exists D'~ (Y, D')
+                		\notin HeurBPP$.
+		        \end{itemize}
+        		
+        \end{enumerate}
+    \end{theorem}
+
+    $L \in PP \cdot NP$ iff there exists a $PP$-reduction $L$ to some $NP$ language.
+    
+    \pause
+
+    \vspace{0.5cm}
+    $PP$ is closed under complement thus if $NP \neq co-NP$ then:
+    \begin{itemize}
+    	\item $X, X_{pad} \notin NP$;
+    	\item $Y, Y_{pad} \notin NP$.
+    \end{itemize}
+ 
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Auxiliary problem. Computation the average value}
+
+    $f:\{0, 1\}^{n} \rightarrow \{0, 1\}$
+    
+    $\overline{f} = \frac{\sum\limits_{i = 0}^{2^n - 1}f(i)}{2^n}$
+
+    \pause
+    
+    \begin{statement}[Goldreich]
+        There exists algorithm $A$ that:
+        \begin{itemize}
+	        \item $A$ is polynomially bounded in $\frac{n}{\epsilon\delta}$
+        	\item {\color{blue}$A$ uses $n$ random bits}.
+        	\item $\Pr[|A^{f}(n, \epsilon, \delta) - \overline{f}| \ge \epsilon] <
+		        \delta$
+        \end{itemize}
+    \end{statement}
+
+    \pause
+    $L_f = \bigcup\limits_{n \in \mathbb{N}}\{r \in \{0, 1\}^n \mid 0.r < \overline{f}\}$
+
+    \begin{lemma}
+        If $f$ can be computed in (nondeterministic)polynomial time then $L_f \in Heur(N)P$.
+    \end{lemma}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\textit{Hard} languages. Part 2}
+    \begin{theorem}
+        \begin{enumerate}
+            \item $\exists X \in PP$-complete, $\forall D~
+	    		(X_{pad}, D \times U) \in HeurP$.
+    		\pause
+    		\item $\exists Y \in (PP \cdot NP)$-complete:
+		        \begin{itemize}
+        	        \item $\forall D~ (Y_{pad}, D \times U) \in HeurNP$;
+                	\item $(NP, PSamp) \notin HeurBPP \Rightarrow \exists D'~ (Y, D')
+                		\notin HeurBPP$.
+		        \end{itemize}
+        		
+        \end{enumerate}
+    \end{theorem}
+
+    \pause
+    $X = \{(C, r) \mid C$ is a deterministic circuit $r \in \{0, 1\}^n, \#C > r\}$
+    
+    $Y = \{(C, r) \mid C$ is a nondeterministic circuit $r \in \{0, 1\}^n, \#C >
+    r\}$.
+
+    \pause
+
+    \vspace{0.2cm}
+    For any fixed circuit we can use algorithm for auxilary problem.
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Weakness}
+
+    \begin{itemize}
+    	\item $X$ has a heuristic algorithm (we don't need any proofs);
+    	\item polynomial proofs not for all words of $Y$;
+    	\item hard distribution not on complement of $Y$;
+    	\item $X$ and $Y$ are complete problems under {\color{blue}worst-case}
+		    reduction.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{AM}
+    
+    \begin{theorem}
+		$\forall L \in AM$ there exists a polynomially bounded heuristic proof system
+        for $L_{pad}$.
+    \end{theorem}
+
+
+    \begin{definition}
+    	$L \in AM$ iff there exists polynomial randomized algorithm
+        $M$:
+        \begin{itemize}
+			\item $x \in L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] 
+        		> \frac{2}{3}$;
+            \item $x \notin L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] 
+        		< \frac{1}{3}$;
+        \end{itemize}
+    \end{definition}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{AM. Part 2}
+    
+    \begin{definition}
+    	$L \in AM$ iff there exists polynomial randomized algorithm
+        $M$:
+        \begin{itemize}
+			\item $x \in L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] 
+        		> \frac{2}{3}$;
+            \item $x \notin L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M(x, z) = 1] 
+        		< \frac{1}{3}$;
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    Amplification theorem:
+    \begin{theorem}
+        $L \in AM$ iff there exists polynomial \alert{$p$}, constant $c$ and
+        polynomial randomized algorithm $M'$ with \alert{$c p(|x|)$} random
+        bits:
+        \begin{itemize}
+			\item $x \in L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M'(x, z) = 1] = 1$;
+            \item $x \notin L \Leftrightarrow
+        		\Pr\limits_{r}[\exists z~ M'(x, z) = 1] 
+        		< \frac{1}{2^{\alert{p(|x|)}}}$;
+        \end{itemize}
+    \end{theorem}
+
+    \pause
+    $\Pr\limits_{r}[\exists z M(x, z) = 1]$ is an average value of function that can
+    be computed by nondeterministic algorithm.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Graph nonisomorphism}
+
+    \begin{theorem}[Goldwasser-Sipser, 89]
+    	$GNI \in AM$    
+    \end{theorem}
+    
+	\pause
+    \begin{definition}
+        $GNI_{pad} = \{(G_1, G_2, r) \mid (G_1, G_2) \in GNI,
+        r \in \{0, 1\}^{q(n)}\}$, $q$ is a fixed polynomial.
+    \end{definition}
+
+    \pause
+    \begin{lemma}
+        If there exists polynomially bounded proof system for
+        $GNI_{pad}$, then $GNI \in NP$.
+    \end{lemma}
+
+    \begin{proof}
+        \begin{enumerate}
+        	\item $\delta > frac{1}{2^{q(n)}}$. $Pi[(G_1, G_2, r), 1^n, w, \delta] =
+        		M'_r(x, w)$. Where $M'_r$ is a machine from amplification theorem
+                which uses $r$ as random bits.
+            \item $\delta < frac{1}{2^{q(n)}}$. Brute force (proof is any string).
+        \end{enumerate}
+    \end{proof}
+\end{frame}
