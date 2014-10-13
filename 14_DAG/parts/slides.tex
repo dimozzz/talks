@@ -1,10 +1,10 @@
 \begin{frame}
-    \frametitle{Plan}
+    \frametitle{Outline}
 
     \begin{enumerate}
 	    \item Proof systems. Classical and heuristic case.
     	\item \textit{Hard} languages in $HeurP$ and $HeurNP$.
-    	\item Graph nonisomorphism (GNI) problem and its modification. Short proofs.
+    	\item Graph nonisomorphism problem and its modification.
     \end{enumerate}
 \end{frame}
 
@@ -17,7 +17,7 @@
     Allow algorithm to have a mistakes.
 
     \pause
-    \begin{definition}
+    \begin{definition}[Levin'86, Impagliazzo'95]
         $L \in Heur\only<3->{\alert{N}}P$:
         \begin{itemize}
             \item \only<3->{\alert{Non}deterministic} \only<-2>{Deterministic}
@@ -27,13 +27,6 @@
         		L(x)] < \delta$.
         \end{itemize}
     \end{definition}
-
-    \pause
-
-%    \vspace{0.5cm}
-%    $\forall D~ (P, D) \subset HeurP \subseteq (EXP, U)$
-    
-%    $\forall D~ (NP, D) \subset HeurNP \subseteq (NEXP, U)$
 \end{frame}
 
 
@@ -64,7 +57,7 @@
     complement $L$.
 
     \pause
-    \begin{definition}
+    \begin{definition}[Hirsch, Itsykson'10]
         $\Pi$ is a heuristic proof system for $(L, D)$:
         \begin{itemize}
             \item $x \in L \Rightarrow \exists \omega~\Pi(x, \omega,
@@ -77,7 +70,7 @@
     \end{definition}
 
     $L \in HeurNP \Rightarrow L$ has a heuristic proof system which polynomially
-    bounded on \textit{almost all} elements.
+    bounded on {\color{blue} almost all} elements.
 \end{frame}
 
 
@@ -199,7 +192,7 @@
     \end{theorem}
 
 
-    \begin{definition}
+    \begin{definition}[Babai'85]
     	$L \in AM$ iff there exists polynomial randomized algorithm
         $M$:
         \begin{itemize}
@@ -217,7 +210,7 @@
 \begin{frame}
     \frametitle{AM. Part 2}
     
-    \begin{definition}
+    \begin{definition}[Babai'85]
     	$L \in AM$ iff there exists polynomial randomized algorithm
         $M$:
         \begin{itemize}
@@ -238,7 +231,7 @@
         bits:
         \begin{itemize}
 			\item $x \in L \Leftrightarrow
-        		\Pr\limits_{r}[\exists z~ M'(x, z) = 1] = 1$;
+        		\Pr\limits_{r}[\exists z~ M'(x, z) = 1] = 1$; [Furer, etc.'89]; 
             \item $x \notin L \Leftrightarrow
         		\Pr\limits_{r}[\exists z~ M'(x, z) = 1] 
         		< \frac{1}{2^{\alert{p(|x|)}}}$;
@@ -246,14 +239,14 @@
     \end{theorem}
 
     \pause
-    $\Pr\limits_{r}[\exists z M(x, z) = 1]$ is an average value of function that can
+    $\Pr\limits_{r}[\exists z~ M(x, z) = 1]$ is an average value of function that can
     be computed by nondeterministic algorithm.
 \end{frame}
 
 \begin{frame}
     \frametitle{Graph nonisomorphism}
 
-    \begin{theorem}[Goldwasser-Sipser, 89]
+    \begin{theorem}[Goldwasser-Sipser'89]
     	$GNI \in AM$    
     \end{theorem}
     
@@ -264,17 +257,16 @@
     \end{definition}
 
     \pause
-    \begin{lemma}
-        If there exists polynomially bounded proof system for
-        $GNI_{pad}$, then $GNI \in NP$.
-    \end{lemma}
+    $GNI_{pad} \in NP \Leftrightarrow GNI \in NP$
 
-    \begin{proof}
+    \pause
+
+    \begin{block}{Proof system}
         \begin{enumerate}
-        	\item $\delta > frac{1}{2^{q(n)}}$. $Pi[(G_1, G_2, r), 1^n, w, \delta] =
+        	\item $\delta > \frac{1}{2^{q(n)}}$. $\Pi[(G_1, G_2, r), 1^n, w, \delta] =
         		M'_r(x, w)$. Where $M'_r$ is a machine from amplification theorem
                 which uses $r$ as random bits.
-            \item $\delta < frac{1}{2^{q(n)}}$. Brute force (proof is any string).
+            \item $\delta < \frac{1}{2^{q(n)}}$. Brute force (proof is any string).
         \end{enumerate}
-    \end{proof}
+    \end{block}
 \end{frame}
