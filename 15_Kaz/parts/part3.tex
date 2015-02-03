@@ -1,10 +1,9 @@
-
 \begin{frame}
-    \frametitle{Деревья лиенйных расщеплений (LST)}
+    \frametitle{Деревья линейных расщеплений (LST)}
 	Расщепления по линейным формам над полем $\mathbb{F}_2$
     \begin{columns}
         \begin{column}{3cm}
-            Вырожденый лист
+            Вырожденный лист
             \input{pics/linear/case_degenerate.tex}
         \end{column}
         \begin{column}{3cm}
@@ -17,11 +16,12 @@
         \end{column}
     \end{columns}
     
-	$\Phi$ опровергает $(x_1 \lor x_2 \dots \lor x_k)$ $\Leftrightarrow$ $\Phi \land (x_i = 1)$ невыполнима $\forall i$.
+	$\Phi$ опровергает $(x_1 \lor x_2 \dots \lor x_k)$ $\Leftrightarrow$ $\Phi \land (x_i = 1)$ невыполнима $\forall
+    i$.
 \end{frame}
 
 \begin{frame}
-    \frametitle{Splitting trees}
+    \frametitle{Деревья расщеплений}
     $(\lnot x \lor y) \land (x \lor \lnot y) \land (\lnot y \lor z) \land
     	(y \lor \lnot z) \land (x \lor z) \land (\lnot x \lor \lnot z)$ 
 	\only<1>{\input{pics/linear/DPLL_tree_new.tex}}
@@ -59,7 +59,7 @@
         \pause
 		\item Игры с фишками.
 			\begin{itemize}
-				\item Пусть $\phi$ формула в КНФ обощначим за $\phi^{\oplus}$ КНФ формулу, полученную из $\phi$ путем подстановки
+				\item Пусть $\phi$ формула в КНФ обозначим за $\phi^{\oplus}$ КНФ формулу, полученную из $\phi$ путем подстановки
 		            $x_1 \oplus x_2$ для каждой переменной $x$. 
 				\item{} [Urquhart, 2011] Размер древесного вывода в резолюциях $\phi^{\oplus}$ не менее $2^{d(\phi)}$, где
 		            $d(\phi)$ минимальная глубина резолюционного вывода для  $\phi$.
@@ -73,13 +73,12 @@
 
 
 
-
 \begin{frame}
-    \frametitle{Linear systems}
+    \frametitle{Линейные системы}
 
     \begin{columns}
 		\begin{column}{1cm}
-			Unsatisfiable system:
+			Невыполнимая система:
 
 			$\left\{ \begin{aligned}
 				f_1 = \alpha_1 \\
@@ -90,7 +89,7 @@
 		\end{column}
 
 
-		\begin{column}{9cm}
+	\begin{column}{9cm}
 			\input{pics/linear/system.tex}
 		\end{column}
 	\end{columns}
@@ -98,52 +97,27 @@
 	$f_2 = x_1 + \dots + x_k$
 \end{frame}
 
-\begin{frame}
-    \frametitle{Lower bound for 2-fold Tseitin formulas}
-
-    \begin{itemize}
-		\item For unsatisfiable $\phi$ a search problem $Search_\phi$: find a
-		    falsified clause given a variable assignment.
-        \pause 
-		\item We prove that it is possible to transform a splitting tree $T$ into a
-		    randomized communication protocol for the problem $Search_\phi$ of depth
-	        $O(\log |T| \log\log |T|)$ if some variables are known by Alice and other
-	        variables are known by Bob.
-        \pause
-		\item Use a lower bound on the randomized communication complexity of the
-		    problem $Search_{TS^2_{G,c}}$ for a 2-fold Tseitin formula $TS^2_{G,c}$
-            that follows from [Kalyanasundaram, Schintger 1992] and
-            [Beame, Pitassi, Segerlind, 2007].
-	\end{itemize}
-	\pause
-    \begin{theorem}
-        In time polynomial in $n$ one may construct a graph $G(V, E)$ on $n$ vertices
-        with maximal degree bounded by a constant and a function $c: V \to
-        \mathbb{F}_2$ such that the size of any linear splitting tree of
-        $TS^2_{(G,c)}$ is at least $\Omega\left(2^{n^{1 / 3} / \log^3(n)} \right)$.
-    \end{theorem}
-\end{frame}
 
 
 
 \begin{frame}
-    \frametitle{Res-Lin}
+    \frametitle{$\ResL$}
 
     \begin{itemize}
-		\item Literal: $L = x_{1} + x_{2} + \dots + x_{k} = \alpha$,
+		\item Литерал: $L = x_{1} + x_{2} + \dots + x_{k} = \alpha$,
     		$\lnot L = x_{1} + x_{2} + \dots + x_{k} = \alpha + 1$
-		\item Linear clause: $\bigvee_i x_{i, 1} + x_{i, 2} + \dots + x_{i, k_i} =
-		    \alpha_i$ or $\lnot \bigwedge x_{i, 1} + x_{i, 2} + \dots + x_{i, k_i} =
+		\item Линейный клоз: $\bigvee_i x_{i, 1} + x_{i, 2} + \dots + x_{i, k_i} =
+		    \alpha_i$ или $\lnot \bigwedge x_{i, 1} + x_{i, 2} + \dots + x_{i, k_i} =
             1 + \alpha_i$.
         \pause
-		\item Res-Lin:
+		\item $\ResL$:
 			\begin{itemize}
-				\item Resolution rule: $\frac{(f = 0) \lor D, (f = 1) \lor D'}
+				\item Правило резолюции: $\frac{(f = 0) \lor D, (f = 1) \lor D'}
             		{D \lor D'}$ 
-				\item Weakening rule: $\frac{C}{C'}$ if $C$ semantically implies $C'$
+				\item Правило ослабления: $\frac{C}{C'}$ если $C$ семантически влечет $C'$
 			\end{itemize}
         \pause
-		\item \mycolor{blue}{Tree-like} Res-Lin is equivalent to LST.
+		\item \mycolor{blue}{Древовидная} $\ResL$ эквивалента LST.
 	\end{itemize}
 	\scalebox{0.8}{\input{pics/linear/DPLL_to_proof.tex}}
 \end{frame}
@@ -151,121 +125,54 @@
 
 
 \begin{frame}
-    \frametitle{Res-Lin vs Sem-Lin}
+    \frametitle{$\ResL$ vs $\SemL$}
 
     \begin{itemize}
-		\item Sem-Lin:
+		\item $\SemL$:
 			\begin{itemize}
-				\item Semantic rule: $\frac{C_1, C_2}{C'}$ if $C_1 \land C_2$
-		            semantically implies $C'$
-				\item Weakening rule: $\frac{C}{C'}$ if $C$ semantically implies $C'$
+				\item Семантическое правило: $\frac{C_1, C_2}{C'}$ если $C_1 \land C_2$
+		            семантически влечет $C'$
+				\item Правило ослабления: $\frac{C}{C'}$ если $C$ семантически влечет $C'$
 			\end{itemize}
 	\end{itemize}
 
 	\pause
     \begin{theorem}
-        Res-Lin p-simulates Sem-lin.
+        $\ResL$ p-моделирует $\SemL$.
     \end{theorem}
-
-	\pause
-    \begin{block}{Example}
-        How to get $(x + y = 0)$ from $(x = 0)$ and $(y = 0)$ in Res-Lin?
-    \end{block}
-
-
-    \begin{columns}
-		\begin{column}{5cm}
-            \begin{itemize}
-            	\item $\frac{(x = 0)}{(x + y = 0) \lor (y = 1)}$
-            \end{itemize}
-		\end{column}
-		\begin{column}{5cm}
-            \begin{itemize}
-            	\item $\frac{(x + y = 0) \lor (y = 1),(y = 0)}{(x + y = 0)}$
-            \end{itemize}
-		\end{column}
-	\end{columns}
-%	\begin{itemize}
-%		\item $\frac{(x = 0)}{(x + y = 0) \lor (y = 1)}$
-%		\item $\frac{(x + y = 0) \lor (y = 1),(y = 0)}{(x + y = 0)}$.
-%	\end{itemize}
-
-	\pause
-    \begin{theorem}
-        Res-Lin is implication complete.
-    \end{theorem}
-
-	\begin{itemize}
-        \pause
-		\item The weakening rule may be simulated by a polynomial number of pure
-	        syntactic rules.
-%		 \begin{itemize}
-%			\item The simplification rule: $\frac{D \lor (0 = 1)}{D}$; 
-%			\item The syntactic weakening rule: $\frac{D}{D \lor (f = \alpha)}$;
-%			\item The addition rule: $\frac{D \lor (f_1 = \alpha_1) \lor
-%		        (f_2 = \alpha_2)}{D \lor (f_1 = \alpha_1) \lor
-%                (f_1 + f_2 = \alpha_1 + \alpha_2 + 1)}$ 
-%		\end{itemize}
-	\end{itemize}
 \end{frame}
 
-
-
 \begin{frame}
-    \frametitle{R(lin)}
-
-    R(lin) [Raz, Tsameret, 2007] operates with disjunction of linear equalities with
-    \mycolor{blue}{integer} coefficients.
-    
-	\begin{itemize}
-		\item Resolution rule: $\frac{A \lor (F_1 = a_1), B \lor (F_2 = a_2)}
-    		{A \lor B \lor (F_1 \pm F_2 = a_1 \pm a_2)}$
-		\item Weakening rule: $\frac{A}{A \lor (F = a)}$
-		\item Simplification rule: $\frac{B \lor (0 = c)}{B}$, where $c \neq 0$. 
-	\end{itemize}
-
-	\pause
-    \begin{theorem}
-    	R(lin) p-similates Res-Lin.    
-    \end{theorem}
-    
-	\medskip
-
-	\pause
-	\begin{columns}
-		\begin{column}{5cm}
-			$x_1 + x_2 + \dots + x_n \equiv 0 \bmod 2$:
-			$\left[\begin{aligned}
-            	x_1 + &\dots + x_n = 0\\
-                x_1 + &\dots + x_n = 2\\
-                &\dots \\
-                x_1 + &\dots + x_n = 2 \lceil n / 2 \rceil
-            \end{aligned}\right.$ 
-		\end{column}
-		\begin{column}{5cm}
-			$x_1 + x_2 + \dots + x_n \equiv 1 \bmod 2$:
-			$\left[\begin{aligned}
-                x_1 + &\dots + x_n = 1\\
-                x_1 + &\dots + x_n = 3\\
-                &\dots \\
-                x_1 + &\dots + x_n = 2 \lceil (n - 1) / 2 \rceil + 1
-            \end{aligned}\right.$
-		\end{column}
-	\end{columns}
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{Futher research}
+    \frametitle{Нижняя оценка на 2-сложенные Цейтинские формулы}
 
     \begin{itemize}
-		\item Prove lower bound for dag-like Res-Lin.
-		\item What is tree-like Res-Lin complexity of the Perfect Matching Principle
-		    for $K_{n - 2, n}$? 
-		\item Does tree-like Res-Lin p-simulate dag-like Resolution?
-		\item Does PCR p-simulate Res-Lin?
-		\item Prove lower bound for splitting by linear combinations on
-		    \mycolor{blue}{satisfiable} formulas.
+		\item Невыполнимая формула $\phi$ $\Rightarrow$ задача $Search_\phi$: найти невыполненный клоз по подстановке
+		    значений переменным.
+        \pause 
+		\item LST $T$ $\Rightarrow$ вероятностный коммуникационный протокол для $Search_\phi$ глубины $O(\log |T|
+		    \log\log |T|)$ (некоторые значения знает Алиса, некоторые Боб).
+        \pause
+		\item Применяем нижнюю оценку на вероятностную коммуникационную сложность $Search_{TS^2_{G,c}}$ для 2-сложенных
+		    Цейтинских формул $TS^2_{G,c}$ ([Kalyanasundaram, Schintger 1992] и [Beame, Pitassi, Segerlind, 2007]).
+	\end{itemize}
+	\pause
+    \begin{theorem}
+        Существует явная конструкция графа такого $G(V, E)$ на $n$ вершинах с константной степенью и функций $c: V \to
+        \mathbb{F}_2$, что размер LST для $TS^2_{(G,c)}$ равен $\Omega\left(2^{n^{1 / 3} / \log^3(n)} \right)$.
+    \end{theorem}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Открытые вопросы}
+
+    \begin{itemize}
+        \item Доказательство нижней оценки на явную конструкцию функции Голдрейха и случайного предиката.
+        \item Доказательство компромисса между корректностью и временем работы $\DPLL$ алгоритмов с ошибкой для случая
+    		вероятностной процедуры $A$.
+		\item Доказательство нижних оценок на $\ResL$ (не древесных).
+		\item Соотношение между $\ResL$ и другими известными системами доказательств.
+		\item Доказательство нижних оценок на LST для \mycolor{blue}{выполнимых} формул.
 	\end{itemize}
 \end{frame}
 
