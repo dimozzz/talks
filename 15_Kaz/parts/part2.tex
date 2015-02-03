@@ -1,0 +1,54 @@
+\begin{frame}
+	\frametitle{$\DPLL$-алгоритмы с ошибкой}
+
+   	\input{pics/tree_2.tex}
+    
+	\pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \begin{itemize}
+        \item Процедура $\mathbf{A}$ выбирает переменную для расщепления.
+    	\pause
+	    \item Процедура $\mathbf{B}$ выбирает первое значение.
+    \end{itemize}
+
+    \pause
+    Алгоритм может иметь ошибку.
+
+    \pause
+    \pause
+    \begin{itemize}
+	    \item Процедура $\mathbf{C}$ отрезает ветви.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Результат}
+	\pause
+	\begin{theorem}
+        Для любой детерминированной процедуры $\mathbf{A}$ существует такой ансамбль $(\Phi_n, \mathcal{D}_n)$ и такое $\delta \ne
+        \delta(n)$, что:
+        \pause
+		\begin{itemize}
+            \item $\Phi_n$ невыполнимая формула.
+        	\item $\Phi_n$ может быть опстроена за полиномиальное время.
+            \pause
+            \item $\mathcal{D}_n$ распределение на выполнимых формулах.
+            \pause
+			\item $\forall \mathbf{B}, \mathbf{C}$,
+				$\Pr\limits_{x \gets \mathcal{D}_n}[\mathcal{A}(x)
+                \ne 0] > 1 - \epsilon \Rightarrow
+                time(\mathcal{D}(\Phi_n)) \ge (1 - \epsilon) 2^{\Omega(min(n^\delta, \frac{n}{K}))}$, где $\mathcal{D}$~---
+                близорукий алгоритм $\mathcal{D}(\mathbf{A}, \mathbf{B},\mathbf{C})$.
+		\end{itemize}
+	\end{theorem}
+\end{frame}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

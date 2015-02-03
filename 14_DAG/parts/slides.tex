@@ -18,7 +18,7 @@
 
     \pause
     \begin{definition}[Levin'86, Impagliazzo'95]
-        $L \in Heur\only<3->{\alert{N}}P$:
+        $(L, D) \in Heur\only<3->{\alert{N}}P$:
         \begin{itemize}
             \item \only<3->{\alert{Non}deterministic} \only<-2>{Deterministic}
 		        algorithm $\Pi(x, 1^n, \delta)$ is polynomially bounded in
@@ -83,11 +83,11 @@
     \begin{theorem}
         \begin{enumerate}
             \item $\exists X \in PP$-complete, $\forall D~
-	    		(X_{pad}, D \times U) \in HeurP$.
+	    		(X, D \times U) \in HeurP$.
     		\pause
     		\item $\exists Y \in (PP \cdot NP)$-complete:
 		        \begin{itemize}
-        	        \item $\forall D~ (Y_{pad}, D \times U) \in HeurNP$;
+        	        \item $\forall D~ (Y, D \times U) \in HeurNP$;
                 	\item $(NP, PSamp) \notin HeurBPP \Rightarrow \exists D'~ (Y, D')
                 		\notin HeurBPP$.
 		        \end{itemize}
@@ -102,8 +102,8 @@
     \vspace{0.5cm}
     $PP$ is closed under complement thus if $NP \neq co-NP$ then:
     \begin{itemize}
-    	\item $X, X_{pad} \notin NP$;
-    	\item $Y, Y_{pad} \notin NP$.
+    	\item $X \notin NP$;
+    	\item $Y \notin NP$.
     \end{itemize}
  
 \end{frame}
@@ -144,11 +144,11 @@
     \begin{theorem}
         \begin{enumerate}
             \item $\exists X \in PP$-complete, $\forall D~
-	    		(X_{pad}, D \times U) \in HeurP$.
+	    		(X, D \times U) \in HeurP$.
     		\pause
     		\item $\exists Y \in (PP \cdot NP)$-complete:
 		        \begin{itemize}
-        	        \item $\forall D~ (Y_{pad}, D \times U) \in HeurNP$;
+        	        \item $\forall D~ (Y, D \times U) \in HeurNP$;
                 	\item $(NP, PSamp) \notin HeurBPP \Rightarrow \exists D'~ (Y, D')
                 		\notin HeurBPP$.
 		        \end{itemize}

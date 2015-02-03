@@ -1,0 +1,144 @@
+\begin{frame}
+    \frametitle{Содержание}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{$\DPLL$-алгоритмы}
+
+   	\input{pics/tree.tex}
+    
+	\pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \begin{itemize}
+        \item Процедура $\mathbf{A}$ выбирает переменную для расщепления.
+    	\pause
+	    \item Процедура $\mathbf{B}$ выбирает первое значение.
+    	\pause
+    	\item Правила упрощения:
+	    \begin{itemize}
+            \item удаление единичного дизъюнкта;
+        	\item чистые литералы.
+    	\end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{$\DPLL$-алгоритмы}
+
+    \begin{itemize}
+        \item $\SAT$-солверы основаны на алгоритмах расщепления ($CDCL$ не укладываются в данную модель).
+        \item Оптимальность на выполнимых формулах.
+	\end{itemize}
+
+    \pause
+    \begin{block}{Утверждение}
+   		Если $\P = \NP$, то существует верхняя полиномиальная оценка на время работы $\DPLL$-алгоритма на \alert{выполнимых формулах}.        
+    \end{block}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Нижние оценки}
+
+    \pause
+	\begin{itemize}
+		\item Невыполнимые формулы
+		\begin{itemize}
+            \item{} Экспоненциальный нижние из оценки следуют из нижних оценок для резолюции.
+			\item{} [Tseitin, 1968] ... [Pudlak, Implagliazzo, 2000].
+		\end{itemize}
+        \pause
+		\item Выполнимые формулы
+		\begin{itemize}
+			\item Обращение функции соответствует выполнимой формуле..
+            \pause
+            \item{} [Nikolenko~2002], [Achilioptas, Beame, Molloy~2003-2004] экспоненциальные нижние оценки на специфические алгоритмы.
+            \item{} [Alekhnovich, Hirsch, Itsykson~2005] экспоненциальные нижние оценки на ``близорукие'' и ``пьяные'' алгоритмы.
+            \pause
+            \item{}  Экспоненциальные нижние оценки на время обращения функции Голдрейха для близоруких [J. Cook et al.~2009,
+				2014] и пьяных [Itsykson~2010] алгоритмов.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Пьяные и близорукие алгоритмы}
+    \pause
+
+    \begin{definition}
+        Пьяный алгоритм:
+        \begin{itemize}
+	        \item $\mathbf{A}$~--- произвольная;
+	        \item $\mathbf{B}$~--- случайный бит.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    \begin{definition}
+        Близорукая процедура:
+        \pause
+        \begin{itemize}
+	        \item видит структуру формулы;
+        	\pause
+        	\item не видит отрицаний;
+        	\item<6-> запрашивает отрицания в $K = n^{1 - \epsilon}$ клозах.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    $\begin{array}{l}
+        (x_1 \vee x_3 \vee x_5) \\
+        \alert<7->{(x_2 \vee x_3)} \\
+        (x_2 \vee x_4 \vee x_5) \\
+        \alert<7->{(x_1 \vee x_4 \vee x_6)} \\
+    \end{array}
+    \pause
+    \pause
+    \pause
+    \Rightarrow
+    \begin{array}{l}
+        (x_1 \vee x_3 \vee x_5) \\
+        (x_2 \vee \alert{\neg} x_3) \\
+        (x_2 \vee x_4 \vee x_5) \\
+        (x_1 \vee \alert{\neg} x_4 \vee x_6) \\
+    \end{array}$
+    
+\end{frame}
+
+\begin{frame}
+	\frametitle{Функция Голдрейха}
+	$f:\{0, 1\}^n \rightarrow \{0, 1\}^n$
+
+    \pause
+
+    \begin{columns}
+    	\begin{column}{5.5cm}
+            \input{pics/function_graph.tex}
+        \end{column}
+
+        \pause
+        \pause
+        \begin{column}{5.5cm}
+            \begin{itemize}
+	            \item $G(X, Y, E)$~--- двухольный граф;
+            	\pause
+                \item $\forall y \in Y ~~ deg(y) = d$
+            	\pause
+            	\item $d$~--- константа.
+            \end{itemize}
+        \end{column}
+	\end{columns}
+    
+
+    \pause
+    \begin{theorem}
+		Существует такая \alert{явная} конструкция графа $G$ и такой нелинейный предикат $P$, что любой близорукий или пьяный
+        $\DPLL$-алгоритм делает $2^{n^{\Omega(1)}}$ шагов на ``$f_{G, P}(x) = f_{G, P}(a)$'' для почти всех $a \in \{0, 1\}^n$.
+	\end{theorem}
+\end{frame}
