@@ -1,0 +1,65 @@
+\begin{frame}
+    \frametitle{Outline}
+    \begin{enumerate}
+		\item Linear splitting trees
+			\begin{itemize}
+				\item Upper bounds
+				\item Lower bounds for Pigeonhole and 2-fold Tseitin formulas
+			\end{itemize}
+
+		\item Proof system Res-Lin 
+			\begin{itemize}
+				\item Semantic and syntactic version are equivalent
+				\item Implication completeness
+				\item Simulation in R(lin)
+			\end{itemize}
+
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Splitting trees}
+    $(\lnot x \lor y) \land (x \lor \lnot y) \land (\lnot y \lor z) \land
+    	(y \lor \lnot z) \land (x \lor z) \land (\lnot x \lor \lnot z)$ 
+	\only<1>{\input{pics/DPLL_tree_new.tex}}
+	\only<2>{\input{pics/p_DPLL_tree_new.tex}}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Linear splitting trees (LST)}
+	Solving CNF SAT using splitting by linear forms over $\mathbb{F}_2$
+    \begin{columns}
+        \begin{column}{3cm}
+            Degenerate leaf
+            \input{pics/case_degenerate.tex}
+        \end{column}
+        \begin{column}{3cm}
+            Sat. assignment
+            \input{pics/case_solution.tex}
+        \end{column}
+        \begin{column}{3cm}
+            Contradiction with a clause
+            \input{pics/case_contradiction.tex}
+        \end{column}
+    \end{columns}
+    
+	$\Phi$ refutes $(x_1 \lor x_2 \dots \lor x_k)$ iff $\Phi \land (x_i = 1)$ is
+    unsatisfiable $\forall i$.
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Splitting over linear combinations}
+
+	\begin{itemize}
+		\item{} [Seto, Tamaki, 2011] Algorithm for Formula-SAT over the full binary
+		    basis. For formulas of size $cn$ the algorithm runs $2^{(1 - \mu_c)n}$,
+            where $\mu_c$ is a constant.
+        \pause
+		\item{} Hirsch, Kulikov $3 \frac{1}{86}n$.
+	\end{itemize}    
+\end{frame}
