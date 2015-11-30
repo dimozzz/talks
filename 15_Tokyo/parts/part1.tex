@@ -30,19 +30,23 @@
 
 \begin{frame}
     \frametitle{Linear splitting trees (LST)}
-	Solving CNF SAT using splitting by linear forms over $\mathbb{F}_2$
-    \begin{columns}
-        \begin{column}{3cm}
-            Degenerate leaf
-            \input{pics/case_degenerate.tex}
+    
+	Solving CNF SAT using splitting by linear forms over $\mathbb{F}_2$.
+
+    \begin{columns}[T]
+        \begin{column}{4cm}
+            \begin{enumerate}
+                \item<1-> Degenerate leaf.
+                \item<2-> Sat. assignment.
+            	\item<3-> Contradiction with a clause.
+            \end{enumerate}
         \end{column}
-        \begin{column}{3cm}
-            Sat. assignment
-            \input{pics/case_solution.tex}
-        \end{column}
-        \begin{column}{3cm}
-            Contradiction with a clause
-            \input{pics/case_contradiction.tex}
+        \begin{column}{4cm}
+            \begin{minipage}[c][.6\textheight][c]{\linewidth}
+                \only<1>{\input{pics/case_degenerate.tex}}
+                \only<2>{\input{pics/case_solution.tex}}
+                \only<3>{\input{pics/case_contradiction.tex}}
+        	\end{minipage}
         \end{column}
     \end{columns}
     
@@ -60,6 +64,6 @@
 		    basis. For formulas of size $cn$ the algorithm runs $2^{(1 - \mu_c)n}$,
             where $\mu_c$ is a constant.
         \pause
-		\item{} Hirsch, Kulikov $3 \frac{1}{86}n$.
+		\item{} [Hirsch, Kulikov et al., 2015] Explicit construction of fucntion with $3 \frac{1}{86}n$ circuit size.
 	\end{itemize}    
 \end{frame}

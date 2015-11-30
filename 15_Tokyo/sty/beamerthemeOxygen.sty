@@ -14,9 +14,9 @@
 \setbeamercolor*{Title bar}{fg = white, bg = oxygenblue}
 \setbeamercolor*{Location bar}{fg = oxygenorange, bg = oxygenlightgray}
 \setbeamercolor*{frametitle}{parent = Title bar}
-\setbeamercolor*{block title}{bg = oxygenblue,fg = white}
-\setbeamercolor*{block body}{bg = oxygenlightgray,fg = oxygengray}
-\setbeamercolor*{block title alerted}{bg = red,fg = white}
+\setbeamercolor*{block title}{bg = oxygenblue, fg = white}
+\setbeamercolor*{block body}{bg = oxygenlightgray, fg = oxygengray}
+\setbeamercolor*{block title alerted}{bg = red, fg = white}
 
 
 \setbeamercolor*{normal text}{bg = white, fg = oxygengray}
@@ -32,7 +32,7 @@
 
 \addtobeamertemplate{title page}{
 	\vspace*{-35pt}
-	\begin{beamercolorbox}[wd = \paperwidth,ht = 1\beamer@headheight]{Title bar}
+	\begin{beamercolorbox}[wd = \paperwidth, ht = 1\beamer@headheight]{Title bar}
 		\hfill
         \pgfuseimage{logo}
         \hspace{5pt}
@@ -66,7 +66,9 @@
   \framelatex{
   \begin{beamercolorbox}[leftskip=.3cm,wd=\paperwidth,ht=0.3\beamer@headheight,sep=0.05cm]{Location bar}
     \usebeamerfont{section in head/foot}%
-    \insertshortauthor~|~\insertshorttitle
+    \insertshortauthor~|
+    \hfill
+    \insertshorttitle
     \hfill
     \insertframenumber/\inserttotalframenumber
   \end{beamercolorbox}}
