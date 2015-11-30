@@ -1,4 +1,6 @@
 \documentclass[russian]{beamer}
+
+\usepackage{sty/beamerthemeOxygen}
 \usepackage[T2A]{fontenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -21,8 +23,8 @@
     urlcolor=blue
 }
 
-\usetheme{Warsaw}
-\usecolortheme{seahorse}
+%\usetheme{sty/Oxygen}
+%\usecolortheme{seahorse}
 
 
 %\usepackage{ulem}
@@ -41,6 +43,15 @@
 }
 \newcommand{\Img}{\mathop{\mathrm{Im}}}
 %
+
+\newcommand{\alg}[1]{\mathrm{#1}}
+
+
+\newcommand{\DPLL}{\alg{DPLL}}
+\newcommand{\DPLLL}{\alg{DPLL}_{lin}}
+\newcommand{\ResL}{\alg{Res}_{lin}}
+\newcommand{\SemL}{\alg{Sem}_{lin}}
+
 \newcommand{\lang}[1]{\mathtt{#1}}
 \newcommand{\SAT}{\lang{SAT}}
 \newcommand{\MAJSAT}{\lang{MAJ}\mbox{\tt-}\lang{SAT}}
