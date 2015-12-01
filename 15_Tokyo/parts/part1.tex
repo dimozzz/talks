@@ -1,31 +1,45 @@
 \begin{frame}
-    \frametitle{Outline}
-    \begin{enumerate}
-		\item Linear splitting trees
-			\begin{itemize}
-				\item Upper bounds
-				\item Lower bounds for Pigeonhole and 2-fold Tseitin formulas
-			\end{itemize}
+	\frametitle{$\DPLL$ algorithms}
 
-		\item Proof system Res-Lin 
-			\begin{itemize}
-				\item Semantic and syntactic version are equivalent
-				\item Implication completeness
-				\item Simulation in R(lin)
-			\end{itemize}
+   	\input{pics/tree.tex}
+    
+	\pause
+    \pause
+    \pause
+    \pause
+    \pause
 
-	\end{enumerate}
+    The vertex is a leaf iff there is an empty clause in current formula.
+
 \end{frame}
 
 
 \begin{frame}
-    \frametitle{Splitting trees}
-    $(\lnot x \lor y) \land (x \lor \lnot y) \land (\lnot y \lor z) \land
-    	(y \lor \lnot z) \land (x \lor z) \land (\lnot x \lor \lnot z)$ 
-	\only<1>{\input{pics/DPLL_tree_new.tex}}
-	\only<2>{\input{pics/p_DPLL_tree_new.tex}}
-\end{frame}
+	\frametitle{Linear splitting tree (LST)}
 
+   	\input{pics/tree_lin.tex}
+
+    \vspace{1cm}
+    
+    \begin{minipage}{0.42\linewidth}
+        \begin{itemize}
+            \item<1-> $A := (\phi, \emptyset)$
+	    	\item<2-> $B := (\phi, \{f(x)~=~0\})$
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.55\linewidth}
+        \begin{itemize}
+            \item<4-> $C := (\phi, \{f(x) = 0, g(x) = 1\})$
+        	\item<5-> $D = (\phi, \{f(x) = 1\})$
+        \end{itemize}
+    \end{minipage}
+    
+	\pause
+    \pause
+    \pause
+    \pause
+
+\end{frame}
 
 
 \begin{frame}
@@ -64,6 +78,6 @@
 		    basis. For formulas of size $cn$ the algorithm runs $2^{(1 - \mu_c)n}$,
             where $\mu_c$ is a constant.
         \pause
-		\item{} [Hirsch, Kulikov et al., 2015] Explicit construction of fucntion with $3 \frac{1}{86}n$ circuit size.
+		\item{} [Hirsch, Kulikov et al., 2015] Explicit construction of function with $3 \frac{1}{86}n$ circuit size.
 	\end{itemize}    
 \end{frame}

@@ -29,8 +29,7 @@
 		\item $\SemL$:
 			\begin{itemize}
 				\item Semantic rule: $\frac{C_1, C_2}{C'}$ if $C_1 \land C_2$
-		            semantically implies $C'$
-				\item Weakening rule: $\frac{C}{C'}$ if $C$ semantically implies $C'$
+		            semantically implies $C'$.
 			\end{itemize}
 	\end{itemize}
 
@@ -106,8 +105,8 @@
 	\pause
     \begin{theorem}
         In time polynomial in $n$ one may construct a graph $G(V, E)$ on $n$ vertices with maximal degree bounded by a
-        constant and a function $c: V \to \mathbb{F}_2$ such that the size of any linear splitting tree of
-        $TS^2_{(G,c)}$ is at least $\Omega\left(2^{n^{1 / 3} / \log^3(n)} \right)$.
+        constant and a function $c: V \to \mathbb{F}_2$ such that the size of any \mycolor{blue}{tree-like} proof in
+        $\ResL$ of $TS^2_{(G,c)}$ is at least $\Omega\left(2^{n^{1 / 3} / \log^3(n)} \right)$.
     \end{theorem}
 \end{frame}
 
@@ -116,14 +115,13 @@
     
     \begin{itemize}
         \item Alice and Bob know a different part of assigment.
-		\item For unsatisfiable $\phi$ a search problem $Search_\phi$: find a
-		    falsified clause given a variable assignment.
         \pause
-        \item{} [Beame et al., 2007] There exists such graph $G$ such that $DISJ_{m} \le Search_{TS_{G}}$ where $m =
-			\frac{|G|^{1 / 3}}{\log^3(|G|)}$.
-		\item We prove that it is possible to transform a splitting tree $T$ into a
-		    randomized communication protocol for the problem $Search_\phi$ of depth
-	        $O(\log |T| \log\log |T|)$.
+		\item For unsatisfiable $\phi$ a search problem $Search_\phi$: find a falsified clause.
+        \pause
+        \item{} [Beame et al., 2007] There exists such graph $G$, $|G| = n$ such that $DISJ_{m} \le Search_{TS_{G}}$
+			where $m = \frac{n^{1 / 3}}{\log^2(n)}$.
+		\item We prove that it is possible to transform tree-like proof $T$ into a randomized communication protocol for
+			the problem $Search_\phi$ of depth $O(\log |T| \log\log |T|)$.
         \pause
 	\end{itemize}
 \end{frame}
@@ -146,8 +144,8 @@
 
     \pause
     \begin{theorem}
-        Let $\pi$ is a Res-lin proof of formula $\phi$ then $R_{1 / 3}(Search_{\phi})
-        = O(\mu(\pi) \log(\mu(\pi)))$, where $\mu(\pi) = CS(\pi) \log(size(\pi))$.
+        Let $\pi$ is a $\ResL$ proof of formula $\phi$ then $R_{1 / 3}(Search_{\phi}) = O(\mu(\pi) \log(\mu(\pi)))$,
+        where $\mu(\pi) = CS(\pi) \log(size(\pi))$.
     \end{theorem}
 
     $R_{1 / 3}$ is a complexity of a randomized communication protocol.
@@ -162,13 +160,10 @@
     \frametitle{Open question}
 
     \begin{itemize}
-		\item Prove lower bound for dag-like Res-Lin.
-		\item What is tree-like Res-Lin complexity of the Perfect Matching Principle
-		    for $K_{n - 2, n}$? 
-		\item Does tree-like Res-Lin p-simulate dag-like Resolution?
-		\item Does PCR p-simulate Res-Lin?
-		\item Prove lower bound for splitting by linear combinations on
-		    \mycolor{blue}{satisfiable} formulas.
+		\item Prove lower bound for dag-like $\ResL$.
+		\item What is tree-like $\ResL$ complexity of the Perfect Matching Principle for $K_{n - 2, n}$?
+		\item Does PCR p-simulate $\ResL$ (maybe in the other direction)?
+		\item Prove lower bound for splitting by linear combinations on \mycolor{blue}{satisfiable} formulas.
 	\end{itemize}
 \end{frame}
 
