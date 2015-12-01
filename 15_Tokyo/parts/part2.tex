@@ -1,23 +1,24 @@
 \begin{frame}
     \frametitle{Upper bounds}
 
-    \begin{tabularx}{\textwidth}{|Y|Y|}
-        \hline
-        $\DPLL (Resolution)$ & $LST$ \\
-        \hline
-        \multicolumn{2}{|c|}{Linear systems over $\mathbb{F}_2$} \\
-        \hline
-        $2^{\Omega(n)}$ [Haken, 84] & $poly(n, |\phi|)$ \\
-        \hline
-        \multicolumn{2}{|c|}{\pbox{7cm}{\centering Perfect matching principle for graphs with odd vertices
-            (\textit{almost} nonlinear example)}} \\
-        \hline
-        $2^{\Omega(n)}$ [Razborov 2003, ISS 2015] & $poly(n)$ \\
-        \hline
-        \multicolumn{2}{|c|}{Pebbling contradictions ($Peb^\oplus(G_n)$, nonlinear example)} \\
-        \hline
-        $2^{n / \log n}$ [Urquart, 2011] & $poly(n)$ \\
-        \hline
+    \begin{tabularx}{\textwidth}{?{0.8pt}Y|Y?{0.8pt}}
+        \hlinewd{0.8pt}
+        $\DPLL (Resolution)$ \rule{0.0pt}{0.15\linewidth} & $LST$ \\
+        \hlinewd{0.8pt}
+        \multicolumn{2}{?{0.8pt}c?{0.8pt}}{Linear systems over $\mathbb{F}_2$ \rule{0.0pt}{0.075\linewidth}} \\
+        \hlinewd{0.8pt}
+        \alert{$2^{\Omega(n)}$} [Haken, 84] & \mycolor{oxygenblue}{$poly(n, |\phi|)$} \\
+        \hlinewd{0.8pt}
+        \multicolumn{2}{?{0.8pt}c?{0.8pt}}{\pbox{7cm}{\centering Perfect matching principle for graphs with odd vertices
+            (\textit{almost} nonlinear example)} \rule{0.0pt}{0.075\linewidth}} \\
+        \hlinewd{0.8pt}
+        \alert{$2^{\Omega(n)}$} [Razb. 2003, ISS 2015] & \mycolor{oxygenblue}{$poly(n)$} \\
+        \hlinewd{0.8pt}
+        \multicolumn{2}{?{0.8pt}c?{0.8pt}}{Pebbling contradictions ($Peb^\oplus(G_n)$, nonlinear example)
+        	\rule{0.0pt}{0.075\linewidth}} \\
+        \hlinewd{0.8pt}
+        \alert{$2^{n / \log n}$} [Urquart, 2011] & \mycolor{oxygenblue}{$poly(n)$} \\
+        \hlinewd{0.8pt}
 	\end{tabularx}
 \end{frame}
 

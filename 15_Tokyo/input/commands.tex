@@ -1,9 +1,9 @@
-\newcolumntype{?}[1]{!{\vrule width #1}}
+\newcolumntype{?}[1]{!{\mycolor{black}{\vrule width #1}}}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
 \makeatletter
 \def\hlinewd#1{%
-\noalign{\ifnum0=`}\fi\hrule \@height #1 %
+\noalign{\ifnum0=`}\fi\mycolor{black}{\hrule \@height #1} %
 \futurelet\reserved@a\@xhline} 
 
 
