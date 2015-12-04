@@ -12,16 +12,26 @@
 	\node [end] (z){}
         child {
         	node[end] (b) {}
-   		    child {
-		        node {\alert{$(x \lor y)$}}
-	            edge from parent[ultra thick]
-		        node[left] {$x + y = 0$}
-            }
             child {
     			node {$\vdots$}
 		        edge from parent
-	    		node[right] {}
+	    		node[left] {}
 			}
+		    child {
+		        node[end] {}
+                child {
+                  	node {\alert{no sol.}}
+                    edge from parent[ultra thick]
+                    node[left] {$y = 0$}
+                }
+                child {
+        			node {$\vdots$}
+		           	edge from parent
+        		    node[right] {$y = 1$}
+		        }
+	            edge from parent[ultra thick]
+		        node[right] {$x + y = 1$}
+            }
            	edge from parent[ultra thick]
             node[left] {$x = 0$}
         }

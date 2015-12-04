@@ -1,0 +1,191 @@
+\begin{frame}
+    \frametitle{$\ResL$}
+
+    \begin{itemize}
+		\item Literal: $L = x_{1} + x_{2} + \dots + x_{k} = \alpha$,
+    		$\lnot L = x_{1} + x_{2} + \dots + x_{k} = \alpha + 1$.
+		\item Linear clause: $\bigvee\limits_i x_{i, 1} + x_{i, 2} + \dots + x_{i, k_i} =
+		    \alpha_i$ or $\lnot \bigwedge\limits_i x_{i, 1} + x_{i, 2} + \dots + x_{i, k_i} =
+            1 + \alpha_i$.
+        \pause
+		\item $\ResL$:
+			\begin{itemize}
+				\item Resolution rule: $\frac{(f = 0) \lor D \qquad (f = 1) \lor D'}
+            		{D \lor D'}$ 
+				\item Weakening rule: $\frac{C}{C'}$ if $C$ semantically implies $C'$
+			\end{itemize}
+        \pause
+		\item \mycolor{blue}{Tree-like} $\ResL$ is equivalent to LST.
+	\end{itemize}
+	\scalebox{0.8}{\input{pics/DPLL_to_proof.tex}}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{$\ResL$ vs $\SemL$}
+
+    \begin{itemize}
+		\item $\SemL$:
+			\begin{itemize}
+				\item Semantic rule: $\frac{C_1 \qquad C_2}{C'}$ if $C_1 \land C_2$
+		            semantically implies $C'$.
+			\end{itemize}
+	\end{itemize}
+
+	\pause
+    \begin{theorem}
+        \begin{enumerate}
+            \item $\ResL$ p-simulates $\SemL$.
+        	\pause
+        	\item $\ResL$ is implication complete.
+        \end{enumerate}
+    \end{theorem}
+
+    \pause
+
+    The weakening rule may be simulated by a polynomial number of pure syntactic rules.
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{$\mathrm{R(lin)}$}
+
+    $\mathrm{R(lin)}$ [Raz, Tsameret, 2007] operates with disjunction of linear equalities with
+    \mycolor{blue}{integer} coefficients.
+    
+	\begin{itemize}
+		\item Resolution rule: $\frac{A \lor (F_1 = a_1) \qquad B \lor (F_2 = a_2)}
+    		{A \lor B \lor (F_1 \pm F_2 = a_1 \pm a_2)}$
+		\item Weakening rule: $\frac{A}{A \lor (F = a)}$
+		\item Simplification rule: $\frac{B \lor (0 = c)}{B}$, where $c \neq 0$. 
+	\end{itemize}
+
+	\pause
+    \begin{theorem}
+    	$\mathrm{R(lin)}$ p-simulates $\ResL$.    
+    \end{theorem}
+    
+	\medskip
+
+	\pause
+	\begin{columns}
+		\begin{column}{5cm}
+			$x_1 + x_2 + \dots + x_n \equiv 0 \bmod 2$:
+			$\left[\begin{aligned}
+            	x_1 + &\dots + x_n = 0\\
+                x_1 + &\dots + x_n = 2\\
+                &\dots \\
+                x_1 + &\dots + x_n = 2 \lceil n / 2 \rceil
+            \end{aligned}\right.$ 
+		\end{column}
+		\begin{column}{5cm}
+			$x_1 + x_2 + \dots + x_n \equiv 1 \bmod 2$:
+			$\left[\begin{aligned}
+                x_1 + &\dots + x_n = 1\\
+                x_1 + &\dots + x_n = 3\\
+                &\dots \\
+                x_1 + &\dots + x_n = 2 \lceil (n - 1) / 2 \rceil + 1
+            \end{aligned}\right.$
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{2-fold Tseitin formulas}
+
+    \begin{itemize}
+        \item $\phi(x_1, \dots, x_n)$ is a Tseitin formula;
+        \item $x_i \to z_{i1} \land z_{i2}$;
+    	\item rewrite in CNF.
+	\end{itemize}
+
+	\pause
+    \begin{theorem}
+        In time polynomial in $n$ one may construct a graph $G(V, E)$ on $n$ vertices with maximal degree bounded by a
+        constant and a function $c: V \to \mathbb{F}_2$ such that the size of any \mycolor{blue}{tree-like} proof in
+        $\ResL$ of $TS^2_{(G,c)}$ is at least $\Omega\left(2^{n^{1 / 3} / \log^3(n)} \right)$.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}
+    \frametitle{2-fold Tseitin formulas}
+    
+    \begin{itemize}
+        \item Alice and Bob know a different part of assignment.
+        \pause
+		\item For unsatisfiable $\phi$ a search problem $Search_\phi$: find a falsified clause.
+        \pause
+        \item{} [Beame et al., 2007] There exists a graph $G$, $|G| = n$ such that $DISJ_{m} \le Search_{TS_{G}}$
+			where $m = \frac{n^{1 / 3}}{\log^2(n)}$.
+		\item We prove that it is possible to transform tree-like proof $T$ into a randomized communication protocol for
+			the problem $Search_\phi$ of depth $O(\log |T| \log\log |T|)$.
+        \pause
+	\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Space vs. Size Tradeoff}
+
+    \pause
+    \begin{itemize}
+    	\item Write a basic clause to memory.
+    	\item Remove a clause from memory.
+    	\item Deduce a clause from clauses in memory and add it in memory.
+    \end{itemize}
+
+    \pause
+    $CS(\pi)$ is a maximal number of clauses in memory in proof $\pi$.
+
+    \pause
+    \begin{theorem}
+        Let $\pi$ is a $\ResL$ proof of formula $\phi$ then $R_{1 / 3}(Search_{\phi}) = O(\mu(\pi) \log(\mu(\pi)))$,
+        where $\mu(\pi) = CS(\pi) \log(size(\pi))$.
+    \end{theorem}
+
+    $R_{1 / 3}$ is a complexity of a randomized communication protocol.
+    
+    \pause
+
+    $R_{1 / 3}(Search_{TS_{G,c}^2}) = \Omega(n^{1 / 3} / \log^2(n))$
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{$\ResL$ vs. Interpolation}
+
+    \begin{itemize}
+        \item Alice and Bob know a different part of assignment.
+    	\pause
+        \item They want to evaluate a clause by \mycolor{blue}{deterministic} protocol.
+    	\pause
+        \item $DISJ_{n}$ is not harder than this problem.
+    	\pause
+        \item{} [Cook, Pitassi et al. 2013] Some barriers on randomized Karchmer-Wigderson game.
+    	\pause
+    	\item{} \mycolor{blue}{Open question}. Maybe in our case we have an analogue of Karchmer-Wigderson game.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Open question}
+
+    \begin{itemize}
+		\item Prove lower bound for dag-like $\ResL$.
+		\item What is tree-like $\ResL$ complexity of the Perfect Matching Principle for $K_{n - 2, n}$?
+		\item Does PCR p-simulate $\ResL$ (maybe in the other direction)?
+		\item Prove lower bound for splitting by linear combinations on \mycolor{blue}{satisfiable} formulas.
+	\end{itemize}
+\end{frame}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
