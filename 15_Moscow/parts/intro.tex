@@ -1,0 +1,46 @@
+\section{Introduction}
+
+\begin{frame}{Definitions}
+
+    \begin{definition}
+        Ensemble of distributions $D \in \Samp[n^k] \Leftrightarrow$ there is a randomized $O(n^k)$-time algorithm $A$ such that 
+		$D_n$ and $A(1^n)$ are equally distributed.
+    \end{definition}
+
+   	$\PSamp = \bigcup\limits_k \Samp[n^k]$.
+
+	\pause
+    
+	\begin{block}{Heuristic computations}
+		$L$ is a language, $D$ is an ensemble of distributions.
+
+        $(L, D) \in \Heur[\delta]\DTime[n^k] \Leftrightarrow$ there is $O(n^k)$-time algorithm $A$ such that 
+		$\Pr\limits_{x \gets D_n} [A(x) = L(x)] > 1 - \delta$
+	\end{block}
+
+    $\HeurP[\delta] = \bigcup\limits_k \Heur[\delta]\DTime[n^k]$.
+\end{frame}
+
+\begin{frame}{Hamiltonian Path}
+
+    \begin{theorem}[Gurevich and Shelah, 1987]
+        Let $\lang{HP}$ denote the language of Hamiltonian graphs. Then $(\lang{HP}, U) \in
+        \Heur[\frac{1}{2^{O(\sqrt{n})}}]\DTime[n]$. 
+    \end{theorem}
+	\pause
+	\begin{block}{Open problem}
+		Find polynomial-time algorithm for $\lang{HP}$.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Graph Isomorphism}
+
+    \begin{theorem}[Babai, Erdos and Selkow, 1980]
+        Let $\lang{GI}$ denote the language of pairs of isomorphic graphs. Then $(\lang{GI}, U) \in
+        \Heur[\frac{1}{\sqrt[7]{n}}]\DTime[n]$. 
+    \end{theorem}
+	\pause
+	\begin{block}{Open problem}
+		Find polynomial-time algorithm for $\mathrm{GI}$.
+	\end{block}
+\end{frame}

@@ -1,0 +1,41 @@
+\section{Our results}
+
+\begin{frame}{Goal and Result}
+	\pause
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+            \begin{center}
+            	\textbf{Goal}    
+            \end{center}
+			
+			For every $k$ there is a language $L$, ensemble $D$ and small $\delta$ such that
+			\pause
+			\begin{enumerate}
+				\item $D \in \PSamp$;
+				\pause
+				\item $(L, D) \notin \HeurP[1 - \delta]$;
+				\pause
+				\item for every $R \in \Samp[n^k]$ we have that $(L, R) \in \Heur[\delta]\DTime[n]$.
+			\end{enumerate}
+        \end{column}
+        
+        \pause
+		\begin{column}{0.5\textwidth}
+            \begin{center}
+            	\textbf{Result}
+            \end{center}
+            
+			For every $a, b \in \mathbb{N}, a < b$ there is a language $L$, ensemble $D$ and $\delta = o(1)$
+            such that
+			\pause
+			\begin{enumerate}
+				\item $D \in \Samp[n^{\log^b n}]$;
+				\pause
+				\item $(L, D) \notin \HeurP[1 - \delta]$;
+				\pause
+				\item for every $R \in \Samp[n^{\log^{a} n}]$ we have that $(L, R) \in
+					\Heur[\delta]\DTime[n]$.
+			\end{enumerate}
+		\end{column}
+	\end{columns}
+\end{frame}

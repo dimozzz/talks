@@ -11,6 +11,8 @@
 \newcommand{\Img}{\mathop{\mathrm{Im}}}
 %
 
+\newcommand{\Heur}[1][ ]{\mathrm{Heur}_{#1}}
+
 \newcommand{\alg}[1]{\mathrm{#1}}
 
 
@@ -24,15 +26,12 @@
 \newcommand{\MAJSAT}{\lang{MAJ}\mbox{\tt-}\lang{SAT}}
 \newcommand{\QBF}{\lang{QBF}}
 %
-\newcommand{\DSPACE}{\class{DSpace}}
-\newcommand{\NSPACE}{\class{NSpace}}
-\newcommand{\DTIME}{\class{DTime}}
-\newcommand{\RTIME}{\class{RTime}}
-\newcommand{\UTIME}{\class{UTime}}
-\newcommand{\OTIME}{\class{\oplus Time}}
-\newcommand{\NTIME}{\class{NTime}}
-\newcommand{\BPTIME}{\class{BPTime}}
-\newcommand{\BQTIME}{\class{BQTime}}
+\newcommand{\DSpace}{\class{DSpace}}
+\newcommand{\NSpace}{\class{NSpace}}
+\newcommand{\DTime}{\class{DTime}}
+\newcommand{\RTime}{\class{RTime}}
+\newcommand{\NTime}{\class{NTime}}
+\newcommand{\BPTime}{\class{BPTime}}
 %
 \renewcommand{\P}{\class{P}}
 \newcommand{\Ppoly}{\class{P}/\class{poly}}
@@ -64,7 +63,7 @@
 \newcommand{\AWPP}{\class{AWPP}}
 \newcommand{\PP}{\class{PP}}
 \newcommand{\IP}{\class{IP}}
-\newcommand{\PSPACE}{\class{PSPACE}}
+\newcommand{\PSpace}{\class{PSPACE}}
 %
 \newcommand{\EXP}{\class{EXP}}
 \newcommand{\MIP}{\class{MIP}}
@@ -78,15 +77,20 @@
 \newcommand{\EXPSPACE}{\class{EXPSPACE}}
 \newcommand{\MAEXP}{\class{MA}_\class{EXP}}
 %
-\newcommand{\vs}{=\!\!\!?\!\!\!\!=}
-\newcommand{\Retc}{Й\;Ф.\;Д.}
-\newcommand{\poly}{\mathrm{poly}}
 
-%
-\newcommand{\hps} {heuristic proof system\xspace}
-\newcommand{\hpss}{heuristic proof systems\xspace}
-\newcommand{\ahps}{automatizable \hps}
-\newcommand{\Nat}{\mathbb{N}}
+
+
+\newcommand{\HeurP}[1][ ]{\mathrm{Heur}_{#1}\class{P}}
+\newcommand{\HeurNP}[1][ ]{\mathrm{Heur}_{#1}\class{NP}}
+\newcommand{\FBPP}{\class{FBPP}}
+\newcommand{\FBPTime}[1]{\class{FBPTime}(#1)}
+\newcommand{\HeurBPP}[1][ ]{\mathrm{Heur}_{#1}\class{BPP}}
+\newcommand{\HeurFBPP}[1][ ]{\mathrm{Heur}_{#1}\class{FBPP}}
+
+
+\newcommand{\Samp}{\class{Samp}}
+\newcommand{\PSamp}{\class{PSamp}}
+
 %
 
 \DeclareMathOperator*{\supp}{supp}
