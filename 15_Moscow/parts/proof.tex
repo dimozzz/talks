@@ -1,13 +1,13 @@
 \begin{frame}
 	\frametitle{Statistical distance}
 
-    \begin{block}{Sampling distributions}
+    \begin{block}{$\lang{SD}$ property}
 		Functions $f$ and $g$ satisfy $\lang{SD}$ property with parameter $\lambda(n)$ ($\lang{SD}_{\lambda(n)}(f(n),
 		g(n))$) if:
         \begin{itemize}
-            \item there is $D \in \Samp[f(n)]$;
-            \item for every $F \in \Samp[g(n)]$, for infinitely many $n$ the statistical distance between $D_n$ and
-				$F_n$ is at least $1 - \lambda(n)$.
+            \item there is $\Dis \in \Samp[f(n)]$;
+            \item for every $\lang{F} \in \Samp[g(n)]$, for infinitely many $n$ the statistical distance between $D_n$
+				and	$F_n$ is at least $1 - \lambda(n)$.
         \end{itemize}
 	\end{block}
     
@@ -19,20 +19,32 @@
 
 \begin{frame}{Samplable distributions hierarchy}
 
+    \begin{block}{$\lang{SD}$ property}
+		Functions $f$ and $g$ satisfy $\lang{SD}$ property with parameter $\lambda(n)$ ($\lang{SD}_{\lambda(n)}(f(n),
+		g(n))$) if:
+        \begin{itemize}
+            \item there is $\Dis \in \Samp[f(n)]$;
+            \item for every $\lang{F} \in \Samp[g(n)]$, for infinitely many $n$ the statistical distance between $D_n$
+				and	$F_n$ is at least $1 - \lambda(n)$.
+        \end{itemize}
+	\end{block}
+
+    \pause
     \begin{theorem}[Watson, 2013]
-        For any $a > 0$, $k > 0$ and $\epsilon > 0$ there is $D \in \PSamp$ such that for every $F \in \Samp[n^a]$,
-		for infinitely many $n$ the statistical distance between $D_n$ and $F_n$ is at least $1 - \frac{1}{k} -
-        \epsilon$.
-        
-		In previous notation: $\lang{SD}_{\frac{1}{k} + \epsilon}(poly(n), n^k)$.
+        For any $a > 0$, $k > 0$ and $\epsilon > 0$,  $\lang{SD}_{\frac{1}{k} + \epsilon}(poly(n), n^k)$ is true.
     \end{theorem}
 	\pause
     
     \begin{theorem}[Itsykson, Knop, Sokolov, 2015]
-        For every $a$, $b$, $c$ such that $0 < a < b$ and $c > 0$ there is $D \in \Samp[n^{\log^b n}]$
-		such that for every $F \in \Samp[n^{\log^a n}]$, for infinitely many $n$ the statistical distance between $D_n$
-        and $F_n$ is at least $1 - \frac{1}{2^{(\log\log\log n)^c}}$.
-        
-		In previous notation: $\lang{SD}_{\frac{1}{2^{(\log\log\log n)^c}}}(n^{\log^b n}, n^{\log^a n})$.
+        For every $a$, $b$, $c$ such that $0 < a < b$ and $c > 0$,
+        $\lang{SD}_{\frac{1}{2^{(\log\log\log n)^c}}}(n^{\log^b n}, n^{\log^a n})$ is true.
     \end{theorem}
+\end{frame}
+
+\begin{frame}
+    \frametitle{PComp}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Results for PComp}
 \end{frame}

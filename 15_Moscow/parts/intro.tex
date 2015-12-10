@@ -2,19 +2,19 @@
 
 \begin{frame}{Definitions}
 
-    \begin{definition}
-        Ensemble of distributions $D \in \Samp[n^k] \Leftrightarrow$ there is a randomized $O(n^k)$-time algorithm $A$ such that 
-		$D_n$ and $A(1^n)$ are equally distributed.
-    \end{definition}
+    \begin{block}{Ensembles}
+        Ensemble of distributions $\Dis \in \Samp[n^k] \Leftrightarrow$ there is a randomized $O(n^k)$-time algorithm $A$
+        such that $\Dis_n$ and $A(1^n)$ are equally distributed.
+    \end{block}
 
    	$\PSamp = \bigcup\limits_k \Samp[n^k]$.
 
 	\pause
     
 	\begin{block}{Heuristic computations}
-		$L$ is a language, $D$ is an ensemble of distributions.
+		$\Lan$ is a language, $\Dis$ is an ensemble of distributions.
 
-        $(L, D) \in \Heur[\delta]\DTime[n^k] \Leftrightarrow$ there is $O(n^k)$-time algorithm $A$ such that 
+        $(\Lan, \Dis) \in \Heur[\delta]\DTime[n^k] \Leftrightarrow$ there is $O(n^k)$-time algorithm $A$ such that
 		$\Pr\limits_{x \gets D_n} [A(x) = L(x)] > 1 - \delta$
 	\end{block}
 
@@ -24,7 +24,7 @@
 \begin{frame}{Hamiltonian Path}
 
     \begin{theorem}[Gurevich and Shelah, 1987]
-        Let $\lang{HP}$ denote the language of Hamiltonian graphs. Then $(\lang{HP}, U) \in
+        Let $\lang{HP}$ denote the language of Hamiltonian graphs. Then $(\lang{HP}, \lang{U}) \in
         \Heur[\frac{1}{2^{O(\sqrt{n})}}]\DTime[n]$. 
     \end{theorem}
 	\pause
@@ -36,7 +36,7 @@
 \begin{frame}{Graph Isomorphism}
 
     \begin{theorem}[Babai, Erdos and Selkow, 1980]
-        Let $\lang{GI}$ denote the language of pairs of isomorphic graphs. Then $(\lang{GI}, U) \in
+        Let $\lang{GI}$ denote the language of pairs of isomorphic graphs. Then $(\lang{GI}, \lang{U}) \in
         \Heur[\frac{1}{\sqrt[7]{n}}]\DTime[n]$. 
     \end{theorem}
 	\pause
