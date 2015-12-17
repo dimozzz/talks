@@ -43,8 +43,46 @@
 
 \begin{frame}
     \frametitle{PComp}
+
+    \begin{block}{Samp}
+        Ensemble of distributions $\Dis = \{D_n\}_{n = 1}^{\infty}$.
+
+        \vspace{0.15cm}
+        
+        $\Dis \in \Samp[n^k] \Leftrightarrow$ there is a randomized $O(n^k)$-time algorithm $A$
+        such that $\Dis_n$ and $A(1^n)$ are equally distributed.
+    \end{block}
+
+
+    \pause
+    \begin{block}{Comp}
+        Ensemble of distributions $\Dis = \{D_n\}_{n = 1}^{\infty}$. $D_n$ is concentrated on $\{0, 1\}^n$.
+
+        \vspace{0.15cm}
+        
+        $\Dis \in \Comp[n^k] \Leftrightarrow$ there is a $O(n^k)$-time algorithm $A$ such that $A(x) = \sum\limits_{y \le x}
+        D_{|x|}(y)$.
+    \end{block}
+
+   	$\PComp = \bigcup\limits_k \Samp[n^k]$.
+
 \end{frame}
 
 \begin{frame}
     \frametitle{Results for PComp}
+
+    \begin{theorem}
+        For all $a > 0$ there exists $\Dis \in \PComp$ such that for all $\lang{F} \in \Comp[n^a]$ for infinitely many $n$:
+        $\delta(D_n, F_n) \ge 1 - 2^{-n}$.
+    \end{theorem}
+
+    \pause
+
+    \begin{theorem}
+        For all $a > 0$ there exists a language $\Lan$ and  $\Dis \in \PComp$ such that:
+        \begin{itemize}
+			\item $(\Lan, \lang{F}) \in \Heur[O(\frac1{2^n})]{\DTime{n}}$ for all $\lang{F} \in \Comp[n^a]$;
+			\item $(\Lan, \Dis) \notin \HeurR[1 - \frac1{2^{n - 1}}]$.
+        \end{itemize}
+    \end{theorem}
 \end{frame}

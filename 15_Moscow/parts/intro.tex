@@ -2,8 +2,12 @@
 
 \begin{frame}{Definitions}
 
-    \begin{block}{Ensembles}
-        Ensemble of distributions $\Dis \in \Samp[n^k] \Leftrightarrow$ there is a randomized $O(n^k)$-time algorithm $A$
+    \begin{block}{Ensembles of distributions}
+        Ensemble of distributions $\Dis = \{D_n\}_{n = 1}^{\infty}$.
+
+        \vspace{0.15cm}
+        
+        $\Dis \in \Samp[n^k] \Leftrightarrow$ there is a randomized $O(n^k)$-time algorithm $A$
         such that $\Dis_n$ and $A(1^n)$ are equally distributed.
     \end{block}
 
@@ -14,6 +18,8 @@
 	\begin{block}{Heuristic computations}
 		$\Lan$ is a language, $\Dis$ is an ensemble of distributions.
 
+        \vspace{0.15cm}
+        
         $(\Lan, \Dis) \in \Heur[\delta]\DTime[n^k] \Leftrightarrow$ there is $O(n^k)$-time algorithm $A$ such that
 		$\Pr\limits_{x \gets D_n} [A(x) = L(x)] > 1 - \delta$
 	\end{block}

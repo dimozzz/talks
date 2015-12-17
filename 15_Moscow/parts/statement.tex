@@ -1,14 +1,37 @@
 \begin{frame}{Goal and Result}
-	\pause
-	\begin{columns}[t]
-		\begin{column}{0.5\textwidth}
+
+   	\begin{columns}[t]
+    	\begin{column}{0.5\textwidth}
             \begin{center}
             	\textbf{Goal}
             \end{center}
-			
-			For every $k$ there is a language $\Lan$, ensemble $\Dis$ and small $\delta$ such that
-			\pause
-			\begin{enumerate}
+        \end{column}
+        
+		\begin{column}{0.5\textwidth}
+            \begin{center}
+            	\textbf{Result}
+            \end{center}
+		\end{column}
+	\end{columns}
+
+    \vspace{0.46cm}
+    
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+    		\onslide<2->{For every $k$ there is a language $\Lan$, ensemble $\Dis$ and small $\delta$ such that:}
+        \end{column}
+
+		\begin{column}{0.5\textwidth}
+   			\onslide<6->{For every $0 < a < b$ there is a language $\Lan$, ensemble $\Dis$ and $\delta = o(1)$ such that:}
+		\end{column}
+	\end{columns}
+
+    \pause
+    \pause
+
+    \begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+    		\begin{enumerate}
 				\item $\Dis \in \PSamp$;
 				\pause
 				\item $(\Lan, \Dis) \notin \HeurP[1 - \delta]$;
@@ -18,13 +41,8 @@
         \end{column}
         
         \pause
+        \pause
 		\begin{column}{0.5\textwidth}
-            \begin{center}
-            	\textbf{Result}
-            \end{center}
-            
-			For every $0 < a < b$ there is a language $\Lan$, ensemble $\Dis$ and $\delta = o(1)$ such that
-			\pause
 			\begin{enumerate}
 				\item $\Dis \in \Samp[n^{\log^b n}]$;
 				\pause
@@ -40,37 +58,46 @@
 
 
 \begin{frame}{Past and Present}
-	\pause
-	\begin{columns}[t]
+
+    \begin{columns}[t]
 		\begin{column}{0.5\textwidth}
             \begin{center}
             	\textbf{Gutfreund et al., 2007}
             \end{center}
-			
-			For every $k$ and \mycolor{blue}{every $\Lan \in \NP$-complete}, ensemble $\Dis$ and small $\delta$ such that
-			\pause
-			\begin{enumerate}
-				\item $\Dis \in \PSamp$;
-				\pause
-				\item $(\Lan, \Dis) \notin \HeurP[1 - \delta]$;
-				\pause
-				\item for every $\lang{R} \in \Samp[n^k]$ we have that $(\Lan, \lang{R}) \in \Heur[\delta]\DTime[n]$.
-			\end{enumerate}
         \end{column}
         
-        \pause
 		\begin{column}{0.5\textwidth}
             \begin{center}
             	\textbf{Result}
             \end{center}
-            
-			For every $0 < a < b$ there is a language $\Lan$, ensemble $\Dis$ and $\delta = o(1)$ such that
-			\pause
+		\end{column}
+	\end{columns}
+
+    \vspace{0.4cm}
+
+   	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+			\onslide<2->{\mycolor{alert}{If $\NP \notin \BPP$}, there exists ensemble $\Dis$ such that:}
+        \end{column}
+        
+		\begin{column}{0.5\textwidth}
+			For every $0 < a < b$ there is a language $\Lan$, ensemble $\Dis$ and $\delta = o(1)$ such that:
+		\end{column}
+	\end{columns}
+    
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+			\begin{enumerate}
+				\item<3-> $\Dis \in \Samp[{quasi}\text{-}poly]$;
+				\item<4-> {\mycolor{blue}{for every $\Lan \in \NP$-complete} and every $\alpha(n) = o(1)$ $(\Lan, \Dis)
+					\notin \HeurBPP[\alert{\alpha(n)}]$}.
+			\end{enumerate}
+        \end{column}
+        
+		\begin{column}{0.5\textwidth}
 			\begin{enumerate}
 				\item $\Dis \in \Samp[n^{\log^b n}]$;
-				\pause
 				\item $(\Lan, \Dis) \notin \HeurP[1 - \delta]$;
-				\pause
 				\item for every $\lang{R} \in \Samp[n^{\log^{a} n}]$ we have that $(\Lan, \lang{R}) \in
 					\Heur[\delta]\DTime[n]$.
 			\end{enumerate}
