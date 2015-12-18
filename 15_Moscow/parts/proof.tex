@@ -41,6 +41,24 @@
     \end{theorem}
 \end{frame}
 
+\begin{frame}{Proof of the Watson theorem for k = 2}
+	\begin{enumerate}
+        \item Let $A_1$, \dots, $A_n$, \dots is an enumeration of all algorithms.
+    	\pause    
+		\item Consider sequences $n_i$, $n^*_i$ such that $n_1 = 1$, $n_{i + 1} = n^*_i + 1$ and $n^*_i =
+			2^{n^{a + 1}_i}$.
+    	\pause
+		\item Consider the following algorithm (on input $1^n$):
+			\begin{itemize}
+				\item find $i$ such that $n_i \le n \le n^*_i$;
+				\item if $n = n^*_i$ return $b \in \{0, 1\}$ such that $\Pr[A_i(1^{n_i}) = b] \le \frac{1}{2}$;
+				\item else run $A_i(1^{n + 1})$ $\frac{8 \log \epsilon}{\epsilon^2}$ times and return majority of
+					answers.
+			\end{itemize}
+	\end{enumerate}
+\end{frame}
+
+
 \begin{frame}
     \frametitle{PComp}
 
@@ -81,8 +99,8 @@
     \begin{theorem}
         For all $a > 0$ there exists a language $\Lan$ and  $\Dis \in \PComp$ such that:
         \begin{itemize}
-			\item $(\Lan, \lang{F}) \in \Heur[O(\frac1{2^n})]{\DTime{n}}$ for all $\lang{F} \in \Comp[n^a]$;
-			\item $(\Lan, \Dis) \notin \HeurR[1 - \frac1{2^{n - 1}}]$.
+			\item $(\Lan, \lang{F}) \in \Heur[O(\frac1{2^n})]{\DTime[n]}$ for all $\lang{F} \in \Comp[n^a]$;
+			\item $(\Lan, \Dis) \notin \Heur[1 - \frac1{2^{n - 1}}]{\mathbf{R}}$.
         \end{itemize}
     \end{theorem}
 \end{frame}
