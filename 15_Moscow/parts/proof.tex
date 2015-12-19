@@ -13,7 +13,8 @@
 	\end{block}
     
     \begin{lemma}[informal]
-        Hierarchy theorem $\Leftrightarrow$ $\lang{SD}$ property. 
+        Hierarchy theorem for $(n^{\log^b n}, n^{\log^a n})$ $\Leftrightarrow$ $\lang{SD}_{\lambda(n)}(n^{\log^b n},
+        n^{\log^a n})$ property, where \alert{$\lambda(n) \to 0$}. 
     \end{lemma}
 \end{frame}
 
@@ -33,7 +34,7 @@
     \begin{theorem}[Watson, 2013]
         For any $a > 0$, $k > 0$ and $\epsilon > 0$,
         \only<-2>{$\lang{SD}_{\frac{1}{k} + \epsilon}(poly(n), n^a)$}\only<3->{$\lang{SD}_{\mycolor{blue}{{\frac{1}{k} + \epsilon}}}(poly(n), n^a)$}
-        is true. \pause $\mycolor{blue}{supp(D_n) \in [k]}$.
+        is true. \pause \mycolor{blue}{The size of support equals $k$}.
     \end{theorem}
 	\pause
     
@@ -44,6 +45,14 @@
 \end{frame}
 
 \begin{frame}{Proof of the Watson theorem for k = 2}
+
+    \begin{theorem}[Watson, 2013]
+        For any $a > 0$ and $\epsilon > 0$,
+        $\lang{SD}_{\frac{1}{2} + \epsilon}(poly(n), n^a)$
+        is true.
+    \end{theorem}
+	\pause
+
 	\begin{enumerate}
         \item Let $A_1$, \dots, $A_n$, \dots is an enumeration of all algorithms.
     	\pause    
@@ -84,7 +93,7 @@
         D_{|x|}(y)$.
     \end{block}
 
-   	$\PComp = \bigcup\limits_k \Samp[n^k]$.
+   	$\PComp = \bigcup\limits_k \Comp[n^k]$.
 
 \end{frame}
 
@@ -93,7 +102,7 @@
 
     \begin{theorem}
         For all $a > 0$ there exists $\Dis \in \PComp$ such that for all $\lang{F} \in \Comp[n^a]$ for infinitely many $n$:
-        $\delta(D_n, F_n) \ge 1 - 2^{-n}$.
+        $\Delta(D_n, F_n) \ge 1 - 2^{-n}$.
     \end{theorem}
 
     \pause
