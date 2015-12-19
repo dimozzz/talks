@@ -1,13 +1,14 @@
 \begin{frame}
 	\frametitle{Statistical distance}
 
+    Statistical distance between distributions $F, G$: $\Delta(F, G) = \sum\limits_{x: F(x) \ge G(x)} F(x) - G(x)$.
+    \pause
     \begin{block}{$\lang{SD}$ property}
 		Functions $f$ and $g$ satisfy $\lang{SD}$ property with parameter $\lambda(n)$ ($\lang{SD}_{\lambda(n)}(f(n),
 		g(n))$) if:
         \begin{itemize}
             \item there is $\Dis \in \Samp[f(n)]$;
-            \item for every $\lang{F} \in \Samp[g(n)]$, for infinitely many $n$ the statistical distance between $D_n$
-				and	$F_n$ is at least $1 - \lambda(n)$.
+            \item for every $\lang{F} \in \Samp[g(n)]$, for infinitely many $n$: $\Delta(F_n, D_n) \ge 1 - \lambda(n)$.
         \end{itemize}
 	\end{block}
     
@@ -24,14 +25,15 @@
 		g(n))$) if:
         \begin{itemize}
             \item there is $\Dis \in \Samp[f(n)]$;
-            \item for every $\lang{F} \in \Samp[g(n)]$, for infinitely many $n$ the statistical distance between $D_n$
-				and	$F_n$ is at least $1 - \lambda(n)$.
+            \item for every $\lang{F} \in \Samp[g(n)]$, for infinitely many $n$: $\Delta(F_n, D_n) \ge 1 - \lambda(n)$.
         \end{itemize}
 	\end{block}
 
     \pause
     \begin{theorem}[Watson, 2013]
-        For any $a > 0$, $k > 0$ and $\epsilon > 0$,  $\lang{SD}_{\frac{1}{k} + \epsilon}(poly(n), n^k)$ is true.
+        For any $a > 0$, $k > 0$ and $\epsilon > 0$,
+        \only<-2>{$\lang{SD}_{\frac{1}{k} + \epsilon}(poly(n), n^a)$}\only<3->{$\lang{SD}_{\mycolor{blue}{{\frac{1}{k} + \epsilon}}}(poly(n), n^a)$}
+        is true. \pause $\mycolor{blue}{supp(D_n) \in [k]}$.
     \end{theorem}
 	\pause
     
@@ -52,7 +54,7 @@
 			\begin{itemize}
 				\item find $i$ such that $n_i \le n \le n^*_i$;
 				\item if $n = n^*_i$ return $b \in \{0, 1\}$ such that $\Pr[A_i(1^{n_i}) = b] \le \frac{1}{2}$;
-				\item else run $A_i(1^{n + 1})$ $\frac{8 \log \epsilon}{\epsilon^2}$ times and return majority of
+				\item else run $A_i(1^{n + 1})$ $\frac{8 \log \epsilon}{\epsilon^2}$ times and return the majority of
 					answers.
 			\end{itemize}
 	\end{enumerate}
