@@ -13,29 +13,9 @@
 	\end{block}
     
     \begin{lemma}[informal]
-        Hierarchy theorem for $(n^{\log^b n}, n^{\log^a n})$ $\Leftrightarrow$ $\lang{SD}_{\lambda(n)}(n^{\log^b n},
-        n^{\log^a n})$ property, where \alert{$\lambda(n) \to 0$}. 
+        $\lang{SD}_{\lambda(n)}(n^{\log^b n}, n^{\log^a n}) \Rightarrow$ hierarchy theorem for $(n^{\log^b n},
+        n^{\log^a n})$, where \alert{$\lambda(n) \to 0$}. 
     \end{lemma}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Statistical distance}
-
-    Statistical distance between distributions $F, G$: $\Delta(F, G) = \sum\limits_{x: F(x) \ge G(x)} F(x) - G(x) =
-    \max\limits_{S \subseteq \{0, 1\}^n} F(S) - G(S)$.
-    \pause
-
-    \begin{lemma}[informal]
-        Hierarchy theorem for $(n^{\log^b n}, n^{\log^a n})$ $\Leftrightarrow$ $\lang{SD}_{\lambda(n)}(n^{\log^b n},
-        n^{\log^a n})$ property, where \alert{$\lambda(n) \to 0$}. 
-    \end{lemma}
-
-    \pause
-    \alert{$\lambda(n) \to 0$} comes from ``universal'' distribution.
-
-    $D_i \in Samp[n^{\log^a n}]$
-
-    $D_0 = \sum\limits_{i} \frac{1}{2^i} D_i$.
 \end{frame}
 
 
@@ -86,6 +66,21 @@
 				\item else run $A_i(1^{n + 1})$ $\frac{8 \log \epsilon}{\epsilon^2}$ times and return the majority of
 					answers.
 			\end{itemize}
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Magic tree}
+    
+	\begin{enumerate}
+		\item The set of vertices of $T_i$ is a subset of $\{n_i, n_i + 1, \dots, n_i^*\}$.
+		\item $n_i^*$ is the root of $T_i$.
+		\item All leaves of $T_i$ have numbers at most $m_i = 2 n_i$.
+        \item If $p$ is a parent of $n$ then $p \le 2^{\log^{1 + \epsilon} n}$.
+		\item There is an algorithm that for any vertex $n$ of $T_i$ outputs the parent $p$ of $n$ and the number of children
+	        of $p$ that are less than $n$ in $poly(n)$ steps.
+		\item For every inner vertex $v$ of $T_i$, $v$ has $k = \lceil \frac{1}{\lambda(n_i^*)} + 1 \rceil^2$ children. ($>
+            \lceil \frac{1}{\lambda(n_i^*)} + 1 \rceil$ due to approximate calculation).
 	\end{enumerate}
 \end{frame}
 
