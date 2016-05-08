@@ -1,0 +1,146 @@
+\begin{frame}
+	\frametitle{Statistical distance}
+
+    Statistical distance between distributions $F, G$: $\Delta(F, G) = \sum\limits_{x: F(x) \ge G(x)} F(x) - G(x)$.
+    \pause
+    \begin{block}{$\lang{SD}$ property}
+		Functions $f$ and $g$ satisfy $\lang{SD}$ property with parameter $\lambda(n)$ ($\lang{SD}_{\lambda(n)}(f(n),
+		g(n))$) if:
+        \begin{itemize}
+            \item there is $\Dis \in \Samp[f(n)]$;
+            \item for every $\lang{F} \in \Samp[g(n)]$, for infinitely many $n$: $\Delta(F_n, D_n) \ge 1 - \lambda(n)$.
+        \end{itemize}
+	\end{block}
+    
+    \begin{lemma}[informal]
+        Hierarchy theorem for $(n^{\log^b n}, n^{\log^a n})$ $\Leftrightarrow$ $\lang{SD}_{\lambda(n)}(n^{\log^b n},
+        n^{\log^a n})$ property, where \alert{$\lambda(n) \to 0$}. 
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Statistical distance}
+
+    Statistical distance between distributions $F, G$: $\Delta(F, G) = \sum\limits_{x: F(x) \ge G(x)} F(x) - G(x) =
+    \max\limits_{S \subseteq \{0, 1\}^n} F(S) - G(S)$.
+    \pause
+
+    \begin{lemma}[informal]
+        Hierarchy theorem for $(n^{\log^b n}, n^{\log^a n})$ $\Leftrightarrow$ $\lang{SD}_{\lambda(n)}(n^{\log^b n},
+        n^{\log^a n})$ property, where \alert{$\lambda(n) \to 0$}. 
+    \end{lemma}
+
+    \pause
+    \alert{$\lambda(n) \to 0$} comes from ``universal'' distribution.
+
+    $D_i \in Samp[n^{\log^a n}]$
+
+    $D_0 = \sum\limits_{i} \frac{1}{2^i} D_i$.
+\end{frame}
+
+
+\begin{frame}{Samplable distributions hierarchy}
+
+    \begin{block}{$\lang{SD}$ property}
+		Functions $f$ and $g$ satisfy $\lang{SD}$ property with parameter $\lambda(n)$ ($\lang{SD}_{\lambda(n)}(f(n),
+		g(n))$) if:
+        \begin{itemize}
+            \item there is $\Dis \in \Samp[f(n)]$;
+            \item for every $\lang{F} \in \Samp[g(n)]$, for infinitely many $n$: $\Delta(F_n, D_n) \ge 1 - \lambda(n)$.
+        \end{itemize}
+	\end{block}
+
+    \pause
+    \begin{theorem}[Watson, 2013]
+        For any $a > 0$, $k > 0$ and $\epsilon > 0$,
+        \only<-2>{$\lang{SD}_{\frac{1}{k} + \epsilon}(poly(n), n^a)$}\only<3->{$\lang{SD}_{\mycolor{blue}{{\frac{1}{k} + \epsilon}}}(poly(n), n^a)$}
+        is true. \pause \mycolor{blue}{The size of support equals $k$}.
+    \end{theorem}
+	\pause
+    
+    \begin{theorem}[Itsykson, Knop, Sokolov, 2015]
+        For every $a$, $b$, $c$ such that $0 < a < b$ and $c > 0$,
+        $\lang{SD}_{\frac{1}{2^{(\log\log\log n)^c}}}(n^{\log^b n}, n^{\log^a n})$ is true.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{Proof of the Watson theorem for k = 2}
+
+    \begin{theorem}[Watson, 2013]
+        For any $a > 0$ and $\epsilon > 0$,
+        $\lang{SD}_{\frac{1}{2} + \epsilon}(poly(n), n^a)$
+        is true.
+    \end{theorem}
+	\pause
+
+	\begin{enumerate}
+        \item Let $A_1$, \dots, $A_n$, \dots is an enumeration of all algorithms.
+    	\pause    
+		\item Consider sequences $n_i$, $n^*_i$ such that $n_1 = 1$, $n_{i + 1} = n^*_i + 1$ and $n^*_i =
+			2^{n^{a + 1}_i}$.
+    	\pause
+		\item Consider the following algorithm (on input $1^n$):
+			\begin{itemize}
+				\item find $i$ such that $n_i \le n \le n^*_i$;
+				\item if $n = n^*_i$ return $b \in \{0, 1\}$ such that $\Pr[A_i(1^{n_i}) = b] \le \frac{1}{2}$;
+				\item else run $A_i(1^{n + 1})$ $\frac{8 \log \epsilon}{\epsilon^2}$ times and return the majority of
+					answers.
+			\end{itemize}
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{PComp}
+
+    \begin{block}{Samp}
+        Ensemble of distributions $\Dis = \{D_n\}_{n = 1}^{\infty}$.
+
+        \vspace{0.15cm}
+        
+        $\Dis \in \Samp[n^k] \Leftrightarrow$ there is a randomized $O(n^k)$-time algorithm $A$
+        such that $\Dis_n$ and $A(1^n)$ are equally distributed.
+    \end{block}
+
+
+    \pause
+    \begin{block}{Comp}
+        Ensemble of distributions $\Dis = \{D_n\}_{n = 1}^{\infty}$. $D_n$ is concentrated on $\{0, 1\}^n$.
+
+        \vspace{0.15cm}
+        
+        $\Dis \in \Comp[n^k] \Leftrightarrow$ there is a $O(n^k)$-time algorithm $A$ such that $A(x) = \sum\limits_{y \le x}
+        D_{|x|}(y)$.
+    \end{block}
+
+   	$\PComp = \bigcup\limits_k \Comp[n^k]$.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Results for PComp}
+
+    \begin{theorem}
+        For all $a > 0$ there exists $\Dis \in \PComp$ such that for all $\lang{F} \in \Comp[n^a]$ for infinitely many $n$:
+        $\Delta(D_n, F_n) \ge 1 - 2^{-n}$.
+    \end{theorem}
+
+    \pause
+
+    \begin{theorem}
+        For all $a > 0$ there exists a language $\Lan$ and  $\Dis \in \PComp$ such that:
+        \begin{itemize}
+			\item $(\Lan, \lang{F}) \in \Heur[O(\frac1{2^n})]{\DTime[n]}$ for all $\lang{F} \in \Comp[n^a]$;
+			\item $(\Lan, \Dis) \notin \Heur[1 - \frac1{2^{n - 1}}]{\mathbf{R}}$.
+        \end{itemize}
+    \end{theorem}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Open question}
+
+    \begin{itemize}
+		\item Improve Watson's theorem for $\lambda \to 0$.
+    	\item Prove hierarchy theorem for $\PSamp$.
+    \end{itemize}
+\end{frame}

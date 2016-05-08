@@ -1,0 +1,78 @@
+\section{Introduction}
+
+\begin{frame}{Definitions}
+
+    \begin{block}{Ensembles of distributions}
+        Ensemble of distributions $\Dis = \{D_n\}_{n = 1}^{\infty}$.
+
+        \vspace{0.15cm}
+        
+        $\Dis \in \Samp[n^k] \Leftrightarrow$ there is a randomized $O(n^k)$-time algorithm $A$
+        such that $D_n$ and $A(1^n)$ are equally distributed.
+    \end{block}
+
+   	$\PSamp = \bigcup\limits_k \Samp[n^k]$.
+
+	\pause
+    
+	\begin{block}{Heuristic computations}
+		$\Lan$ is a language, $\Dis$ is an ensemble of distributions.
+
+        \vspace{0.15cm}
+        
+        $(\Lan, \Dis) \in \Heur[\delta]\DTime[n^k] \Leftrightarrow$ there is $O(n^k)$-time algorithm $A$ such that
+		$\Pr\limits_{x \gets D_n} [A(x) = L(x)] > 1 - \delta$.
+	\end{block}
+
+    $\HeurP[\delta] = \bigcup\limits_k \Heur[\delta]\DTime[n^k]$.
+\end{frame}
+
+\begin{frame}{Definitions}
+
+    \begin{itemize}
+        \item $(\Lan, \Dis) \in \Heur[\delta]\NTime[n^k] \Leftrightarrow$ there is $O(n^k)$-time non-deterministic algorithm
+            $A$ such that $\Pr\limits_{x \gets D_n} [A(x) = L(x)] > 1 - \delta$;
+		\item $(\Lan, \Dis) \in \Heur[\delta]\BPTime[n^k] \Leftrightarrow$ there is $O(n^k)$-time probabilistic algorithm
+            $A$ such that $\Pr\limits_{x \gets D_n} [\Pr[A(x) = L(x)] > \frac{2}{3}] > 1 - \delta$.
+    \end{itemize}
+
+    \pause
+
+    $\BPTime$-machine can also violate promise $\delta$-fraction of inputs.
+
+\end{frame}
+
+\begin{frame}{``Easy'' problems}
+
+    \begin{theorem}[Gurevich and Shelah, 1987]
+        Let $\lang{HP}$ denote the language of Hamiltonian graphs. Then $(\lang{HP}, \lang{U}) \in
+        \Heur[\frac{1}{2^{O(\sqrt{n})}}]\DTime[n]$. 
+    \end{theorem}
+    \pause
+    \begin{theorem}[Babai, Erdos and Selkow, 1980]
+        Let $\lang{GI}$ denote the language of pairs of isomorphic graphs. Then $(\lang{GI}, \lang{U}) \in
+        \Heur[\frac{1}{\sqrt[7]{n}}]\DTime[n]$. 
+    \end{theorem}
+\end{frame}
+
+
+\begin{frame}{Hierarchy theorems}
+    \begin{itemize}
+        \item $\DTime$, $\NTime$, systactic classes (delayed diagonalization);
+        \pause    
+        \item $\Heur\DTime$, $\Heur\NTime$, \dots;
+        \pause    
+        \item $\Heur\BPTime$.     
+    \end{itemize}
+
+    \pause
+
+    \begin{theorem}[Pervyshev, 07, IKS 15]
+        $\forall a, \epsilon > 0 ~~ \exists L$ such that:
+        \begin{itemize}
+            \item $(\Lan, \Uni) \in \Heur[\epsilon]\BPP$;
+            \item $(\Lan, \Dis) \notin \Heur[\frac{1}{2} - \epsilon]\BPTime[n^a]$, where $\Dis$ can be sampled in $O(n^a)$
+                steps.
+        \end{itemize}
+    \end{theorem}
+\end{frame}
