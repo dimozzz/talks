@@ -1,0 +1,95 @@
+план:
+
+KW с доказательством.
+Branching programs
+
+Определение dag-like protocol.
+KW с доказательством.
+
+PLS games.
+Эквивалентность.
+
+Real games.
+CP с доказательством.
+
+Random CP
+
+
+\begin{frame}{KW relation}
+    \begin{definition}[Karchmer, Wigderson 1990]
+        $\Bit$ relation for $U, V \subseteq \{0, 1\}^{n}$:
+        \begin{itemize}
+            \item Alice receive $u \in U$, Bob receive $v \in V$;
+            \item goal is to find $i$ such that $u_i \neq v_i$.
+        \end{itemize}
+    	\pause    
+        Monotone case ($\MBit$ relation):
+        \begin{itemize}
+            \item goal is to find $i$ such that $u_i = 1 \land v_i = 0$.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+
+    \begin{theorem}[Karchmer, Wigderson 1990]
+        There is a \onslide<4->{\alert{(monotone)}} boolean formula for function $f$ of size $S$ iff there is a communication
+        protocol of size $S$ for $\Bit$ \onslide<4->{\alert{$(\MBit)$}} relation $U = f^{-1}(1), V = f^{-1}(0)$.
+    \end{theorem}
+\end{frame}
+
+
+\begin{frame}{Protocols, trees, rectangles}
+
+    \begin{theorem}[KW 1990, $\Leftarrow$] 
+        There is a monotone boolean formula for function $f$ of size $S$ iff there is a communication protocol of size $S$
+        for $\Bit$ $(\MBit)$ relation $U = f^{-1}(1), V = f^{-1}(0)$.
+    \end{theorem}
+
+    \pause
+    Proof:
+
+    
+    \begin{enumerate}
+        \item Communication protocol is a tree.
+        \item Mark vertex $v$ by rectangle $R_v \subset U \times V$ (set of inputs that leads to vertex $v$).
+        \item $f_v$ is a correct function on $R_v$.
+    \end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Intuition}
+
+
+\end{frame}
+
+
+\begin{frame}{Dag-like \only<9->{\alert{real}} communication game for relation $N: U \times V \to T$}
+    Triple $(H, A, B)$, where $H$ is directed acyclic graph, $A: H \times U \to \only<-8>{\{0, 1\}}
+    \only<9->{\alert{\mathbb{R}}}$~and $B: H \times V \to \only<-8>{\{0, 1\}} \only<9->{\alert{\mathbb{R}}}$.
+
+    \pause
+    $v \in H$ is valid for pair $(x, y)$ iff $A(v, x) > B(v, y)$.
+
+    \pause
+
+    \begin{columns}[t]
+		\begin{column}{0.7\textwidth}
+            \begin{itemize}
+                \item<4-> Out-degree and all vertexes is at most $2$;
+	            \item<5-> the leaves are marked by element of $T$;
+    		    \item<6-> $\exists s \in H$ is valid for all pairs from $U \times V$;
+		        \item<7-> if $h \in H$ is valid for $(x, y)$ and $h$ is not a leaf then at least one child of $h$ is valid for
+	    	        $(x, y)$;
+	    	    \item<8-> if $h \in H$ is valid for $(x, y)$, $h$ is a leaf and $h$ is marked by $t \in T$ then $t \in N(x, y)$.
+	        \end{itemize}
+
+    		\onslide<8->{The size of the game is the size of the graph $H$.}
+        \end{column}
+        
+		\begin{column}{0.25\textwidth}
+            \input{pics/prot_def.tex}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
