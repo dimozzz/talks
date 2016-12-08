@@ -6,84 +6,34 @@
 
     
 \begin{tikzpicture}
-    \only<-3, 5->{
-        \node[inner] (a) at (0, 0) {\scriptsize $a$};
-	}
-    \only<4>{
-        \node[inner_g] (a) at (0, 0) {\scriptsize $a$};
-    }
-
-    \only<-4, 6->{
-        \node[inner] (b) at (-0.9, -1.2) {\scriptsize $b$};
-	}
-    \only<5>{
-        \node[inner_g] (b) at (-0.9, -1.2) {\scriptsize $b$};
-    }
-
+    \node[inner] (a) at (0, 0) {\scriptsize $a$};
+    \node[inner] (b) at (-0.9, -1.2) {\scriptsize $b$};
     \node[inner] (c) at (0.9, -1.2) {\scriptsize $a$};
     \node[inner, label = below:$t_1$] (d) at (-1.5, -2.4) {};
-
-    \only<-5, 7-10>{
-        \node[inner] (e) at (-0.3, -2.4) {\scriptsize $b$};
-	}
-    \only<6>{
-        \node[inner_g] (e) at (-0.3, -2.4) {\scriptsize $b$};
-    }
-    \only<11->{
-        \node[inner_b] (e) at (-0.3, -2.4) {\scriptsize $b$};
-    }
-
-    \only<-10>{
-        \node[inner] (e2) at (0.3, -2.4) {\scriptsize $b$};
-	}
-    \only<11>{
-        \node[inner_b] (e2) at (0.3, -2.4) {\scriptsize $b$};
-    }
-    \only<12->{
-        \node[inner_r] (e2) at (0.3, -2.4) {\scriptsize $b$};
-    }
-    
+    \node[inner] (e) at (-0.3, -2.4) {\scriptsize $b$};
+    \node[inner] (e2) at (0.3, -2.4) {\scriptsize $b$};    
     \node[inner, label = below:$t_4$] (f) at (1.5, -2.4) {};
-
-    \only<-6, 9->{
-        \node[inner, label = below:$t_2$] (g) at (-1.5, -4.3) {};
-	}
-    \only<7-8>{
-        \node[inner_g, label = below:$t_2$] (g) at (-1.5, -4.3) {};
-    }
-    
+    \node[inner, label = below:$t_2$] (g) at (-1.5, -4.3) {};
     \node[inner, label = below:$t_3$] (h) at (-0.25, -4.3) {};
-
-    \only<-11>{
-        \node[inner, label = below:$t_3$] (g2) at (1.5, -4.3) {};
-	}
-    \only<12->{
-        \node[inner_r, label = below:$t_3$] (g2) at (1.5, -4.3) {};
-    }
-
-    \only<-11>{
-        \node[inner, label = below:$t_2$] (h2) at (0.25, -4.3) {};
-	}
-    \only<12->{
-        \node[inner_r, label = below:$t_2$] (h2) at (0.25, -4.3) {};
-    }
-    
-    
+    \node[inner, label = below:$t_3$] (g2) at (1.5, -4.3) {};
+    \node[inner, label = below:$t_2$] (h2) at (0.25, -4.3) {};
 
     
     \path (a) edge[ed] (b);
     \path (a) edge[ed] (c);
     \path (b) edge[ed] (d);
     \path (b) edge[ed] (e);
-    \only<-11>{
-        \path (c) edge[ed] (e2);
-    }
-    \only<12->{
-        \path (c) edge[ed] (e);
-    }
+    \path (c) edge[ed] (e2);
     \path (c) edge[ed] (f);
     \path (e) edge[ed] (g);
     \path (e) edge[ed] (h);
     \path (e2) edge[ed] (g2);
     \path (e2) edge[ed] (h2);
+
+    \draw[thick, black, fill = red!60!white] (0.7, 1.2) rectangle (1.2, 0.7);
+    \draw[->] (0.95, 0.6) to[out = 270, in = 90] (0, 0.2);
+
+    \draw[thick, black] (-1.7, -0.1) rectangle (-1.2, -0.6);
+    \fill[red!60!white] (-1.6, -0.18) rectangle (-1.45, -0.4);
+    \draw[->] (-1.45, -0.7) to[out = 270, in = 90] (-0.95, -1.03);
 \end{tikzpicture}
