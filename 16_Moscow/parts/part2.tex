@@ -1,18 +1,18 @@
-\begin{frame}{Dag-like \only<9->{\alert{real}} communication game for relation $N: U \times V \to T$}
+\begin{frame}{Dag-like \only<9->{\alert{real}} communication game for a relation $N: U \times V \to T$}
     Triple $(H, A, B)$, where $H$ is directed acyclic graph, $A: H \times U \to \only<-8>{\{0, 1\}}
     \only<9->{\alert{\mathbb{R}}}$~and $B: H \times V \to \only<-8>{\{0, 1\}} \only<9->{\alert{\mathbb{R}}}$.
 
     \pause
-    $h \in H$ is valid for pair $(x, y)$ iff $A(h, x) > B(h, y)$.
+    $h \in H$ is valid for some pair $(x, y)$ iff $A(h, x) > B(h, y)$.
 
     \pause
 
     \begin{columns}[t]
 		\begin{column}{0.7\textwidth}
             \begin{itemize}
-                \item<4-> Out-degree and all vertexes is at most $2$;
-	            \item<5-> the leaves are marked by element of $T$;
-    		    \item<6-> $\exists s \in H$ is valid for all pairs from $U \times V$;
+                \item<4-> Out-degree of each vertex is at most $2$;
+	            \item<5-> the leaves are marked by elements of $T$;
+    		    \item<6-> there is $s \in H$ that is valid for all pairs from $U \times V$;
 		        \item<7-> if $h \in H$ is valid for $(x, y)$ and $h$ is not a leaf then at least one child of $h$ is valid for
 	    	        $(x, y)$;
 	    	    \item<8-> if $h \in H$ is valid for $(x, y)$, $h$ is a leaf and $h$ is marked by $t \in T$ then $t \in N(x, y)$.
@@ -32,8 +32,8 @@
 \begin{frame}{Circuits and protocols}
 
     \begin{theorem}[S 2016, unp.] 
-        There is a monotone boolean formula for function $f$ of size $S$ iff there is a communication protocol of size $S$
-        for $\Bit$ $(\MBit)$ relation $U = f^{-1}(1), V = f^{-1}(0)$.
+        There is a {\color{blue}monotone} boolean circuit for function $f$ of size $S$ iff there is a boolean communication game of size
+        $S$ for $\Bit$ {\color{blue}$(\MBit)$} relation $U = f^{-1}(1), V = f^{-1}(0)$.
     \end{theorem}
     
     \pause
@@ -44,8 +44,8 @@
             \begin{enumerate}
                 \item<3-> $(H, A, B)$ is a game, $R_h = U_h \times V_h$ is a rectangle for $h \in H$.
                 \item<4-> By induction we create circuits for $f_h$ such that $f_h(U_h) = 1$ and $f_h(V_h) = 0$.
-                \item<5-> If leaf $h$ is marked by $i$ then $f_h = x_i$ or $f_h = \neg x_i$.
-                \item<6-> For inner vertex $h$ with children $h', h''$: $f_h = f_{h'} \land f_{h''}$ or $f_h = f_{h'} \lor
+                \item<5-> If a leaf $h$ is marked by $i$ then $f_h = x_i$ or $f_h = \neg x_i$.
+                \item<6-> For an inner vertex $h$ with children $h', h''$: $f_h = f_{h'} \land f_{h''}$ or $f_h = f_{h'} \lor
                     f_{h''}$.
             \end{enumerate}
         \end{column}
@@ -108,7 +108,7 @@
     \end{itemize}
 
     \pause
-    The size of proof is $k$. If coefficients in proof are \textbf{integer} and bounded by some polynomial then we have
+    The size of proof is $k$. If coefficients in the proof are \textbf{integer} and bounded by some polynomial then we have a
     $\CP^*$ proof.
 
     \pause
@@ -160,10 +160,10 @@
     Instances of Broken Mosquito Screen ($\BMS$) problem are encoding of graph with $m^2 - 2$ vertexes:
     \begin{itemize}
         \pause
-        \item ``good'' instances: there is a partition of the vertexes into $m - 1$ clique of size $m$ and one clique of size
+        \item ``good'' instances: there is a partition of the vertexes into $m - 1$ cliques of size $m$ and one clique of size
             $m - 2$;
         \pause
-		\item ``bad'' instances: there is a partition of the vertexes into $m - 1$ anticlique of size $m$ and one anticlique
+		\item ``bad'' instances: there is a partition of the vertexes into $m - 1$ anticliques of size $m$ and one anticlique
             of size $m - 2$;
         \pause
         \item $G_0$ is a set of minimal good instances of the $\BMS$ problem;

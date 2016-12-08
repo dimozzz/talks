@@ -1,5 +1,5 @@
 \begin{frame}{KW relation (Karchmer, Wigderson 1990)}
-    $\Bit$ relation for $U, V \subseteq \{0, 1\}^{n}$:
+    A relation $\Bit$ on sets $U, V \subseteq \{0, 1\}^{n}$:
     \begin{itemize}
         \item Alice receives $u \in U$, Bob receives $v \in V$;
         \item goal is to find $i$ such that $u_i \neq v_i$.
@@ -13,32 +13,33 @@
     \pause
 
     \begin{theorem}[Karchmer, Wigderson 1990]
-        There is a \only<4->{\alert{(monotone)}} boolean formula for function $f$ of size $S$ iff there is a communication
-        protocol of size $S$ for $\Bit$ \only<4->{\alert{$(\MBit)$}} relation $U = f^{-1}(1), V = f^{-1}(0)$.
+        There is a \only<4->{\alert{(monotone)}} boolean formula for a function $f$ of the size $S$ iff there is a
+        communication protocol of the size $S$ for the relation $\Bit$ \only<4->{\alert{$(\MBit)$}}, $U = f^{-1}(1), V =
+        f^{-1}(0)$.
     \end{theorem}
 
     \pause
     \pause
     
     \begin{theorem}[Pitassi, G{\"{o}}{\"{o}}s, 2014]
-        There is a monotone function $f$ such that any boolean formula that computes it has size at least
+        There is a monotone function $f$ such that any boolean formula that computes it has the size at least
         $2^{\frac{n}{\log(n)}}$. 
     \end{theorem}
 \end{frame}
 
 \begin{frame}{Canonical search problem $\Search_{\phi}$ (Beame et al. 2007)}
     
-    $\phi(x, y)$ is unsatisfiable CNF formula:
+    $\phi(x, y)$ is an unsatisfiable CNF formula:
     \begin{itemize}
-        \item Alice receives a substitution to variables $x$, Bob receives a substitution to variables $y$;
+        \item Alice receives a substitution to the variables $x$, Bob receives a substitution to the variables $y$;
         \item goal is to find a clause $C \in \phi$ that is unsatisfied by this substitution.
     \end{itemize}
 
     \pause
 
     \begin{theorem}[Beame, Pitassi, Segerlind 2007. Informal]
-        If we have a tree-like proof in \textit{huge class} of proof systems of size $S$ then there is a communication
-        protocol for $\Search_{\phi}$ of depth $poly(\log(S))$.
+        If there is a tree-like proof in proof system $\Pi$ ($\Pi$ from some \textit{huge class}) of size $S$ then there is a
+        communication protocol for $\Search_{\phi}$ of depth $poly(\log(S))$.
     \end{theorem}
 
     \pause
@@ -48,7 +49,7 @@
     \end{theorem}
 \end{frame}
 
-\begin{frame}{Generalization. Bad idea}
+\begin{frame}{Generalization. Trivial way}
 
     Alice receives $u \in U$ and Bob receives $v \in V$. A communication protocols corresponds to a tree:
 
@@ -56,17 +57,17 @@
 		\begin{column}{0.7\textwidth}
             \begin{itemize}
                 \item<2-> inner vertices are marked by players;
-	            \item<3-> if current player send a bit they move to next vertex;
+	            \item<3-> if current player sends a bit they move to next vertex;
     		    \item<8-> leaves are marked by answers.
 	        \end{itemize}
 
     		\onslide<9->{The size of the game is the size of the graph $H$.}
 
-            \onslide<10->{Can we glue some vertex?}
+            \onslide<10->{Can we merge some vertex?}
 
 			\onslide<13->{
                 \begin{block}{Remark}
-                    Too powerful model. There is short protocols for $\Bit$, $\MBit$ and $\Search_{\phi}$.
+                    It is too powerful model. There are short protocols for $\Bit$, $\MBit$ and $\Search_{\phi}$.
                 \end{block}
             }
         \end{column}
@@ -78,16 +79,16 @@
 
 \end{frame}
 
-\begin{frame}{Generalization. Good idea}
+\begin{frame}{Generalization. Rectangles}
 
     Alice receives $u \in U$ and Bob receives $v \in V$.
 
     \begin{columns}[t]
 		\begin{column}{0.6\textwidth}
             \begin{itemize}
-                \item<2-> Mark all vertices $h$ of tree by rectangles $R_h = U_h \times V_h \subseteq U \times V$;
+                \item<2-> Mark all vertices $h$ of the tree by rectangles $R_h = U_h \times V_h \subseteq U \times V$;
 	            \item<4-> $(u, v) \in R_h$ iff $h$ is on path from root to leaf for instance $(u, v)$;
-    		    \item<5-> payment for glue $h$ and $h'$: cover by rectangle $R_{new}$.
+    		    \item<5-> payment for merge $h$ and $h'$: cover by rectangle $R_{new}$.
 	        \end{itemize}
             
             \onslide<6->{
