@@ -33,7 +33,7 @@
 
     \begin{theorem}[S 2016, unp.] 
         There is a {\color{blue}monotone} boolean circuit for function $f$ of size $S$ iff there is a boolean communication game of size
-        $S$ for $\Bit$ {\color{blue}$(\MBit)$} relation $U = f^{-1}(1), V = f^{-1}(0)$.
+        $S$ for a relation $\Bit$ {\color{blue}$(\MBit)$} $(U = f^{-1}(1), V = f^{-1}(0))$.
     \end{theorem}
     
     \pause
@@ -90,8 +90,8 @@
     \pause
 
     \begin{theorem}[S 2016, unp.]
-        There is a PLS game for sets $U, V$ and relation $N$ of size $S$ $\Leftrightarrow$ there is a \textbf{boolean}
-        communication game for sets $U, V$ and relation $N$ of size $O(S)$.
+        There is a PLS game for sets $U, V$ and some relation $N$ of size $S$ $\Leftrightarrow$ there is
+        a \textbf{boolean} communication game for sets $U, V$ and the relation $N$ of size $O(S)$.
     \end{theorem}
 
 \end{frame}
@@ -177,7 +177,7 @@
 
 
     \begin{theorem}[S 2016, unp.]
-        The size of any real communication game for sets $G_0, B_0$ and $\MBit$ relation is at least $2^{\Omega(\sqrt{m})}$.
+        The size of any real communication game for sets $G_0, B_0$ and a relation $\MBit$ is at least $2^{\Omega(\sqrt{m})}$.
 
         If $\phi$ is a reasonable encoding of $\BMS$ problem then the size of any real communication game for sets $G_0, B_0$
         and $\Search_{\phi}$ relation is at least $2^{\Omega(\sqrt{m})}$.
@@ -229,15 +229,16 @@
         \pause
         \item $\SAT_{G}$ return $1$ iff input corresponds to satisfiable $\CSP$;
         \pause
-        \item $\SAT_{G}: \{0, 1\}^N \to \{0, 1\}$, where $N \le |U| \cdot 2^d$ and $d$ is the maximum degree of nodes in part
-            $U$.
+        \item $\SAT_{G}: \{0, 1\}^N \to \{0, 1\}$, where $N \le |U| \cdot 2^d$ and $d$ is the maximum
+            degree of nodes in part $U$.
     \end{itemize}
 
     $\SAT_{G}$ is the monotone function.
 
     \pause
     \begin{theorem}[S 2016, unp.]
-        There is an explicit graph $G$ such that any monotone real circuit for $\SAT_{G}$ has size at least $2^{N^{\frac{1}{8}}}$.
+        There is an explicit graph $G$ such that any monotone real circuit for $\SAT_{G}$ has size at
+        least $2^{\Omega(N^{\frac{1}{8}})}$.
     \end{theorem}
 \end{frame}
 
@@ -248,7 +249,7 @@
         \pause
         \item Lower bound on boolean dag-like games for $\Search_{\phi}$ for Tseitin formulas with small gadgets.
         \pause
-        \item Lower bound dag-like games with new validity condition: $A(h, x) = B(h, y)$ (motivated by lower bounds for
-            other proof systems).
+        \item Lower bound on dag-like games with new validity condition: $A(h, x) = B(h, y)$ (motivated
+            by lower bounds for other proof systems).
     \end{enumerate}
 \end{frame}

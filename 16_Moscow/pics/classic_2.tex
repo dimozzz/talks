@@ -31,6 +31,10 @@
     \path (e2) edge[ed] (h2);
 
     \draw[thick, black, fill = red!60!white] (0.7, 1.2) rectangle (1.2, 0.7);
+    \draw [black, decorate, decoration = {brace, amplitude = 4pt}, xshift = -3pt] (0.7, 0.7) -- (0.7, 1.2)
+	    node [black, midway, xshift = -0.3cm] {\scriptsize $U$};
+    \draw [black, decorate, decoration = {brace, amplitude = 4pt}, yshift = 3pt] (0.7, 1.2) -- (1.2, 1.2)
+    	node [black, midway, yshift = 0.3cm] {\scriptsize $V$};
     \draw[->] (0.95, 0.6) to[out = 270, in = 90] (0, 0.2);
 
     \draw[thick, black] (-1.7, -0.1) rectangle (-1.2, -0.6);

@@ -13,9 +13,9 @@
     \pause
 
     \begin{theorem}[Karchmer, Wigderson 1990]
-        There is a \only<4->{\alert{(monotone)}} boolean formula for a function $f$ of the size $S$ iff there is a
-        communication protocol of the size $S$ for the relation $\Bit$ \only<4->{\alert{$(\MBit)$}}, $U = f^{-1}(1), V =
-        f^{-1}(0)$.
+        There is a \only<4->{\alert{(monotone)}} boolean {\color{blue} formula} for a function $f$ of the
+        size $S$ iff there is a communication protocol of the size $S$ for the relation $\Bit$
+        \only<4->{\alert{$(\MBit)$}}, $U = f^{-1}(1), V = f^{-1}(0)$.
     \end{theorem}
 
     \pause
@@ -38,8 +38,9 @@
     \pause
 
     \begin{theorem}[Beame, Pitassi, Segerlind 2007. Informal]
-        If there is a tree-like proof in proof system $\Pi$ ($\Pi$ from some \textit{huge class}) of size $S$ then there is a
-        communication protocol for $\Search_{\phi}$ of depth $poly(\log(S))$.
+        If there is a {\color{blue} tree-like} proof in proof system $\Pi$ ($\Pi$ from some \textit{huge
+          class}) of size $S$ then there is a communication protocol for $\Search_{\phi}$ of depth
+        $poly(\log(S))$.
     \end{theorem}
 
     \pause
@@ -61,7 +62,7 @@
     		    \item<8-> leaves are marked by answers.
 	        \end{itemize}
 
-    		\onslide<9->{The size of the game is the size of the graph $H$.}
+    		\onslide<9->{The size of the protocol is the size of the tree.}
 
             \onslide<10->{Can we merge some vertex?}
 
@@ -88,10 +89,10 @@
             \begin{itemize}
                 \item<2-> Mark all vertices $h$ of the tree by rectangles $R_h = U_h \times V_h \subseteq U \times V$;
 	            \item<4-> $(u, v) \in R_h$ iff $h$ is on path from root to leaf for instance $(u, v)$;
-    		    \item<5-> payment for merge $h$ and $h'$: cover by rectangle $R_{new}$.
+    		    \item<6-> payment for merge $h$ and $h'$: cover by rectangle $R_{new}$.
 	        \end{itemize}
             
-            \onslide<6->{
+            \onslide<5->{
                 \begin{center}
                 	\input{pics/covers.tex}    
                 \end{center}
