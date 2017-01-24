@@ -1,0 +1,62 @@
+\begin{frame}{Ordered binary decision diagram (OBDD)}
+    \begin{columns}[t]
+        \begin{column}{0.3\textwidth}
+            \input{pics/obdd.tex}
+        \end{column}
+        
+		\begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item $\OBDD$ represents Boolean function $\{0, 1\}^n \to \{0, 1\}$;
+                \item $\pi$ is order of variables;
+                \item if $i < j$ then $x_{\pi(j)}$ cannot appear before $x_{\pi(i)}$.
+            \end{itemize}
+		\end{column}
+	\end{columns}    
+\end{frame}
+
+\begin{frame}{Orders are important}
+    \begin{itemize}
+        \item $f: \{0, 1\}^n \times \{0, 1\}^m \to \{0, 1\}$;
+        \item Alice knows $x \in \{0, 1\}^n$, Bob knows $y \in \{0, 1\}^m$;
+        \item they want to compute $f(x, y)$;
+        \pause
+        \item assume that $f$ has $\OBDD$ of size $S$ in some order in that $x$ preceed $y$;
+        \item communication complexity of $f$ is at most $\log S + 1$;
+        \pause
+        \item $\EQ: \{0, 1\}^n \times \{0, 1\}^n \to \{0, 1\}$, $\EQ(x, y) = 1 \Leftrightarrow x = y$;
+        \item if $x$ preceed $y$ in $\pi$, then size of any $\pOBDD$ for $\EQ(x, y)$ is at least $2^n$;
+        \pause
+        \item $\exists$ short $\OBDD$ for $\EQ(x, y)$ in the order $x_1, y_1, x_2, y_2, \dots, x_n, y_n$.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Operations with OBDD}
+      \begin{tabular}{|l|l|l|}
+        \hline
+        Input & Output & Complexity \\
+        \hline
+        $D^{\pi}$ & whether $D^{\pi}$ is satisfiable & \color{blue}{$O(|D|)$} \\
+        \hline
+        $D^{\pi}$ &  $(\lnot D)^{\pi}$ & \color{blue}{$O(|D|)$} \\
+        \hline
+        $D_1^{\pi}, D_2^{\pi}$ &  $(D_1\land D_2)^{\pi}$ & \color{blue}{$O(|D_1|\times |D_2|)$} \\
+        \hline
+        $D_1^{\pi}, D_2^{\pi}$ &  $(D_1\lor D_2)^{\pi}$ & \color{blue}{$O(|D_1|\times |D_2|)$} \\
+        \hline
+        $D^{\pi}$, $x$ &  $(\exists x D)^{\pi}$ & \color{blue}{$O(|D|)$} \\
+        \hline
+        $D^{\pi}$, $\rho$  &  $(D|_\rho)^{\pi}$ & \color{blue}{$O(|D|)$} \\
+        \hline
+        $D^{\pi}$ &  $\min D_0^{\pi}$ such that $D_0 \equiv D$ & \color{blue}{$O(|D|)$} \\
+        \hline
+        $D^{\pi'}, \pi$ &  $\min D_1^{\pi}$ such that $D^{\pi'} \equiv D_1^{\pi}$ &
+                                    $\color{blue}{poly(|D_1|} \alert{\times |D_2|} \color{blue}{)}$ \\
+        \hline
+        $D_1^{\pi_1}, D_2^{\pi_2}, D_3^{\pi_1}$ & whether $D_3 \ge D_1 \equiv D_2$ & \alert{$\NP$-hard} \\
+        \hline
+      \end{tabular}
+
+    \bigskip
+	$D_1 \equiv D_2$ if $D_1$ and $D_2$ represents the same Boolean function.
+\end{frame}
