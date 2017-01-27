@@ -64,7 +64,7 @@
     \pause
     \begin{lemma}
         \begin{enumerate}
-            \item Any OBDD for $PHP^n_n$ has size $2^{\Omega(n)}$.
+            \item Any $\OBDD$ for $\PHP^n_n$ has size $2^{\Omega(n)}$.
             \item For all constant $\alpha \le \frac{1}{2}$, $\CC^{best}_{\alpha}(\PHP^n_n) = \Omega(n)$.
         \end{enumerate}
     \end{lemma}
@@ -87,9 +87,10 @@
             x_{(u, v)} = c(v) \right)$.
     \end{itemize}
 
-    \begin{theorem}[Folklore]
-        $TS_{G, c}$ is satisfiable iff for every connected component $U$, $\bigoplus\limits_{v \in U} c(v) = 0$
-    \end{theorem}
+    \begin{Lemma}
+        $TS_{G, c}$ is satisfiable iff for every connected component $U$, $\bigoplus\limits_{v \in U}
+        c(v) = 0$.
+    \end{Lemma}
 \end{frame}
 
 
@@ -116,6 +117,31 @@
 \end{frame}
 
 
+
+\begin{frame}{Lower bound for unsatisfiable Tseitin formula}
+    \begin{theorem}
+    	If $G(V, E)$ is good enough expander with $|V| = n$ and $TS_{G, c}$ is unsatisfiable then the
+        size of any $\OBDD(\land, \reordering)$-proof of $TS_{G, c}$ is at least $2^{\Omega(n)}$.
+    \end{theorem}
+
+    \pause
+
+	\begin{columns}[t]
+		\begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item The last step: $\frac{F_1^{\pi} ~~~ F_2^{\pi}}{0}$. $F_1, F_2$ are satisfiable.
+                \item Let $F_1$ does not contain $C_u$ and $F_2$ does not contain $C_v$ and $(u, v)
+                    \notin E$.
+                \item $P$ is the shortest $uv$-path.
+            \end{itemize}    
+        \end{column}
+        
+		\begin{column}{0.5\textwidth}
+            \input{pics/tseitin.tex}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 \begin{frame}{Tseitin formulas on expanders}
     \begin{theorem}
         If $G(V, E)$ is good enough expander with $|V| = n$ then $\exists \ell$: $\forall S \subseteq E$
@@ -141,33 +167,6 @@
     \end{lemma}
 \end{frame}
 
-\begin{frame}{Lower bound for unsatisfiable Tseitin formula}
-    \begin{theorem}
-    	If $G(V, E)$ is good enough expander with $|V| = n$ and $TS_{G, c}$ is unsatisfiable then the
-        size of any $\OBDD(\land, \reordering)$-proof of $TS_{G,c}$ is at least $2^\Omega(n)$.
-    \end{theorem}
-
-	\begin{columns}[t]
-		\begin{column}{0.45\textwidth}
-            \begin{itemize}
-                \item The last step: $\frac{F_1^{\pi} \land F_2^{\pi}}{0}$. $F_1, F_2$ are satisfiable.
-                \item Let $F_1$ does not contains $C_u$ and $F_2$ does not contain $C_v$ and $(u, v)
-                    \notin E$.
-                \item $P$ is the shortest $uv$-path.
-            \end{itemize}    
-        \end{column}
-        
-		\begin{column}{0.45\textwidth}
-            \begin{figure}[ht]
-                \begin{center}
-                    \scalebox{0.35}{\includegraphics{pics/tseitin.pdf}}
-                \end{center}
-                $F_1|_{\rho_1} \land F_2|_{\rho_2}$ is almost satisfiable $TS_{\tilde G, c'}$, where
-                $\tilde G(V\setminus\{u,v\},E\setminus P)$.
-            \end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
 
 \begin{frame}
 	\begin{enumerate}
