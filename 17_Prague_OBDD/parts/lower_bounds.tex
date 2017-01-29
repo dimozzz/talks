@@ -34,7 +34,8 @@
     \pause
     For all orders:
     \begin{itemize}
-        \item for arbitrary $S$ that consists of $\ell$ variables.
+        \item if we have such substitution for arbitrary $S$ that consists of $\ell$ variables then we
+            have a lower bound for $\OBDD$ in all orders;
     \end{itemize}
 
     \pause
@@ -47,15 +48,16 @@
 \end{frame}
 
 \begin{frame}{Pigeonhole principle, $\PHP$}
+
 	\begin{itemize}
         \item $\PHP^m_n$, $m$ pigeons, $n$ holes;
         \item variables $p_{i, j}$, $i \in [m]$, $j \in [n]$, $p_{i, j}$: $i$-th pigeon is in the $j$-th
             hole;
         \item clauses:
         	\begin{itemize}
-                \item \color{blue}{long} clauses:
+                \item {\color{blue} long} clauses:
                     $p_{i, 1} \lor p_{i, 2} \dots \lor p_{i, n}$ for all $i \in [m]$;
-                \item \color{blue}{short} clauses: $\lnot p_{i, k} \lor \lnot p_{j, k}$ for all $i \neq j
+                \item {\color{blue} short} clauses: $\lnot p_{i, k} \lor \lnot p_{j, k}$ for all $i \neq j
                     \in [m]$ and all $k \in [n]$;
             \end{itemize}
         \item $\PHP^m_n$ is unsatisfiable iff $m > n$.
@@ -83,7 +85,7 @@
         \item $G(V, E)$ is undirected constant-degree graph;
         \item for every $e \in E$: $x_e$ Boolean variable;
         \item $c: V \to \{0, 1\}$ labelling function;
-        \item $TS_{G, c} = \bigwedge\limits_{v \in v} \left( \bigoplus\limits_{u: (u, v) \in E}
+        \item $TS_{G, c} = \bigwedge\limits_{v \in V} \left( \bigoplus\limits_{u: (u, v) \in E}
             x_{(u, v)} = c(v) \right)$.
     \end{itemize}
 
@@ -168,7 +170,36 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}{$\OBDD(\land)$ vs. $\OBDD(\land, \reordering)$}
+
+    \pause
+    \begin{itemize}
+        \item $\Phi$ is a $k$-CNF formula that has a short $\pOBDD(\land)$ proof;
+        \pause
+        \item there is a {\color{blue} big} set $S$ of orders such that for any $\sigma \in S$ formula
+            $\Phi$ requires exponential $\sigma\oOBDD$ proof;
+        \pause
+        \item $\sigma_1, \dots, \sigma_{\ell}$ is a set of orders such that for at least $i_0 \in [\ell]$,
+            $\pi\sigma_i \in S$;
+        \pause
+        \item $\Psi(x, w) = \bigwedge\limits_{i \in [\ell]} \left((w = i) \to \Phi(x_{\sigma_i(1)},
+            x_{\sigma_i(2)}, \dots, x_{\sigma_i(n)}) \right)$;
+        \pause
+        \item $\Phi$ has a short $\OBDD(\land, \reordering)$ proof.
+    \end{itemize}
+
+    \vspace{0.4cm}
+    \pause
+    \begin{itemize}
+        \item $\Phi(x, y) = \EQ(x, y)$;
+        \item $\sigma_i$ does not touch $x$;
+        \item $\sigma_i$ maps $y_j$ to $y_{j + i}$.
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Open problems}
 	\begin{enumerate}
         \item Lower bound for $\OBDD(\land, \weakening, \reordering)$-proofs.
         \item Does $\OBDD(\land, \weakening)$ simulate $\OBDD(\land, \reordering)$?

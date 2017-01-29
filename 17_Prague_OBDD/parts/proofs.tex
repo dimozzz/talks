@@ -2,11 +2,11 @@
     \begin{itemize}
         \item $\phi = C_1 \land C_2\land \dots \land C_t$ is unsatisfiable CNF.
         \item Choose order $\pi$; every $C_i$ is represented as $\pOBDD$.
-        \item Join (conjunction) rule: $\frac{D_1^{\pi}, ~~ D_2^{\pi}} {(D_1\land D_2)^{\pi}}$.
+        \item Join (conjunction) rule: $\frac{D_1^{\pi} ~~~ D_2^{\pi}} {(D_1\land D_2)^{\pi}}$.
         \item Weakening rule: $\frac{D^{\pi}}{D_1^{\pi}}$ if $D \models D_1$.
         \item Proof of unsatisfiability of $\phi$: derivation a constant false $\OBDD$.
         \pause
-        \item{} [Atserias, Kolaitis, Vardi, 2004] $\OBDD(\land, weakening)$ simulates $\CP^*$
+        \item{} [Atserias, Kolaitis, Vardi, 2004] $\OBDD(\land, \weakening)$ simulates $\CP^*$
             \pause $\implies \PHP^{n + 1}_n$ has proofs of poly size.
         \pause
         \item Unsatisfiable linear systems over $\mathbb{F}_2$ have short proofs.
@@ -14,7 +14,7 @@
         \item{} [Segerlind, 2007] $2^{n^{\Omega(1)}}$-lower bound for tree-like $\OBDD(\land,
             \weakening)$-proofs.
         \item{} [Kraj{\'{\i}}{\v{c}}ek, 2008] $2^{n^{\Omega(1)}}$-lower bound for dag-like $\OBDD(\land,
-            weakening)$-proofs.
+            \weakening)$-proofs.
     \end{itemize}
 \end{frame}
 
@@ -51,10 +51,10 @@
 \begin{frame}{$\OBDD(\land)$-proofs}
     \begin{itemize}
         \item{} [Groote, Zantema, 2003; Tveretina et al., 2009] $OBDD(\land)$-proof system is
-            incomparable with resolution;
+            not simulates resolution;
         \item{} [Tveretina et al., 2009] $\PHP^{n + 1}_n$ requires $OBDD(\land)$-proofs of size
             $2^{\Omega(n)}$;
-        \item{} [Friedman, Xu, 2013] random $3$CNFs are hard for $OBDD(\land)$-proofs in two particular
+        \item{} [Friedman, Xu, 2013] random $3$-CNFs are hard for $OBDD(\land)$-proofs in two particular
             cases:
             \begin{itemize}
                 \item with a fixed order of the variables;
@@ -81,10 +81,11 @@
         \item lower bound $2^{\Omega(n)}$ for Tseitin formulas in $\OBDD(\land, \reordering)$;
         \pause
         \item $\OBDD(\land, \weakening)$ has short proofs of $\CliCol$ in some order;
-        \item $\OBDD(\land, \weakening, \reordering)$ is strictly stronger than $\OBDD(\land, \weakening)$.
+        \item $\OBDD(\land, \weakening, \reordering)$ is strictly stronger than $\OBDD(\land,
+            \weakening)$.
     \end{itemize}
 
     \pause
-    \color{blue}{Open question.} Prove superpolynomial lower bound for $\OBDD(\land, \weakening,
+    {\color{blue} Open question.} Prove superpolynomial lower bound for $\OBDD(\land, \weakening,
     \reordering)$.
 \end{frame}
