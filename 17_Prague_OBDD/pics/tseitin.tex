@@ -27,7 +27,7 @@
     \def\y{-1.7}
     \node (b) at (0, \y) {};
     \path pic at (b) {graph = {red}{blue}};
-    \draw[penciline, blue] (2.6, \y) -- (v);
+    \draw[penciline, blue] (v) -- (2.6, \y + 0.05);
     \draw[penciline, red] (u) -- (0.9, \y + 0.05) node[above = -1pt, dotnode, oxygengray] {};
     \draw[penciline] (0.9, \y + 0.05) -- (1.8, \y - 0.05) node[above = -1.2pt, dotnode] {} node[midway,
     	above] {$0$} -- (2.6, \y) node[above = -1pt, dotnode] {} node[midway, above] {$0$};
@@ -35,7 +35,7 @@
     \def\y1{-3.4}
     \node (c) at (0, \y1) {};
     \path pic at (c) {graph = {red}{blue}};
-    \draw[penciline, red] (2.6, \y1) -- (v);
+    \draw[penciline, red] (v) -- (2.6, \y1 + 0.05);
     \draw[penciline, blue] (u) -- (0.9, \y1 + 0.05) node[above = -1pt, dotnode, oxygengray] {};
     \draw[penciline] (0.9, \y1 + 0.05) -- (1.8, \y1 - 0.05) node[above = -1.2pt, dotnode] {} node[midway,
 	    above] {$1$} -- (2.6, \y1) node[above = -1pt, dotnode] {} node[midway, above] {$1$};

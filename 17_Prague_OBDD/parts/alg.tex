@@ -4,10 +4,10 @@
     \vspace{0.3cm}
     \pause
 
-    Input: CNF formula $\phi$.
+    Input: CNF formula $\varphi$.
     \begin{enumerate}
         \item Choose an order $\pi$. Create an $\OBDD$ $D^{\pi} \equiv 1$.
-        \item $S$ is a set of clauses of $\phi$.
+        \item $S$ is a set of clauses of $\varphi$.
         \pause
         \item While $S \neq \emptyset$ apply the following operations:
             \begin{itemize}
@@ -54,11 +54,10 @@
 
 
 \begin{frame}{$\OBDD(\land, \exists, \reordering)$-algorithms}
-	\begin{itemize}
-        \item Reordering rule: choose $\pi'$ and $F^{\pi'}$ such that $F \equiv D$; $\pi := \pi'$ and $D
-            := F$.
-    \end{itemize}
+	Reordering rule: choose $\pi'$ and $F^{\pi'}$ such that $F^{\pi'} \equiv D^{\pi}$; $\pi := \pi'$ and $D^{\pi} := F^{\pi'}$.
 
+    \vspace{0.3cm}
+    
     Our goals:
     \begin{itemize}
         \item lower bounds for $OBDD(\land, \exists, \reordering)$-algorithms;
