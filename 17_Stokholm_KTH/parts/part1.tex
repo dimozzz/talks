@@ -1,3 +1,48 @@
+\begin{frame}{Communication protocols. $f: U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+	\pause
+    
+    The depth of the protocol is the number of rounds in the worst case.
+    
+    $CC(f) = \min\limits_{P \in \mathcal{P}} depth(P)$, where $\mathcal{P}$ is a set of protocols for $f$.
+\end{frame}
+
+\begin{frame}{Protocols and trees}
+
+    Alice receives $u \in U$ and Bob receives $v \in V$. A communication protocols corresponds to a tree:
+
+    \begin{columns}[t]
+		\begin{column}{0.7\textwidth}
+            \begin{itemize}
+                \item<2-> inner vertices are marked by players;
+	            \item<3-> if current player sends a bit they move to next vertex;
+    		    \item<8-> leaves are marked by answers.
+	        \end{itemize}
+
+    		\onslide<9->{
+                The size of the protocol is the size of the tree. $Size(f) = \min\limits_{P \in \mathcal{P}} log(size(P))$.
+            } 
+            \onslide<10->{
+                \begin{lemma}[Kushilevitz, Nisan 1996]
+                    $CC(f) = \Omega(\log(size(f)))$.
+                \end{lemma}
+            }
+        \end{column}
+        
+		\begin{column}{0.25\textwidth}
+            \input{pics/first_tree.tex}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+
 \begin{frame}{KW relation (Karchmer, Wigderson 1990)}
     A communication problem on sets $U, V \subseteq \{0, 1\}^{n}$ and relation $\Bit$:
     \begin{itemize}
@@ -27,51 +72,47 @@
     \end{theorem}
 \end{frame}
 
-\begin{frame}{Canonical search problem $\Search_{\phi}$ (Beame et al. 2007)}
+
+\begin{frame}{Canonical search problem $\Search_{\varphi}$ (Impagliazzo et al. 1994)}
     
-    $\phi(x, y)$ is an unsatisfiable CNF formula:
+    $\varphi(x, y)$ is an unsatisfiable CNF formula:
     \begin{itemize}
         \item Alice receives a substitution to the variables $x$, Bob receives a substitution to the
             variables $y$;
-        \item goal is to find a clause $C \in \phi$ that is unsatisfied by this substitution.
+        \item goal is to find a clause $C \in \varphi$ that is unsatisfied by this substitution.
     \end{itemize}
 
     \pause
 
     \begin{theorem}[Beame, Pitassi, Segerlind 2007. Informal]
         If there is a {\color{blue} tree-like} proof in proof system $\Pi$ ($\Pi$ from some \textit{huge
-          class}) of size $S$ then there is a communication protocol for $\Search_{\phi}$ of depth
+          class}) of size $S$ then there is a communication protocol for $\Search_{\varphi}$ of depth
         $poly(\log(S))$.
     \end{theorem}
 
     \pause
     
     \begin{theorem}[Pitassi, G{\"{o}}{\"{o}}s, 2014]
-        There is a formula $\phi$ such that the communication complexity of $\Search_{\phi}$ is at least
+        There is a formula $\varphi$ such that the communication complexity of $\Search_{\varphi}$ is at least
         $\frac{n}{\log(n)}$.
     \end{theorem}
 \end{frame}
 
 \begin{frame}{Generalization. Trivial way}
 
-    Alice receives $u \in U$ and Bob receives $v \in V$. A communication protocols corresponds to a tree:
-
+	\pause
     \begin{columns}[t]
 		\begin{column}{0.7\textwidth}
-            \begin{itemize}
-                \item<2-> inner vertices are marked by players;
-	            \item<3-> if current player sends a bit they move to next vertex;
-    		    \item<8-> leaves are marked by answers.
-	        \end{itemize}
+            \onslide<2->{Structure of the protocol $\underset{\text{KW}}{\Leftrightarrow}$ structure of formula.}
+            
+            \onslide<2->{Structure of the protocol $\underset{\text{IPU}}{\Leftarrow}$ structure of formula.}
 
-    		\onslide<9->{The size of the protocol is the size of the tree.}
+            \onslide<3->{Can we merge some vertex?}
 
-            \onslide<10->{Can we merge some vertex?}
-
-			\onslide<13->{
+			\onslide<6->{
                 \begin{block}{Remark}
                     It is too powerful model. There are short protocols for $\Bit$, $\MBit$ and
-                    $\Search_{\phi}$.
+                    $\Search_{\varphi}$.
                 \end{block}
             }
         \end{column}
