@@ -26,7 +26,7 @@
 	        \end{itemize}
 
     		\onslide<9->{
-                The size of the protocol is the size of the tree. $Size(f) = \min\limits_{P \in \mathcal{P}} log(size(P))$.
+                The size of the protocol is the size of the tree. $Size(f) = \min\limits_{P \in \mathcal{P}} \log(size(P))$.
             } 
             \onslide<10->{
                 \begin{lemma}[Kushilevitz, Nisan 1996]
@@ -102,12 +102,16 @@
 
 	\pause
     \begin{columns}[t]
-		\begin{column}{0.7\textwidth}
-            \onslide<2->{Structure of the protocol $\underset{\text{KW}}{\Leftrightarrow}$ structure of formula.}
+		\begin{column}{0.6\textwidth}
+            \onslide<2->{
+                \begin{enumerate}
+                    \item Structure of the protocol $\underset{\text{KW}}{\Leftrightarrow}$ structure of the formula.
+                    \item Structure of the protocol $\underset{\text{IPU}}{\Leftarrow}$ structure of the proof.
+                \end{enumerate}
+            }
             
-            \onslide<2->{Structure of the protocol $\underset{\text{IPU}}{\Leftarrow}$ structure of formula.}
-
-            \onslide<3->{Can we merge some vertex?}
+            \vspace{0.3cm}
+            \onslide<3->{Can we merge some vertices in protocol?}
 
 			\onslide<6->{
                 \begin{block}{Remark}

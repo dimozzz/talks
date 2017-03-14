@@ -31,57 +31,16 @@
 \end{frame}
 
 
-\begin{frame}{Circuits and protocols}
+\begin{frame}{Circuits and boolean protocols}
 
-    \begin{theorem}[S 2016] 
-        There is a {\color{blue}monotone} boolean circuit for function $f$ of size $S$ iff there is a
+    \begin{theorem}[Pudl{\'{a}}k 2010, S 2017]
+        There is a {\color{blue} monotone} boolean circuit for function $f$ of size $S$ iff there is a
         boolean communication game of size $S$ for a relation $\Bit$ {\color{blue}$(\MBit)$} $(U =
         f^{-1}(1), V = f^{-1}(0))$.
     \end{theorem}
-    
+
     \pause
-    Proof ($\Leftarrow$):
-    \begin{columns}[t]
-		\begin{column}{0.65\textwidth}
-            \vspace{-5mm}
-            \begin{enumerate}
-                \item<3-> $(H, A, B)$ is a game, $R_h = U_h \times V_h$ is a rectangle for $h \in H$.
-                \item<4-> By induction we create circuits for $f_h$ such that $f_h(U_h) = 1$ and
-                    $f_h(V_h) = 0$.
-                \item<5-> If a leaf $h$ is marked by $i$ then $f_h = x_i$ or $f_h = \neg x_i$.
-                \item<6-> For an inner vertex $h$ with children $h', h''$: $f_h = f_{h'} \land f_{h''}$
-                    or $f_h = f_{h'} \lor f_{h''}$.
-            \end{enumerate}
-        \end{column}
-        
-		\begin{column}{0.35\textwidth}
-            \only<5>{For all $u \in U_h$ and $v \in V_h$, $u_i \neq v_i$ $\Rightarrow$ if $u_i = 1$ and
-            	$v_i = 0$ then $f_h = x_i$ else $f_h = \neg x_i$.
-            }
-            \only<6->{
-                \vspace{-6mm}
-                \begin{center}
-                	\input{pics/kw_proof_inner.tex}                    
-	                \only<6>{
-                        $f_{h'}(U_h) = f_{h''}(U_h) = 1$
-
-                        $f_{h} = f_{h'} \land f_{h''}$
-                    }
-                    \only<7>{
-                        $f_{h'}(V_h) = f_{h''}(V_h) = 0$
-
-                        $f_{h} = f_{h'} \lor f_{h''}$
-                    }
-                \end{center}
-            }
-		\end{column}
-	\end{columns}
-\end{frame}
-
-
-\begin{frame}{Communication PLS games (Razborov 1995, Kraj{\'{\i}}{\v{c}}ek 1997)}
-
-    Difference between PLS games and \textbf{boolean} communication games:
+    Communication PLS games (Razborov 1995, Kraj{\'{\i}}{\v{c}}ek 1997):
     \begin{itemize}
         \item bounds on out-degree are removed;
         \item there is a strategy function $S$ that returns ``next'' valid vertex;
@@ -89,11 +48,8 @@
             $S$ function is at most $k$.
     \end{itemize}
 
-    The size of PLS game is $|H| 2^{5 k}$, where $H$ is a graph of game.
-
     \pause
-
-    \begin{theorem}[S 2016]
+    \begin{theorem}
         There is a PLS game for sets $U, V$ and some relation $N$ of size $S$ $\Leftrightarrow$ there is
         a \textbf{boolean} communication game for sets $U, V$ and the relation $N$ of size $O(S)$.
     \end{theorem}
@@ -101,12 +57,13 @@
 \end{frame}
 
 
+
 \begin{frame}{Semantic $\CP$ (Hrube{\v{s}}, 2013)}
 
-    A proof in semantic $\CP$ for CNF formula $\phi$ is a sequence of linear inequalities with \textbf{real} coefficients
+    A proof in semantic $\CP$ for CNF formula $\varphi$ is a sequence of linear inequalities with \textbf{real} coefficients
     $C_1, C_2, \dots, C_k$:
     \begin{itemize}
-        \item $C_i$ is a linear inequality that encodes a clause of formula $\phi$;
+        \item $C_i$ is a linear inequality that encodes a clause of formula $\varphi$;
         \item $C_i$ semantically followed on $\{0, 1\}$ values from $C_j, C_k$ where $j, k < i$;
         \item $C_k = (0 \ge 1)$.
     \end{itemize}
@@ -119,44 +76,14 @@
 
     \begin{lemma}
         \begin{itemize}
-            \item $\phi(x, y)$ is unsatisfiable CNF formula;
+            \item $\varphi(x, y)$ is unsatisfiable CNF formula;
             \item $U$ is set of assignments to $x$, $V$ is a set of assignments to $y$;
-            \item there is a $\CP$ \only<4>{\alert{$(\CP^*)$}} proof of $\phi$ of size $S$
+            \item there is a $\CP$ \only<4>{\alert{$(\CP^*)$}} proof of $\varphi$ of size $S$
         \end{itemize}
         $\Rightarrow$ there is a real \only<4>{\alert{boolean}} communication game for sets $(U, V)$ and a canonical search
-        problem $\Search_{\phi}$ of size $\only<4>{\alert{poly(n)}} S$.
+        problem $\Search_{\varphi}$ of size $\only<4>{\alert{poly(n)}} S$.
     \end{lemma}
 
-\end{frame}
-
-\begin{frame}{From $\CP$ to games}
-
-    \begin{lemma}
-        \begin{itemize}
-            \item $\phi(x, y)$ is unsatisfiable CNF formula;
-            \item $U$ is set of assignments to $x$, $V$ is a set of assignments to $y$;
-            \item there is a $\CP$ proof of $\phi$ of size $S$
-        \end{itemize}
-        $\Rightarrow$ there is a real communication game for sets $(U, V)$ and a canonical search problem $\Search_{\phi}$ of
-        size $S$. 
-    \end{lemma}
-
-    \pause
-    Proof:
-    \pause
-    \begin{itemize}
-        \item $H$ is a graph of the proof of $\phi$ with inverted edges;
-        \pause
-        \item $h \in H$, this vertex corresponds to inequalities $f(x) + \ell(y) \ge c$;
-        \pause
-        \item $A(h, u) = -f(u)$ and $B(h, v) = \ell(v) - c$;
-        \pause    
-        \item $A(h, u) > B(h, v)$ iff $f(u) + \ell(v) < c$;
-        \pause
-        \item root corresponds to $1 \ge 0$ $\Rightarrow$ root is valid for all inputs;
-        \pause
-        \item if all children of $h$ is not valid then $h$ is not valid.
-    \end{itemize}
 \end{frame}
 
 \begin{frame}{Lower bound. Broken Mosquito Screen}
@@ -180,16 +107,16 @@
 \begin{frame}{Lower bounds}
 
 
-    \begin{theorem}[S 2016]
+    \begin{theorem}
         The size of any real communication game for sets $G_0, B_0$ and a relation $\MBit$ is at least $2^{\Omega(\sqrt{m})}$.
 
-        If $\phi$ is a reasonable encoding of $\BMS$ problem then the size of any real communication game for sets $G_0, B_0$
-        and $\Search_{\phi}$ relation is at least $2^{\Omega(\sqrt{m})}$.
+        If $\varphi$ is a reasonable encoding of $\BMS$ problem then the size of any real communication game for sets $G_0,
+        B_0$ and $\Search_{\varphi}$ relation is at least $2^{\Omega(\sqrt{m})}$.
     \end{theorem}
 
     \pause
     More powerful result:
-    \begin{theorem}[Hrube{\v{s}}, Pudl{\'{a}}k 2016]
+    \begin{theorem}[Hrube{\v{s}}, Pudl{\'{a}}k, unpublished]
         If there is a real communication game for sets $U, V$ and $\MBit$ relation of size $S$ then there
         is a monotone real circuit that separates $U$ and $V$.
     \end{theorem}
@@ -197,24 +124,24 @@
 
 
 \begin{frame}{Random $\CP$}
-    A $\delta$-random $\CP$ proof distribution of formula $\phi$ is a random distribution $(\pi_s,
+    A $\delta$-random $\CP$ proof distribution of formula $\varphi$ is a random distribution $(\pi_s,
     \Delta_s)$, where:
     \begin{itemize}
         \item $\Delta_s$ is a CNF formula;
-        \item $\pi_s$ is a $\CP$ proof of $\phi \land \Delta_s$;
+        \item $\pi_s$ is a $\CP$ proof of $\varphi \land \Delta_s$;
         \item $\forall x \in \{0, 1\}^n ~~ \Pr\limits_s[\Delta_s(x) = 1] > 1 - \delta$.
     \end{itemize}
 
     The size of proof $\max\limits_s \pi_s$.
     \pause
 
-    \begin{theorem}[S 2016]
+    \begin{theorem}
         \begin{itemize}
             \item $\phi$ is a reasonable encoding of $\BMS$;
             \item $d$ is a maximum number of clauses in formulas $\Delta_s$;
             \item $d \sqrt{\delta} \le \frac{1}{2}$
         \end{itemize}
-        $\Rightarrow$ the size of $\delta$-random $\CP$ proof of $\phi$ is at least
+        $\Rightarrow$ the size of $\delta$-random $\CP$ proof of $\varphi$ is at least
         $2^{\Omega(\sqrt{m})}$.
     \end{theorem}
 \end{frame}
@@ -241,7 +168,7 @@
     $\SAT_{G}$ is the monotone function.
 
     \pause
-    \begin{theorem}[S 2016]
+    \begin{theorem}
         There is an explicit graph $G$ such that any monotone real circuit for $\SAT_{G}$ has size at
         least $2^{\Omega(N^{\frac{1}{8}})}$.
     \end{theorem}
@@ -249,13 +176,14 @@
 
 \begin{frame}{Open problems}
     \begin{enumerate}
+            
         \pause
-        \item Lower bound on boolean dag-like games for $\Search_{\phi}$ that is not based on $\MBit$.
-        \pause
-        \item Lower bound on boolean dag-like games for $\Search_{\phi}$ for Tseitin formulas with small
+        \item Lower bound on boolean dag-like games for $\Search_{\varphi}$ for Tseitin formulas with small
             gadgets.
         \pause
         \item Lower bound on dag-like games with new validity condition: $A(h, x) = B(h, y)$ (motivated
             by lower bounds for other proof systems).
+        \pause
+        \item Can we use information complexity for this protocols?
     \end{enumerate}
 \end{frame}
