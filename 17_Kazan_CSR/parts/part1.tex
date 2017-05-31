@@ -26,7 +26,7 @@
 	        \end{itemize}
 
     		\onslide<9->{
-                The size of the protocol is the size of the tree. $Size(f) = \min\limits_{P \in \mathcal{P}} \log(size(P))$.
+                The size of the protocol is the size of the tree. $Size(f) = \min\limits_{P \in \mathcal{P}} size(P)$.
             } 
             \onslide<10->{
                 \begin{lemma}[Kushilevitz, Nisan 1996]
@@ -77,17 +77,15 @@
     
     $\varphi(x, y)$ is an unsatisfiable CNF formula:
     \begin{itemize}
-        \item Alice receives a substitution to the variables $x$, Bob receives a substitution to the
-            variables $y$;
+        \item Alice receives a substitution to the variables $x$, Bob receives a substitution to the variables $y$;
         \item goal is to find a clause $C \in \varphi$ that is unsatisfied by this substitution.
     \end{itemize}
 
     \pause
 
     \begin{theorem}[Beame, Pitassi, Segerlind 2007. Informal]
-        If there is a {\color{blue} tree-like} proof in proof system $\Pi$ ($\Pi$ from some \textit{huge
-          class}) of size $S$ then there is a communication protocol for $\Search_{\varphi}$ of depth
-        $poly(\log(S))$.
+        If there is a {\color{blue} tree-like} proof in proof system $\Pi$ ($\Pi$ from some \textit{huge class}) of size $S$
+        then there is a communication protocol for $\Search_{\varphi}$ of depth $poly(\log(S))$.
     \end{theorem}
 
     \pause
