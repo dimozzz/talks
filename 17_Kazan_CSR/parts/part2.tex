@@ -65,6 +65,8 @@
 
     \pause
 
+    \vspace{0.5cm}
+
     A $\delta$-random $\CP$ proof distribution of formula $\varphi$ is a random distribution $(\pi_s, \Delta_s)$, where:
     \begin{itemize}
         \item $\Delta_s$ is a CNF formula;
@@ -78,16 +80,20 @@
 
 \begin{frame}{Random $\CP$}
 
+    \begin{theorem}[Pudl{\'{a}}k, Thapen 2016]
+        If $\P \neq \NP$ then $\frac{1}{2}$-random resolution (random $\CP$) is not $p$-simulated by any Cook-Reckow proof
+        system.
+    \end{theorem}
+
     \pause
 
     \begin{theorem}
         \begin{itemize}
-            \item $\phi$ is a reasonable encoding of $\BMS$;
+            \item $\varphi$ is an explicit formula;
             \item $d$ is a maximum number of clauses in formulas $\Delta_s$;
             \item $d \sqrt{\delta} \le \frac{1}{2}$
         \end{itemize}
-        $\Rightarrow$ the size of $\delta$-random $\CP$ proof of $\varphi$ is at least
-        $2^{\Omega(\sqrt{m})}$.
+        $\Rightarrow$ the size of $\delta$-random $\CP$ proof of $\varphi$ is at least $2^{\Omega(n^{\frac{1}{4}})}$.
     \end{theorem}
 \end{frame}
 

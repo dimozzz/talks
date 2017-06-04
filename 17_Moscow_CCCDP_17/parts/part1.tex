@@ -1,0 +1,177 @@
+\begin{frame}{Communication protocols. $f: U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+	\pause
+    
+    The depth of the protocol is the number of rounds in the worst case.
+    
+    $CC(f) = \min\limits_{P \in \mathcal{P}} depth(P)$, where $\mathcal{P}$ is a set of protocols for $f$.
+\end{frame}
+
+\begin{frame}{Protocols and trees}
+
+    Alice receives $u \in U$ and Bob receives $v \in V$. A communication protocols corresponds to a tree:
+
+    \begin{columns}[t]
+		\begin{column}{0.7\textwidth}
+            \begin{itemize}
+                \item<2-> inner vertices are marked by players;
+	            \item<3-> if current player sends a bit they move to next vertex;
+    		    \item<8-> leaves are marked by answers.
+	        \end{itemize}
+
+    		\onslide<9->{
+                The size of the protocol is the size of the tree. $Size(f) = \min\limits_{P \in \mathcal{P}} size(P)$.
+            } 
+            \onslide<10->{
+                \begin{lemma}[Kushilevitz, Nisan 1996]
+                    $CC(f) = \Omega(\log(size(f)))$.
+                \end{lemma}
+            }
+        \end{column}
+        
+		\begin{column}{0.25\textwidth}
+            \input{pics/first_tree.tex}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{KW relation (Karchmer, Wigderson 1990)}
+    A communication problem on sets $U, V \subseteq \{0, 1\}^{n}$ and relation $\Bit$:
+    \begin{itemize}
+        \item Alice receives $u \in U$, Bob receives $v \in V$;
+        \item goal is to find $i$ such that $u_i \neq v_i$.
+    \end{itemize}
+    \pause
+    Monotone case ($\MBit$ relation):
+    \begin{itemize}
+        \item goal is to find $i$ such that $u_i = 1 \land v_i = 0$.
+    \end{itemize}
+
+    \pause
+
+    \begin{theorem}[Karchmer, Wigderson 1990]
+        There is a \only<4->{\alert{(monotone)}} boolean {\color{blue} formula} for a function $f$ of the
+        size $S$ iff there is a communication protocol of the size $S$ for the relation $\Bit$
+        \only<4->{\alert{$(\MBit)$}}, $U = f^{-1}(1), V = f^{-1}(0)$.
+    \end{theorem}
+
+    \pause
+    \pause
+    
+    \begin{theorem}[Pitassi, G{\"{o}}{\"{o}}s, 2014]
+        There is a monotone function $f$ such that any monotone boolean formula that computes it has the
+        size at least $2^{\frac{n}{\log(n)}}$. 
+    \end{theorem}
+\end{frame}
+
+
+\begin{frame}{Canonical search problem $\Search_{\varphi}$ (Impagliazzo et al. 1994)}
+    
+    $\varphi(x, y)$ is an unsatisfiable CNF formula:
+    \begin{itemize}
+        \item Alice receives a substitution to the variables $x$, Bob receives a substitution to the
+            variables $y$;
+        \item goal is to find a clause $C \in \varphi$ that is unsatisfied by this substitution.
+    \end{itemize}
+
+    \pause
+
+    \begin{theorem}[Beame, Pitassi, Segerlind 2007. Informal]
+        If there is a {\color{blue} tree-like} proof in proof system $\Pi$ ($\Pi$ from some \textit{huge
+          class}) of size $S$ then there is a communication protocol for $\Search_{\varphi}$ of depth
+        $poly(\log(S))$.
+    \end{theorem}
+
+    \pause
+    
+    \begin{theorem}[Pitassi, G{\"{o}}{\"{o}}s, 2014]
+        There is a formula $\varphi$ such that the communication complexity of $\Search_{\varphi}$ is at least
+        $\frac{n}{\log(n)}$.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{Generalization. Trivial way}
+
+	\pause
+    \begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+            \onslide<2->{
+                \begin{enumerate}
+                    \item Structure of the protocol $\underset{\text{KW}}{\Leftrightarrow}$ structure of the formula.
+                    \item Structure of the protocol $\underset{\text{IPU}}{\Leftarrow}$ structure of the proof.
+                \end{enumerate}
+            }
+            
+            \vspace{0.3cm}
+            \onslide<3->{Can we merge some vertices in protocol?}
+
+			\onslide<6->{
+                \begin{block}{Remark}
+                    It is too powerful model. There are short protocols for $\Bit$, $\MBit$ and
+                    $\Search_{\varphi}$.
+                \end{block}
+            }
+        \end{column}
+        
+		\begin{column}{0.25\textwidth}
+            \input{pics/classic.tex}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}{Properties of classical protocols}
+
+    Fix any $u \in U$ and $v \in V$.
+
+    \pause
+    \begin{enumerate}
+        \item Players can find ``next'' vertex in the tree in one round.
+        \item For any vertex $h$ of the tree players can check whether they visit $h$ in one
+            \textbf{parallel} round.
+    \end{enumerate}
+
+    \pause
+    Relaxed version of second property:
+    \begin{itemize}
+        \item Some vertices of tree is marked by ``valid for (u, v)''.
+        \item For any vertex $h$ of the tree players can check whether $h$ is valid for $(u, v)$ in one
+            \textbf{parallel} round.
+        \item If players start from valid vertex they find a correct answer.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Generalization. Rectangles}
+
+    Alice receives $u \in U$ and Bob receives $v \in V$.
+
+    \begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item<2-> Mark all vertices $h$ of the tree by rectangles $R_h = U_h \times V_h \subseteq
+                    U \times V$;
+	            \item<4-> $(u, v) \in R_h$ iff $h$ is on path from root to leaf for instance $(u, v)$;
+    		    \item<6-> payment for merge $h$ and $h'$: cover by rectangle $R_{new}$.
+	        \end{itemize}
+            
+            \onslide<5->{
+                \begin{center}
+                	\input{pics/covers.tex}    
+                \end{center}
+            }
+        \end{column}
+        
+		\begin{column}{0.3\textwidth}
+            \onslide<3->{\input{pics/classic_2.tex}}
+		\end{column}
+	\end{columns}
+\end{frame}
