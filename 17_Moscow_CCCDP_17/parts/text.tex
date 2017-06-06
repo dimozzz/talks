@@ -1,28 +1,80 @@
+\begin{frame}{Proof systems}
+
+    \begin{definition}[Cook, Reckhow 79]
+        Let $\varphi$ be a boolean formula in CNF. A proof system for $\UNSAT$ is a polynomial-time algorithm $\Pi: \{0,
+        1\}^* \times \{0, 1\}^* \rightarrow \{0, 1\}$, such that: 
+        \begin{itemize}
+            \item (completeness) $\varphi \in \UNSAT \Rightarrow \exists w ~ \Pi(\varphi, w) = 1$;
+            \item (soundness) $\exists w ~ \Pi(x, w) = 1 \Rightarrow x \in \UNSAT$.
+        \end{itemize}
+    \end{definition}
+
+    The complexity measure is the lenght of minimal $w$.
+    \pause
+
+    \vspace{0.3cm}
+
+    \begin{itemize}
+        \item Resolution. The proof is a sequence of clauses $D_1, \dots, D_s$ such that:
+            \begin{itemize}
+                \item $D_s = \emptyset$;
+                \item either $D_i$ is a clause of $\varphi$
+                \item or $D_i$ can be obtain by the following rule from previous clauses $\frac{A \lor x ~~~ B \lor \neg x}{A
+                    \lor B} ~~~~~ \frac{A}{A \lor z}$.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Proof systems 2}
+    \begin{itemize}
+        \item Resolution. The proof is a sequence of clauses $D_1, \dots, D_s$ such that:
+            \begin{itemize}
+                \item $D_s = \emptyset$;
+                \item either $D_i$ is a clause of $\varphi$
+                \item or $D_i$ can be obtain by the following rule from previous clauses $\frac{A \lor x ~~~ B \lor \neg x}{A
+                    \lor B} ~~~~~ \frac{A}{A \lor z}$.
+            \end{itemize}
+        \pause
+        \item Cutting Planes. The proof is a sequence of linear inequalities $D_1, \dots, D_s$ over integers such that:
+            \begin{itemize}
+                \item $D_s = 0 \ge 1$;
+                \item either $D_i$ encodes a clause of $\varphi$
+                \item or $D_i$ can be obtain by the following rule from previous clauses $\frac{A \ge a ~~~ B \ge b}{\alpha A
+                    + \beta B \ge \alpha a + \beta b} ~~~~~ \frac{ka_1 x_1 + ka_2 x_2 + \dots \ge c}{a_1 x_1 + a_2 x_2 +
+                    \dots \ge \lceil \frac{c}{k} \rceil}$.
+            \end{itemize}
+        \pause
+        \item Generalization (semantic proof system). The proof is a sequence of constraints $D_1, \dots, D_s$ such that:
+            \begin{itemize}
+                \item $D_s$ is trivially false constraint;
+                \item either $D_i$ encodes a clause of $\varphi$
+                \item or $D_i$ is semantically followed from two previous constraints.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Motivation}
+
+    Копия из СПБГУ.
+\end{frame}
+
+
 \begin{frame}
     Теорема Крейга.
 
     Извлечение схемы.
-
-    (общий трындежь)
 \end{frame}
 
+\begin{frame}
 
-\begin{frame}{Semantic proof systems}
-    Let $\varphi$ be unsatisfiable CNF formula.
-
-    $C_1, C_2, \dots, C_s$ is a sequence of constraints of specified form (clause, linear equaltion, constant-depth formula,
-    etc.).
-
-    $C_1, C_2, \dots, C_s$ is a proof of $\varphi$ in semantic proof system if:
-    \begin{itemize}
-        \item either $C_i$ semantically followed from one clause of $\varphi$
-        \item or $C_i$ semantically followed from $C_j$ and $C_k$.
-    \end{itemize}
-
+	Результаты Крайчека и Пудлака.
 \end{frame}
 
+\begin{frame}
 
-
+	Когда интерполяции нет. + OBDD.
+\end{frame}
 
 
 \begin{frame}{Canonical search problem $\Search_{\varphi}$ (Impagliazzo et al. 1994)}
@@ -47,10 +99,31 @@
 
 
 \begin{frame}{Proofs and games}
-	$C_1, C_2, \dots, C_k$ is a semantic proof of of $\varphi(x, y)$.
+	$D_1, D_2, \dots, D_{17}$ is a semantic proof of of $\varphi(x, y)$.
 
     \begin{center}
     	\input{pics/proof_game.tex}    
     \end{center}
 
+\end{frame}
+
+\begin{frame}
+    Игры и схемы. Monbit.
+\end{frame}
+    
+
+
+\begin{frame}
+
+    Сложность констрейнта.
+
+    Игры и схемы. Результаты
+
+    Прямые оценки на игры.
+\end{frame}
+
+
+\begin{frame}
+
+	Случайные формулы.  Pit and Pud.
 \end{frame}
