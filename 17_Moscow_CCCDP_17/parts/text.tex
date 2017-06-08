@@ -55,20 +55,77 @@
 
 
 \begin{frame}{Motivation}
-
-    Копия из СПБГУ.
+    \begin{itemize}
+        \item Cook's program for separation $\NP$ and $\coNP$: to prove lower bounds for {\color{blue}
+            stronger and stronger} systems until one can generalize techiques for all systems.
+        \pause
+        \item Lower bounds on {\color{blue} weak} (resolution and similar) systems give us the lower
+            bounds on algorithms for satifiability problems.
+        \pause
+        \item Lower bounds on {\color{blue} strong} proof system would give us lower bounds on other
+            computational models (for example algebraic circuits).
+    \end{itemize}
 \end{frame}
 
 
-\begin{frame}
-    Теорема Крейга.
+\begin{frame}{Craig's interpolation theorem, 1957}
 
-    Извлечение схемы.
+    $U, V \in \{0, 1\}^n$ are disjoint $\NP$ sets:
+    \begin{itemize}
+        \item the formula $\One(x, q)$ encodes the fact that $x \in U$;
+        \item the formula $\Zero(x, r)$ encodes the fact that $x \in U$;
+        \item $\One(x, q) \land \Zero(x, r)$ is the unsatisfiable formula.
+            
+    \end{itemize}
+
+    \vspace{0.2cm}
+    \pause
+    Example: $U$ is a graph with a clique of size $k$, $V$ is a graph that can be colored into $k - 1$
+    colors.
+
+    \pause
+    \begin{definition}
+	    $C: \{0, 1\}^n \to \{0, 1\}$ is a separator for $U, V$ iff:
+        \begin{itemize}
+            \item $C(U) = 1$;
+            \item $C(V) = 0$.
+        \end{itemize}        
+    \end{definition}
+
+    \pause
+	What can we say about complexity of $C$?
+
+\end{frame}
+
+
+\begin{frame}{Monotone interpolation}
+
+    \begin{block}{Crucial idea, Kraj{\'{\i}}{\v{c}}ek}
+        If there is a short proof of $\One(x, q) \land \Zero(x, r)$ then there is a small
+        \alert{monotone} {\color{blue} curcuit} for a separator $C$.
+    \end{block}
+
+    \begin{theorem}[Razborov 85, Alon-Boppana 87]
+        The size of any monotone separator for $\CliqueColoring$ is at least $2^{n^{\frac{1}{4}}}$.
+    \end{theorem}
+
+    \pause
+    Reasonable encoding:
+    \begin{itemize}
+        \item clauses contains at most one variable from $x$;
+        \item $x$ occurs in $\One$ only with positive signs and in $\Zero$ only with negative signs.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
 
-	Результаты Крайчека и Пудлака.
+    \begin{theorem}
+        \begin{itemize}
+            \item {[Kraj{\'{\i}}{\v{c}}ek, 95]} Resolution (and huge class of semantic proof systems) has
+                monotone interpolation property.
+            \item {[Pudl{\'{a}}k, 97]} Cutting Planes has monotone interpolation property.
+        \end{itemize}
+    \end{theorem}
 \end{frame}
 
 \begin{frame}
