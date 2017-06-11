@@ -73,7 +73,7 @@
     $U, V \in \{0, 1\}^n$ are disjoint $\NP$ sets:
     \begin{itemize}
         \item the formula $\One(x, q)$ encodes the fact that $x \in U$;
-        \item the formula $\Zero(x, r)$ encodes the fact that $x \in U$;
+        \item the formula $\Zero(x, r)$ encodes the fact that $x \in V$;
         \item $\One(x, q) \land \Zero(x, r)$ is the unsatisfiable formula.
             
     \end{itemize}
@@ -117,20 +117,49 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Monotone interpolation property}
 
-    \begin{theorem}
+    Proof system $\Pi$ has a monotone interpolation property:
+    
+    proof of resonable encoding $\One(x, q) \land \Zero(x, r)$ of size $S$ $\Rightarrow$ monotone circuit
+    of size $\poly(S)$ for separator $C$.
+
+    \pause
+    \begin{block}{Positive results}
         \begin{itemize}
             \item {[Kraj{\'{\i}}{\v{c}}ek, 95]} Resolution (and huge class of semantic proof systems) has
                 monotone interpolation property.
             \item {[Pudl{\'{a}}k, 97]} Cutting Planes has monotone interpolation property.
         \end{itemize}
-    \end{theorem}
+    \end{block}
+
+    \pause
+    \begin{block}{Negative results}
+        \begin{itemize}
+            \item {[Bonet, Pitassi, Raz 00, Bonet et al. 04]} Frege system does not have monotone interpolation
+                property.
+            \item {[Atserias, Bonet, Esteban 02]} Res(2) system does not have monotone interpolation
+                property.
+        \end{itemize}
+    \end{block}
+    
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Negative results?}
 
-	Когда интерполяции нет. + OBDD.
+    \begin{theorem}[Atserias, Bonet, Esteban 02]
+        There is a proof of $\CliqueColoring$ of polynomial size in Res(2).
+    \end{theorem}
+
+    $\OBDD$ proof system is a semantic proof system that operates with $OBDD$.
+
+    \begin{itemize}
+        \item {[Kraj{\'{\i}}{\v{c}}ek 08]} If there is a short proof of $\CliqueColoring$ {\color{blue}
+            with modification} in $\OBDD$ proof system then there is a small separator for
+            $\CliqueColoring$.
+        \item {[Buss, Itsykson, Knop, S 17]} There is a proof of $\CliqueColoring$ of polynomial size in
+            $\OBDD$ proof system.
+    \end{itemize}
 \end{frame}
 
 
@@ -162,21 +191,71 @@
     	\input{pics/proof_game.tex}    
     \end{center}
 
+    \pause
+    Size of game is the size of graph. Coomunication complexity of game is the comunication complexity of
+    evaluation of constaint.
+
 \end{frame}
 
-\begin{frame}
-    Игры и схемы. Monbit.
+
+\begin{frame}{Games and circuits}
+
+    A communication problem on sets $U, V \subseteq \{0, 1\}^{n}$ and relation $\Bit$:
+    \begin{itemize}
+        \item Alice receives $u \in U$, Bob receives $v \in V$;
+        \item goal is to find $i$ such that $u_i \neq v_i$.
+    \end{itemize}
+    \pause
+    Monotone case ($\MBit$ relation):
+    \begin{itemize}
+        \item goal is to find $i$ such that $u_i = 1 \land v_i = 0$.
+    \end{itemize}
+
+    \pause
+
+    \vspace{0.2cm}
+    $U = f^{-1}(1), V = f^{-1}(0)$
+
+    \begin{itemize}
+        \item {[Karchmer, Wigderson 1990]} Communication protocol of size $S$ for the relation $\Bit$
+            \alert{$(\MBit)$} $\Leftrightarrow$ \alert{(monotone)} boolean formula for $f$ of size $S$.
+        \pause
+        \item {[Razborov 94]} Communication game of size $S$ and $CC = k$ for the relation $\Bit$
+            \alert{$(\MBit)$} $\Leftrightarrow$ \alert{(monotone)} boolean circuit for $f$ of size $2^k
+            S$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+    \begin{itemize}
+        \item {[Karchmer, Wigderson 1990]} Communication protocol of size $S$ for the relation $\Bit$
+            \alert{$(\MBit)$} $\Leftrightarrow$ \alert{(monotone)} boolean formula for $f$ of size $S$.
+        \item {[Razborov 94]} Communication game of size $S$ and $CC = k$ for the relation $\Bit$
+            \alert{$(\MBit)$} $\Leftrightarrow$ \alert{(monotone)} boolean circuit for $f$ of size
+            $2^{3k} S$.
+        \pause
+        \item {[Pudl{\'{a}}k 10, S 17]} Communication game of size $S$ and $CC = k$ for some relation $N$
+            $\Leftrightarrow$ communication game of size $2^{3k} S$ and $CC = \frac{3}{2}$ (two
+            independent rounds) for some relation $N$.
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \pause
+    \begin{itemize}                
+        \item {[S 17]} There are two $\NP$ sets such that any communication game of size $S$ and $RCC = 1$
+            for the relation $\MBit$ has size at least $2^{n^{\frac{1}{8}}}$.
+        \pause    
+        \item {[Pudl{\'{a}}k, Hrube{\v{s}} 17]} Communication game of size $S$ and $RCC = 1$ for the
+            relation $\MBit$ $\Leftrightarrow$ monotone {\color{blue} real}
+            circuit for $f$ of size $O(S)$.
+    \end{itemize}
 \end{frame}
     
 
 
-\begin{frame}
+\begin{frame}{$\MBit \le \Search_{\varphi}$}
 
-    Сложность констрейнта.
 
-    Игры и схемы. Результаты
-
-    Прямые оценки на игры.
 \end{frame}
 
 
