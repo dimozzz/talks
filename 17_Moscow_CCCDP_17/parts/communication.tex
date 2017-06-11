@@ -1,0 +1,100 @@
+\begin{frame}{Canonical search problem $\Search_{\varphi}$ (Impagliazzo et al. 1994)}
+
+	
+    $\varphi(x, y)$ is an unsatisfiable CNF formula:
+    \begin{itemize}
+        \item Alice receives a substitution to the variables $x$, Bob receives a substitution to the
+            variables $y$;
+        \item goal is to find a clause $C \in \varphi$ that is unsatisfied by this substitution.
+    \end{itemize}
+
+    \pause
+
+    \begin{theorem}[Beame, Pitassi, Segerlind 2007. Informal]
+        If there is a {\color{blue} tree-like} proof in proof system $\Pi$ ($\Pi$ from some \textit{huge
+          class}) of size $S$ then there is a communication protocol for $\Search_{\varphi}$ of depth
+        $poly(\log(S))$.
+    \end{theorem}
+    
+\end{frame}
+
+
+\begin{frame}{Proofs and games}
+	$D_1, D_2, \dots, D_{17}$ is a semantic proof of of $\varphi(x, y)$.
+
+    \begin{center}
+    	\input{pics/proof_game.tex}    
+    \end{center}
+
+    \pause
+    Size of game is the size of graph. Coomunication complexity of game is the comunication complexity of
+    evaluation of constaint.
+
+\end{frame}
+
+
+\begin{frame}{Games and circuits}
+
+    A communication problem on sets $U, V \subseteq \{0, 1\}^{n}$ and relation $\Bit$:
+    \begin{itemize}
+        \item Alice receives $u \in U$, Bob receives $v \in V$;
+        \item goal is to find $i$ such that $u_i \neq v_i$.
+    \end{itemize}
+    \pause
+    Monotone case ($\MBit$ relation):
+    \begin{itemize}
+        \item goal is to find $i$ such that $u_i = 1 \land v_i = 0$.
+    \end{itemize}
+
+    \pause
+
+    \vspace{0.2cm}
+    $U = f^{-1}(1), V = f^{-1}(0)$
+
+    \begin{itemize}
+        \item {[Karchmer, Wigderson 1990]} Communication protocol of size $S$ for the relation $\Bit$
+            \alert{$(\MBit)$} $\Leftrightarrow$ \alert{(monotone)} boolean formula for $f$ of size $S$.
+        \pause
+        \item {[Razborov 94]} Communication game of size $S$ and $CC = k$ for the relation $\Bit$
+            \alert{$(\MBit)$} $\Leftrightarrow$ \alert{(monotone)} boolean circuit for $f$ of size $2^k
+            S$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+    \begin{itemize}
+        \item {[Karchmer, Wigderson 1990]} Communication protocol of size $S$ for the relation $\Bit$
+            \alert{$(\MBit)$} $\Leftrightarrow$ \alert{(monotone)} boolean formula for $f$ of size $S$.
+        \item {[Razborov 94]} Communication game of size $S$ and $CC = k$ for the relation $\Bit$
+            \alert{$(\MBit)$} $\Leftrightarrow$ \alert{(monotone)} boolean circuit for $f$ of size
+            $2^{3k} S$.
+        \pause
+        \item {[Pudl{\'{a}}k 10, S 17]} Communication game of size $S$ and $CC = k$ for some relation $N$
+            $\Leftrightarrow$ communication game of size $2^{3k} S$ and $CC = \frac{3}{2}$ (two
+            independent rounds) for some relation $N$.
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \pause
+    \begin{itemize}                
+        \item {[S 17]} There are two $\NP$ sets such that any communication game of size $S$ and $RCC = 1$
+            for the relation $\MBit$ has size at least $2^{n^{\frac{1}{8}}}$.
+        \pause    
+        \item {[Pudl{\'{a}}k, Hrube{\v{s}} 17]} Communication game of size $S$ and $RCC = 1$ for the
+            relation $\MBit$ $\Leftrightarrow$ monotone {\color{blue} real}
+            circuit for $f$ of size $O(S)$.
+    \end{itemize}
+\end{frame}
+    
+
+
+\begin{frame}{$\MBit \le \Search_{\varphi}$}
+
+
+\end{frame}
+
+
+\begin{frame}{$\MBit \le \Search_{\varphi}$}
+
+	Случайные формулы.  Pit and Pud.
+\end{frame}

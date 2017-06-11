@@ -1,0 +1,93 @@
+\begin{frame}{Craig's interpolation theorem, 1957}
+
+    $U, V \in \{0, 1\}^n$ are disjoint $\NP$ sets:
+    \begin{itemize}
+        \item the formula $\One(x, q)$ encodes the fact that $x \in U$;
+        \item the formula $\Zero(x, r)$ encodes the fact that $x \in V$;
+        \item $\One(x, q) \land \Zero(x, r)$ is the unsatisfiable formula.
+            
+    \end{itemize}
+
+    \vspace{0.2cm}
+    \pause
+    Example: $U$ is a graph with a clique of size $k$, $V$ is a graph that can be colored into $k - 1$
+    colors.
+
+    \pause
+    \begin{definition}
+	    $C: \{0, 1\}^n \to \{0, 1\}$ is a separator for $U, V$ iff:
+        \begin{itemize}
+            \item $C(U) = 1$;
+            \item $C(V) = 0$.
+        \end{itemize}        
+    \end{definition}
+
+    \pause
+	What can we say about complexity of $C$?
+
+\end{frame}
+
+
+\begin{frame}{Monotone interpolation}
+
+    \begin{block}{Crucial idea, Kraj{\'{\i}}{\v{c}}ek}
+        If there is a short proof of $\One(x, q) \land \Zero(x, r)$ then there is a small
+        \alert{monotone} {\color{blue} curcuit} for a separator $C$.
+    \end{block}
+
+    \begin{theorem}[Razborov 85, Alon-Boppana 87]
+        The size of any monotone separator for $\CliqueColoring$ is at least $2^{n^{\frac{1}{4}}}$.
+    \end{theorem}
+
+    \pause
+    Reasonable encoding:
+    \begin{itemize}
+        \item clauses contains at most one variable from $x$;
+        \item $x$ occurs in $\One$ only with positive signs and in $\Zero$ only with negative signs.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Monotone interpolation property}
+
+    Proof system $\Pi$ has a monotone interpolation property:
+    
+    proof of resonable encoding $\One(x, q) \land \Zero(x, r)$ of size $S$ $\Rightarrow$ monotone circuit
+    of size $\poly(S)$ for separator $C$.
+
+    \pause
+    \begin{block}{Positive results}
+        \begin{itemize}
+            \item {[Kraj{\'{\i}}{\v{c}}ek, 95]} Resolution (and huge class of semantic proof systems) has
+                monotone interpolation property.
+            \item {[Pudl{\'{a}}k, 97]} Cutting Planes has monotone interpolation property.
+        \end{itemize}
+    \end{block}
+
+    \pause
+    \begin{block}{Negative results}
+        \begin{itemize}
+            \item {[Bonet, Pitassi, Raz 00, Bonet et al. 04]} Frege system does not have monotone interpolation
+                property.
+            \item {[Atserias, Bonet, Esteban 02]} Res(2) system does not have monotone interpolation
+                property.
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}{Negative results?}
+
+    \begin{theorem}[Atserias, Bonet, Esteban 02]
+        There is a proof of $\CliqueColoring$ of polynomial size in Res(2).
+    \end{theorem}
+
+    $\OBDD$ proof system is a semantic proof system that operates with $OBDD$.
+
+    \begin{itemize}
+        \item {[Kraj{\'{\i}}{\v{c}}ek 08]} If there is a short proof of $\CliqueColoring$ {\color{blue}
+            with modification} in $\OBDD$ proof system then there is a small separator for
+            $\CliqueColoring$.
+        \item {[Buss, Itsykson, Knop, S 17]} There is a proof of $\CliqueColoring$ of polynomial size in
+            $\OBDD$ proof system.
+    \end{itemize}
+\end{frame}

@@ -1,0 +1,68 @@
+\begin{frame}{Proof systems}
+
+    \begin{definition}[Cook, Reckhow 79]
+        Let $\varphi$ be a boolean formula in CNF. A proof system for $\UNSAT$ is a polynomial-time algorithm $\Pi: \{0,
+        1\}^* \times \{0, 1\}^* \rightarrow \{0, 1\}$, such that: 
+        \begin{itemize}
+            \item (completeness) $\varphi \in \UNSAT \Rightarrow \exists w ~ \Pi(\varphi, w) = 1$;
+            \item (soundness) $\exists w ~ \Pi(x, w) = 1 \Rightarrow x \in \UNSAT$.
+        \end{itemize}
+    \end{definition}
+
+    The complexity measure is the lenght of minimal $w$.
+    \pause
+
+    \vspace{0.3cm}
+
+    \begin{itemize}
+        \item Resolution. The proof is a sequence of clauses $D_1, \dots, D_s$ such that:
+            \begin{itemize}
+                \item $D_s = \emptyset$;
+                \item either $D_i$ is a clause of $\varphi$
+                \item or $D_i$ can be obtain by the following rule from previous clauses $\frac{A \lor x ~~~ B \lor \neg x}{A
+                    \lor B} ~~~~~ \frac{A}{A \lor z}$.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Proof systems 2}
+    \begin{itemize}
+        \item Resolution. The proof is a sequence of clauses $D_1, \dots, D_s$ such that:
+            \begin{itemize}
+                \item $D_s = \emptyset$;
+                \item either $D_i$ is a clause of $\varphi$
+                \item or $D_i$ can be obtain by the following rule from previous clauses $\frac{A \lor x ~~~ B \lor \neg x}{A
+                    \lor B} ~~~~~ \frac{A}{A \lor z}$.
+            \end{itemize}
+        \pause
+        \item Cutting Planes. The proof is a sequence of linear inequalities $D_1, \dots, D_s$ over integers such that:
+            \begin{itemize}
+                \item $D_s = 0 \ge 1$;
+                \item either $D_i$ encodes a clause of $\varphi$
+                \item or $D_i$ can be obtain by the following rule from previous clauses $\frac{A \ge a ~~~ B \ge b}{\alpha A
+                    + \beta B \ge \alpha a + \beta b} ~~~~~ \frac{ka_1 x_1 + ka_2 x_2 + \dots \ge c}{a_1 x_1 + a_2 x_2 +
+                    \dots \ge \lceil \frac{c}{k} \rceil}$.
+            \end{itemize}
+        \pause
+        \item Generalization (semantic proof system). The proof is a sequence of constraints $D_1, \dots, D_s$ such that:
+            \begin{itemize}
+                \item $D_s$ is trivially false constraint;
+                \item either $D_i$ encodes a clause of $\varphi$
+                \item or $D_i$ is semantically followed from two previous constraints.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Motivation}
+    \begin{itemize}
+        \item Cook's program for separation $\NP$ and $\coNP$: to prove lower bounds for {\color{blue}
+            stronger and stronger} systems until one can generalize techiques for all systems.
+        \pause
+        \item Lower bounds on {\color{blue} weak} (resolution and similar) systems give us the lower
+            bounds on algorithms for satifiability problems.
+        \pause
+        \item Lower bounds on {\color{blue} strong} proof system would give us lower bounds on other
+            computational models (for example algebraic circuits).
+    \end{itemize}
+\end{frame}
