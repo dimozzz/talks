@@ -27,10 +27,20 @@
     \end{center}
 
     \pause
-    Size of game is the size of graph. Coomunication complexity of game is the comunication complexity of
-    evaluation of constaint.
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    Size of game is the size of graph. Communication complexity of game is the communication complexity
+    of evaluation of constaint.
 
 \end{frame}
+
+\input{parts/plan.tex}
 
 
 \begin{frame}{Games and circuits}
@@ -80,21 +90,97 @@
         \item {[S 17]} There are two $\NP$ sets such that any communication game of size $S$ and $RCC = 1$
             for the relation $\MBit$ has size at least $2^{n^{\frac{1}{8}}}$.
         \pause    
-        \item {[Pudl{\'{a}}k, Hrube{\v{s}} 17]} Communication game of size $S$ and $RCC = 1$ for the
+        \item {[Hrube{\v{s}}, Pudl{\'{a}}k 17]} Communication game of size $S$ and $RCC = 1$ for the
             relation $\MBit$ $\Leftrightarrow$ monotone {\color{blue} real}
             circuit for $f$ of size $O(S)$.
     \end{itemize}
 \end{frame}
-    
+
+
+\input{parts/plan.tex}
 
 
 \begin{frame}{$\MBit \le \Search_{\varphi}$}
+    $U, V \in \{0, 1\}^n$ are disjoint $\NP$ sets:
+    \begin{itemize}
+        \item $\One(x, q)$ is a resonable encoding of the fact that $x \in U$;
+        \item $\Zero(x, r)$ is a resonable encoding of the fact that $x \in V$;
+        \item $\One(x, q) \land \Zero(x, r)$ is the unsatisfiable formula.            
+    \end{itemize}
 
+    \vspace{0.2cm}
+    \pause
+    Alice knows $u \in U$ and generates $q^u$ such that $\One(u, q^u)$ is satisfied. Bob knows $v \in
+    V$ and generates $r^v$ such that $\Zero(v, r^v)$ is satisfied.
 
+    \vspace{0.2cm}
+    Reduction: $u, v \Rightarrow (u, q^u), r^v$ 
+
+	\pause
+    
+    \begin{itemize}
+        \item $C$ is not satisfied by $(u, q^u, r^v)$ $\Rightarrow$ $C \in \Zero(x, r)$;
+        \pause
+        \item $C$ is not satisfied by $r^v$ but $C$ is satisfied by $(v, r^v)$ $\Rightarrow$ $C = \neg
+            x_i \lor D(r)$;
+        \pause
+        \item $u_i = 1$ and $v_i = 0$.   
+    \end{itemize}
 \end{frame}
 
 
 \begin{frame}{$\MBit \le \Search_{\varphi}$}
 
-	Случайные формулы.  Pit and Pud.
+    \begin{theorem}[Hrube{\v{s}}, Pudl{\'{a}}k 17; Fleming, Pankratov, Pitassi, Robere 17]
+        For any unsatisfiable formula $\varphi$ there are two $\NP$ sets $U_{\varphi}, V_{\varphi}
+        \subseteq \{0, 1\}^{\ell}$ such that:
+        \begin{itemize}
+            \item $U_{\varphi} \cap V_{\varphi} = \emptyset$;
+            \item any protocol (game) that solves $\Search_{\varphi}$ also solves $\MBit$ relation on
+                sets $U_{\varphi}, V_{\varphi}$.
+        \end{itemize}
+    \end{theorem}
+
+    \begin{corollary}
+        Random $\log(n)$-CNF and $\lang{BPHP}$ require an exponential proof in $\CP$.
+    \end{corollary}
+\end{frame}
+
+
+\begin{frame}{Randomized games}
+
+    \begin{itemize}
+        \item $\ResL$ is a semantic proof system that operates with dijunctions of linear equation modulo
+            $2$.
+        \pause    
+        \item Open problem: is there an explicit formula that requires superpolynomial proof in $\ResL$?
+        \pause
+        \item There is no small deterministic communication protocol for evaliation of constraints of
+            $\ResL$. But there is a small randomized communication protocol.
+        \pause
+        \item Open problem: is there an explicit formula $\varphi$ such that any game for
+            $\Search_{\varphi}$ with randomized communication complexity $O(1)$ requires superpolynomial
+            size?
+        \pause
+        \item {[Kraj{\'{\i}}{\v{c}}ek 16]} Randomized games \alert{$\Rightarrow$} boolean circuits with
+            local oracles.
+        \pause
+        \item {[Kraj{\'{\i}}{\v{c}}ek, I. Oliveira 17]} Conditional lower bounds on circuits with local
+            oracles.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Open problems}
+    \begin{enumerate}
+            
+        \pause
+        \item Lower bound on boolean dag-like games for $\Search_{\varphi}$ for Tseitin formulas with small
+            gadgets.
+        \pause
+        \item Lower bound on dag-like games with new validity condition: $A(h, x) = B(h, y)$ (motivated
+            by lower bounds for other proof systems).
+        \pause
+        \item Can we use information complexity for this protocols?
+    \end{enumerate}
 \end{frame}
