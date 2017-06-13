@@ -9,7 +9,7 @@
         \end{itemize}
     \end{definition}
 
-    The complexity measure is the length of minimal $w$.
+    The complexity measure is the length of shortest $w$.
     \pause
 
     \vspace{0.3cm}
@@ -19,8 +19,8 @@
             \begin{itemize}
                 \item $D_s = \emptyset$;
                 \item either $D_i$ is a clause of $\varphi$
-                \item or $D_i$ can be obtain by the following rule from previous clauses $\frac{A \lor x ~~~ B \lor \neg x}{A
-                    \lor B} ~~~~~ \frac{A}{A \lor z}$.
+                \item or $D_i$ can be obtained by the following rule from previous clauses $\frac{A \lor
+                    x ~~~ B \lor \neg x}{A \lor B} ~~~~~ \frac{A}{A \lor z}$.
             \end{itemize}
     \end{itemize}
 \end{frame}
@@ -31,24 +31,24 @@
             \begin{itemize}
                 \item $D_s = \emptyset$;
                 \item either $D_i$ is a clause of $\varphi$
-                \item or $D_i$ can be obtain by the following rule from previous clauses $\frac{A \lor x ~~~ B \lor \neg x}{A
-                    \lor B} ~~~~~ \frac{A}{A \lor z}$.
+                \item or $D_i$ can be obtained by the following rule from previous clauses $\frac{A \lor
+                    x ~~~ B \lor \neg x}{A \lor B} ~~~~~ \frac{A}{A \lor z}$.
             \end{itemize}
         \pause
         \item Cutting Planes. The proof is a sequence of linear inequalities $D_1, \dots, D_s$ over integers such that:
             \begin{itemize}
                 \item $D_s = 0 \ge 1$;
                 \item either $D_i$ encodes a clause of $\varphi$
-                \item or $D_i$ can be obtain by the following rule from previous clauses $\frac{A \ge a ~~~ B \ge b}{\alpha A
-                    + \beta B \ge \alpha a + \beta b} ~~~~~ \frac{ka_1 x_1 + ka_2 x_2 + \dots \ge c}{a_1 x_1 + a_2 x_2 +
-                    \dots \ge \lceil \frac{c}{k} \rceil}$.
+                \item or $D_i$ can be obtained by the following rule from previous clauses $\frac{A \ge a
+                    ~~~ B \ge b}{\alpha A + \beta B \ge \alpha a + \beta b} ~~~~~ \frac{ka_1 x_1 + ka_2
+                    x_2 + \dots \ge c}{a_1 x_1 + a_2 x_2 + \dots \ge \lceil \frac{c}{k} \rceil}$.
             \end{itemize}
         \pause
         \item Generalization (semantic proof system). The proof is a sequence of constraints $D_1, \dots, D_s$ such that:
             \begin{itemize}
                 \item $D_s$ is trivially false constraint;
                 \item either $D_i$ encodes a clause of $\varphi$
-                \item or $D_i$ is semantically followed from two previous constraints.
+                \item or $D_i$ semantically follows from two previous constraints.
             \end{itemize}
     \end{itemize}
 \end{frame}
@@ -60,7 +60,7 @@
             stronger and stronger} systems until one can generalize techniques for all systems.
         \pause
         \item Lower bounds on {\color{blue} weak} (resolution and similar) systems give us the lower
-            bounds on algorithms for satifiability problems.
+            bounds on algorithms for the satifiability problems.
         \pause
         \item Lower bounds on {\color{blue} strong} proof system would give us lower bounds on other
             computational models (for example algebraic circuits).
