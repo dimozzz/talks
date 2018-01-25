@@ -1,3 +1,3 @@
-mkdir tmp
-pdflatex -output-directory tmp main.tex
-pdflatex -output-directory tmp main.tex
+mkdir pdf
+pdflatex -output-directory pdf main.tex
+#pdflatex -output-directory pdf main.tex

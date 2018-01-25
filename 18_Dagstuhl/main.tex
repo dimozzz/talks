@@ -1,15 +1,59 @@
-\documentclass[russian]{beamer}
+\documentclass[english]{beamer}
 \usepackage{slides_style}
 
-\title[Dag-like communication]{
-	Dag-like Communication and Its Applications
-}
-  
-\author[Sokolov D.]{Dmitry Sokolov}
+\newcommand{\newclass}[2]{\newcommand{#1}{{\text{\upshape\sffamily #2}}\xspace}}
+\newclass{\rectDag}{rect-dag}
+\newclass{\conjDag}{conj-dag}
+\newclass{\triDag}{tri-dag}
 
-\institute{St. Petersburg Department of V. A. Steklov Institute of Mathematics}
-\date{Stockholm, KTH\\
-	March 16, 2017
+\newcommand\rbox[1]{
+	\tikz\node[rounded corners, align = center] {#1};
+}
+
+\title[Monotone Circuit Lower Bounds from Resolution]{
+	Monotone Circuit Lower Bounds from Resolution
+}
+
+\author[Sokolov D.]{
+	\texorpdfstring{
+		\begin{columns}
+    		\column{0.45\linewidth}
+            \centering
+            \rbox{
+                Ankit Garg\\
+                Microsoft Research
+            }
+            \column{0.45\linewidth}
+            \centering
+            \rbox{
+                Mika G{\"{o}}{\"{o}}s\\
+                Harvard University
+            }
+        \end{columns}
+        \vspace{0.5cm}
+        \begin{columns}
+            \column{0.45\linewidth}
+            \centering
+            \rbox{
+                Pritish Kamath\\
+                MIT
+            }
+            \column{0.45\linewidth}
+            \centering
+            \rbox{
+       	        Dmitry Sokolov\\
+            	KTH University
+            }
+        \end{columns}
+    }{
+        temp
+    }
+}  
+
+
+\date{Dagstuhl\\
+	January 28 --- February 2\\
+	2018
 }
 
 \begin{document}
@@ -18,7 +62,7 @@
 
 
 	\input{parts/part1.tex}
-    \input{parts/part2.tex}
+%    \input{parts/part2.tex}
 
 \end{document}
 

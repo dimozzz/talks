@@ -1,19 +1,38 @@
-\begin{frame}{Communication protocols. $f: U \times V \to T$}
-    \begin{center}
-    	\input{pics/protocol.tex}    
-    \end{center}
+\begin{frame}{Corollaries}
+    $m = n^{256}$, $w(\varphi)$ is the minimal width of resolution proof of $\varphi$
 
     \pause
-    \pause
-    \pause
-	\pause
-    
-    The depth of the protocol is the number of rounds in the worst case.
-    
-    $CC(f) = \min\limits_{P \in \mathcal{P}} depth(P)$, where $\mathcal{P}$ is a set of protocols for $f$.
+    \begin{enumerate}
+        \item For any formula $\varphi$ the number of lines of any $\CP$ proof of $\varphi \circ \Ind_m$
+            is at least $n^{w}$.
+        \pause
+        \item There is formula $\varphi$ such that:
+            \begin{itemize}
+                \item for any field $\mathbb{F}$ formula $\varphi$ has $\NS_{\mathbb{F}}$ proof of
+                    $O(\log(n))$ degree;
+                \item any $\CP$ proof of $\varphi$ has size at least $2^{n^{\epsilon}}$ for some fixed
+                    $\epsilon > 0$.
+            \end{itemize}
+        \pause
+        \item For any formula $\varphi$ the size of any monotone circuit for $\CSPSAT_{\varphi \circ
+            \Ind_m}$ or for certificate of unsatisfiability has size at least $n^{w(\varphi)}$.
+        \pause
+        \item There is a function $f$ that can be computed by monotone span program of size $n^{\log(n)}$
+            over any field, but any real monotone circuit for $f$ has size at least $2^{n^{\epsilon}}$
+            for some fixed $\epsilon > 0$.
+    \end{enumerate}
 \end{frame}
 
-\begin{frame}{Protocols and trees}
+\begin{frame}{Results}
+    \begin{theorem}
+        Let $m = n^{256}$. For any relation $S \subseteq \{0,1\}^n \times \mathcal{O}$, size of boolean
+        (real) dag communication protocol of $S \circ \Ind_m^n$ is at least $n^{\Theta(w(S))}$, where
+        $w(S)$ is the width of decision dag for $S$.
+    \end{theorem}
+\end{frame}
+
+
+\begin{frame}{Tree-like communication protocols. $S \subseteq U \times V \times T$}
 
     Alice receives $u \in U$ and Bob receives $v \in V$. A communication protocols corresponds to a tree:
 
@@ -25,13 +44,10 @@
     		    \item<8-> leaves are marked by answers.
 	        \end{itemize}
 
+            \vspace{0.5cm}
     		\onslide<9->{
-                The size of the protocol is the size of the tree. $Size(f) = \min\limits_{P \in \mathcal{P}} size(P)$.
-            } 
-            \onslide<10->{
-                \begin{lemma}[Kushilevitz, Nisan 1996]
-                    $CC(f) = \Omega(\log(size(f)))$.
-                \end{lemma}
+                Reformulation: at each node players try to answer for the question: ``Which vertex will
+                be next?''
             }
         \end{column}
         
@@ -40,6 +56,40 @@
 		\end{column}
 	\end{columns}
 
+\end{frame}
+
+
+\begin{frame}
+
+	\begin{columns}[t]
+		\begin{column}{0.52\textwidth}
+            \begin{center}
+                Tree-like world.
+                \only<1-2>{
+                    ``Which vertex will be next?''
+                }
+                \only<3->{
+                    \alert{``Are we in good vertex?''}
+                }
+                \vspace{0.2cm}
+                \input{pics/tree_good.tex}
+            \end{center}
+        \end{column}
+
+        \pause
+		\begin{column}{0.48\textwidth}
+            \begin{center}
+                Dag-like world. ``Are we in good vertex?''
+                \vspace{0.2cm}
+                \input{pics/dag_good.tex}
+            \end{center}
+		\end{column}
+	\end{columns}
+
+    \pause
+    \pause
+    \vspace{0.4cm}
+    Alice and Bob independenly answer for this question.
 \end{frame}
 
 
