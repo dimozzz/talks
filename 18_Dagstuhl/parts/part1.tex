@@ -23,14 +23,6 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}{Results}
-    \begin{theorem}
-        Let $m = n^{256}$. For any relation $S \subseteq \{0,1\}^n \times \mathcal{O}$, size of boolean
-        (real) dag communication protocol of $S \circ \Ind_m^n$ is at least $n^{\Theta(w(S))}$, where
-        $w(S)$ is the width of decision dag for $S$.
-    \end{theorem}
-\end{frame}
-
 
 \begin{frame}{Tree-like communication protocols. $S \subseteq U \times V \times T$}
 
@@ -59,7 +51,7 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}{Tree vs. Dag}
 
 	\begin{columns}[t]
 		\begin{column}{0.52\textwidth}
@@ -92,38 +84,53 @@
     Alice and Bob independenly answer for this question.
 \end{frame}
 
+\begin{frame}{Sets}
+    \begin{columns}[t]
+		\begin{column}{0.48\textwidth}
+            \begin{center}
+                Rectangle (boolean) dag:
+                \vspace{0.2cm}
+                \input{pics/rectangle.tex}
+            \end{center}
+        \end{column}
 
-\begin{frame}{KW relation (Karchmer, Wigderson 1990)}
-    A communication problem on sets $U, V \subseteq \{0, 1\}^{n}$ and relation $\Bit$:
+		\begin{column}{0.48\textwidth}
+            \begin{center}
+                Triangle (real) dag:
+                \vspace{0.2cm}
+                \input{pics/triangle.tex}
+            \end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{$\KWm$ relation (Karchmer, Wigderson 1990)}
+
+    $f:\{0, 1\}^n \to \{0, 1\}$ is a monotone partial function
+    
     \begin{itemize}
-        \item Alice receives $u \in U$, Bob receives $v \in V$;
-        \item goal is to find $i$ such that $u_i \neq v_i$.
-    \end{itemize}
-    \pause
-    Monotone case ($\MBit$ relation):
-    \begin{itemize}
+        \item Alice receives $u \in f^{-1}(1)$, Bob receives $v \in f^{-1}(0)$;
         \item goal is to find $i$ such that $u_i = 1 \land v_i = 0$.
     \end{itemize}
 
     \pause
 
-    \begin{theorem}[Karchmer, Wigderson 1990]
-        There is a \only<4->{\alert{(monotone)}} boolean {\color{blue} formula} for a function $f$ of the
-        size $S$ iff there is a communication protocol of the size $S$ for the relation $\Bit$
-        \only<4->{\alert{$(\MBit)$}}, $U = f^{-1}(1), V = f^{-1}(0)$.
+    \begin{theorem}[Razborov 95; Pudl{\'{a}}k 10; S 17]
+        Monotone boolean circuit for $f$ of size $S$ $\Leftrightarrow$ rectangle dag protocol of size $S$
+        for the $\KWm_f$ relation.
     \end{theorem}
 
     \pause
-    \pause
-    
-    \begin{theorem}[Pitassi, G{\"{o}}{\"{o}}s, 2014]
-        There is a monotone function $f$ such that any monotone boolean formula that computes it has the
-        size at least $2^{\frac{n}{\log(n)}}$. 
+
+    \begin{theorem}[Hrube{\v{s}} Pudl{\'{a}}k 17]
+        Monotone real circuit for $f$ of size $S$ $\Leftrightarrow$ triangle dag protocol of size $S$
+        for the $\KWm_f$ relation.
     \end{theorem}
 \end{frame}
 
 
-\begin{frame}{Canonical search problem $\Search_{\varphi}$ (Impagliazzo et al. 1994)}
+\begin{frame}{Canonical search problem $\Search_{\varphi}$ (Lov{\'{a}}sz et al. 1994)}
     
     $\varphi(x, y)$ is an unsatisfiable CNF formula:
     \begin{itemize}
@@ -134,94 +141,26 @@
 
     \pause
 
-    \begin{theorem}[Beame, Pitassi, Segerlind 2007. Informal]
-        If there is a {\color{blue} tree-like} proof in proof system $\Pi$ ($\Pi$ from some \textit{huge
-          class}) of size $S$ then there is a communication protocol for $\Search_{\varphi}$ of depth
-        $poly(\log(S))$.
+    \begin{theorem}[Kraj{\'{\i}}{\v{c}}ek 95; S 17]
+        If there a proof of $\varphi$ in $CC_{\log(n)}$ proof system then there is a rectangle dag protocol for
+        $\Search_{\varphi}$ of size $\poly(n) S$.
     \end{theorem}
+
+    Resolution, $\CP^*$, $\dots$ are $CC_{\log(n)}$ proof systems.
 
     \pause
     
-    \begin{theorem}[Pitassi, G{\"{o}}{\"{o}}s, 2014]
-        There is a formula $\varphi$ such that the communication complexity of $\Search_{\varphi}$ is at least
-        $\frac{n}{\log(n)}$.
+    \begin{theorem}[S 17]
+        If there a proof of $\varphi$ in $\CP$ proof system then there is a triangle dag protocol for
+        $\Search_{\varphi}$ of size $\poly(n) S$.
     \end{theorem}
 \end{frame}
 
-\begin{frame}{Generalization. Trivial way}
 
-	\pause
-    \begin{columns}[t]
-		\begin{column}{0.6\textwidth}
-            \onslide<2->{
-                \begin{enumerate}
-                    \item Structure of the protocol $\underset{\text{KW}}{\Leftrightarrow}$ structure of the formula.
-                    \item Structure of the protocol $\underset{\text{IPU}}{\Leftarrow}$ structure of the proof.
-                \end{enumerate}
-            }
-            
-            \vspace{0.3cm}
-            \onslide<3->{Can we merge some vertices in protocol?}
-
-			\onslide<6->{
-                \begin{block}{Remark}
-                    It is too powerful model. There are short protocols for $\Bit$, $\MBit$ and
-                    $\Search_{\varphi}$.
-                \end{block}
-            }
-        \end{column}
-        
-		\begin{column}{0.25\textwidth}
-            \input{pics/classic.tex}
-		\end{column}
-	\end{columns}
-
-\end{frame}
-
-\begin{frame}{Properties of classical protocols}
-
-    Fix any $u \in U$ and $v \in V$.
-
-    \pause
-    \begin{enumerate}
-        \item Players can find ``next'' vertex in the tree in one round.
-        \item For any vertex $h$ of the tree players can check whether they visit $h$ in one
-            \textbf{parallel} round.
-    \end{enumerate}
-
-    \pause
-    Relaxed version of second property:
-    \begin{itemize}
-        \item Some vertices of tree is marked by ``valid for (u, v)''.
-        \item For any vertex $h$ of the tree players can check whether $h$ is valid for $(u, v)$ in one
-            \textbf{parallel} round.
-        \item If players start from valid vertex they find a correct answer.
-    \end{itemize}
-    
-\end{frame}
-
-\begin{frame}{Generalization. Rectangles}
-
-    Alice receives $u \in U$ and Bob receives $v \in V$.
-
-    \begin{columns}[t]
-		\begin{column}{0.6\textwidth}
-            \begin{itemize}
-                \item<2-> Mark all vertices $h$ of the tree by rectangles $R_h = U_h \times V_h \subseteq
-                    U \times V$;
-	            \item<4-> $(u, v) \in R_h$ iff $h$ is on path from root to leaf for instance $(u, v)$;
-    		    \item<6-> payment for merge $h$ and $h'$: cover by rectangle $R_{new}$.
-	        \end{itemize}
-            
-            \onslide<5->{
-                \begin{center}
-                	\input{pics/covers.tex}    
-                \end{center}
-            }
-        \end{column}
-        
-		\begin{column}{0.3\textwidth}
-            \onslide<3->{\input{pics/classic_2.tex}}
-		\end{column}
-	\end{columns}
+\begin{frame}{Results}
+    \begin{theorem}
+        Let $m = n^{256}$. For any relation $S \subseteq \{0,1\}^n \times \mathcal{O}$, size of boolean
+        (real) dag communication protocol of $S \circ \Ind_m^n$ is at least $n^{\Theta(w(S))}$, where
+        $w(S)$ is the width of decision dag for $S$.
+    \end{theorem}
 \end{frame}
