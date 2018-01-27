@@ -4,32 +4,32 @@
     \pause
     \begin{enumerate}
         \item For any formula $\varphi$ the number of lines of any $\CP$ proof of $\varphi \circ \Ind_m$
-            is at least $n^{w}$.
+            is at least $n^{w(\varphi)}$.
         \pause
         \item There is formula $\varphi$ such that:
             \begin{itemize}
                 \item for any field $\mathbb{F}$ formula $\varphi$ has $\NS_{\mathbb{F}}$ proof of
                     $O(\log(n))$ degree;
-                \item any $\CP$ proof of $\varphi$ has size at least $2^{n^{\epsilon}}$ for some fixed
-                    $\epsilon > 0$.
+                \item any $\CP$ proof of $\varphi$ has size at least $2^{n^{\varepsilon}}$ for some fixed
+                    $\varepsilon > 0$.
             \end{itemize}
         \pause
         \item For any formula $\varphi$ the size of any monotone circuit for $\CSPSAT_{\varphi \circ
             \Ind_m}$ or for certificate of unsatisfiability has size at least $n^{w(\varphi)}$.
         \pause
         \item There is a function $f$ that can be computed by monotone span program of size $n^{\log(n)}$
-            over any field, but any real monotone circuit for $f$ has size at least $2^{n^{\epsilon}}$
-            for some fixed $\epsilon > 0$.
+            over any field, but any real monotone circuit for $f$ has size at least $2^{n^{\varepsilon}}$
+            for some fixed $\varepsilon > 0$.
     \end{enumerate}
 \end{frame}
 
 
-\begin{frame}{Tree-like communication protocols. $S \subseteq U \times V \times T$}
+\begin{frame}{Tree-like communication protocols. $S \subseteq U \times V \times \mathcal{T}$}
 
     Alice receives $u \in U$ and Bob receives $v \in V$. A communication protocols corresponds to a tree:
 
     \begin{columns}[t]
-		\begin{column}{0.7\textwidth}
+		\begin{column}{0.6\textwidth}
             \begin{itemize}
                 \item<2-> inner vertices are marked by players;
 	            \item<3-> if current player sends a bit they move to next vertex;
@@ -43,7 +43,7 @@
             }
         \end{column}
         
-		\begin{column}{0.25\textwidth}
+		\begin{column}{0.3\textwidth}
             \input{pics/first_tree.tex}
 		\end{column}
 	\end{columns}
@@ -84,7 +84,8 @@
     Alice and Bob independenly answer for this question.
 \end{frame}
 
-\begin{frame}{Sets}
+\begin{frame}{Dag protocols}
+    \vspace{-1cm}
     \begin{columns}[t]
 		\begin{column}{0.48\textwidth}
             \begin{center}
@@ -102,6 +103,16 @@
             \end{center}
 		\end{column}
 	\end{columns}
+
+    \pause
+    \begin{itemize}
+        \item $H$ is a graph with out degree $2$, $\forall h \in H, ~ C_h: U \times V \to \{0, 1\}$;
+        \item $C_{root} \equiv 1$;
+        \item $a, b$ are children of $h$ $\Rightarrow$ $C_{h}^{-1}(1) \subseteq C_{a}^{-1}(1) \cup
+            C_{b}^{-1}(1)$;
+        \item $h$ is a leaf $\Rightarrow$ $h$ is marked by common solution for $C_h^{-1}(1)$.
+    \end{itemize}
+
 \end{frame}
 
 
@@ -142,7 +153,7 @@
     \pause
 
     \begin{theorem}[Kraj{\'{\i}}{\v{c}}ek 95; S 17]
-        If there a proof of $\varphi$ in $CC_{\log(n)}$ proof system then there is a rectangle dag protocol for
+        $CC_{\log(n)}$ proof of $\varphi$ of size $S$ $\Rightarrow$ rectangle dag protocol for
         $\Search_{\varphi}$ of size $\poly(n) S$.
     \end{theorem}
 
@@ -151,10 +162,12 @@
     \pause
     
     \begin{theorem}[S 17]
-        If there a proof of $\varphi$ in $\CP$ proof system then there is a triangle dag protocol for
-        $\Search_{\varphi}$ of size $\poly(n) S$.
+        $\CP$ of $\varphi$ of size $S$ $\Rightarrow$ triangle dag protocol for $\Search_{\varphi}$ of
+        size $S$.
     \end{theorem}
 \end{frame}
+
+
 
 
 \begin{frame}{Results}
