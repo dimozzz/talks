@@ -1,0 +1,24 @@
+\begin{frame}{Corollaries}
+    $m = n^{256}$, $w(\varphi)$ is the minimal width of resolution proof of $\varphi$
+
+    \pause
+    \begin{enumerate}
+        \item For any formula $\varphi$ the number of lines of any $\CP$ proof of $\varphi \circ \Ind_m$
+            is at least $n^{w(\varphi)}$.
+        \pause
+        \item There is formula $\varphi$ such that:
+            \begin{itemize}
+                \item for any field $\mathbb{F}$ formula $\varphi$ has $\NS_{\mathbb{F}}$ proof of
+                    $O(\log(n))$ degree;
+                \item any $\CP$ proof of $\varphi$ has size at least $2^{n^{\varepsilon}}$ for some fixed
+                    $\varepsilon > 0$.
+            \end{itemize}
+        \pause
+        \item For any formula $\varphi$ the size of any monotone circuit for $\CSPSAT_{\varphi \circ
+            \Ind_m}$ or for certificate of unsatisfiability has size at least $n^{w(\varphi)}$.
+        \pause
+        \item There is a function $f$ that can be computed by monotone span program of size $n^{\log(n)}$
+            over any field, but any real monotone circuit for $f$ has size at least $2^{n^{\varepsilon}}$
+            for some fixed $\varepsilon > 0$.
+    \end{enumerate}
+\end{frame}

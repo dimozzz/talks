@@ -1,4 +1,4 @@
-\begin{frame}{Decision model. $S \subseteq \{0, 1\}^n \times \mathcal{T}$}
+\begin{frame}{Decision dag (conjunction dag). $S \subseteq \{0, 1\}^n \times \mathcal{T}$}
     $C(\rho) = \{x \in \{0, 1\} \mid x \sim \rho\}$
     
     \begin{columns}[t]
@@ -15,11 +15,37 @@
 
 		\begin{column}{0.4\textwidth}
             \begin{center}
-                \vspace{0.2cm}
                 \input{pics/decision_dag.tex}
             \end{center}
 		\end{column}
 	\end{columns}
 
     Width of decision dag is $\max\limits_{h \in H} |\rho_h|$.
+\end{frame}
+
+\begin{frame}{Result}
+    \begin{itemize}
+        \item $S \subseteq \{0, 1\}^n \times \mathcal{T}$;
+        \item $w(S)$ the least width of decision dag;
+        \pause
+        \item $\Ind: [m] \times \{0, 1\}^m \to \{0, 1\}$, where $m = n^{O(1)}$;
+        \item $\Ind(x, y) = y_x$;
+        \pause
+        \item $S \circ \Ind$ is composed search problem.
+    \end{itemize}
+
+    \only<1-3>{
+    \onslide<3>{
+        \begin{center}
+              \input{pics/composition.tex}
+        \end{center}
+    }}
+
+  \only<4>{
+    \vspace{0.86cm}
+        \begin{theorem}
+            Rectangle (triangle) dag complexity of $S \circ \Ind_m$ is $n^{\theta(w(S))}$.  
+        \end{theorem}
+        \vspace{1.8cm}
+    }
 \end{frame}
