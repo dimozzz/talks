@@ -2,9 +2,8 @@
 \usepackage{slides_style}
 \usepackage{dsfont}
 
-\newcommand\rbox[1]{
-	\tikz\node[rounded corners, align = center] {#1};
-}
+\renewcommand{\reordering}{\mathrm{r}}
+\renewcommand{\weakening}{\mathrm{w}}
 
 \title[OBDD Proof Systems]{
     Reordering Rule Makes OBDD Proof Systems Stronger
@@ -61,6 +60,7 @@
 	\maketitle
 
     \input{parts/intro.tex}
+    \input{parts/wproofs.tex}
     
 \end{document}
 

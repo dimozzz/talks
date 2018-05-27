@@ -1,15 +1,46 @@
-\begin{frame}{Ordered binary decision diagram (OBDD)}
+\begin{frame}{Ordered binary decision diagram ($\OBDD$)}
     \begin{columns}[t]
         \begin{column}{0.3\textwidth}
             \input{pics/obdd.tex}
         \end{column}
         
 		\begin{column}{0.6\textwidth}
-            \begin{itemize}
-                \item $\OBDD$ represents Boolean function $\{0, 1\}^n \to \{0, 1\}$;
-                \item $\pi$ is order of variables;
-                \item if $i < j$ then $x_{\pi(j)}$ cannot appear before $x_{\pi(i)}$.
-            \end{itemize}
+            \only<1>{
+                \begin{itemize}
+                    \item $\OBDD$s represent Boolean functions $\{0, 1\}^n \to \{0, 1\}$;
+                    \item $\pi$ is order of variables;
+                    \item if $i < j$ then $x_{\pi(j)}$ cannot appear before $x_{\pi(i)}$.
+                \end{itemize}
+            }
+
+            \pause
+
+            \only<2->{
+
+                $\OBDD$ proofs of unsatisfiability:
+                \begin{itemize}
+                    \item sequence of $\OBDD$s: $D_1, D_2, D_3, \dots, D_m$;
+                    \pause
+                    \item $D_m \equiv 0$;
+                    \pause
+                    \item $\OBDD$ for initial constraints;
+                \end{itemize}
+
+                \pause
+                Rules:
+                \pause
+                \begin{itemize}
+                    \item $\land$ (join): $D_i, D_j \Rightarrow D_k \equiv (D_i \land D_j)$;
+                    \pause
+                    \item $\weakening$ (weakening): $D_i \Rightarrow D_j, D_i \models D_j$;
+                    \pause
+                    \item $\reordering$ (reordering): $D_i \Rightarrow D_j, D_j \equiv D_i$ but orders of
+                        variables are different.
+                \end{itemize}
+
+                \pause
+                Join rule can be applied only for $\OBDD$s in the same order.
+            }
 		\end{column}
 	\end{columns}    
 \end{frame}
