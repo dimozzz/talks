@@ -1,0 +1,91 @@
+\begin{frame}{$\OBDD(\land, \weakening)$-proofs}
+    \begin{itemize}
+        \item $\phi = C_1 \land C_2\land \dots \land C_t$ is unsatisfiable CNF.
+        \item Choose order $\pi$; every $C_i$ is represented as $\pOBDD$.
+        \item Join (conjunction) rule: $\frac{D_1^{\pi} ~~~ D_2^{\pi}} {(D_1\land D_2)^{\pi}}$.
+        \item Weakening rule: $\frac{D^{\pi}}{D_1^{\pi}}$ if $D \models D_1$.
+        \item Proof of unsatisfiability of $\phi$: derivation a constant false $\OBDD$.
+        \pause
+        \item{} [Atserias, Kolaitis, Vardi, 2004] $\OBDD(\land, \weakening)$ simulates $\CP^*$
+            \pause $\implies \PHP^{n + 1}_n$ has proofs of poly size.
+        \pause
+        \item Unsatisfiable linear systems over $\mathbb{F}_2$ have short proofs.
+        \pause
+        \item{} [Segerlind, 2007] $2^{n^{\Omega(1)}}$-lower bound for tree-like $\OBDD(\land,
+            \weakening)$-proofs.
+        \item{} [Kraj{\'{\i}}{\v{c}}ek, 2008] $2^{n^{\Omega(1)}}$-lower bound for dag-like $\OBDD(\land,
+            \weakening)$-proofs.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Kraj{\'{\i}}{\v{c}}ek's monotone interpolation}
+
+    \fbox{Proof of $\CliCol$ in semantic calculus} $\mapsto$
+    \fbox{mon. circuit, separating $(k + 1)$-cliques from $k$-col. graphs}.
+
+    \pause
+
+    \begin{theorem}[Kraj{\'{\i}}{\v{c}}ek, 1997]
+        There is a partition of variables of $\CliCol_n$ such that every semantic proof of $\CliCol_n$
+        either has constraint with $\CC$ at least $t$ or has size at least $2^{n^{\delta} - t}$. 
+    \end{theorem}
+
+    \pause
+
+    Corollaries[Kraj{\'{\i}}{\v{c}}ek, 2008]:
+    \begin{itemize}
+        \item there exists an order $\pi$ such that every $\pOBDD(\land,
+            weakening)$ has size at least $2^{\frac{1}{2} n^\delta}$.
+    \end{itemize}
+
+    \pause
+    Hard formula for all orders? \pause $\Phi(x) \mapsto \Psi(x, y)$.
+    
+    \begin{itemize}
+        \item $\forall$ orders $\pi$ on $x$ there is a substitution $y_{\pi}$ such that $\Psi(x,
+            y_{\pi})$ is isomorphic to $\Phi(x)$.
+        \item $\Psi(x, y)$ is hard for all orders if $\Phi(x)$ is hard for at least one.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{$\OBDD(\land)$-proofs}
+    \begin{itemize}
+        \item{} [Groote, Zantema, 2003; Tveretina et al., 2009] $OBDD(\land)$-proof system does
+            not simulate resolution;
+        \item{} [Tveretina et al., 2009] $\PHP^{n + 1}_n$ requires $OBDD(\land)$-proofs of size
+            $2^{\Omega(n)}$;
+        \item{} [Friedman, Xu, 2013] random $3$-CNFs are hard for $OBDD(\land)$-proofs in two particular
+            cases:
+            \begin{itemize}
+                \item with a fixed order of the variables;
+                \item with fixed orders of application of rules.
+            \end{itemize}
+    \end{itemize}    
+\end{frame}
+
+
+\begin{frame}{Reordering rule}
+    $\OBDD(\land, \reordering)$:
+    \begin{itemize}
+    	\item reordering rule: $\frac{D_1^{\pi_1}}{D_2^{\pi_2}}$ where $D_1^{\pi_1} \equiv D_2^{\pi_2}$;
+        \item join (conjunction) rule: $\frac{D_1^{\pi} ~~~~ D_2^{\pi}}{(D_1 \land D_2)^{\pi}}$.
+    \end{itemize}
+
+    \pause
+	Our results:
+    \pause
+    \begin{itemize}
+        \item $\OBDD(\land, \reordering)$ is strictly stronger than $\OBDD(\land)$;
+        \pause
+        \item lower bound $2^{\Omega(n)}$ for $\PHP^{n + 1}_n$ in $\OBDD(\land, \reordering)$;
+        \item lower bound $2^{\Omega(n)}$ for Tseitin formulas in $\OBDD(\land, \reordering)$;
+        \pause
+        \item $\OBDD(\land, \weakening)$ has short proofs of $\CliCol$ in some order;
+        \item $\OBDD(\land, \weakening, \reordering)$ is strictly stronger than $\OBDD(\land,
+            \weakening)$.
+    \end{itemize}
+
+    \pause
+    {\color{blue} Open question.} Prove superpolynomial lower bound for $\OBDD(\land, \weakening,
+    \reordering)$.
+\end{frame}

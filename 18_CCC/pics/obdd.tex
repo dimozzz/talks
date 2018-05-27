@@ -1,0 +1,25 @@
+\tikzstyle{circ} = [circle, draw, minimum size = 0.5cm, inner sep = 0.1pt]
+\tikzstyle{rect} = [rectangle, draw, minimum size = 0.5cm, inner sep = 0.1pt]
+
+\begin{tikzpicture}[node distance = 1.2cm and 1.2cm, thick, >=stealth']\footnotesize
+   \node[circ] (a) {$x_1$};
+   \node[circ] (b1) [below right = of a] {$x_2$};
+   \node[circ] (b2) [below left = of a] {$x_2$};
+   \node[circ] (c1) [below = of b1] {$x_3$};
+   \node[circ] (c2) [below = of b2] {$x_3$};
+   \node[rect] (final-one) [below = of c1] {1};
+   \node[rect] (final-zero) [below = of c2] {0};
+
+   \draw[->] (a) -- (b1) node[above, midway] {$1$};
+   \draw[->] (b1) -- (c1) node[right, midway] {$1$};
+   \draw[->] (c1) -- (final-one) node[right, midway] {$1$};
+   \draw[->, dashed] (b2) -- (c1) node[above, near start] {$0$};
+   \draw[->, dashed] (c2) -- (final-one) node[above, near start] {$0$}; 
+ 
+
+   \draw[->, dashed] (a) -- (b2) node[above, midway] {$0$};
+   \draw[->] (b2) -- (c2) node[left, midway] {$1$};
+   \draw[->] (c2) -- (final-zero) node[left, midway] {$1$};
+   \draw[->, dashed] (b1) -- (c2) node[above, near start] {$0$};
+   \draw[->, dashed] (c1) -- (final-zero) node[above, near start] {$0$}; 
+\end{tikzpicture}

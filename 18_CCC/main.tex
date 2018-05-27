@@ -2,16 +2,6 @@
 \usepackage{slides_style}
 \usepackage{dsfont}
 
-
-%\usetikzlibrary{shapes.geometric,positioning}
-
-\newcommand{\EoL}[1][2]{\lang{Eo}\text{-}{#1}\text{-}\lang{L}}
-
-\newcommand{\newclass}[2]{\newcommand{#1}{{\text{\upshape\sffamily #2}}\xspace}}
-\newclass{\rectDag}{rect-dag}
-\newclass{\conjDag}{conj-dag}
-\newclass{\triDag}{tri-dag}
-
 \newcommand\rbox[1]{
 	\tikz\node[rounded corners, align = center] {#1};
 }
@@ -65,30 +55,12 @@
 }
 
 
-\AtBeginSection[]{
-    \begin{frame}
-        \vfill
-        \centering
-        \usebeamerfont{title}\insertsectionhead\par%
-        \vfill
-    \end{frame}
-}
-
 
 \begin{document}
 
 	\maketitle
 
-    \section{Part I: Dag Protocols and Lifting}
-
-    \input{parts/corollaries.tex}
-    \input{parts/communication.tex}
-    \input{parts/dec_res.tex}
-    \input{parts/open.tex}
-
-    \section{Part II: From Proofs to Computations}
-
-    \input{parts/cert.tex}
-    \input{parts/separation.tex}
+    \input{parts/intro.tex}
+    
 \end{document}
 

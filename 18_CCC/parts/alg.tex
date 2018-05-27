@@ -1,0 +1,75 @@
+\begin{frame}{Symbolic quantifier elimination}
+	$\OBDD(\land, \exists)$-algorithms [Pan, Vardi, 2004] for $\SAT$.
+
+    \vspace{0.3cm}
+    \pause
+
+    Input: CNF formula $\varphi$.
+    \begin{enumerate}
+        \item Choose an order $\pi$. Create an $\OBDD$ $D^{\pi} \equiv 1$.
+        \item $S$ is a set of clauses of $\varphi$.
+        \pause
+        \item While $S \neq \emptyset$ apply the following operations:
+            \begin{itemize}
+                \item conjunction ($\land$):
+                    \begin{enumerate}
+                        \item choose $C \in S$,
+                        \item remove $C$ from $S$,
+                        \item $D^{\pi} := D^{\pi} \land C$;
+                    \end{enumerate}
+                \pause
+                \item projection ($\exists$): if $x$ does not appear in $S$, then $D^{\pi} := (\exists x
+                    D)^{\pi}$.
+                \pause
+            \end{itemize}
+        \item If $S = \emptyset$ then report whether $D$ is satisfiable or not.
+    \end{enumerate}
+
+    Running time is polynomially connected with the size of the largest $D$.    
+\end{frame}
+
+
+\begin{frame}{$\OBDD(\land, \exists)$-algorithms}
+	Upper bounds:
+    \begin{itemize}
+        \item{} [Ch{\'{e}}n, Zhang, 2009] Pigeonhole principle $\PHP^{n + 1}_n$ is easy for $\OBDD(\land,
+            \exists)$-algorithms.
+        \item Tseitin formulas are easy for $\OBDD(\land, \exists)$-algorithms.
+            \begin{itemize}
+                \item $\exists x \left\{
+                    \begin{aligned}
+                        & x + y + z = 1 \\
+                        & x + t + f = 0
+                    \end{aligned}\right.
+                    \Leftrightarrow y + z + t + f = 1$.
+                \item Sum up all equalities in the connected component.
+            \end{itemize}
+    \end{itemize}
+    
+    Lower bounds:
+    \begin{itemize}
+        \item Follows from lower bounds for (tree-like) $\OBDD(\land, \weakening)$-proofs.
+    \end{itemize}    
+\end{frame}
+
+
+\begin{frame}{$\OBDD(\land, \exists, \reordering)$-algorithms}
+	Reordering rule: choose $\pi'$ and $F^{\pi'}$ such that $F^{\pi'} \equiv D^{\pi}$; $\pi := \pi'$ and $D^{\pi} := F^{\pi'}$.
+
+    \vspace{0.3cm}
+    
+    Our goals:
+    \begin{itemize}
+        \item lower bounds for $OBDD(\land, \exists, \reordering)$-algorithms;
+        \item lower bound of type $2^{\Omega(n)}$, where $n$ is number of variables;
+        \item lower bound for natural formulas.
+    \end{itemize}
+
+    \pause
+    \begin{theorem}
+        There is a randomized construction of a family of satisfiable formulas $F_n$ on $n$ variables in
+        $O(1)$-CNF such that every $\OBDD(\land, \exists, \reordering)$-algorithm runs at least
+        $2^{\Omega(n)}$ steps on $F_n$. Formula $F_n$ represents a system of linear equations over
+        $\mathbb{F}_2$ based on checksum matrix of some linear code.    
+    \end{theorem}
+\end{frame}
