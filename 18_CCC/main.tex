@@ -1,0 +1,94 @@
+\documentclass[english, xcolor = {table}]{beamer}
+\usepackage{slides_style}
+\usepackage{dsfont}
+
+
+%\usetikzlibrary{shapes.geometric,positioning}
+
+\newcommand{\EoL}[1][2]{\lang{Eo}\text{-}{#1}\text{-}\lang{L}}
+
+\newcommand{\newclass}[2]{\newcommand{#1}{{\text{\upshape\sffamily #2}}\xspace}}
+\newclass{\rectDag}{rect-dag}
+\newclass{\conjDag}{conj-dag}
+\newclass{\triDag}{tri-dag}
+
+\newcommand\rbox[1]{
+	\tikz\node[rounded corners, align = center] {#1};
+}
+
+\title[OBDD Proof Systems]{
+    Reordering Rule Makes OBDD Proof Systems Stronger
+}
+
+\author[Sokolov D.]{
+    \texorpdfstring{
+        \vspace{-0.2cm}
+		\begin{columns}
+    		\column{0.45\linewidth}
+            \centering
+            \rbox{
+                Sam Buss\inst{1}\\
+            }
+            \column{0.45\linewidth}
+            \centering
+            \rbox{
+                Dmitry Itsykson\inst{2}\\
+            }
+        \end{columns}
+        \vspace{-0.3cm}
+        \begin{columns}
+            \column{0.45\linewidth}
+            \centering
+            \rbox{
+                Alexander Knop\inst{1}\\
+            }
+            \column{0.45\linewidth}
+            \centering
+            \rbox{
+       	        Dmitry Sokolov\inst{3}\\
+            }
+        \end{columns}
+    }{
+        temp
+    }
+}  
+
+\institute[KTH]{
+  \inst{1} University of California, San Diego \and %
+  \inst{2} St. Petersburg Department of V.A. Steklov Institute of Mathematics \and %
+  \inst{3} KTH Royal Institute of Technology
+}
+
+                    
+\date{Computational Complexity Conference\\
+    June 23, 2018
+}
+
+
+\AtBeginSection[]{
+    \begin{frame}
+        \vfill
+        \centering
+        \usebeamerfont{title}\insertsectionhead\par%
+        \vfill
+    \end{frame}
+}
+
+
+\begin{document}
+
+	\maketitle
+
+    \section{Part I: Dag Protocols and Lifting}
+
+    \input{parts/corollaries.tex}
+    \input{parts/communication.tex}
+    \input{parts/dec_res.tex}
+    \input{parts/open.tex}
+
+    \section{Part II: From Proofs to Computations}
+
+    \input{parts/cert.tex}
+    \input{parts/separation.tex}
+\end{document}
+
