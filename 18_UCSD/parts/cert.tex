@@ -38,12 +38,12 @@
         \begin{minipage}{0.5\linewidth}
             \def\firstrow{
             	$x_1$ & 1 & 0 & 1\\
-                $x_1$ & 1 & 0 & 1\\
+                $x_1$ & 1 & 1 & 0\\
             }
             \only<5-6>{
                 \def\firstrow{
             	    \rowcolor{green!40}[1.001\tabcolsep][1.001\tabcolsep] $x_1$ & 1 & 0 & 1\\
-                    \rowcolor{green!40}[1.001\tabcolsep][1.001\tabcolsep] $x_1$ & 1 & 0 & 1\\
+                    \rowcolor{green!40}[1.001\tabcolsep][1.001\tabcolsep] $x_1$ & 1 & 1 & 0\\
                 }
             }
 
@@ -135,84 +135,4 @@
     \begin{lemma}[Pudl{\'{a}}k, Sgall 98]
         $\forall f, mSP(f) \le mF(f)$.
     \end{lemma}
-\end{frame}
-
-
-\begin{frame}{Span programs and Nullstellensatz}
-
-    \begin{lemma}[modification of Pudl{\'{a}}k, Sgall 98]
-        $\NS$-proof of $\varphi(x, y)$ of $y$-degree $d$ $\Rightarrow$ $mSP(U_{\varphi}, V_{\varphi})$ of
-        size $n^d$.
-    \end{lemma}
-
-    \pause
-
-    \begin{lemma}[Pitassi, Robere 18]
-        There is gadget $g$ such that $mSP(U_{\varphi \circ g}, V_{\varphi \circ g}) =
-        n^{\Theta(\NS(\varphi))}$.
-    \end{lemma}
-
-    \pause
-
-    \begin{lemma}
-        $\NS$-proof of $\varphi$ of degree $d$ $\Rightarrow$ $\NS$-proof of $\varphi \circ \Ind_m$ of
-        $y$-degree $d$.
-    \end{lemma}
-
-    $\Ind_m(x, y) = \sum\limits_{s \in [m]} \mathds{1}_{x = s} \cdot y_s$
-\end{frame}
-
-
-\begin{frame}{Separations}
-
-    \begin{center}
-        $\varphi$ is unsat CNF
-	\end{center}
-
-    \begin{minipage}{0.5 \textwidth}
-        \centering
-        Upper bound
-    \end{minipage}%
-    \begin{minipage}{0.5 \textwidth}
-        \centering
-        Lower bound
-    \end{minipage}
-
-    \pause
-    \vspace{0.4cm}
-
-    \begin{minipage}{0.5 \textwidth}
-        \centering
-        $\NS$-degree of $\varphi$
-    \end{minipage}%
-    \begin{minipage}{0.5 \textwidth}
-        \centering
-        resolution width of $\varphi$
-    \end{minipage}
-
-    \pause
-    \vspace{0.3cm}
-
-    \begin{minipage}{0.5 \textwidth}
-        \centering
-        $\Downarrow$ [PS]
-
-        \vspace{0.3cm}
-
-        $mSP(U_{\varphi \circ \Ind}, V_{\varphi \circ \Ind})$
-    \end{minipage}%
-    \begin{minipage}{0.5 \textwidth}
-        \centering
-        $\Downarrow$
-
-        \vspace{0.3cm}
-        
-        $mRC(U_{\varphi \circ \Ind}, V_{\varphi \circ \Ind})$
-    \end{minipage}
-
-
-    \pause
-    \vspace{1cm}
-    Goal is to find any formula of small width that separates Nullstellensatz and Resolution.
-
 \end{frame}
