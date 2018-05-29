@@ -2,18 +2,57 @@
     \begin{itemize}
         \item{} [Groote, Zantema 03; Tveretina, Sinz, Zantema 09] $\OBDD(\land)$ does not simulate
             resolution;
-        \item{} [Tveretina et al., 09] $\PHP^{n + 1}_n$ requires $\OBDD(\land)$-proofs of size
+        \pause
+        \item{} [Tveretina et al. 09] $\PHP^{n + 1}_n$ requires $\OBDD(\land)$-proofs of size
             $2^{\Omega(n)}$;
-        \item{} [Friedman, Xu, 2013] random $3$-CNFs are hard for \textcolor{blue}{restricted}
-            $OBDD(\land)$-proofs.
-        \item{} [Tveretina, Sinz, Zantema 09; Itsykson, Knop, Romaschenko, S 17] $\PHP^{n + 1}_{n}$ and
-            Tseitin formulas are hard for $\OBDD(\land, \reordering)$;
-        \item{} [this paper] $\OBDD(\land, \reordering)$ can be \textcolor{red}{q.p.} stronger than
-            $\OBDD(\land, \weakening)$; 
-        \item{} [this paper] $\OBDD(\land)$ can be \textcolor{red}{q.p.} stronger than $\CP)$.
+        \pause
+        \item{} [Friedman, Xu 13] random $3$-CNFs are hard for \textcolor{blue}{restricted}
+            $\OBDD(\land)$-proofs;
+        \pause
+        \item{} [Tveretina et al. 09] $\PHP^{n + 1}_{n}$ is hard for $\OBDD(\land)$;
+        \pause
+        \item{} [Itsykson, Knop, Romaschenko, S 17] $\PHP^{n + 1}_{n}$ and Tseitin formulas are hard for
+            $\OBDD(\land, \reordering)$;
+        \pause
+        \item{} \only<1-6>{[Tveretina 17, Arxiv preprint] Resolution simulates $\OBDD(\land)$;}
+            \only<7->{
+            	\textcolor{blue}{[this paper]} $\OBDD(\land)$ can be \textcolor{red}{q.p.} stronger than
+                $\CP$;
+            }
+        \pause
+        \pause    
+        \item{} \textcolor{blue}{[this paper]} $\OBDD(\land, \reordering)$ can be \textcolor{red}{q.p.}
+            stronger than $\OBDD(\land, \weakening)$.
     \end{itemize}    
 \end{frame}
 
 
-Separation with resolution.
-Composition with $\Ind$.
+\begin{frame}{Separation with resolution}
+    \begin{itemize}
+        \item Any unsatisfiable Tseitin formula $\TS_{G}$ has $\OBDD(\land)$-proof of size $2^{O(n)}$
+            in any order.
+		\item Resolution width of $\TS_{K_n}$ is $\Omega(n^2)$.
+
+            
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Lifting to $\CP$}
+    
+    \begin{theorem}[Garg, G{\"{o}}{\"{o}}s, Kamath, S 18]
+        Any $\CP$-proof of $\varphi \circ \Ind_{n^{300}}$ has size at least $n^{\Theta(w(\varphi))}$,
+        where $w(\varphi)$ is a resolution width of $\varphi$.
+    \end{theorem}
+
+    \begin{corollary}
+        \begin{itemize}
+            \item Any $\CP$-proof of $\TS_{K_{\log (n)}} \circ \Ind_{n^{300}}$ has size at least
+                $\log(n)^{\log^2(n)}$;
+            \item there is $\OBDD(\land)$-proof of $\TS_{K_{\log (n)}} \circ \Ind_{n^{300}}$ of size
+                $\log(n)^{\log(n)}$.
+        \end{itemize}
+        
+    \end{corollary}
+    
+\end{frame}

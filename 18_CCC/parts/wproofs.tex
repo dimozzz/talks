@@ -1,13 +1,13 @@
 \begin{frame}{$\OBDD(\land, \weakening)$-proofs}
     \begin{itemize}
-        \item{} [Atserias, Kolaitis, Vardi, 04] $\OBDD(\land, \weakening)$ simulates $\CP^*$
+        \item{} [Atserias, Kolaitis, Vardi 04] $\OBDD(\land, \weakening)$ simulates $\CP^*$
             \pause $\implies \PHP^{n + 1}_n$ has proofs of poly size.
         \pause
         \item{} Unsatisfiable linear systems over $\mathbb{F}_2$ have short proofs.
         \pause
-        \item{} [Segerlind, 07] $2^{n^{\Omega(1)}}$-lower bound for tree-like $\OBDD(\land,
+        \item{} [Segerlind 07] $2^{n^{\Omega(1)}}$-lower bound for tree-like $\OBDD(\land,
             \weakening)$-proofs.
-        \item{} [Kraj{\'{\i}}{\v{c}}ek, 08] $2^{n^{\Omega(1)}}$-lower bound for dag-like $\OBDD(\land,
+        \item{} [Kraj{\'{\i}}{\v{c}}ek 08] $2^{n^{\Omega(1)}}$-lower bound for dag-like $\OBDD(\land,
             \weakening)$-proofs.
     \end{itemize}
 \end{frame}
@@ -19,7 +19,7 @@
 
     \pause
 
-    \begin{theorem}[Kraj{\'{\i}}{\v{c}}ek, 08]
+    \begin{theorem}[Kraj{\'{\i}}{\v{c}}ek 08]
         There exists an order $\pi$ such that every $\pOBDD(\land, \weakening)$-proof of $\CliCol$ has
         size at least $2^{\frac{1}{2} n^\delta}$.
     \end{theorem}
@@ -28,7 +28,7 @@
     Hard formula for all orders? \pause $\Phi(x) \mapsto \Psi(x, y)$.
 
     \pause
-    {[Kraj{\'{\i}}{\v{c}}ek, 08]}:
+    {[Kraj{\'{\i}}{\v{c}}ek 08]}:
     \begin{itemize}
         \item $\forall$ orders $\pi$ on $x$ there is a substitution $y_{\pi}$ such that $\Psi(x,
             y_{\pi})$ is isomorphic to $\Phi(x)$.
@@ -38,39 +38,60 @@
 
 \begin{frame}{$\CliCol$}
 
-    \begin{theorem}[Grigoriev, Hirsch, Pasechnik, 02]
-    	There is a short $\LS_4$-proof of $\CliCol$.
-    \end{theorem}
-
-    \pause
-
-    Can we simulate $\LS_4$ in $\OBDD$? Probably no.
-
-    \pause
-
     \begin{theorem}
-        There is a short $\OBDD(\land, \weakening)$-proof of $\CliCol$.
+        $\CliCol$ has polynomial $\OBDD(\land, \weakening)$-proof in some order.
     \end{theorem}
 
     \pause
-    Simulation of this specific $\LS_4$-proof.
+
+    \begin{itemize}
+        \item Linear inequality with small coefficients can be represented by $\OBDD$.
+        \pause
+        \item{} [Hirsch, Grigoriev, Pasechnik 02] $\CliCol$ has short $LS^4$ proof.
+        \pause
+        \item $LS^4$ operates with degree $4$ inequalities. The proof can be simulated by $\OBDD(\land,
+            \weakening)$ in the appropriate order.
+    \end{itemize}
 
     \pause
-
-    \vspace{0.5cm}
-
-    $\OBDD(\land, \weakening)$ does not have monotone interpolation property.
+    \begin{corollary}
+        \begin{itemize}
+            \item $\OBDD(\land, \weakening)$ is strictly stronger than $\CP^*$;
+            \item $\OBDD(\land, \weakening)$ does not have monotone interpolation property.
+        \end{itemize}
+    \end{corollary}
 
 \end{frame}
 
 
-\begin{frame}{Separation}
-
-    \begin{theorem}
-    	$\OBDD(\land, \weakening, \reordering)$ is strictly strong than $\OBDD(\land, \weakening)$.
-    \end{theorem}
+\begin{frame}{$\OBDD(\land, \weakening, \reordering)$ is strictly stronger than $\OBDD(\land, \weakening)$}
 
     \pause
 
+    \begin{itemize}
+        \item $\varphi(x_1, \dots, x_n) \Rightarrow \tau(\varphi)(z_1,
+            \dots, z_{\ell}, x_1, \dots, x_n)$;
+        \item $\mathrm{rep}: \only<-2>{S_n}\only<3->{\alert{\Pi}} \to \{0, 1\}^{\ell}$ is injective;
+        \begin{multline*}
+            \tau(\varphi)(z_1, \dots, z_{\ell}, x_1, \dots, x_n) = \\
+            \bigwedge\limits_{\sigma \in \only<-2>{S_n}\only<3->{\alert{\Pi}}} \left[\left( z =
+                \mathrm{rep}(\sigma) \right) \to \varphi\left(x_{\sigma(1)}, \dots, x_{\sigma(n)}\right)
+            \right].
+        \end{multline*}
+    \end{itemize}
 
+    \pause
+    \pause
+
+    \begin{theorem}[Segerlind 07]
+        Let $m$ be the min: $\frac{2n^3}{m} + \frac{n^2}{mn - 1}  < 1$; $\Pi$ be a set of
+        2-ind. permutations of $[mn]$. If $\varphi$ is hard for $\OBDD(\land, \weakening)$ for one order,
+        then $\tau(\textcolor{blue}{\varphi \circ \lor_m})$ is hard for all orders.
+    \end{theorem}
+
+    \pause
+    \begin{corollary}
+        $\tau_{\Pi}(\CliCol \circ \lor_m)$ is hard for $\OBDD(\land, \weakening)$ but easy for
+        $\OBDD(\land, \weakening, \reordering)$. 
+    \end{corollary}
 \end{frame}

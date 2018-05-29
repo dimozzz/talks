@@ -60,34 +60,3 @@
         \item $\exists$ short $\OBDD$ for $\EQ(x, y)$ in the order $x_1, y_1, x_2, y_2, \dots, x_n, y_n$.
     \end{itemize}
 \end{frame}
-
-
-\begin{frame}{Operations with OBDD}
-      \begin{tabular}{|l|l|l|}
-        \hline
-        Input & Output & Complexity \\
-        \hline
-        $D^{\pi}$ & whether $D^{\pi}$ is satisfiable & \color{blue}{$O(|D|)$} \\
-        \hline
-        $D^{\pi}$ &  $(\lnot D)^{\pi}$ & \color{blue}{$O(|D|)$} \\
-        \hline
-        $D_1^{\pi}, D_2^{\pi}$ &  $(D_1\land D_2)^{\pi}$ & \color{blue}{$O(|D_1|\times |D_2|)$} \\
-        \hline
-        $D_1^{\pi}, D_2^{\pi}$ &  $(D_1\lor D_2)^{\pi}$ & \color{blue}{$O(|D_1|\times |D_2|)$} \\
-        \hline
-        $D^{\pi}$, $x$ &  $(\exists x D)^{\pi}$ & \color{blue}{$O(|D|)$} \\
-        \hline
-        $D^{\pi}$, $\rho$  &  $(D|_\rho)^{\pi}$ & \color{blue}{$O(|D|)$} \\
-        \hline
-        $D^{\pi}$ &  $\min D_0^{\pi}$ such that $D_0 \equiv D$ & \color{blue}{$O(|D|)$} \\
-        \hline
-        $D^{\pi'}, \pi$ &  $\min D_1^{\pi}$ such that $D^{\pi'} \equiv D_1^{\pi}$ &
-                                    $\color{blue}{poly(|D|} \alert{\times |D_1|} \color{blue}{)}$ \\
-        \hline
-        $D_1^{\pi_1}, D_2^{\pi_2}, D_3^{\pi_1}$ & whether $D_3 \equiv D_1 \land D_2$ & \alert{$\NP$-hard} \\
-        \hline
-    \end{tabular}
-
-    \bigskip
-	$D_1 \equiv D_2$ if $D_1$ and $D_2$ represents the same Boolean function.
-\end{frame}
