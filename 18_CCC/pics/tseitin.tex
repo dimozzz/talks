@@ -1,42 +1,22 @@
-\tikzset{
-	pics/graph/.style 2 args = {
-		code = {
-    		\node[circle, draw, pencildraw, oxygengray] (u) at (0, 0) {\scriptsize u};
-		    \node[circle, draw, pencildraw, oxygengray] (v) at (3.7, 0.1) {\scriptsize v};
+\tikzstyle{undir} = [thick, penciline]
+\tikzstyle{ver} = [thick, draw, circle, penciline]
 
-    	    \draw[penciline, #1] (u) -- (-0.9, 0.2) node[dotnode, oxygengray] {};
-    		\draw[penciline, #1] (u) -- (-0.8, -0.5) node[dotnode, oxygengray] {};
-	    	\draw[penciline, #1] (u) -- (-0.1, 0.8) node[dotnode, oxygengray] {};
-		    \draw[penciline, #1] (u) -- (0.15, -0.8) node[dotnode, oxygengray] {};
+\begin{tikzpicture}[black]
 
-	    	\draw[penciline, #2] (v) -- (4.55, 0.7) node[dotnode, oxygengray] {};
-	    	\draw[penciline, #2] (v) -- (4.5, -0.4) node[dotnode, oxygengray] {};
-		    \draw[penciline, #2] (v) -- (3.5, 0.9) node[dotnode, oxygengray] {};
-    		\draw[penciline, #2] (v) -- (3.1, -0.6) node[dotnode, oxygengray] {};
-		}
-	}
-}
+    \node[ver] (A) at (0, 0) {};
+    \node[ver] (B) at (1.9, 1.9) {};
+    \node[ver] (C) at (3, 0) {};
+    \node[ver] (D) at (4, 1.2) {};
+    \node[ver] (E) at (3.3, 3.7) {};
+    \node[ver] (F) at (-0.5, 3) {};
 
-\begin{tikzpicture}[thick]\scriptsize
-    \node (a) at (0, 0) {};
-    \path pic at (a) {graph};
-    \draw[penciline] (u) -- (0.9, 0.05) node[above = -1pt, dotnode] {} -- (1.8, -0.05) node[above =
-	    -1.2pt, dotnode] {} node[above = 8pt] {\large $P$} -- (2.6, 0) node[above = -1pt, dotnode] {} --
-        (v);
-
-    \def\y{-1.7}
-    \node (b) at (0, \y) {};
-    \path pic at (b) {graph = {red}{blue}};
-    \draw[penciline, blue] (v) -- (2.6, \y + 0.05);
-    \draw[penciline, red] (u) -- (0.9, \y + 0.05) node[above = -1pt, dotnode, oxygengray] {};
-    \draw[penciline] (0.9, \y + 0.05) -- (1.8, \y - 0.05) node[above = -1.2pt, dotnode] {} node[midway,
-    	above] {$0$} -- (2.6, \y) node[above = -1pt, dotnode] {} node[midway, above] {$0$};
-
-    \def\y1{-3.4}
-    \node (c) at (0, \y1) {};
-    \path pic at (c) {graph = {red}{blue}};
-    \draw[penciline, red] (v) -- (2.6, \y1 + 0.05);
-    \draw[penciline, blue] (u) -- (0.9, \y1 + 0.05) node[above = -1pt, dotnode, oxygengray] {};
-    \draw[penciline] (0.9, \y1 + 0.05) -- (1.8, \y1 - 0.05) node[above = -1.2pt, dotnode] {} node[midway,
-	    above] {$1$} -- (2.6, \y1) node[above = -1pt, dotnode] {} node[midway, above] {$1$};
+    \draw[undir] (A) to (B);
+    \draw[undir] (A) to (C);
+    \draw[undir] (B) to (C);
+    \draw[undir] (C) to (D);
+    \draw[undir] (B) to (D);
+    \draw[undir] (D) to (E);
+    \draw[undir] (E) to (F);
+    \draw[undir] (F) to (A);
+    \draw[undir] (B) to (F);
 \end{tikzpicture}

@@ -9,8 +9,6 @@
         \item{} [Friedman, Xu 13] random $3$-CNFs are hard for \textcolor{blue}{restricted}
             $\OBDD(\land)$-proofs;
         \pause
-        \item{} [Tveretina et al. 09] $\PHP^{n + 1}_{n}$ is hard for $\OBDD(\land)$;
-        \pause
         \item{} [Itsykson, Knop, Romaschenko, S 17] $\PHP^{n + 1}_{n}$ and Tseitin formulas are hard for
             $\OBDD(\land, \reordering)$;
         \pause
@@ -27,13 +25,24 @@
 \end{frame}
 
 
-\begin{frame}{Separation with resolution}
+\begin{frame}{Tseitin formulas. Separation with resolution}
+
+    \begin{minipage}{0.5 \linewidth}
+        \input{pics/tseitin.tex}
+    \end{minipage}%
+    \begin{minipage}{0.5 \linewidth}
+        \begin{itemize}
+            \item $v: ~ \bigoplus\limits_{e \in E_v} x_{e} = c(v)$;
+            \item $\bigoplus\limits_{v} c(v) = 1 \Rightarrow \TS_G$ is unsat. 
+        \end{itemize}
+    \end{minipage}
+
+
+    \pause
     \begin{itemize}
         \item Any unsatisfiable Tseitin formula $\TS_{G}$ has $\OBDD(\land)$-proof of size $2^{O(n)}$
             in any order.
-		\item Resolution width of $\TS_{K_n}$ is $\Omega(n^2)$.
-
-            
+        \item{} [\dots; Ben-Sasson, Wigderson 02; \dots] Resolution width of $\TS_{K_n}$ is $\Omega(n^2)$.
     \end{itemize}
 \end{frame}
 

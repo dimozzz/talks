@@ -1,14 +1,18 @@
 \begin{frame}{$\OBDD(\land, \weakening)$-proofs}
     \begin{itemize}
         \item{} [Atserias, Kolaitis, Vardi 04] $\OBDD(\land, \weakening)$ simulates $\CP^*$
-            \pause $\implies \PHP^{n + 1}_n$ has proofs of poly size.
+            \pause $\implies \PHP^{n + 1}_n$ has proofs of poly size;
         \pause
-        \item{} Unsatisfiable linear systems over $\mathbb{F}_2$ have short proofs.
+        \item{} unsatisfiable linear systems over $\mathbb{F}_2$ have short proofs;
         \pause
         \item{} [Segerlind 07] $2^{n^{\Omega(1)}}$-lower bound for tree-like $\OBDD(\land,
-            \weakening)$-proofs.
+            \weakening)$-proofs;
+        \pause
         \item{} [Kraj{\'{\i}}{\v{c}}ek 08] $2^{n^{\Omega(1)}}$-lower bound for dag-like $\OBDD(\land,
-            \weakening)$-proofs.
+            \weakening)$-proofs;
+        \pause
+        \item{} \textcolor{blue}{[this paper]} $\OBDD(\land, \weakening,
+            \reordering)$ is strictly stronger than $\OBDD(\land, \weakening)$.
     \end{itemize}
 \end{frame}
 
@@ -20,8 +24,8 @@
     \pause
 
     \begin{theorem}[Kraj{\'{\i}}{\v{c}}ek 08]
-        There exists an order $\pi$ such that every $\pOBDD(\land, \weakening)$-proof of $\CliCol$ has
-        size at least $2^{\frac{1}{2} n^\delta}$.
+        \textcolor{blue}{$\exists$} $\pi$ such that every $\pOBDD(\land,
+        \weakening)$-proof of $\CliCol$ has size at least $2^{n^{\delta}}$.
     \end{theorem}
 
     \pause
@@ -47,9 +51,9 @@
     \begin{itemize}
         \item Linear inequality with small coefficients can be represented by $\OBDD$.
         \pause
-        \item{} [Hirsch, Grigoriev, Pasechnik 02] $\CliCol$ has short $LS^4$ proof.
+        \item{} [Hirsch, Grigoriev, Pasechnik 02] $\CliCol$ has short $\LS^4$ proof.
         \pause
-        \item $LS^4$ operates with degree $4$ inequalities. The proof can be simulated by $\OBDD(\land,
+        \item $\LS^4$ operates with degree $4$ inequalities. The proof can be simulated by $\OBDD(\land,
             \weakening)$ in the appropriate order.
     \end{itemize}
 
@@ -83,15 +87,20 @@
     \pause
     \pause
 
+
     \begin{theorem}[Segerlind 07]
-        Let $m$ be the min: $\frac{2n^3}{m} + \frac{n^2}{mn - 1}  < 1$; $\Pi$ be a set of
-        2-ind. permutations of $[mn]$. If $\varphi$ is hard for $\OBDD(\land, \weakening)$ for one order,
-        then $\tau(\textcolor{blue}{\varphi \circ \lor_m})$ is hard for all orders.
+        $
+        \begin{cases}
+            m = \Omega(n^3) \\
+            \Pi \text{ is a set of 2-ind. permut. on } [mn] \\
+            \textcolor{red}{\exists} \pi, \varphi \text{ is hard for } \pOBDD(\land, \weakening)
+        \end{cases}
+        \Rightarrow \pause \textcolor{blue}{\forall} \pi, \tau(\textcolor{blue}{\varphi \circ \lor_m})$ is hard.
     \end{theorem}
 
     \pause
     \begin{corollary}
-        $\tau_{\Pi}(\CliCol \circ \lor_m)$ is hard for $\OBDD(\land, \weakening)$ but easy for
+        $\tau(\CliCol \circ \lor_m)$ is hard for $\OBDD(\land, \weakening)$ but easy for
         $\OBDD(\land, \weakening, \reordering)$. 
     \end{corollary}
 \end{frame}

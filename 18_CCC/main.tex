@@ -2,6 +2,10 @@
 \usepackage{slides_style}
 \usepackage{dsfont}
 
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
 \renewcommand{\reordering}{\mathrm{r}}
 \renewcommand{\weakening}{\mathrm{w}}
 
@@ -57,11 +61,13 @@
 
 \begin{document}
 
-	\maketitle
+    \maketitle
 
     \input{parts/intro.tex}
     \input{parts/wproofs.tex}
     \input{parts/proofs.tex}
+
+    \input{parts/open.tex}
     
 \end{document}
 
