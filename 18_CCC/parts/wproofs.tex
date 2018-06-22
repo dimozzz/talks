@@ -5,14 +5,14 @@
         \pause
         \item{} unsatisfiable linear systems over $\mathbb{F}_2$ have short proofs;
         \pause
-        \item{} [Segerlind 07] $2^{n^{\Omega(1)}}$-lower bound for tree-like $\OBDD(\land,
+        \item{} [Segerlind 07] $2^{n^{\Omega(1)}}$ lower bound for tree-like $\OBDD(\land,
             \weakening)$-proofs;
         \pause
-        \item{} [Kraj{\'{\i}}{\v{c}}ek 08] $2^{n^{\Omega(1)}}$-lower bound for dag-like $\OBDD(\land,
+        \item{} [Kraj{\'{\i}}{\v{c}}ek 08] $2^{n^{\Omega(1)}}$ lower bound for dag-like $\OBDD(\land,
             \weakening)$-proofs;
         \pause
         \item{} \textcolor{blue}{[this paper]} $\OBDD(\land, \weakening,
-            \reordering)$ is strictly stronger than $\OBDD(\land, \weakening)$.
+            \reordering)$ is exponentially stronger than $\OBDD(\land, \weakening)$.
     \end{itemize}
 \end{frame}
 
@@ -29,7 +29,7 @@
     \end{theorem}
 
     \pause
-    Hard formula for all orders? \pause $\Phi(x) \mapsto \Psi(x, y)$.
+    A hard formula for all orders? \pause $\Phi(x) \mapsto \Psi(x, y)$.
 
     \pause
     {[Kraj{\'{\i}}{\v{c}}ek 08]}:
@@ -43,24 +43,24 @@
 \begin{frame}{$\CliCol$}
 
     \begin{theorem}
-        $\CliCol$ has polynomial $\OBDD(\land, \weakening)$-proof in some order.
+        $\CliCol$ has a polynomial $\OBDD(\land, \weakening)$-proof in some order.
     \end{theorem}
 
     \pause
 
     \begin{itemize}
-        \item Linear inequality with small coefficients can be represented by $\OBDD$.
+        \item Linear inequalities with small coefficients can be represented by $\OBDD$s.
         \pause
-        \item{} [Hirsch, Grigoriev, Pasechnik 02] $\CliCol$ has short $\LS^4$ proof.
+        \item{} [Hirsch, Grigoriev, Pasechnik 02] $\CliCol$ has a short $\LS^4$ proof.
         \pause
         \item $\LS^4$ operates with degree $4$ inequalities. The proof can be simulated by $\OBDD(\land,
-            \weakening)$ in the appropriate order.
+            \weakening)$ in an appropriate order.
     \end{itemize}
 
     \pause
     \begin{corollary}
         \begin{itemize}
-            \item $\OBDD(\land, \weakening)$ is strictly stronger than $\CP^*$;
+            \item $\OBDD(\land, \weakening)$ is exponentially stronger than $\CP^*$;
             \item $\OBDD(\land, \weakening)$ does not have monotone interpolation property.
         \end{itemize}
     \end{corollary}
@@ -73,13 +73,14 @@
     \pause
 
     \begin{itemize}
-        \item $\varphi(x_1, \dots, x_n) \Rightarrow \tau(\varphi)(z_1,
+        \item Transform $\varphi(x_1, \dots, x_n)$ to $\tau_{\varphi}(z_1,
             \dots, z_{\ell}, x_1, \dots, x_n)$;
-        \item $\mathrm{rep}: \only<-2>{S_n}\only<3->{\alert{\Pi}} \to \{0, 1\}^{\ell}$ is injective;
+        \item $z_1, \dots, z_{\ell}$ encode a permutation $\pi \in S_n$;
         \begin{multline*}
             \tau(\varphi)(z_1, \dots, z_{\ell}, x_1, \dots, x_n) = \\
-            \bigwedge\limits_{\sigma \in \only<-2>{S_n}\only<3->{\alert{\Pi}}} \left[\left( z =
-                \mathrm{rep}(\sigma) \right) \to \varphi\left(x_{\sigma(1)}, \dots, x_{\sigma(n)}\right)
+            \bigwedge\limits_{\sigma \in \only<-2>{S_n}\only<3->{\alert{\Pi}}}
+            \left[\left( z \text{ encodes }
+                \sigma \right) \to \varphi\left(x_{\sigma(1)}, \dots, x_{\sigma(n)}\right)
             \right].
         \end{multline*}
     \end{itemize}

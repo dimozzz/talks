@@ -8,7 +8,7 @@
             \only<1>{
                 \begin{itemize}
                     \item $\OBDD$s represent Boolean functions $\{0, 1\}^n \to \{0, 1\}$;
-                    \item $\pi$ is order of variables;
+                    \item $\pi$ is an ordering of variables;
                     \item if $i < j$ then $x_{\pi(j)}$ cannot appear before $x_{\pi(i)}$.
                 \end{itemize}
             }
@@ -23,7 +23,7 @@
                     \pause
                     \item $D_m \equiv 0$;
                     \pause
-                    \item $\OBDD$ for initial constraints;
+                    \item $\OBDD$s for axioms.
                 \end{itemize}
 
                 \pause
@@ -48,14 +48,16 @@
 \begin{frame}{Orders are important}
     \begin{itemize}
         \item $f: \{0, 1\}^n \times \{0, 1\}^m \to \{0, 1\}$;
-        \item Alice knows $x \in \{0, 1\}^n$, Bob knows $y \in \{0, 1\}^m$;
+        \item Alice knows $x_1, \dots, x_n \in \{0, 1\}$, Bob knows $y_1, \dots, y_m \in \{0, 1\}$;
         \item they want to compute $f(x, y)$;
         \pause
-        \item assume that $f$ has $\OBDD$ of size $S$ in some order in that $x$ preceed $y$;
+        \item assume that $f$ has an $\OBDD$ of size $S$ in some order in that all
+            $x_i$'s preceed all $y_j$'s;
         \item communication complexity of $f$ is at most $\log S + 1$;
         \pause
         \item $\EQ: \{0, 1\}^n \times \{0, 1\}^n \to \{0, 1\}$, $\EQ(x, y) = 1 \Leftrightarrow x = y$;
-        \item if $x$ preceed $y$ in $\pi$, then size of any $\pOBDD$ for $\EQ(x, y)$ is at least $2^n$;
+        \item if all $x_i$'s preceed all $y_j$'s in $\pi$, then size of any $\pOBDD$
+            for $\EQ(x, y)$ is at least $2^n$;
         \pause
         \item $\exists$ short $\OBDD$ for $\EQ(x, y)$ in the order $x_1, y_1, x_2, y_2, \dots, x_n, y_n$.
     \end{itemize}
