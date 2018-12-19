@@ -1,0 +1,138 @@
+\begin{frame}{Certificate of unsatisfiability}
+
+    $\varphi(x, y) = \bigwedge\limits_{i = 1}^{m} C_i(x, y)$
+
+    \vspace{0.5cm}
+
+    $U_{\varphi}, V_{\varphi} \subseteq \{0, 1\}^m$:
+    \begin{itemize}
+        \item $A \in U_{\varphi} \Leftrightarrow \bigwedge\limits_{i \in A} C_i|_{x}$ is satisfiable;
+        \item $A \in V_{\varphi} \Leftrightarrow \bigwedge\limits_{i \in A} C_i|_{y}$ is unsatisfiable.
+    \end{itemize}
+
+    $C|_{x}$ ($C|_{y}$) is a restriction of $C$ to the variables from $x$ ($y$) part.
+
+    \begin{lemma}[Hrube{\v{s}}, Pudl{\'{a}}k 17 (implicit)]
+        $\Search_{\varphi} \approx \KWm(U_{\varphi}, V_{\varphi})$.
+    \end{lemma}
+\end{frame}
+
+
+\begin{frame}{Monotone span programs over field $\mathbb{F}$ (Karchmer, Wigderson 93)}
+
+    \only<1>{
+        \begin{center}
+            \begin{tabular}{|c|cccccccc|}
+                \hline
+                $x_1$ & 0 & 2 & 3 & 1 & 0 & 2 & 1 & 0\\
+                $x_3$ & 2 & 1 & 0 & 0 & 2 & 0 & 0 & 1\\
+                $x_4$ & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+                $x_5$ & 3 & 2 & 1 & 4 & 0 & 2 & 1 & 0\\
+                $x_1$ & 0 & 2 & 3 & 1 & 3 & 2 & 4 & 0\\
+                \hline
+            \end{tabular}
+        \end{center}
+    }
+      
+	\only<2->{
+        \begin{minipage}{0.5\linewidth}
+            \def\firstrow{
+            	$x_1$ & 1 & 0 & 1\\
+                $x_1$ & 1 & 1 & 0\\
+            }
+            \only<5-6>{
+                \def\firstrow{
+            	    \rowcolor{green!40}[1.001\tabcolsep][1.001\tabcolsep] $x_1$ & 1 & 0 & 1\\
+                    \rowcolor{green!40}[1.001\tabcolsep][1.001\tabcolsep] $x_1$ & 1 & 1 & 0\\
+                }
+            }
+
+            \def\secondrow{
+                $x_2$ & 0 & 1 & 1 \\
+                $x_2$ & 1 & 1 & 0 \\
+            }
+            \only<8-9>{
+                \def\secondrow{
+            	    \rowcolor{red!40}[1.001\tabcolsep][1.001\tabcolsep] $x_2$ & 0 & 1 & 1 \\
+                    \rowcolor{red!40}[1.001\tabcolsep][1.001\tabcolsep] $x_2$ & 1 & 1 & 0 \\
+                }
+            }
+
+            \def\thirdrow{
+                $x_3$ & 0 & 1 & 1 \\
+                $x_3$ & 1 & 0 & 1 \\
+            }
+            \only<5-6>{
+                \def\thirdrow{
+            	    \rowcolor{green!40}[1.001\tabcolsep][1.001\tabcolsep] $x_3$ & 0 & 1 & 1 \\
+                    \rowcolor{green!40}[1.001\tabcolsep][1.001\tabcolsep] $x_3$ & 1 & 0 & 1 \\
+                }
+            }
+              
+            \begin{center}
+                \begin{tabular}{|c|ccc|}
+                    \hline
+                    \firstrow
+                    \secondrow
+                    \thirdrow
+                    \hline
+                \end{tabular}
+            \end{center}
+        \end{minipage}%
+        \begin{minipage}{0.5\linewidth}
+            \pause
+            \pause
+            \begin{itemize}
+                \item Is there $(1, 1, 1, \dots)$ in the span of selected vectors?
+                \pause  
+                \item $f(1, 0, 1) = \only<4-5>{~?} \only<6->{1;}$
+                \pause
+                \pause
+                \pause
+                \item $f(0, 1, 0) = \only<7-8>{~?} \only<9->{0;}$
+                \pause
+                \pause
+                \pause
+                \item $MAJ(x_1, x_2, x_3)$.
+            \end{itemize}
+        \end{minipage}
+    }
+    
+    \vspace{0.15cm}
+
+    \pause
+    Size of the program is the number of columns.
+
+    \pause
+    \vspace{0.3cm}
+
+    \begin{minipage}{0.5\linewidth}
+        \begin{center}
+        	AND
+            
+            \begin{tabular}{|c|cc|}
+                \hline
+                $x_1$ & 1 & 0\\
+                $x_2$ & 0 & 1\\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{minipage}%
+    \begin{minipage}{0.5\linewidth}
+        \begin{center}
+        	OR
+            
+            \begin{tabular}{|c|c|}
+                \hline
+                $x_1$ & 1\\
+                $x_2$ & 1\\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{minipage}
+
+    \pause
+    \begin{lemma}[Pudl{\'{a}}k, Sgall 98]
+        $\forall f, mSP(f) \le mF(f)$.
+    \end{lemma}
+\end{frame}
