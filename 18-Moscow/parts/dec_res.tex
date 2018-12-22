@@ -1,15 +1,14 @@
-\begin{frame}{Decision dag (conjunction dag). $S \subseteq \{0, 1\}^n \times \mathcal{T}$}
+\begin{frame}{Граф решений. $S \subseteq \{0, 1\}^n \times \mathcal{T}$}
     $C(\rho) = \{z \in \{0, 1\}^n \mid z \sim \rho\}$
     
     \begin{columns}[t]
         \begin{column}{0.55\textwidth}
             \begin{itemize}
-                \item $H$ is a graph with out degree $2$, $\forall h \in H, ~ {\rho}_h$ is a partial
-                    assignment;
+                \item $H$~--- граф с исходящей степенью $2$, $\forall h \in H, ~ {\rho}_h$~--- частичная
+                    подстановка;
                 \item $\rho_{root} = \emptyset$ ($C(\rho_{root}) \equiv 1$);
-                \item $a, b$ are children of $h$ $\Rightarrow$ $C(\rho_{h}) \subseteq C(\rho_a) \cup
-                    C(\rho_b)$;
-                \item $h$ is a leaf $\Rightarrow$ $h$ is marked by common solution for $C(\rho_h)$.
+                \item если $a, b$ дети $h$, то $C(\rho_{h}) \subseteq C(\rho_a) \cup C(\rho_b)$;
+                \item если $h$ лист, то $h$ помечен решением для $C(\rho_h)$.
             \end{itemize}
         \end{column}
 
@@ -20,18 +19,18 @@
 		\end{column}
 	\end{columns}
 
-    Width of decision dag is $\max\limits_{h \in H} |\rho_h|$.
+    Ширина графа решений: $\max\limits_{h \in H} |\rho_h|$.
 \end{frame}
 
 \begin{frame}{Result}
     \begin{itemize}
         \item $S \subseteq \{0, 1\}^n \times \mathcal{T}$;
-        \item $w(S)$ the least width of decision dag;
+        \item $w(S)$~--- минимальная ширина графа решений;
         \pause
-        \item $\Ind: [m] \times \{0, 1\}^m \to \{0, 1\}$, where $m = n^{O(1)}$;
+        \item $\Ind: [m] \times \{0, 1\}^m \to \{0, 1\}$, где $m = n^{O(1)}$;
         \item $\Ind(x, y) = y_x$;
         \pause
-        \item $S \circ \Ind$ is composed search problem.
+        \item $S \circ \Ind$~--- коммуникационная задача поиска.
     \end{itemize}
 
     \only<1-3>{
@@ -44,7 +43,7 @@
     \only<4>{
         \vspace{0.86cm}
         \begin{theorem}
-            Rectangle (triangle) dag complexity of $S \circ \Ind_m$ is $n^{\Theta(w(S))}$.  
+            Размер протокола на графах (с треугольниками) для $S \circ \Ind_m$ равен $n^{\Theta(w(S))}$.
         \end{theorem}
         \vspace{1.8cm}
     }

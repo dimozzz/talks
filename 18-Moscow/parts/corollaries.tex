@@ -1,28 +1,28 @@
 \newcommand{\ba}{{\color{blue} $\boldsymbol{\forall}$}}
 \newcommand{\be}{{\color{blue} $\boldsymbol{\exists}$}}
 
-\begin{frame}{Corollaries}
-    $m = n^{O(1)}$, $w(\varphi)$ is the least width of resolution proof of $\varphi$
+\begin{frame}{Следствия}
+    $m = n^{O(1)}$, $w(\varphi)$~--- минимальная ширина резолюционного доказательства $\varphi$.
 
     \pause
     \begin{enumerate}
-        \item \ba $\varphi$ the number of lines of any $\CP$ proof of $\varphi \circ \Ind_m$ is at least
+        \item \ba $\varphi$ число строк в $\CP$-доказательстве $\varphi \circ \Ind_m$ не менее
             $n^{w(\varphi)}$.
         \pause
-        \item \textbf{($\CP$ vs. $\NS$)} \be $\varphi$ such that:
+        \item \textbf{($\CP$ vs. $\NS$)} \be $\varphi$, что:
             \begin{itemize}
-                \item for any field $\mathbb{F}$ formula $\varphi$ has $\NS_{\mathbb{F}}$ proof of
-                    $O(\log(n))$ degree;
-                \item any $\CP$ proof of $\varphi$ has size at least $2^{n^{\varepsilon}}$ for some fixed
-                    $\varepsilon > 0$.
+                \item над любым полем $\mathbb{F}$ формула $\varphi$ имеет
+                    $\NS_{\mathbb{F}}$-доказательство степени $O(\log(n))$;
+                \item любое $\CP$-доказательство $\varphi$ имеет размер не менее $2^{n^{\varepsilon}}$,
+                    где $\varepsilon > 0$.
             \end{itemize}
         \pause
-        \vspace{0.4cm}    
-        \item \ba $\varphi$ the size of any monotone circuit for $\CSPSAT_{\varphi \circ \Ind_m}$ or for
-            certificate of unsatisfiability is at least $n^{w(\varphi)}$.
+        \vspace{0.2cm}
+        \item \be $f$, которая может быть посчитана при помощи $mSP$ размера $\poly(n)$ над любым полем,
+            но любая монотонная вещественная схема для $f$ имеет размер не менее $2^{n^{\varepsilon}}$,
+            где $\varepsilon > 0$.
         \pause
-        \item \be $f$ that can be computed by monotone span program of size $\poly(n)$ over any field,
-            but any real monotone circuit for $f$ has size at least $2^{n^{\varepsilon}}$ for some fixed
-            $\varepsilon > 0$.
+        \item \be $f \in \NC^2$, что любая монотонная вещественная схема для $f$ имеет размер не менее
+            $2^{n^{\varepsilon}}$, где $\varepsilon > 0$.
     \end{enumerate}
 \end{frame}
