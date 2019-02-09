@@ -1,4 +1,24 @@
-\begin{frame}{$mSP$ над полем $\mathbb{F}$ (Karchmer, Wigderson 93)}
+\begin{frame}{Certificate of unsatisfiability}
+
+    $\varphi(x, y) = \bigwedge\limits_{i = 1}^{m} C_i(x, y)$
+
+    \vspace{0.5cm}
+
+    $U_{\varphi}, V_{\varphi} \subseteq \{0, 1\}^m$:
+    \begin{itemize}
+        \item $A \in U_{\varphi} \Leftrightarrow \bigwedge\limits_{i \in A} C_i|_{x}$ is satisfiable;
+        \item $A \in V_{\varphi} \Leftrightarrow \bigwedge\limits_{i \in A} C_i|_{y}$ is unsatisfiable.
+    \end{itemize}
+
+    $C|_{x}$ ($C|_{y}$) is a restriction of $C$ to the variables from $x$ ($y$) part.
+
+    \begin{lemma}[Hrube{\v{s}}, Pudl{\'{a}}k 17 (implicit)]
+        $\Search_{\varphi} \approx \KWm(U_{\varphi}, V_{\varphi})$.
+    \end{lemma}
+\end{frame}
+
+
+\begin{frame}{Monotone span programs over field $\mathbb{F}$ (Karchmer, Wigderson 93)}
 
     \only<1>{
         \begin{center}
@@ -63,7 +83,7 @@
             \pause
             \pause
             \begin{itemize}
-                \item $(1, 1, 1, \dots)$ в оболочке выбранных векторов?
+                \item Is there $(1, 1, 1, \dots)$ in the span of selected vectors?
                 \pause  
                 \item $f(1, 0, 1) = \only<4-5>{~?} \only<6->{1;}$
                 \pause
@@ -81,7 +101,7 @@
     \vspace{0.15cm}
 
     \pause
-    Размер программы~--- число столбцов.
+    Size of the program is the number of columns.
 
     \pause
     \vspace{0.3cm}

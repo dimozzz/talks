@@ -1,0 +1,174 @@
+\begin{frame}{Системы доказательств}
+
+	Язык~--- подмножество $\{0, 1\}^*$.
+
+    \begin{definition}[Cook, Reckhow 79]
+        Система доказательств для языка $L$~--- такой полиномиальный по времени алгоритм $\Pi: \{0,
+        1\}^* \times \{0, 1\}^* \rightarrow \{0, 1\}$, что:
+        \begin{itemize}
+            \item (полнота) $x \in L \Rightarrow \exists w ~ \Pi(x, w) = 1$;
+            \item (корректность) $\exists w ~ \Pi(x, w) = 1 \Rightarrow x \in L$.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+
+    Мера сложности~--- длина $|w|$.
+
+    \pause
+
+    Основной язык~--- язык невыполнимых пропозициональных формул в КНФ ($\UNSAT$).
+
+\end{frame}
+
+
+\begin{frame}{Примеры}
+
+    \begin{itemize}
+        \item Резолюция.
+            \pause
+            Оперирует с дизъюнктами по следующим правилам:
+            \begin{itemize}
+                \item $\frac{A \lor x ~~~ B \lor \neg x}{A \lor B} ~~~~~ \frac{A}{A \lor z}$
+            \end{itemize}
+            Доказательство: вывод пустого дизъюнкта из дизъюнктов исходной формулы.
+        \pause
+        \item Cutting Planes.
+            \pause
+            Оперирует с неравенствами над $\mathbb{Z}$ по следующим правилам:
+            \begin{itemize}
+                \item $\frac{A \ge a ~~~ B \ge b}{\alpha A + \beta B \ge \alpha a + \beta b} ~~~~~
+                    \frac{ka_1 x_1 + ka_2 x_2 + \dots \ge c}{a_1 x_1 + a_2 x_2 + \dots \ge \lceil
+                    \frac{c}{k} \rceil}$
+            \end{itemize}
+            Доказательство: вывод неравенства $0 \ge 1$ из неравенств, кодирующих дизъюнкты формулы.
+        \pause
+        \item Nullstellensatz.
+            \pause
+            $\mathbb{K}$~--- произвольное алгебраически замкнутое поле. Истинность дизъюнкта $C_i$
+            кодируем в виде полиномиального уравнения $p_i(x_1, x_2, \dots) = 0$ над полем $\mathbb{K}$.
+            \pause
+            
+            Доказательство: такой набор полиномов $h_i$, что $\sum\limits_{i} h_i p_i = 1$.
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Мотивация}
+
+    \begin{itemize}
+        \item Программа Кука по разделению $\NP$ и $\coNP$ ($\P$ и $\NP$): доказывать оценки для
+            {\color{blue} все более сильных} систем, пока не удастся обобщить методы на произвольную
+            систему доказательств.
+        \pause
+        \item Нижние оценки на {\color{blue} слабые} (резолюции и аналоги) системы доказательств
+            $\Rightarrow$:
+            \begin{itemize}
+                \item оценки на алгоритмы для решения задачи выполнимости (покрывают большинство
+                    применяемых эвристик);
+                \item нижние оценки на \textcolor{blue}{монотонные} модели вычислений.
+            \end{itemize}
+        \pause
+        \item Нижние оценки на {\color{blue} сильные} системы доказательств дали бы нижние оценки на
+            другие (не только монотонные) модели вычислений (например алгебраические схемы).
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{История}
+
+    \begin{itemize}
+        \item Оценки на ослабленную версию резолюций (Цейтин 68).
+        \pause
+        \item Оценки на резолюции (Haken 85; Kraj{\'{\i}}{\v{c}}ek 97; Ben-Sasson, Wigderson 02; ...;
+            Разборов 16).
+        \pause
+        \item Оценки на Cutting Planes (Pudl{\'{a}}k 95; Haken, Cook 98).
+        \pause
+        \item Оценки на Nullstellensatz и усиления (Beame, Impagliazzo, Kraj{\'{\i}}{\v{c}}ek, Pitassi,
+            Pudl{\'{a}}k 94; Разборов 98; Алехнович, Разборов 2003; Nordstrom, Mik{\v{s}}a 15).
+        \pause
+        \item Оценки на ограниченные версии систем через коммуникационную сложность (Beame, Impagliazzo,
+            Pitassi 94; Beame и др. 08; Huynh, Nordstr{\"{o}}m 12; G{\"{o}}{\"{o}}s, Pitassi 14).
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Результаты. Dag-like <<коммуникация>>}
+    \begin{itemize}
+        \pause    
+        \item Рассмотрена модель <<коммуникационных>> протоколов на графах.
+        \pause
+        \item Доказаны нижние оценки на данные протоколы:
+            \begin{itemize}
+                \item перенос нижних оценок с резолюционной системы доказательств на Cutting Planes;
+                \item новая техника нижних оценок для монотонные схемы.
+            \end{itemize}
+        \pause
+        \item Первое экспоненциальное разделение монотонных схем и монотонных Span Programs над любым
+            полем.
+    \end{itemize}
+
+    \pause
+
+    \begin{enumerate}
+        \item S. Dag-Like Communication and Its Applications. CSR 2017.
+        \item Garg, G\"{o}\"{o}s, Kamath, S. Monotone Circuit Lower Bounds from Resolution. STOC 2018.
+        \item G\"{o}\"{o}s, Kamath, Robere, S. Adventures in Monotone Complexity and TFNP. ITCS 2019.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Результаты. <<Псевдо-ширина>> и Weak-Pigeonhole на графе}
+    Pigeonhole principle, $m$ голубей, $n$ клеток:
+    \begin{itemize}
+        \item $\bigvee\limits_{j \in \only<1>{[n]} \only<2->{N(j)}} x_{ij}$;
+        \item $\neg x_{ij} \lor \neg x_{kj}$.
+    \end{itemize}
+
+    \pause
+    \pause
+    Buss, Pitassi 97; Dantchev 02: существует резолюционное доказательство размера
+    $2^{O(n \log n / \log m)}$.
+
+    \pause
+    Raz, Pitassi 01; Raz 02; Razborov 02, 03, 04: размер любого резолюционного доказательства не менее $2^{O(deg / \log^2 m)}$.
+
+    \pause
+    Razborov 04; Ururquhart 06: открытый вопрос доказать нижнюю оценку для графов малой степени.
+
+    \pause
+    Результаты:
+    \begin{itemize}
+        \item нижняя оценка $2^{O(n / (\log^2 m \cdot polylog(n)))}$ для графов-экспандере малой степени не менее;
+        \item нижняя оценка для случайных КНФ формул;
+        \item нижняя оценка на сложность обращения псевдо-случайного генератора.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Другие результаты}
+
+    \begin{itemize}
+        \item Нижние оценки на время работы алгоритмов расщепления (Ицыксон, С 11, 12, 14).
+        \pause
+        \item Система $Res(\oplus)$ (обобщение резолюций): верхние оценки, нижние оценки на ограниченную версию (Ицыксон,
+            С 14).
+        \pause
+        \item Нижние оценки на размер доказательства в резолюциях для формул, кодирующий существование совершенного
+            паросочетания в графах (Ицыксон, Слабодкин, С 16).
+        \pause
+        \item Нижние оценки на $\OBDD$-алгоритмы и $\OBDD$-системы доказательств (Ицыксон, Кноп,
+            Ромащенко, С 17; Buss, Itsykson, Knop, S 18 + ...).
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Текущие студенческие проекты}
+
+    \begin{itemize}
+        \item Доказательство верхних оценок для dag-like протоколов.
+        \pause
+        \item Улучшенное разделение Nullstellensatz над $\mathbb{R}$ и над $\mathbb{F}_2$.
+    \end{itemize}
+\end{frame}

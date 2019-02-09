@@ -1,0 +1,50 @@
+\begin{tikzpicture}[>=latex]
+    \node[thick, circle, draw, black] (S) at (0, 0) {\Large $S$};
+    \node[black] (z1) at (-2, -1.5) {$z_1$};
+    \node[black] (z2) at (-1, -1.5) {$z_2$};
+    \node[black] (z3) at (0, -1.5) {$z_3$};
+    \node[black] (z4) at (1, -1.5) {$z_4$};
+    \node[black] (z5) at (2, -1.5) {$z_5$};
+    \draw[black, ->] (z1) -- (S);
+    \draw[black, ->] (z2) -- (S);
+    \draw[black, ->] (z3) -- (S);
+    \draw[black, ->] (z4) -- (S);
+    \draw[black, ->] (z5) -- (S);
+
+    \node[minimum height = 1cm, single arrow, draw, black] at (3, 0) {composition};
+
+    \node[thick, circle, draw, black] (S1) at (6, 0) {\Large $S$};
+    \node[black, draw, circle] (i1) at (4, -1.5) {\scriptsize $\Ind$};
+    \node[black, draw, circle] (i2) at (5, -1.5) {\scriptsize $\Ind$};
+    \node[black, draw, circle] (i3) at (6, -1.5) {\scriptsize $\Ind$};
+    \node[black, draw, circle] (i4) at (7, -1.5) {\scriptsize $\Ind$};
+    \node[black, draw, circle] (i5) at (8, -1.5) {\scriptsize $\Ind$};
+    \draw[black, ->] (i1) -- (S1);
+    \draw[black, ->] (i2) -- (S1);
+    \draw[black, ->] (i3) -- (S1);
+    \draw[black, ->] (i4) -- (S1);
+    \draw[black, ->] (i5) -- (S1);
+
+    \node[black] (x1) at (3.75, -2.4) {\scriptsize $x_1$};
+    \node[black] (x2) at (4.75, -2.4) {\scriptsize $x_2$};
+    \node[black] (x3) at (5.75, -2.4) {\scriptsize $x_3$};
+    \node[black] (x4) at (6.75, -2.4) {\scriptsize $x_4$};
+    \node[black] (x5) at (7.75, -2.4) {\scriptsize $x_5$};
+    \node[black] (y1) at (4.25, -2.4) {\scriptsize $y_1$};
+    \node[black] (y2) at (5.25, -2.4) {\scriptsize $y_2$};
+    \node[black] (y3) at (6.25, -2.4) {\scriptsize $y_3$};
+    \node[black] (y4) at (7.25, -2.4) {\scriptsize $y_4$};
+    \node[black] (y5) at (8.25, -2.4) {\scriptsize $y_5$};
+
+    
+    \draw[black, ->] (x1) -- (i1);
+    \draw[black, ->] (x2) -- (i2);
+    \draw[black, ->] (x3) -- (i3);
+    \draw[black, ->] (x4) -- (i4);
+    \draw[black, ->] (x5) -- (i5);
+    \draw[black, ->] (y1) -- (i1);
+    \draw[black, ->] (y2) -- (i2);
+    \draw[black, ->] (y3) -- (i3);
+    \draw[black, ->] (y4) -- (i4);
+    \draw[black, ->] (y5) -- (i5);
+\end{tikzpicture}

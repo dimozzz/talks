@@ -1,0 +1,62 @@
+\documentclass[english, xcolor = {table}]{beamer}
+\usepackage{slides_style}
+\usepackage{mathtools}
+\usepackage{dsfont}
+
+
+%\usetikzlibrary{shapes.geometric,positioning}
+
+\newcommand{\EoL}[1][2]{\lang{Eo}\text{-}{#1}\text{-}\lang{L}}
+
+
+\title[Proofs and Computations]{
+    Monotone Circuit Lower Bounds from Resolution
+}
+
+\author[Sokolov D.]{
+    Dmitry Sokolov\\
+    KTH University\\
+    \vspace{1cm}
+    joint work with\\
+    Ankit Garg, Mika G{\"{o}}{\"{o}}s, Pritish Kamath, Robert Robere
+}  
+
+
+\date{The University of Chicago\\
+	January 15\\
+	2019
+}
+
+
+\AtBeginSection[]{
+    \begin{frame}
+        \vfill
+        \centering
+        \usebeamerfont{title}\insertsectionhead\par%
+        \vfill
+    \end{frame}
+}
+
+
+\begin{document}
+
+    \maketitle
+
+    \section{Introduction: Proof systems}
+
+    \input{parts/intro.tex}
+
+    \section{Part I: Dag Protocols and Lifting}
+
+    \input{parts/corollaries.tex}
+    \input{parts/communication.tex}
+    \input{parts/dec_res.tex}
+    \input{parts/open.tex}
+
+    \section{Part II: From Proofs to Computations}
+
+    \input{parts/cert.tex}
+    \input{parts/null.tex}
+    \input{parts/separation.tex}
+\end{document}
+
