@@ -98,9 +98,9 @@
 \begin{frame}{Результаты. Dag-like <<коммуникация>>}
     \begin{itemize}
         \pause    
-        \item Рассмотрена модель <<коммуникационных>> протоколов на графах.
+        \item Модель <<коммуникационных>> протоколов на графах.
         \pause
-        \item Доказаны нижние оценки на данные протоколы:
+        \item Нижние оценки на данные протоколы:
             \begin{itemize}
                 \item перенос нижних оценок с резолюционной системы доказательств на Cutting Planes;
                 \item новая техника нижних оценок для монотонные схемы.
@@ -113,9 +113,11 @@
     \pause
 
     \begin{enumerate}
-        \item S. Dag-Like Communication and Its Applications. CSR 2017.
-        \item Garg, G\"{o}\"{o}s, Kamath, S. Monotone Circuit Lower Bounds from Resolution. STOC 2018.
-        \item G\"{o}\"{o}s, Kamath, Robere, S. Adventures in Monotone Complexity and TFNP. ITCS 2019.
+        \item \textcolor{blue}{S}. Dag-Like Communication and Its Applications. CSR 2017.
+        \item Garg, G\"{o}\"{o}s, Kamath, \textcolor{blue}{S}. Monotone Circuit Lower Bounds from
+            Resolution. STOC 2018.
+        \item G\"{o}\"{o}s, Kamath, Robere, \textcolor{blue}{S}. Adventures in Monotone Complexity and
+            TFNP. ITCS 2019.
     \end{enumerate}
 \end{frame}
 
@@ -132,18 +134,19 @@
     $2^{O(n \log n / \log m)}$.
 
     \pause
-    Raz, Pitassi 01; Raz 02; Razborov 02, 03, 04: размер любого резолюционного доказательства не менее
+    Raz, Pitassi 01; Raz 02; Разборов 02, 03, 04: размер любого резолюционного доказательства не менее
     $2^{O(deg / \log^2 m)}$.
 
     \pause
-    Razborov 04; Urquhart 06: открытый вопрос~--- доказать нижнюю оценку для графов малой степени.
+    Разборов 04; Urquhart 06: открытый вопрос~--- нижняя оценка для графов малой степени.
 
     \pause
-    Результаты:
+    Результаты [F. de Rezende, Nordstr{\"{o}}m, Risse, \textcolor{blue}{S}]:
     \begin{itemize}
         \item нижняя оценка $2^{O(n / (\log^2 m \cdot polylog(n)))}$ для графов-экспандеров малой степени;
         \item нижняя оценка для случайных КНФ формул;
-        \item нижняя оценка на сложность обращения псевдо-случайного генератора Ниссана--Вигдерсона.
+        \item нижняя оценка на сложность обращения псевдо-случайного генератора Ниссана--Вигдерсона
+            (открытый вопрос [Разборов 01]).
     \end{itemize}
 \end{frame}
 
