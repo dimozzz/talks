@@ -1,0 +1,655 @@
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
+    decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    matrix,shapes.symbols}
+\usepackage{listings}
+\lstset{tabsize=2,showspaces=false,showtabs=false,basicstyle=\ttfamily\mdseries\itshape\normalsize}
+
+% --------------------------------------------------------------------
+% Beamer version theme settings
+\usetheme[
+    faculty=sciences,  % humanities, law, medicine, sciences, socialsciences
+    lang=en,           % en, nl
+    rmfont=pmn,
+    logofont=fpi,
+    %totalpages=off    % Disable total number of slides
+]{leiden}
+%\usetheme[faculty=sciences,lang=en]{leiden}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Better default font
+\usepackage{iwona}
+\usepackage[textfont={scriptsize,it}]{caption}
+\setbeamerfont{caption}{size=\scriptsize}
+\renewcommand*{\familydefault}{\sfdefault}
+
+
+
+
+% --------------------------------------------------------------------
+\def\liketitle#1{%
+{\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}%
+\begin{flushleft}%
+\vspace{-\baselineskip}% Cometic correction for space introduced by flushleft
+#1\par
+\end{flushleft}%
+\vspace{-\baselineskip}% Cosmetic correction for space introduced by flushleft
+}%
+\vspace{0.75\baselineskip}%
+}
+
+% --------------------------------------------------------------------
+\setbeameroption{hide notes}
+%\setbeameroption{show notes}
+%\setbeameroption{show notes on second screen}
+
+% --------------------------------------------------------------------
+\nonstopmode % Include issues with the slides
+
+
+% ====================================================================
+% Header settings
+\def\lecturename{Lecture}
+\lecture[Leiden Template]{Leiden Beamer Template}{ldn-bmr}
+\subtitle{Template to generate Leiden-style slides with LaTeX}
+\date{December 9th, 2010}
+\title{\insertlecture}
+\author{dr.~Joost Schalken}
+\institute{Universiteit Leiden}
+\subject{Lecture: \lecturename}
+
+
+% ====================================================================
+% Main part
+
+% --------------------------------------------------------------------
+\batchmode % Do not include issues with the package definitions
+\begin{document}
+\nonstopmode % Include issues with the slides
+
+
+% ====================================================================
+\section*{Introduction}
+
+% --------------------------------------------------------------------
+{
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]
+  \maketitle
+\end{frame}
+\addtocounter{framenumber}{-1}% don't count the title slide.
+}
+
+% --------------------------------------------------------------------
+\begin{frame}{Table of Contents}
+  \tableofcontents[sectionstyle=show/show, hideallsubsections]
+\end{frame}
+
+
+% ====================================================================
+\section{Introduction of leiden beamer theme}
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Some guidance on the leiden theme}
+The beamer theme for the University of Leiden can be used as follows:\\
+\verb|\usetheme{leiden}|\\
+\vspace{\baselineskip}
+
+Before using the theme, one should set the document class to beamer
+with:\\
+\verb|\documentclass[t,11pt]{beamer}|
+\end{frame}
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Prerequisites for leiden theme (1/2)}
+The beamer theme for the University of Leiden has the following
+package dependencies:
+\begin{itemize}
+\item	beamer (tested with 3.07)
+\item   booktabs
+\item	calc
+\item	geometry
+\item	graphicx
+\item	ifthen
+\end{itemize}
+\vspace{\baselineskip}
+
+The beamer theme for the University of Leiden has of course also
+depends on the dependencies of beamer (including tikz and pgf).
+\end{frame}
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Prerequisites for leiden theme (2/2)}
+\small
+The beamer theme for the University of Leiden has the following
+font dependency:
+\begin{itemize}
+\item	Latin Modern-font family, from the \texttt{lmodern}
+		package, usually included with a \TeX-distribution.
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Options of the leiden theme (1/4)}
+The leiden-theme has a few theme options that can be used:
+
+\begin{itemize}
+\item	\alert{\texttt{lang}}: which allows one to set the theme
+		to Dutch or English slides.
+		Valid options are: \verb|en| and \verb|nl|.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\usetheme[lang=en]{leiden}|
+\vspace{0.5\baselineskip}
+\item	\alert{\texttt{faculty}}: allows one to set the color
+		scheme to that of one of the faculties (instead of the
+		university color scheme).
+		Valid options are: \verb|medicine|, \verb|socialsciences|,
+		\verb|law|, \verb|sciences| and \verb|humanities|.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\usetheme[faculty=sciences]{leiden}|
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Options of the leiden theme (2/4)}
+\begin{itemize}
+\item	\alert{\texttt{totalpages}}: which allows one to set the
+		amount of slides to something different than the
+		automatic total. Can also be set to \texttt{off} to not show
+		a total at all.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\usetheme[totalpages=12]{leiden}|\\
+		\textcolor{white}{Example:} \verb|\usetheme[totalpages=off]{leiden}|
+\vspace{0.5\baselineskip}
+\item	\alert{\texttt{invertcolors}}: which allows one to set the color
+		scheme to white-blue instead of blue-white.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\usetheme[invertcolors]{leiden}|
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Options of the leiden theme (3/4)}
+\begin{itemize}
+\item	\alert{\texttt{rmfont}}: the name of the font to be
+		used as the default, \textrm{roman font}.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\usetheme[rmfont=lmr]{leiden}|\\
+\vspace{0.1\baselineskip}
+		The font of choice would be the commercial Minion
+		font, but the Latin Modern is a reasonable substitute.
+\vspace{0.5\baselineskip}
+\item	\alert{\texttt{sffont}}: the name of the font to be
+		used as the \textsf{sans-serif font}.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\usetheme[sffont=lmss]{leiden}|
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Options of the leiden theme (4/4)}
+\begin{itemize}
+\item	\alert{\texttt{ttfont}}: the name of the font to be
+		used as the \texttt{mono-spaced, typewriter font}.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\usetheme[ttfont=lmtt]{leiden}|
+\vspace{0.5\baselineskip}
+\item	\alert{\texttt{logofont}}: the name of the font to be
+		used as the logo font.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\usetheme[logofont=lmr]{leiden}|\\
+\vspace{0.1\baselineskip}
+		The font of choice would be the commercial Minion or
+		Pippin font, but the Latin Modern is a reasonable
+		substitute.
+\end{itemize}
+\end{frame}
+
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Leiden theme special commands (1/2)}
+The leiden theme for beamer also provide some special commands.
+\begin{itemize}
+\item	\alert{\texttt{\textbackslash normalslidecolors}}: sets the
+		colorscheme to blue-white.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\normalslidecolors|\\
+\vspace{0.5\baselineskip}
+
+\item	\alert{\texttt{\textbackslash invertedslidecolors}}: sets the
+		colorscheme to white-blue.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\invertedslidecolors|\\
+\vspace{0.5\baselineskip}
+
+\item	\alert{\texttt{\textbackslash toggleslidecolors}}: toggles between
+		the colorschemes to blue-white and white-blue.\\
+\vspace{0.1\baselineskip}
+		Example: \verb|\toggleslidecolors|\\
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Leiden theme special commands (2/2)}
+\begin{itemize}
+\item	\alert{\texttt{\textbackslash backgroundimageonslide}}: which
+		allows one to set a background image for the slide.
+		Setting the background image to empty removes the
+		background image.\\
+\vspace{0.2\baselineskip}
+		Example: \verb|\backgroundimageonslide{chalkboard}|\\
+\vspace{0.1\baselineskip}
+		to include the image chalkboard.png or chalkboard.jpg.\\
+		For best effect use the image resolution: \texttt{1280}x\texttt{915}px.
+\vspace{0.5\baselineskip}
+
+\item	\alert{\texttt{\textbackslash totalpages}}: which allows
+		one to set the amount of slides to something different
+		than the automatic total.\\
+\vspace{0.2\baselineskip}
+		Example: \verb|\totalpages{40}|
+\end{itemize}
+\end{frame}
+
+
+% ====================================================================
+\section{What can be done with beamer-latex}
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{What can be done with beamer?}
+\begin{itemize}
+\item	The beamer documentclass can create slides with \LaTeX.
+\item	The beamer documentclass can be downloaded from:
+		\url{http://latex-beamer.sourceforge.net/}.
+\item	A basic slide is created with:\\
+\vspace{0.1\baselineskip}
+\verb|\begin{frame}{<FRAME TITLE>}|\\
+\verb|FRAME CONTENT|\\
+\verb|\end{frame}|\\
+\vspace{0.5\baselineskip}
+\item	In the next slides we what is possible, plus some
+		code sniplets.
+\end{itemize}
+\end{frame}
+
+
+% --------------------------------------------------------------------
+\begin{frame}{Bullits on slide}
+\begin{itemize}
+\item \alert{Bullitted text:}
+  \begin{itemize}
+  \item Item 1
+  \item Item 2
+  \end{itemize}
+\vspace{.5\baselineskip}
+
+\item \alert{Numbered text:}
+  \begin{enumerate}
+  \item Item 3
+  \item Item 4
+  \end{enumerate}
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Bullits on slide}
+\footnotesize
+\verb|\begin{frame}{Bullits on slide}|\\
+\verb|\begin{itemize}|\\
+\verb|\item \alert{Bullitted text:}|\\
+\verb|  \begin{itemize}|\\
+\verb|  \item Item 1|\\
+\verb|  \item Item 2|\\
+\verb|  \end{itemize}|\\
+\verb|\vspace{.5\baselineskip}|\\
+\verb||\\
+\verb|\item \alert{Numbered text:}|\\
+\verb|  \begin{enumerate}|\\
+\verb|  \item Item 3|\\
+\verb|  \item Item 4|\\
+\verb|  \end{enumerate}|\\
+\verb|\end{itemize}|\\
+\verb|\end{frame}|\\
+\end{frame}
+\toggleslidecolors
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}{Inverted colors on slide}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac sem nibh, at iaculis nisl. Etiam condimentum mauris vel nibh volutpat gravida. Sed sit amet gravida nibh. Nulla facilisi. Nunc feugiat pharetra urna at laoreet. Donec adipiscing eros non orci scelerisque sed dictum turpis elementum. Integer tempus interdum urna ultricies rhoncus.
+\end{frame}
+\toggleslidecolors
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Inverted colors on slide}
+\footnotesize
+\verb|\toggleslidecolors|\\
+\verb|\begin{frame}{Inverted colors on slide}|\\
+\verb|  Lorem ipsum dolor sit amet, consectetur adipiscing elit. [...]|\\
+\verb|\end{frame}|\\
+\verb|\toggleslidecolors|\\
+\end{frame}
+\toggleslidecolors
+
+% --------------------------------------------------------------------
+{
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}[plain]{Slide without header}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac sem nibh, at iaculis nisl. Etiam condimentum mauris vel nibh volutpat gravida. Sed sit amet gravida nibh. Nulla facilisi. Nunc feugiat pharetra urna at laoreet. Donec adipiscing eros non orci scelerisque sed dictum turpis elementum. Integer tempus interdum urna ultricies rhoncus.
+\vspace{\baselineskip}
+
+Praesent at eros ac ante facilisis aliquam. Phasellus euismod quam eu nunc commodo vel semper mi sodales. In accumsan est non dui scelerisque condimentum. Maecenas justo dui, facilisis eleifend aliquet et, condimentum et est.
+\vspace{\baselineskip}
+
+Fusce tincidunt interdum elementum. Quisque molestie velit vel est vehicula sit amet dapibus turpis laoreet. Quisque sagittis lorem eget dui pellentesque congue. Suspendisse egestas interdum scelerisque. Pellentesque ac urna nec tellus viverra sagittis vel vitae leo.
+\end{frame}
+}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Slide without header}
+\footnotesize
+\verb|{%|\\
+\verb|\setbeamertemplate{navigation symbols}{}%|\\
+\verb|\begin{frame}[plain]{Slide without header}|\\
+\verb|  Lorem ipsum dolor sit amet, [...]|\\
+\verb|  \vspace{\baselineskip}|\\
+\verb||\\
+\verb|  Praesent at eros ac ante facilisis aliquam. [...]|\\
+\verb|  \vspace{\baselineskip}|\\
+\verb||\\
+\verb|  Fusce tincidunt interdum elementum. [...]|\\
+\verb|\end{frame}|\\
+\verb|}%|\\
+\end{frame}
+\toggleslidecolors
+
+
+% --------------------------------------------------------------------
+\begin{frame}{Columns on slide}
+\begin{columns}
+\begin{column}{.45\textwidth}
+\liketitle{Column 1}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lectus tortor, blandit sed ullamcorper nec, imperdiet et libero. Vivamus quis eros diam, nec convallis sapien. Praesent tortor lectus, sagittis a malesuada non, venenatis quis justo.
+\end{column}
+\begin{column}{.45\textwidth}
+\liketitle{Column 2}
+Aliquam erat volutpat. Etiam tortor urna, mattis vitae ornare luctus, accumsan vel mi. Phasellus sed adipiscing mi. Curabitur orci tellus, imperdiet eget facilisis quis, consequat suscipit velit. Nunc vel nisi lorem, non malesuada turpis.
+\end{column}
+\end{columns}
+\end{frame}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Columns on slide}
+\footnotesize
+\verb|\begin{frame}{Columns on slide}|\\
+\verb|\begin{columns}|\\
+\verb|  \begin{column}[l]{.45\textwidth}|\\
+\verb|    \liketitle{Column 1}|\\
+\verb|    Lorem ipsum dolor sit amet, consectetur adipiscing elit. [...]|\\
+\verb|  \end{column}|\\
+\verb|  \begin{column}[l]{.45\textwidth}|\\
+\verb|    \liketitle{Column 2}|\\
+\verb|    Aliquam erat volutpat. Etiam tortor urna, [...]|\\
+\verb|  \end{column}|\\
+\verb|\end{columns}|\\
+\verb|\end{frame}|\\
+\end{frame}
+\toggleslidecolors
+
+% --------------------------------------------------------------------
+\begin{frame}{Block on slide}
+\begin{block}{Block title}
+Pellentesque libero augue, molestie in dignissim at, rutrum vel dolor. Vestibulum ut eros vitae enim auctor malesuada ac eget velit. Etiam tellus tellus, dignissim id lobortis eget, vestibulum non dolor. Morbi facilisis iaculis tempus. In sed nisi justo. In hac habitasse platea dictumst. Suspendisse mattis orci orci, id adipiscing tortor.
+\end{block}
+\end{frame}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Block on slide}
+\footnotesize
+\verb|\begin{frame}{Block on slide}|\\
+\verb|  \begin{block}{Block title}|\\
+\verb|    Pellentesque libero augue, molestie in dignissim at,|\\
+\verb|    rutrum vel dolor. Vestibulum ut eros vitae enim auctor|\\
+\verb|    malesuada ac eget velit. [...]|\\
+\verb|  \end{block}|\\
+\verb|\end{frame}|\\
+\end{frame}
+\toggleslidecolors
+
+% --------------------------------------------------------------------
+\backgroundimageonslide{img/chalkboard}
+\begin{frame}{Slide with background image}
+\begin{itemize}
+\item And now a slide with a background image.
+\end{itemize}
+\end{frame}
+\backgroundimageonslide{}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Slide with background image}
+\footnotesize
+\verb|{%|\\
+\verb|\setbeamertemplate{navigation symbols}{}%|\\
+\verb|\backgroundimageonslide{img/chalkboard}%|\\
+\verb|\begin{frame}{Slide with background image}|\\
+\verb|  \begin{itemize}|\\
+\verb|  \item And now a slide with a background image.|\\
+\verb|  \end{itemize}|\\
+\verb|\end{frame}|\\
+\verb|\backgroundimageonslide{}%|\\
+\verb|}%|\\
+\end{frame}
+\toggleslidecolors
+
+% --------------------------------------------------------------------
+{
+\setbeamertemplate{navigation symbols}{}
+\backgroundimageonslide{img/chalkboard}
+\begin{frame}[plain]{Slide without header, with background}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac sem nibh, at iaculis nisl. Etiam condimentum mauris vel nibh volutpat gravida. Sed sit amet gravida nibh. Nulla facilisi. Nunc feugiat pharetra urna at laoreet. Donec adipiscing eros non orci scelerisque sed dictum turpis elementum. Integer tempus interdum urna ultricies rhoncus.
+\vspace{\baselineskip}
+
+Praesent at eros ac ante facilisis aliquam. Phasellus euismod quam eu nunc commodo vel semper mi sodales. In accumsan est non dui scelerisque condimentum. Maecenas justo dui, facilisis eleifend aliquet et, condimentum et est.
+\vspace{\baselineskip}
+
+Fusce tincidunt interdum elementum. Quisque molestie velit vel est vehicula sit amet dapibus turpis laoreet. Quisque sagittis lorem eget dui pellentesque congue. Suspendisse egestas interdum scelerisque. Pellentesque ac urna nec tellus viverra sagittis vel vitae leo.
+\end{frame}
+\backgroundimageonslide{}
+}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Slide without header, [\ldots]}
+\footnotesize
+\verb|{%|\\
+\verb|\setbeamertemplate{navigation symbols}{}%|\\
+\verb|\backgroundimageonslide{img/chalkboard}%|\\
+\verb|\begin{frame}[plain]{Slide without header, with background}|\\
+\verb|  Lorem ipsum dolor sit amet, [...]|\\
+\verb|  \vspace{\baselineskip}|\\
+\verb||\\
+\verb|  Praesent at eros ac ante facilisis aliquam. [...]|\\
+\verb|  \vspace{\baselineskip}|\\
+\verb||\\
+\verb|  Fusce tincidunt interdum elementum. [...]|\\
+\verb|\end{frame}|\\
+\verb|\backgroundimageonslide{}%|\\
+\verb|}%|\\
+\end{frame}
+\toggleslidecolors
+
+% --------------------------------------------------------------------
+\begin{frame}{Slide with image}
+\vfill % Vertical centering
+\begin{figure}
+\includegraphics[width=.99\textwidth,height=.75\textheight,keepaspectratio]{img/dilbert-on-ppt}
+\caption{Dilbert's take on PowerPoint\ldots}
+\end{figure}
+\end{frame}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Slide with image}
+\footnotesize
+\verb|\begin{frame}{Slide with image}|\\
+\verb|  \vfill % Vertical centering|\\
+\verb|  \begin{figure}|\\
+\verb|    \includegraphics[width=.99\textwidth,height=.75\textheight,%|\\
+\verb|      keepaspectratio]{img/dilbert-on-ppt}|\\
+\verb|    \caption{Dilbert's take on PowerPoint\ldots}|\\
+\verb|\end{figure}|\\
+\verb|\end{frame}|\\
+\end{frame}
+\toggleslidecolors
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Table on slide}
+\vfill % Vertical centering
+\begin{center}
+\begin{table}[ht!]
+\begin{tabular}{@{}lr@{}}
+\toprule
+\alert{Class} & \alert{Frequency} \\ 
+\midrule
+1 - 2 & 12\\
+3 - 4 & 6\\
+5 - 6 & 45\\
+\bottomrule
+\end{tabular}
+\caption{Simple sample table}
+\end{table}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Table on slide}
+\footnotesize
+\verb|\begin{frame}[fragile]{Table on slide}|\\
+\verb|  \vfill % Vertical centering|\\
+\verb|  \begin{center}|\\
+\verb|    \begin{table}[ht!]|\\
+\verb|       \begin{tabular}{@{}lr@{}}|\\
+\verb|       \toprule|\\
+\verb|       \alert{Class} & \alert{Frequency} \\ |\\
+\verb|       \midrule|\\
+\verb|       1 - 2 & 12\\|\\
+\verb|       3 - 4 & 6\\|\\
+\verb|       \bottomrule|\\
+\verb|       \end{tabular}|\\
+\verb|       \caption{Simple sample table}|\\
+\verb|    \end{table}|\\
+\verb|  \end{center}|\\
+\verb|\end{frame}|\\
+\end{frame}
+\toggleslidecolors
+
+
+% --------------------------------------------------------------------
+\begin{frame}[fragile]{Code on slide}
+\alert{Hello word program in C:}
+\begin{lstlisting}
+#include <stdio.h>
+ 
+int main(void) {
+    printf("hello, world\n");
+    return 0;
+}
+\end{lstlisting}
+\end{frame}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Code on slide}
+\footnotesize
+\verb|\usepackage{listings}|\\
+\verb||\\
+\verb|\begin{frame}{Code on slide}|\\
+\verb|\alert{Hello word program in C:}|\\
+\verb|\begin{lstlisting}|\\
+\verb|#include <stdio.h>|\\
+\verb||\\
+\verb|int main(void) {|\\
+\verb|    printf("hello, world\n");|\\
+\verb|    return 0;||\
+\verb|}|\\
+\verb|\end{lstlisting}|\\
+\verb|\end{frame}|\\
+\end{frame}
+\toggleslidecolors
+
+
+% --------------------------------------------------------------------
+\begin{frame}{Easy diagram on slide}
+\vfill % Vertical centering
+\begin{center}
+\begin{tikzpicture}
+  [node distance=.4cm, start chain=going right]
+  \tikzstyle{box}=[
+    rectangle, rounded corners, text width=6em, minimum height=1.5em, 
+    fill=normal text.fg!30!normal text.bg,
+    draw=normal text.fg, very thick, text centered,
+    on chain];
+  \tikzstyle{line}= [draw, thick, <-];
+  \tikzstyle{every join} = [->, thick, shorten >=1pt];
+
+  \node[box, join] (step1)	{Step 1};
+  \node[box, join] (step2)	{Step 2};
+  \node[box, join] (step3)	{Step 3};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% --------------------------------------------------------------------
+\toggleslidecolors
+\begin{frame}[fragile]{\LaTeX-code: Easy diagram on slide}
+\scriptsize
+\verb|\begin{frame}{Easy diagram on slide}|\\
+\verb|\vfill % Vertical centering|\\
+\verb|\begin{center}|\\
+\verb|\begin{tikzpicture}|\\
+\verb|  [node distance=.4cm, start chain=going right]|\\
+\verb|  \tikzstyle{box}=[|\\
+\verb|    rectangle, rounded corners, text width=6em, minimum height=1.5em,|\\
+\verb|    fill=normal text.fg!30!normal text.bg,|\\
+\verb|    draw=normal text.fg, very thick, text centered,|\\
+\verb|    on chain];|\\
+\verb|  \tikzstyle{line}= [draw, thick, <-];|\\
+\verb|  \tikzstyle{every join} = [->, thick, shorten >=1pt];|\\
+\verb||\\
+\verb|  \node[box, join] (step1)	{Step 1};|\\
+\verb|  \node[box, join] (step2)	{Step 2};|\\
+\verb|  \node[box, join] (step3)	{Step 3};|\\
+\verb|\end{tikzpicture}|\\
+\verb|\end{center}|\\
+\verb|\end{frame}|\\
+\end{frame}
+\toggleslidecolors
+
+
+
+% ====================================================================
+\section{Colofon}
+
+
+% --------------------------------------------------------------------
+\begin{frame}{Colofon}
+\vfill % Vertical centering
+\begin{center}
+\alert{\large Original theme by:}\\
+{\LARGE Joost Schalken}\\
+{\tiny Updated by: Pepijn van Heiningen}
+\end{center}
+\end{frame}
+
+\end{document}
