@@ -1,3 +1,4 @@
+
 \tikzset{
     >=latex,
     perpinterface/.style = {
@@ -46,25 +47,23 @@
     \node[vert] (res) at (1, 0) {$\Res$};
     \node[vert] (ns) at (-3, 0) {$\NS$};
     \node[vert] (cp) at (3, 1) {$\CP$};
-    \node[vert] (acf) at (1.2, 1.5) {$\AC_0$-Frege};
-    \node[vert] (resl) at (-1, 2.1) {$\ResL$};
+    \node[vert] (acf) at (1, 1.5) {$\AC_0$-Frege};
+    \node[vert] (resl) at (-1.3, 2.7) {$\ResL$};
     \node[vert] (acfp) at (0.5, 3.5) {$\AC_0[p]$-Frege};
     \node[vert] (fre) at (0.5, 5) {Frege};
     \node[vert] (ips) at (-2, 6) {$\PrSys{IPS}$};
     \node[vert] (pcr) at (-3, 2) {$\PCR[]$};
     \node[vert] (sos) at (-4, 2.5) {$\SOS$};
-
-    \node[vert] (ns2) at (-5.5, 0) {$\NS_{\{\pm 1\}}$};
-    \node[vert] (pcr2) at (-6, 2) {$\PCR[]_{\{\pm 1\}}$};
-    \node[vert] (sos2) at (-6.8, 3) {$\SOS_{\{\pm 1\}}$};
-
+    
     \node[vert] (cps) at (-4, 6.5) {$\PrSys{CPS}$};
+
+    
 
     \draw[->] (res) -- (cp);
     \draw[->] (cp) to[out = 90, in = -20] (fre);
     \draw[->] (res) -- (resl);
     \draw[->] (res) -- (acf);
-    \draw[->] (res) -- (pcr);
+    \draw[->] (res) to[out = 138, in = -30] (pcr);
     \draw[->] (ns) -- (pcr);
     \draw[->] (resl) -- (acfp);
     \draw[->] (acf) -- (acfp);
@@ -74,6 +73,35 @@
 
     \draw[->] (pcr) -- (ips);
     \draw[->] (sos) -- (cps);
+
+    \pause
+    \only<2->{
+        \begin{scope}[on background layer]
+            \draw[ultra thick, fill = black!5] (-4, -1) to[out = 110, in = 220] (-4.4, 3)
+                to[out = 40, in = 180] (-1, 2) to[out = 0, in = 125] (2.3, 2) to[out = -55, in = 90]
+                (1.5, -1);
+        \end{scope}
+        \node[blue] at (-1.5, 0.95) {Restriction};
+    }
+
+    \only<3->{
+        \begin{scope}[on background layer]
+            \fill[orange!5] (-4, -1) to[out = 90, in = 180] (-2.3, 0.75) to[out = 0, in = 180] (0.5, 0.7)
+                to[out = 0, in = 200] (3.5, 2) -- (3.5, -1) -- cycle;
+            \draw[ultra thick, orange] (-4, -1) to[out = 90, in = 180] (-2.3, 0.75) to[out = 0, in = 180]
+                (0.5, 0.7) to[out = 0, in = 200] (3.5, 2);
+            \draw[ultra thick] (-4, -1) to[out = 110, in = 220] (-4.4, 3) to[out = 40, in = 180] (-1, 2)
+            to[out = 0, in = 125] (2.3, 2) to[out = -55, in = 90] (1.5, -1);
+        \end{scope}
+        \node[blue] at (0, -0.7) {Mon. Interpolation};
+    }
+
+    \pause
+    \node[vert] (ns2) at (-5.5, 0) {$\NS_{\{\pm 1\}}$};
+    \node[vert] (pcr2) at (-6.1, 2) {$\PCR[]_{\{\pm 1\}}$};
+    \node[vert] (sos2) at (-6.8, 3) {$\SOS_{\{\pm 1\}}$};
+    
+
 
     \draw[->] (ns2) -- (pcr2);
     \draw[->] (pcr2) -- (ips);
