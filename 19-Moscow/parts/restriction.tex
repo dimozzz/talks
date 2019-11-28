@@ -1,6 +1,6 @@
-\begin{frame}{Size measure. All operations in $\faktor{\mathbb{R}}{\langle R_i \rangle}$}
+\begin{frame}{Size measure. All operations modulo $\langle R_i \rangle$}
     \pause
-    $\SOS: \sum_{u = 1}^{a} p_u f_u + \sum_{v = 1}^{b} q_v^2 h_v = -1$
+    $\SOS: \sum\limits_{u = 1}^{a} p_u f_u + \sum\limits_{v = 1}^{b} q_v^2 h_v = -1$
 
     $$
     \text{Size} \coloneqq \sum_{u = 1}^{a} \left( \msize(p_u) + \msize(f_u) \right) +
@@ -16,18 +16,203 @@
 \end{frame}
 
 
-\begin{frame}{Strategy for $\{0, 1\}$ variables ($\PCR[\field]$)}
+\begin{frame}{Strategy for the $\{0, 1\}$ basis ($\PCR[\field]$)}
+    
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$ is a proof of $\Fs$. $H \coloneqq \{t \mid t \in p_i, \deg(t)
+    \text{ is big}\}$.
+
+    \begin{enumerate}
+        \item $\pi$ is small $\Rightarrow$ size of $H$ is small.
+        \pause
+        \item Pick the most frequent literal $x$ in $H$.
+        \pause
+        \item Set $x$ to $0$ in $\pi$. This operation kills all terms that contain $x$.
+        \pause
+        \item $\pi \rest (x = 0)$ is still a proof of $\Fs \rest (x = 0)$.
+        \pause
+        \only<5>{\item Keep $\Fs \rest (x = 0)$ hard in terms of degree. \input{pics/wand.tex}}
+        \only<6>{\item Try to avoid local contradictions in $\Fs \rest (x = 0)$. \input{pics/wand.tex}}
+        \pause
+        \pause    
+        \item Repeat until we have terms of big degree.
+    \end{enumerate}
+
+    \vspace{0.3cm}
+    \pause
+    We kill all terms of big degree but remaining system is still hard in terms of degree.
+
+    \vspace{0.3cm}
+    \pause
+    \begin{center}
+        \Huge Degree is the source of hardness.
+    \end{center}
+\end{frame}
+
+
+\begin{frame}{Degree and the $\{\pm 1\}$ basis}
+    \pause
+    \begin{center}
+            \textcolor{red}{Set $x$ to $0$ in $\pi$. This operation kills all terms that contain $x$}
+    \end{center}
+
+    \pause
+    \vspace{0.5cm}
+
+    Attempts.
+    \begin{enumerate}
+        \item Set $x$ to $0$. \pause \hspace{1cm} $x^2 - 1 \rest (x = 0) \to -1$.
+        \pause
+        \item $\tau(p) \coloneqq \frac{p \rest (x = -1) + p \rest (x = 1)}{2}$. Consider $\tau(\pi)$.
+    \end{enumerate}
+
+    \pause
+
+    \begin{minipage}{0.3\linewidth}
+        \begin{prooftree}
+            \AxiomC{$p$}
+            \UnaryInfC{$xp$}
+            \UnaryInfC{$p$}
+        \end{prooftree}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.3\linewidth}
+        \begin{prooftree}
+            \AxiomC{$\tau(p)$}
+            \UnaryInfC{$\tau(xp)$}
+            \UnaryInfC{$\tau(p)$}
+        \end{prooftree}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.3\linewidth}
+        \begin{prooftree}
+            \AxiomC{$p$}
+            \UnaryInfC{$0$}
+            \UnaryInfC{$p$}
+        \end{prooftree}
+    \end{minipage}
+
+    \pause
+
+    Multiplication is invertible.
+
+    \pause
+
+
+    \begin{block}{Grigoriev 98; Buss, Grigoriev, Impagliazzo, Pitassi 01; Grigoriev 01}
+        \begin{enumerate}
+            \item Tseitin formulas has small $\PCRf[\field]$ and $\SOSf$ proofs.
+            \item There are Tseitin formulas that has $\PCR[\field]$ or $\SOS$-degree $\Omega(n)$.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Degree and the $\{\pm 1\}$ basis. Part 2}
+
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$.
+
+    Can we reduce the degree of $p_i$?
     \pause
 
     \begin{enumerate}
-        \item Small proof of a polynomial system $\Fs$ $\Rightarrow$ not so many terms of big degree.
+        \item $p_i \coloneqq \prod\limits_{i = 1}^{n} x_i$ \pause \hspace{0.5cm} \textcolor{green}{YES}
+            \pause
+            
+            \begin{prooftree}
+                \AxiomC{$p$}
+                \UnaryInfC{$x_1 p$}
+                \UnaryInfC{$\vdots$}
+                \UnaryInfC{$1$}
+            \end{prooftree}
+            \pause
+        \item $p_i \coloneqq \prod\limits_{i = 1}^{n} x_i - 1$ \pause \hspace{0.5cm} \textcolor{red}{NOT REALLY}
+    \end{enumerate}
+
+    \vspace{0.5cm}
+    \pause
+    $p_i \coloneqq \sum\limits_j t_j$. Degree of the symmetric differences between $t_j$'s is the new
+    source of hardness.    
+\end{frame}
+
+
+\begin{frame}{Quadratic representation and $\Split{x}$}
+
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$.  $p_i \coloneqq \sum\limits_j t_{i, j}$.
+
+    \pause
+
+    $p_i^2 \coloneqq \sum\limits_{j, j'} t_{i, j} t_{i, j'}$.
+    
+    We want to see all possible pairs, hence we prohibit cancellations.
+
+
+    \begin{block}{Quadratic representation (QR)}
+        \deftext{QR} of $\pi$ is the sequence $(p_1^2, \dots, p_{\ell}^2)$ where squares are computed
+        without cancellations.
+    \end{block}
+
+    \pause
+    Reminder:
+    $\tau(p) \coloneqq \frac{p \rest (x = -1) + p \rest (x = 1)}{2}$.
+
+    \pause
+
+    We want operation that apply $\tau$ to the QR of $\pi$.
+
+    \pause
+    \begin{block}{$\Split{x}$}
+        $p_i \coloneqq r_i + x q_i$.
+
+        $\Split{x}(\pi) \coloneqq (r_1, q_1, r_2, q_2, r_3, q_3, \dots, r_{\ell}, q_{\ell})$.
+    \end{block}
+
+    \pause
+    $\Split{x}(\pi)$ is a proof of \deftext{damaged} version of $\Fs$.
+    
+\end{frame}
+
+
+\begin{frame}{Strategy for the $\{\pm 1\}$ basis ($\PCR[\field]$)}
+    
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$ is a proof of $\Fs$. $H \coloneqq \{t \mid t \in \text{ QR of }
+    \pi, \deg(t) \text{ is big}\}$.
+
+    \begin{enumerate}
+        \item $\pi$ is small $\Rightarrow$ size of $H$ is small.
         \pause
-        \item Pick the most frequent literal $x$.
-            \pause
-        \item Set $x$ to $0$ and kill all terms that contain $x$.
-            \pause
-        \item The resulting proof is still a proof of $\Fs \rest (x = 0)$.
-            \pause
-        \item Repeat until we have terms of big degree.
+        \item Pick the most frequent literal $x$ in $H$.
+        \pause
+        \item Apply $\Split{x}$ to $\pi$. This operation kills all terms that contain $x$ in the QR of $\pi$.
+        \pause
+        \item $\Split{x}(\pi)$ is still a proof of \deftext{damaged} $\Fs$.
+        \pause
+        \item Try to avoid local contradictions in $\Split{x}(\Fs)$. \input{pics/wand.tex}
+        \pause
+        \item Repeat until we have terms of big degree.    
+        \vspace{0.3cm}
+        \pause
+        \item Try to satisfy all \deftext{broken} constraints. \pause \textcolor{red}{Impossible for
+            Tseitin formulas.}
+    \end{enumerate}
+
+    \pause
+    \begin{lemma}
+        Let $\pi$ be a $\PCRf[\field]$-proof of $\Fs$ and QR of $\pi$ has degree $d$. Then there is a
+        $\PCRf[\field]$-proof $\pi'$ of $\Fs$ of degree $2d$.
+    \end{lemma}
+    \pause
+    \textcolor{red}{This is wrong Lemma, we need to change definition of QR to fix it.}
+\end{frame}
+
+
+\begin{frame}{Open problems}
+
+    \begin{enumerate}
+        \item Lower (or upper!) bound on $\PCRf[]$-proofs of Functional Pigeonhole Principle.
+        \item Lower bound on $\PCRb[]$-proofs of Weak Pigeonhole Principle.
+
+            \input{pics/pigeon.tex}
+        \pause
+        \item Can we simulate Resolution in $\PCRf[\field]$? \pause Conjecture: NO.
     \end{enumerate}
 \end{frame}

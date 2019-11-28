@@ -1,19 +1,6 @@
 
 \tikzset{
     >=latex,
-    perpinterface/.style = {
-        postaction = {
-            draw,
-            decorate,
-            decoration = {
-                ticks,
-                raise = 0.07cm,
-                amplitude = 0.07cm,
-                segment length = 1mm
-            }
-        }
-    },
-    % пружина
     vert/.style = {
         draw,
         ellipse
@@ -38,7 +25,17 @@
             .. controls (-0.3, 0.51) and (-0.31, 0.6) .. (-0.33, 0.7)
             .. controls (-0.4, 0.6) and (-0.4, 0.5) .. (-0.4, 0.4)
             .. controls (-0.35, 0.18) and (-0.2, 0) .. (0, 0);
-    }
+    },
+    semisim/.style = {
+        ->,
+        dashed,
+        decorate,
+        decoration = {
+            snake,
+            amplitude = 0.5,
+            segment length = 2
+        }
+    },        
 }
 
 
@@ -52,13 +49,14 @@
     \node[vert] (acfp) at (0.5, 3.5) {$\AC_0[p]$-Frege};
     \node[vert] (fre) at (0.5, 5) {Frege};
     \node[vert] (ips) at (-2, 6) {$\PrSys{IPS}$};
-    \node[vert] (pcr) at (-3, 2) {$\PCR[]$};
+    \node[vert] (pcr) at (-2.8, 1.9) {$\PCR[]$};
     \node[vert] (sos) at (-4, 2.5) {$\SOS$};
     
     \node[vert] (cps) at (-4, 6.5) {$\PrSys{CPS}$};
 
     
 
+    \draw[->, semisim] (pcr) -- (sos);
     \draw[->] (res) -- (cp);
     \draw[->] (cp) to[out = 90, in = -20] (fre);
     \draw[->] (res) -- (resl);
@@ -69,7 +67,7 @@
     \draw[->] (acf) -- (acfp);
     \draw[->] (acfp) -- (fre);
     \draw[->] (fre) -- (ips);
-    \draw[->] (ips) -- (cps);
+    \draw[->, semisim] (ips) -- (cps);
 
     \draw[->] (pcr) -- (ips);
     \draw[->] (sos) -- (cps);
@@ -131,6 +129,7 @@
     
 
     \draw[->] (ns2) -- (pcr2);
+    \draw[->, semisim] (pcr2) -- (sos2);
     \draw[->] (pcr2) -- (ips);
     \draw[->] (sos2) -- (cps);
 
