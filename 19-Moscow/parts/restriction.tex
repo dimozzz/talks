@@ -26,12 +26,14 @@
         \pause
         \item Pick the most frequent literal $x$ in $H$.
         \pause
-        \item Set $x$ to $0$ in $\pi$. This operation kills all terms that contain $x$.
+        \only<-9>{\item Set $x$ to $0$ in $\pi$. This operation kills all terms that contain $x$.}
+        \only<10->{\item \textcolor{red}{Set $x$ to $0$ in $\pi$. This operation kills all terms that
+            contain $x$.}}
         \pause
         \item $\pi \rest (x = 0)$ is still a proof of $\Fs \rest (x = 0)$.
         \pause
-        \only<5>{\item Keep $\Fs \rest (x = 0)$ hard in terms of degree. \input{pics/wand.tex}}
-        \only<6>{\item Try to avoid local contradictions in $\Fs \rest (x = 0)$. \input{pics/wand.tex}}
+        \only<-5>{\item Keep $\Fs \rest (x = 0)$ hard in terms of degree. \input{pics/wand.tex}}
+        \only<6->{\item Try to avoid local contradictions in $\Fs \rest (x = 0)$. \input{pics/wand.tex}}
         \pause
         \pause    
         \item Repeat until we have terms of big degree.
@@ -50,9 +52,8 @@
 
 
 \begin{frame}{Degree and the $\{\pm 1\}$ basis}
-    \pause
     \begin{center}
-            \textcolor{red}{Set $x$ to $0$ in $\pi$. This operation kills all terms that contain $x$}
+        \textcolor{red}{Set $x$ to $0$ in $\pi$. This operation kills all terms that contain $x$}
     \end{center}
 
     \pause
@@ -100,7 +101,7 @@
 
     \begin{block}{Grigoriev 98; Buss, Grigoriev, Impagliazzo, Pitassi 01; Grigoriev 01}
         \begin{enumerate}
-            \item Tseitin formulas has small $\PCRf[\field]$ and $\SOSf$ proofs.
+            \item Tseitin formulas has small $\PCRf[\field]$ and $\SOSf$-proofs.
             \item There are Tseitin formulas that has $\PCR[\field]$ or $\SOS$-degree $\Omega(n)$.
         \end{enumerate}
     \end{block}
@@ -147,7 +148,7 @@
 
 
     \begin{block}{Quadratic representation (QR)}
-        \deftext{QR} of $\pi$ is the sequence $(p_1^2, \dots, p_{\ell}^2)$ where squares are computed
+        The \deftext{QR} of $\pi$ is the sequence $(p_1^2, \dots, p_{\ell}^2)$ where squares are computed
         without cancellations.
     \end{block}
 
@@ -203,6 +204,55 @@
     \pause
     \textcolor{red}{This is wrong Lemma, we need to change definition of QR to fix it.}
 \end{frame}
+
+\begin{frame}{Lazy computations}
+    
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$ is a proof of $\Fs$.
+
+    \pause
+    \deftext{Lazy representation} of $p_i$ ($\lazy{p_i})$ in the proof $\pi$:
+    \begin{itemize}
+        \item $\lazy{p}_i \coloneqq p_i$, if $p_i \in \Fs$ or $p_i \coloneqq p_j$ for some $j < i$;
+        \item $\lazy{p}_i \coloneqq \alpha p_j + \beta p_k$ \textcolor{blue}{without cancellations}, if
+            $p_i \coloneqq \alpha p_j + \beta p_k$.
+    \end{itemize}
+
+    \pause
+    The fixed \deftext{QR} of $\pi$ is the sequence $(\lazy{p}_1^2, \dots, \lazy{p}_{\ell}^2)$ where
+    squares are computed without cancellations.
+
+    \pause
+    \begin{lemma}
+        Let $\pi$ be a $\PCRf[\field]$-proof of $\Fs$ and QR of $\pi$ has degree $d$. Then there is a
+        $\PCRf[\field]$-proof $\pi'$ of $\Fs$ of degree $2d$.
+    \end{lemma}
+
+    \pause
+    $p_i \coloneqq \sum\limits_{j} t_{i, j}$ and $s_i \coloneqq \sum\limits_{j} t_{i, 1} t_{i, j}$
+    \hspace{0.4cm} $\Rightarrow$ \hspace{0.4cm} $p_i = t_{i, 1} s_i$ and $s_i = t_{i, 1} p_i$.
+
+    \pause
+    $\pi'' \coloneqq (s_1, \dots, s_{\ell})$
+    \pause
+    
+    \begin{enumerate}
+        \item $\mathbf{p_i \in \boldsymbol{\Fs}}$: \hspace{0.3cm} $s_i = t_{i, 1} p_i$.
+        \item $\mathbf{p_i \coloneqq x p_j}$: \hspace{0.3cm} $s_i = s_j$.
+        \item $\mathbf{p_i \coloneqq \boldsymbol{\alpha} p_a + \boldsymbol{\beta} p_b}$: \hspace{0.3cm}
+            \pause $q \coloneqq \alpha \sum\limits_{j} t_{a, 1} t_{a, j} + \beta \sum\limits_{j} t_{a, 1}
+            t_{b, j}$.
+
+            \pause
+            $q = \alpha s_{a} +  \beta \sum\limits_{j} t_{a, 1} t_{b, j} = \alpha s_a + \beta t_{a, 1}
+            t_{b, 1} \sum\limits_{j} \beta t_{b, 1} t_{b, j} = \alpha s_a + \beta t_{a, 1} t_{b, 1} s_b$.
+
+            \pause
+            $s_i = \sum\limits_{j} t_{i, 1} t_{i, j}$. Wlog $t_{i, 1} \coloneqq t_{a, k}$ hence $s_i = t_{a, k} t_{a, 1} q$.
+    \end{enumerate}
+
+
+\end{frame}
+
 
 
 \begin{frame}{Open problems}
