@@ -1,0 +1,103 @@
+\begin{frame}{Extensions}
+
+    \pause
+    \begin{block}{Open problem}
+        Can we simulate Resolution in $\PCRf[]$?
+    \end{block}
+
+    \pause
+
+    \begin{minipage}{0.48\linewidth}
+        Variables:
+        \begin{itemize}
+            \item $x_i \in \{0, 1\}$
+            \item $\bar{x}_i \coloneqq 1 - x_i$;
+            \item $y_i \coloneqq 1 - 2 x_i$;
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        Axioms:
+        \begin{itemize}
+            \item $x^2_i - x_i$
+            \item $\bar{x}_i + x_i - 1$;
+            \item $y_i + 2 x_i - 1$;
+        \end{itemize}
+    \end{minipage}
+
+    \vspace{0.4cm}
+    \pause
+
+    The $\PCR[\field]_*$-proof of $\Fs$ is a sequence $(p_1, p_2, p_3, \dots, p_{\ell})$:
+    \pause
+    \begin{itemize}
+        \item $p_i \in \Fs \cup \{\text{Axioms}\}$;
+        \pause
+        \item $p_i = x_j p_k$ for some $j$ and $k < i$;
+        \pause    
+        \item $p_i = \alpha p_k + \beta p_s$ for some $k, s < i$ and $\alpha, \beta \in \field$;
+        \pause
+            \item $p_{\ell} = 1$.
+    \end{itemize}
+
+    \pause
+    
+    $\PCR[\field]_*$ simulates $\PCRf[\field]$ and $\PCRb[\field]$.
+\end{frame}
+
+
+\begin{frame}{Lower bounds}
+    
+    \begin{theorem}
+        If $\varphi$ is a random $11$-CNF formula then whp any $\PCR[\field]_*$-proof of $\varphi$ has
+        size $\exp(\Omega(n))$.
+    \end{theorem}
+
+
+    \pause
+
+    Can we compose techniques for the $\{0, 1\}$ and $\{\pm 1\}$ bases?
+
+    \pause
+    
+    \input{parts/split.tex}
+
+    $\Split{y}(y_j + 2 x_j - 1)$ \hspace{1.5cm} $\Rightarrow$ \hspace{1.5cm} $r \coloneqq 2 x_i - 1$, $q
+    \coloneqq 1$.
+
+\end{frame}
+
+
+\begin{frame}{Strategy for the $\PCR[\field]_*$}
+
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$ is a proof of $\Fs$. $H \coloneqq \{t \mid t \in \text{ QR of }
+    \pi, \deg(t) \text{ is big}\}$.
+
+    \begin{enumerate}
+        \item $\pi$ is small $\Rightarrow$ size of $H$ is small.
+        \pause
+        \item Pick the most frequent \deftext{literal} $x_i$ in $H$.
+        \pause
+        \item If $x_i$ is frequent then:
+            \begin{itemize}
+                \item set it to $0$;
+                \item set $y_i$ to the right value.
+            \end{itemize}
+        \pause
+        \item If $x_i$ is \deftext{not} frequent then:
+            \begin{itemize}
+                \item pick the most frequent variable $y_j$ in $H$;
+                \item replace $x_j$ by $\frac{1 - y_j}{2}$;
+                \item replace $\bar{x}_j$ by $\frac{1 + y_j}{2}$;
+                \item expand brackets ($x_j$ and $\bar{x}_j$ are \deftext{not} frequent);
+                \item apply $\Split{y_j}$ to $\pi$ set it to $0$;
+            \end{itemize}
+        \item Resulting proof is still a proof of \deftext{damaged} $\Fs$.
+        \pause
+        \item Try to avoid local contradictions in the resulting proof. \input{pics/cat.tex}
+        \pause
+        \item Repeat until we have terms of big degree in the QR.
+        \vspace{0.3cm}
+        \pause
+        \item Try to satisfy all \deftext{broken} constraints.
+    \end{enumerate}
+\end{frame}

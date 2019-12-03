@@ -1,0 +1,53 @@
+\documentclass[9pt, aspectratio = 34, english]{beamer}
+\usepackage{slides_style}
+\usepackage{mathtools}
+\usepackage{dsfont}
+\usepackage{faktor}
+\usepackage{bussproofs}
+
+\usetikzlibrary{
+    calc,
+    backgrounds,
+    scopes,
+    snakes
+}
+
+\usetheme[style = fwn]{leidenuniv}
+
+\titlegraphic{
+    \input{pics/title.tex}
+}
+
+\newlang{\WPHP}{WPHP}
+\newcommand{\Fs}{\mathcal{F}}
+\newcommand{\Hs}{\mathcal{H}}
+\newcommand{\deftext}[1]{\textbf{#1}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\rest}{\upharpoonright}
+\newcommand{\lazy}[2][\pi]{{(\ell_{#1}{#2})}}
+
+
+\title[$\{\pm 1\}$ Variables]{
+    (Semi)Algebraic Proofs over $\{\pm 1\}$ Variables
+}
+
+\author[Sokolov D.]{
+    Dmitry Sokolov
+}  
+
+
+\date{Simons Institute for the Theory of Computing\\ December 10, 2019}
+
+
+
+\begin{document}
+
+    \maketitle
+
+    
+    \input{parts/intro.tex}
+    \input{parts/restriction.tex}
+    \input{parts/extensions.tex}
+    \input{parts/open.tex}
+    
+\end{document}
