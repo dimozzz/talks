@@ -1,0 +1,61 @@
+\begin{frame}{Communication protocols [Yao 79]. $f: U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+	\pause
+    
+    The depth of the protocol is the number of rounds in the worst case.
+    
+    \pause
+    \begin{center}
+        \begin{align*}
+          \DCC(f) & \coloneqq \min\limits_{P \text{ for } f} \text{depth}(P) \\
+          \RCC(f) & \coloneqq \min\limits_{\text{rand. } P \text{ for } f} \text{depth}(P)
+        \end{align*}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Basic problems. $f: U \times V \to T$}
+
+    \begin{block}{Naive bound}
+        $\RCC(f) \le \DCC(f) \le \min(\log |U|, \log |V|) + 1$
+    \end{block}
+
+    \pause      
+    \begin{tabular}{b{0.4\linewidth}b{0.3\linewidth}b{0.3\linewidth}}
+      Function & $\DCC(f)$ & $\RCC(f)$ \\
+      \vspace{0.1cm}
+      \pause      
+      $\EQ(x, y) \coloneqq x \overset{?}{=} y$ & $n + 1$ & $O(1)$ \\
+      \vspace{0.1cm}
+      \pause
+      $\GT(x, y) \coloneqq x \overset{?}{\ge} y$ & $n + 1$ & $O(\log n)$ [Nissan 92] \\
+      \vspace{0.1cm}
+      \pause
+      $\DISJ(x, y) \coloneqq x \cap y \overset{?}{=} \emptyset$ & $\Theta(n)$ &
+                                                                                $\Theta(n)$ [Razborov 92] \\
+            \pause
+      $\IP(x, y) \coloneqq  \bigoplus\limits_i x_i \land y_i$ & $\Theta(n)$ & $\Theta(n)$ \\
+      \vspace{0.1cm}
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{Why communication complexity?}
+
+    \pause
+    \begin{itemize}
+        \item Interesting in its own.
+            \pause
+        \item Understanding Boolean Circuits depth/size.
+            \pause
+        \item Lower bounds for data structures.
+            \pause
+        \item Streaming computation.
+            \pause
+        \item Lower bounds for algorithms.
+    \end{itemize}
+\end{frame}

@@ -1,0 +1,26 @@
+\begin{frame}{Rank technique}
+
+    $f: U \times V \to T$
+
+    \begin{center}
+        \input{pics/rectangle.tex}        
+    \end{center}
+
+    \begin{lemma}
+        $\DCC(f) \ge \log \mathtt{rank}_{\mathbb{R}} M_f$.
+    \end{lemma}
+
+    \begin{block}{Open problem [Lov{\'{a}}sz, Saks 88]}
+        $\DCC(f) \le \poly(\log \mathtt{rank}_{\mathbb{R}} M_f)$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Take away}
+
+    \begin{itemize}
+        \item Communication complexity is a useful tool for proving lower bounds.
+        \item We have a lot of \textcolor{blue}{unconditional} bounds in communication complexity.
+        \item Lower bound on algorithms, circuits, data structures often reducible to lower bounds on
+            communication protocols.
+    \end{itemize}
+\end{frame}

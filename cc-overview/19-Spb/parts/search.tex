@@ -1,0 +1,77 @@
+\begin{frame}{$\DPLL$ algorithms}
+
+    $\varphi \coloneqq (x \lor \neg{y} \land z) \land (\neg{x} \lor w \land z \land s) \land
+    (\neg{x} \lor \neg{z} \lor s) \land \dots$
+
+    \pause
+    \begin{center}
+    	\input{pics/dpll.tex}    
+    \end{center}
+
+    \vspace{0.1cm}
+        
+	\pause
+    \pause
+    \pause
+    \pause
+
+    Can we estimate running time of this algorithm?
+
+\end{frame}
+
+\begin{frame}{Canonical search problem $\Search_{\varphi}$ (Lov{\'{a}}sz et al. 1994)}
+    
+    $\varphi(x, y)$ is an unsatisfiable CNF formula:
+    \begin{itemize}
+        \item Alice receives an assignment to the variables $x$, Bob receives an assignment to the
+            variables $y$;
+        \item goal is to find a clause $C \in \varphi$ that is unsatisfied by this assignment.
+    \end{itemize}
+
+    \pause
+
+    \begin{block}{Beame, Pitassi, Segerlind 06; Huynh, Nordstr{\"{o}}m 12; G{\"{o}}{\"{o}}s, Pitassi 14}
+        There is a CNF formula $\varphi$ on $n$ variables such that:
+        $$\RCC(\Search_{\varphi}) \ge \RCC(\DISJ_{\frac{n}{\log n}}) = \Omega\left( \frac{n}{\log n} \right).$$
+    \end{block}
+
+    \begin{block}{Lov{\'{a}}sz et al. 1994}
+        Running time of $\DPLL$ on formula $\varphi$ algorithm is at least $2^{\DCC(\Search_{\varphi})}$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Lower bound on $\DPLL$}
+
+    \begin{block}{Lov{\'{a}}sz et al. 1994}
+        Running time of $\DPLL$ on formula $\varphi$ algorithm is at least $2^{\DCC(\Search_{\varphi})}$.
+    \end{block}
+
+    \begin{minipage}{0.54\linewidth}
+        \begin{enumerate}
+            \item<2-> Pick a subtree $T'$ such that: $\frac{1}{3}|T| \le |T'| \le \frac{1}{3}|T|$.
+            \item<4-> Check whether we reach this subtree. Two bits of communication.
+            \item<6-> If ``yes'', run algorithm for $T'$.
+            \item<7-> If ``no'', run algorithm for $T \setminus T'$.
+        \end{enumerate}
+    \end{minipage}
+    \begin{minipage}{0.45\linewidth}
+        \begin{center}
+            \input{pics/dpll-prot.tex}
+        \end{center}
+    \end{minipage}
+
+    \vspace{0.1cm}
+        
+	\pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    
+    \vspace{0.1cm}
+
+    We need at most $\log |T|$ recursive calls.
+
+\end{frame}

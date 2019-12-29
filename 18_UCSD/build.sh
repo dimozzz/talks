@@ -1,3 +1,7 @@
-mkdir pdf
-pdflatex -output-directory pdf main.tex
-#pdflatex -output-directory pdf main.tex
+dir=pdf
+compiler=xelatex
+file=main
+
+mkdir $dir
+$compiler -output-directory $dir $file.tex
+#$compiler -output-directory $dir $file.tex

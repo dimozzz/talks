@@ -1,0 +1,68 @@
+\tikzstyle{subtree} = [opacity = 0]
+\only<3->{\tikzstyle{subtree} = [opacity = 1]}
+
+\tikzstyle{norm} = [semithick, draw = black]
+\tikzstyle{acedge} = [black]
+\only<5-7>{
+    \tikzstyle{acedge} = [
+        draw = LEIorange!80, 
+        ultra thick]
+}
+
+
+\tikzstyle{end} = [draw, circle, minimum size = 0.6cm, inner sep = 0.1pt]
+
+            
+\tikzstyle{level 1} = [level distance = 1.5cm, sibling distance = 2.5cm]
+\tikzstyle{level 2} = [sibling distance = 1.5cm]
+\tikzstyle{level 3} = [sibling distance = 1.5cm]
+    
+\begin{tikzpicture}[label distance = 8mm]
+    \node[end, acedge] (z) at (0, 0) {$\varphi$}
+        child[end]{
+            node[end, acedge] {$\varphi'$}
+            child[end]{
+                node {$\vdots$}
+                edge from parent[norm]
+	  	        node[above left] {$w \coloneqq 0$}
+            }
+		    child[end]{
+            	node[end] (o) {$\varphi''$}
+            	child[end]{
+            	   	node {$\vdots$}
+            		edge from parent[norm]
+	  	        	node[above left] (a) {$y \coloneqq 0$}
+                }
+                child[end]{
+            	   	node {$\vdots$}
+            		edge from parent[norm]
+	  	        	node[above right] (b) {$y \coloneqq 1$}
+            	}
+                edge from parent
+                node[above right, black] {$w \coloneqq 1$}
+            }
+           	edge from parent[acedge]
+            node[above left, black] {$x \coloneqq 0$}
+        }
+        child[end]{
+            node[end] (c) {$\varphi'''$}
+            child[end]{
+               	node {$\vdots$}
+                edge from parent[norm]
+	            node[above left] {$z \coloneqq 0$}
+            }
+		    child[end]{
+               	node {$\vdots$}
+                edge from parent[norm]
+	            node[above right] {$z \coloneqq 1$}
+            }
+            edge from parent[norm]
+	   	    node[above right] {$x \coloneqq 1$}
+        };
+
+        \begin{scope}[on background layer]
+            \draw[subtree, ultra thick, orange!25, fill = orange!10, rounded corners = 0.8cm]
+                ($(a) + (225:2.12)$) -- ($(o) + (0, 1)$) --
+                ($(b) + (-45:2.12)$) node[shift = {(-0.8, 0.3)}, black] {$T'$} -- cycle;
+        \end{scope}
+\end{tikzpicture}

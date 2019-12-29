@@ -1,0 +1,62 @@
+\begin{frame}{Formulas and circuits}
+
+    \begin{minipage}{0.48\linewidth}
+        \input{pics/formula.tex}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \input{pics/circuit.tex}
+    \end{minipage}
+
+    \pause
+    \pause
+    \begin{block}{Cook 71}
+        If there is an algorithm that computes $f: \{0, 1\}^n \to \{0, 1\}$ in time $T(n)$ then there is
+        a circuit of size $T(n) \log(T(n))$ for $f$.
+    \end{block}
+
+\end{frame}
+
+
+\begin{frame}{$\KW$ and $\KWm$ relations}
+
+    $f:\{0, 1\}^n \to \{0, 1\}$ is a partial function
+    
+    \begin{itemize}
+        \item Alice receives $x \in f^{-1}(1)$, Bob receives $y \in f^{-1}(0)$.
+        \item Goal is to find $i$ such that $x_i = y_i$.
+            \pause
+        \item (Monotone version) Goal is to find $i$ such that $x_i = 1 \land y_i = 0$.
+    \end{itemize}
+
+    \pause
+    \begin{block}{Karchmer, Wigderson 90}
+        \begin{itemize}
+            \item Formula for $f$ of size $S$ $\Leftrightarrow$ communication protocol of depth $\log S$
+                for the $\KW_f$ relation.
+            \item<4-> Monotone formula for $f$ of size $S$ $\Leftrightarrow$ communication protocol of
+                depth $\log S$ for the $\KWm_f$ relation. 
+        \end{itemize}
+    \end{block}
+
+    \pause
+    \pause
+    \begin{block}{Razborov 95; Pudl{\'{a}}k 10; S 17}
+        Monotone boolean circuit for $f$ of size $S$ $\Leftrightarrow$ ``dag'' communication protocol of
+        size $S$ for the $\KWm_f$ relation.        
+    \end{block}
+\end{frame}
+
+\begin{frame}{Results}
+
+    \begin{itemize}
+        \item Monotone formulas and circuit lower bounds.
+            \begin{itemize}
+                \item{} [Raz, Wigderson 92]
+                \item{} [Raz, McKenzei 99]
+                \item{} [G{\"{o}}{\"{o}}s, Pitassi, Watson 16]
+            \end{itemize}
+        \item Hierarchy on ``monotone'' parallel computations [Raz, McKenzei 99].
+        \item Program to separate parallel and general computations ($\P$ vs. $\NC^1$) [Karchmer, Raz,
+            Wigderson 94].
+    \end{itemize}
+\end{frame}
