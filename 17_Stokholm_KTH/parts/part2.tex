@@ -35,7 +35,7 @@
 
     \begin{theorem}[Pudl{\'{a}}k 2010, S 2017]
         There is a {\color{blue} monotone} boolean circuit for function $f$ of size $S$ iff there is a
-        boolean communication game of size $S$ for a relation $\Bit$ {\color{blue}$(\MBit)$} $(U =
+        boolean communication game of size $S$ for a relation $\KW$ {\color{blue}$(\KWm)$} $(U =
         f^{-1}(1), V = f^{-1}(0))$.
     \end{theorem}
 
@@ -108,7 +108,7 @@
 
 
     \begin{theorem}
-        The size of any real communication game for sets $G_0, B_0$ and a relation $\MBit$ is at least $2^{\Omega(\sqrt{m})}$.
+        The size of any real communication game for sets $G_0, B_0$ and a relation $\KWm$ is at least $2^{\Omega(\sqrt{m})}$.
 
         If $\varphi$ is a reasonable encoding of $\BMS$ problem then the size of any real communication game for sets $G_0,
         B_0$ and $\Search_{\varphi}$ relation is at least $2^{\Omega(\sqrt{m})}$.
@@ -117,7 +117,7 @@
     \pause
     More powerful result:
     \begin{theorem}[Hrube{\v{s}}, Pudl{\'{a}}k, 2017]
-        If there is a real communication game for sets $U, V$ and $\MBit$ relation of size $S$ then there
+        If there is a real communication game for sets $U, V$ and $\KWm$ relation of size $S$ then there
         is a monotone real circuit that separates $U$ and $V$.
     \end{theorem}
 \end{frame}
@@ -159,7 +159,7 @@
         \pause
         \item input of $\SAT_{G}$ is a truth tables for all constraints;
         \pause
-        \item $\SAT_{G}$ return $1$ iff input corresponds to satisfiable $\CSP$;
+        \item $\SAT_{G}$ return $1$ iff input corresponds to satisfiable $\lang{CSP}$;
         \pause
         \item $\SAT_{G}: \{0, 1\}^N \to \{0, 1\}$, where $N \le |U| \cdot 2^d$ and $d$ is the
             degree of nodes in part $U$.

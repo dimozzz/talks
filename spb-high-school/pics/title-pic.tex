@@ -1,0 +1,6 @@
+\begin{tikzpicture}
+    \node[police, female, minimum size = 1.4cm] (alice) at (0, 0) {};
+    \node[jester, mirrored, minimum size = 1.4cm] (bob) at (6, 0) {};
+
+    \draw[<->, ultra thick, red, >=latex] ($(alice.east) + (0.4, 0)$) -- ($(bob.west) + (-0.4, 0)$);
+\end{tikzpicture}

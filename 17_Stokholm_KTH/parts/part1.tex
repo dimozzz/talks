@@ -1,4 +1,4 @@
-\begin{frame}{Communication protocols. $f: U \times V \to T$}
+\begin{frame}{Communication protocols. $f\colon U \times V \to T$}
     \begin{center}
     	\input{pics/protocol.tex}    
     \end{center}
@@ -10,7 +10,7 @@
     
     The depth of the protocol is the number of rounds in the worst case.
     
-    $CC(f) = \min\limits_{P \in \mathcal{P}} depth(P)$, where $\mathcal{P}$ is a set of protocols for $f$.
+    $\DCC(f) = \min\limits_{P \in \mathcal{P}} depth(P)$, where $\mathcal{P}$ is a set of protocols for $f$.
 \end{frame}
 
 \begin{frame}{Protocols and trees}
@@ -44,13 +44,13 @@
 
 
 \begin{frame}{KW relation (Karchmer, Wigderson 1990)}
-    A communication problem on sets $U, V \subseteq \{0, 1\}^{n}$ and relation $\Bit$:
+    A communication problem on sets $U, V \subseteq \{0, 1\}^{n}$ and relation $\KW$:
     \begin{itemize}
         \item Alice receives $u \in U$, Bob receives $v \in V$;
         \item goal is to find $i$ such that $u_i \neq v_i$.
     \end{itemize}
     \pause
-    Monotone case ($\MBit$ relation):
+    Monotone case ($\KWm$ relation):
     \begin{itemize}
         \item goal is to find $i$ such that $u_i = 1 \land v_i = 0$.
     \end{itemize}
@@ -59,8 +59,8 @@
 
     \begin{theorem}[Karchmer, Wigderson 1990]
         There is a \only<4->{\alert{(monotone)}} boolean {\color{blue} formula} for a function $f$ of the
-        size $S$ iff there is a communication protocol of the size $S$ for the relation $\Bit$
-        \only<4->{\alert{$(\MBit)$}}, $U = f^{-1}(1), V = f^{-1}(0)$.
+        size $S$ iff there is a communication protocol of the size $S$ for the relation $\KW$
+        \only<4->{\alert{$(\KWm)$}}, $U = f^{-1}(1), V = f^{-1}(0)$.
     \end{theorem}
 
     \pause
@@ -115,7 +115,7 @@
 
 			\onslide<6->{
                 \begin{block}{Remark}
-                    It is too powerful model. There are short protocols for $\Bit$, $\MBit$ and
+                    It is too powerful model. There are short protocols for $\KW$, $\KWm$ and
                     $\Search_{\varphi}$.
                 \end{block}
             }

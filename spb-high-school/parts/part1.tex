@@ -1,0 +1,56 @@
+\begin{frame}{Коммуникационные задачи}
+
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+	\pause
+
+    \deftext{Коммуникационная сложность} функции $f$~--- минимально возможная длина всех сообщений в
+    протоколе.
+\end{frame}
+
+
+\begin{frame}{Примеры коммуникационных задач}
+    
+    $x$ и $y$~--- строки длины $n$ из нулей и единиц
+            
+    \begin{overlayarea}{\textwidth}{10cm}
+        \begin{enumerate}
+            \item $\lang{AVG}(x, y) \coloneqq \sum\limits_{i = 1}^{n} i \cdot (x_i + y_i)$, где $x_i, y_i$~---
+                соответствующие биты $x$ и $y$;
+        \suspend{enumerate}
+
+        \pause
+        \only<2>{
+            $$
+                \lang{AVG}(x, y) \coloneqq \sum\limits_{i = 1}^{n} i \cdot x_i + \sum\limits_{i = 1}^{n} i
+                \cdot y_i
+            $$
+        }
+
+        \pause
+        \resume{enumerate}
+            \item $\EQ(x, y) \coloneqq x \stackrel{?}{=} y$;
+        \suspend{enumerate}
+
+        \only<4->{
+            \begin{center}
+                \input{pics/tree-eq.tex}
+            \end{center}
+        }
+
+        \pause
+        \resume{enumerate}
+            \item $\GT(x, y) \coloneqq x \stackrel{?}{\ge} y$;
+            \item $\DISJ(x, y) \coloneqq x \cap y \stackrel{?}{=} \emptyset$;
+        \end{enumerate}
+    \end{overlayarea}
+\end{frame}
+
+\begin{frame}{Алгоритмы для поиска невыполненного условия}
+    
+\end{frame}
