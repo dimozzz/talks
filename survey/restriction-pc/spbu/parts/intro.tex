@@ -1,0 +1,208 @@
+\begin{frame}{Notation}
+    $$
+        (x \lor y \lor z \lor \bar{w}) \land
+        (x \lor \bar{y}) \land
+        (\bar{x} \lor z) \land
+        (w)   
+    $$
+        
+    \pause
+    \begin{minipage}{0.35\linewidth}
+        \centering
+        $
+        \begin{cases}
+            x \lor y \lor z \lor \bar{w} \\
+            x \lor \bar{y} \\
+            \bar{x} \lor z \\
+            w
+        \end{cases}
+        $
+    \end{minipage}
+    \begin{minipage}{0.6\linewidth}
+        \centering
+        $
+        \begin{cases}
+            x y z (1 - w) = 0 \\
+            x (1 - y) = 0 \\
+            (1 -  x) z = 0 \\
+            w = 0
+        \end{cases}
+        $
+        $\bigwedge$
+        $
+        \begin{cases}
+            x^2 - x = 0 \\
+            y^2 - y = 0 \\
+            z^2 - z = 0 \\
+            w^2 - w = 0
+        \end{cases}
+        $
+    \end{minipage}
+
+    \pause
+    \vspace{0.2cm}
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}
+            \node[jester, minimum size = 1cm, good] at (0, 0) {There is a solution!};
+            \onslide<4->{
+                \node[rectangle, rounded corners = 3pt, draw = LEIblue!15, fill = LEIblue!5] at (0, -1.5)
+                    {\textcolor{blue}{Restricted} poly-time Turing machine};
+            }
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}
+            \node[jester, mirrored, evil, minimum size = 1cm] at (0, 0) {There is \alert{no}
+                solution!};
+            \onslide<4->{
+                \node[rectangle, rounded corners = 3pt, draw = LEIblue!15, fill = LEIblue!5] at (0, -1.5)
+                    {Infinite power};
+            }
+        \end{tikzpicture}
+    \end{minipage}
+
+    \pause
+\end{frame}
+
+
+\begin{frame}{Proof systems}
+
+    The \deftext{Resolution} ($\Res$) proof of $\varphi \coloneqq \bigvee\limits_{i} C_i$ is a sequence
+    of conjuctions $(D_1, D_2, D_3, \dots, D_{\ell})$:
+    \pause
+    \begin{itemize}
+        \item $D_i \in \{C_i\}$;
+        \pause
+        \item $A \lor x = D_j$ and $B \lor \bar{x} = D_k$ for some $j, k < i$:
+            $$\frac{A \lor x ~~~~~ B \lor \bar{x}}{D_i \coloneqq A \lor B};$$
+        \pause    
+        \item $D_{\ell} = \emptyset$.
+    \end{itemize}
+
+    \pause
+    \vspace{0.3cm}
+
+    The \deftext{Polynomial Calculus} ($\PCR[\field]$) proof of $\Fs$ is a sequence
+    $(p_1, p_2, p_3, \dots, p_{\ell})$:
+    \pause
+    \begin{itemize}
+        \item $p_i \in \Fs \cup \bigcup\limits_{j = 1}^{n} \{R_j\}$;
+        \pause
+        \item $p_i = x_j p_k$ for some $j$ and $k < i$;
+        \pause    
+        \item $p_i = \alpha p_k + \beta p_s$ for some $k, s < i$ and $\alpha, \beta \in \field$;
+        \pause
+            \item $p_{\ell} = 1$.
+    \end{itemize}
+
+    \pause
+    \vspace{-0.2cm}
+    \begin{minipage}{0.2\linewidth}
+        $
+        \begin{cases}
+            x + y + z - 2 = 0 \\
+            xy = 0 \\
+            xz = 0 \\
+            yz = 0 \\
+        \end{cases}$
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.78\linewidth}
+        \begin{prooftree}
+            \AxiomC{$x^2 - x$}
+            \AxiomC{$x + y + z - 2$}
+            \UnaryInfC{$x^2 + xy + y z - 2x$}
+            \AxiomC{$xy$}
+            \AxiomC{$yz$}
+            \def\defaultHypSeparation{\hskip.10in}
+            \BinaryInfC{$xy + yz$}
+            \BinaryInfC{$x^2 - 2x$}
+            \BinaryInfC{$x$}
+            \AxiomC{$\vdots$}
+            \UnaryInfC{$y + z$}
+            \BinaryInfC{$x + y + z$}
+            \AxiomC{$x + y + z - 2$}
+            \BinaryInfC{$1$}
+        \end{prooftree}
+    \end{minipage}
+\end{frame}
+
+
+\begin{frame}{Proof size}
+    \begin{itemize}
+        \item Explicit representations of polynomials:
+            $$
+                \sum\limits_{i} \alpha_i \prod\limits_{j} x_{i, j} \cdot \prod\limits_{j} (1 - x_{i, j})
+            $$
+        \pause
+        \item Size is a number of ``monomials''.
+        \pause
+        \item Do \alert{not} pay for coefficients:
+            \begin{itemize}
+                \item because we can;
+                \pause
+                \item we can forget about representation problems in large fields.
+            \end{itemize}
+        \pause
+        \item $x_i^2 - x_i = 0 \Rightarrow$ we can ``linearize'' the proof.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Motivation}
+
+    \begin{itemize}
+        \item If there is no short proofs of unsatisfiability $\Rightarrow$ no poly-time algorithm for
+            $\SAT$ and $\P \neq \NP$.
+        \pause
+        \item Resolution lower bounds $\Rightarrow$ explicit hard examples for some classes of algorithms
+            for $\SAT$.
+        \pause
+        \item Weak proof systems (Resolution etc.) lower bounds $\Rightarrow$ explicit hard examples for
+            \alert{monotone} computations.
+    \end{itemize}
+
+    \pause
+    \vspace{1cm}
+    \begin{block}{Remark}
+        For some applications we should prove lower bounds on the specific formulas.        
+    \end{block}
+\end{frame}
+
+\begin{frame}{Naive restiction}
+
+    Let $\Fs$ be a system of polynomial equations.
+
+    $\Fs \circ \oplus_2$:
+    \begin{itemize}
+        \item replace $x_i$ by $y_i \oplus z_i$, where $y_i, z_i$ are fresh variables;
+        \item transform it into polynomials over $\mathbb{F}$.
+    \end{itemize}
+
+    \vspace{0.5cm}
+    \pause
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$ is a proof of $\Fs \circ \oplus_2$.
+    \pause
+    \begin{enumerate}            
+        \item Partial assignment $\rho$: for each $i \in [n]$ choose either $y_i$ or $z_i$ and assign it
+            $\{0, 1\}$ uniformly at random.
+        \pause
+        \item $t$ is multilinear $\Rightarrow$ $\Pr[t\rest \rho \neq 0] \le
+            \left(\frac{3}{4}\right)^{\deg(t)}$.
+        \item $(\Fs \circ \oplus_2) \rest \rho \equiv \Fs$.
+        \pause
+        \item $|\pi| < (\frac{4}{3})^{\varepsilon n} \Rightarrow$ whp $\pi\rest \rho$ is a proof of $\Fs$
+            of degree $\varepsilon n$.
+        \pause
+        \item It is enough to show the degree lower bound...
+    \end{enumerate}    
+\end{frame}
+
+
+\begin{frame}{Hierarchy}
+
+    \input{pics/hier.tex}
+    
+\end{frame}

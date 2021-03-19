@@ -1,0 +1,45 @@
+\documentclass[a4paper, 12pt]{article}
+% math symbols
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{mathseries}
+\setdefaultlanguage{english}
+\usepackage[
+    style = alphabetic,
+    maxbibnames = 99,
+    backend = biber]{biblatex}
+\addbibresource{references.bib}
+
+
+\usepackage[margin = 2cm]{geometry}
+
+\tolerance = 1000
+\emergencystretch = 0.74cm
+
+
+\pagestyle{empty}
+\parindent = 0mm
+
+
+\title{
+    Restriction Technique and Proof Complexity
+}
+
+\author{
+    Dmitry Sokolov
+}
+
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \input{parts/text.tex}
+    
+
+    \printbibliography
+    
+
+\end{document}

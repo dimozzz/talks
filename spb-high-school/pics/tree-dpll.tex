@@ -1,0 +1,45 @@
+\tikzstyle{inner} = [circle, minimum size = 0.5cm, inner sep = 0.2pt]
+\tikzstyle{ed} = [->, draw]
+\tikzstyle{ops} = [alt=<{#1-}>{opacity = 1}{opacity = 0}]
+\tikzstyle{dotstyle} = [inner, ops = #1]
+\tikzstyle{opstyle} = [inner, draw, ops = #1]
+\tikzstyle{oped} = [ed, ops = #1]
+\tikzstyle{gstyle} = [alt=<{#1}>{fill = green}{}]
+\tikzstyle{rstyle} = [alt=<{#1}>{red!90!black}{}]
+\tikzstyle{snakestyle} = [
+    alt=<{#1}>{
+        decorate,
+        decoration = {
+            snake,
+            amplitude = 0.4mm,
+            segment length = 2mm,
+            post length = 1mm
+        }
+    }{}]
+
+
+    
+\begin{tikzpicture}[>=latex]
+    \node[inner, draw] (a) at (0, 0) {$x$};
+    \node[opstyle = 5] (b) at (-2, -1) {$y$};
+    \node[opstyle = 5] (c) at (2, -1) {$z$};
+    \node[opstyle = 7] (d) at (-2.9, -2) {};
+    \node[ops = 7] (err) at (-3.5, -3) {\scriptsize <<нарушено условие>>};
+    \node[opstyle = 8] (e) at (-1.1, -2) {$w$};
+    \node[dotstyle = 9] (f) at (1.1, -2) {$\vdots$};
+    \node[dotstyle = 9] (g) at (2.9, -2) {$\vdots$};
+
+    \node[dotstyle = 9] (h) at (-1.9, -3) {$\vdots$};
+	\node[dotstyle = 9] (i) at (-0.3, -3) {$\vdots$};
+    
+    
+    \draw[oped = 4] (a) -- (b) node[midway, above] {$0$};
+    \draw[oped = 4] (a) -- (c) node[midway, above] {$1$};
+    \draw[oped = 6] (b) -- (d) node[midway, above] {$0$};
+    \draw[oped = 6] (b) -- (e) node[midway, above] {$1$};
+    \draw[oped = 8] (c) -- (f) node[midway, above] {$0$};
+    \draw[oped = 8] (c) -- (g) node[midway, above] {$1$};
+    \draw[oped = 8] (e) -- (h) node[midway, above] {$0$};
+    \draw[oped = 8] (e) -- (i) node[midway, above] {$1$};
+    \draw[oped = 7, very thick, red] (err) -- (d);
+\end{tikzpicture}
