@@ -1,0 +1,55 @@
+\tikzstyle{inner} = [circle, minimum size = 0.3cm, draw, inner sep = 0.1pt]
+\tikzstyle{gstyle} = [fill = green]
+\tikzstyle{rstyle} = [fill = red]
+\tikzstyle{ed} = [->, draw]
+\tikzstyle{ops} = [alt=<{#1-}>{opacity = 1}{opacity = 0}]
+\tikzstyle{opstyle} = [inner, ops = #1]
+\tikzstyle{oped} = [ed, ops = #1]
+\tikzstyle{gstyle} = [alt=<{#1}>{fill = green}{}]
+\tikzstyle{rstyle} = [alt=<{#1}>{red!90!black}{}]
+\tikzstyle{snakestyle} = [
+    alt=<{#1}>{
+        decorate,
+        decoration = {
+            snake,
+            amplitude = 0.4mm,
+            segment length = 2mm,
+            post length = 1mm
+        }
+    }{}]
+
+
+    
+\begin{tikzpicture}[>=latex, xscale = 0.9]
+    
+    \node[inner, fill = green!30] (a) at (0, 0) {\scriptsize $x$};
+    \node[inner, fill = green!30] (b) at (-2, -0.8) {\scriptsize $y$};
+    \node[inner] (c) at (2, -0.8) {\scriptsize $a$};
+    \node[inner] (d) at (-2.9, -1.6) {};
+    \node[inner, fill = green!30] (e) at (-1.1, -1.6) {\scriptsize $z$};
+    \node[inner] (f) at (1.1, -1.6) {};
+    \node[inner] (g) at (2.9, -1.6) {\scriptsize $w$};
+
+    \node[inner] (h) at (-1.6, -2.4) {};
+	\node[inner, fill = green!30] (i) at (-0.6, -2.4) {\scriptsize $u$};
+    
+    \node[inner] (j) at (2.4, -2.4) {};
+    \node[inner] (k) at (3.4, -2.4) {};
+
+    \node[inner, fill = green!30] (l) at (-1, -3.2) {};
+    \node[below = 4pt] at (l) {\scriptsize $C_{8}$};
+    \node[inner] (m) at (-0.2, -3.2) {};
+    
+    \draw[ed] (a) -- (b);
+    \draw[ed] (a) -- (c);
+    \draw[ed] (b) -- (d);
+    \draw[ed] (b) -- (e);
+    \draw[ed] (c) -- (f);
+    \draw[ed] (c) -- (g);
+    \draw[ed] (e) -- (h);
+    \draw[ed] (e) -- (i);
+    \draw[ed] (g) -- (j);
+    \draw[ed] (g) -- (k);
+    \draw[ed] (i) -- (l);
+    \draw[ed] (i) -- (m);
+\end{tikzpicture}

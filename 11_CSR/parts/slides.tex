@@ -1,6 +1,6 @@
 \begin{frame}
 	\frametitle{Goldreich's function}
-	$f:\{0, 1\}^n \rightarrow \{0, 1\}^n$
+	$f\colon \{0, 1\}^n \rightarrow \{0, 1\}^n$
 
     \pause
 
@@ -15,7 +15,7 @@
             \begin{itemize}
 	            \item $G(X, Y, E)$ is a bipartite graph;
             	\pause
-                \item $\forall y \in Y ~~ deg(y) = d$
+                \item $\forall y \in Y ~~ deg(y) = d$;
             	\pause
             	\item $d$ is a constant.
             \end{itemize}
@@ -42,9 +42,12 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{DPLL algorithms}
+	\frametitle{$\DPLL$ algorithms}
 
-   	\input{pics/tree.tex}
+    \begin{center}
+       	\input{pics/tree.tex}        
+    \end{center}
+
     
 	\pause
     \pause
@@ -66,7 +69,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Lower bounds for DPLL algorithms}
+    \frametitle{Lower bounds for $\DPLL$ algorithms}
 
     \pause
 	\begin{itemize}
@@ -80,7 +83,7 @@
         \pause
 		\item Satisfiable formulas
 		\begin{itemize}
-			\item If $\bf P = NP$ then there are no superpolynomial
+			\item If $\P = \NP$ then there are no superpolynomial
 		        lower bounds for backtracking algorithms since
                 heuristic $\mathbf{B}$ may choose correct value.
             \pause
@@ -119,10 +122,10 @@
         Myopic heuristic:
         \pause
         \begin{itemize}
-	        \item sees structure of the formula;
-        	\pause
-        	\item doesn't see negation signs;
-        	\item<6-> requests negations in $K = n^{1 - \epsilon}$ clause.
+            \item sees structure of the formula;
+            \pause
+            \item does not see negation signs;
+            \item<6-> requests negations in $K = n^{1 - \varepsilon}$ clause.
         \end{itemize}
     \end{definition}
 
@@ -197,7 +200,7 @@
        		            \begin{itemize}
 	   	            		\item \alert{$G$ is based on expander.}
 			            	\pause
-       				    	\item \alert{$K = n^{1 - \epsilon}$.}
+       				    	\item \alert{$K = n^{1 - \varepsilon}$.}
            					\pause
 			            	\item \alert{``Simple'' proof}.
 			            \end{itemize}
@@ -288,7 +291,7 @@
             \begin{itemize}
 	            \item $G$ is an expander.
 	            \item $f$ is almost bijection.
-	            \item Myopic algorithm can't recognize different
+	            \item Myopic algorithm cannot recognize different
 		            absolute terms.
             \end{itemize}
 	\end{itemize}

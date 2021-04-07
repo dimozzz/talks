@@ -13,15 +13,13 @@
   	\tikzstyle{vertex5} = [opacity = 1]
     \tikzstyle{vertex9} = [opacity = 1]
 }
-%\only<9->{\tikzstyle{vertex9} = [opacity = 0]}
-%\only<11->{\tikzstyle{vertex11} = [opacity = 1]}
 
-\tikzstyle{end} = [circle, minimum size=0.6cm, draw, inner sep = 0.1pt]
+\tikzstyle{end} = [circle, minimum size = 0.6cm, draw, inner sep = 0.1pt]
             
-\tikzstyle{level 1}=[level distance=1.5cm, sibling distance=5cm]
-\tikzstyle{level 2}=[sibling distance=2cm]
+\tikzstyle{level 1} = [level distance = 1.5cm, sibling distance = 5cm]
+\tikzstyle{level 2} = [sibling distance = 2cm]
     
-\begin{tikzpicture}[label distance=8mm]
+\begin{tikzpicture}[label distance = 8mm]
 	\node [end] (z){$\phi$}
        	child [vertex2] {node [end] (b) {$\phi'$}
 			child [vertex3]{

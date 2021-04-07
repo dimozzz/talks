@@ -1,0 +1,265 @@
+\begin{frame}{Size measure. All operations modulo $\langle R_i \rangle$}
+    \pause
+    $\SOS\colon \sum\limits_{u = 1}^{a} p_u f_u + \sum\limits_{v = 1}^{b} q_v^2 h_v = -1$
+
+    $$
+    \text{Size} \coloneqq \sum_{u = 1}^{a} \left( \msize(p_u) + \msize(f_u) \right) +
+    \sum_{v = 1}^{b} \msize(q_v) + \sum_{h \in \Hs} \msize(h)
+    $$
+        
+    \vspace{1cm}
+    $\PCR[\field]\colon (p_1, \dots, p_{\ell})$
+    
+    $$
+    \text{Size} \coloneqq \sum_{u = 1}^{\ell} \left( \msize(p_u) \right)
+    $$
+\end{frame}
+
+
+\begin{frame}{Strategy for the $\{0, 1\}$ basis ($\PCR[\field]$)}
+    
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$ is a proof of $\Fs$. $H \coloneqq \{t \mid t \in p_i, \deg(t)
+    \text{ is big}\}$.
+
+    \begin{enumerate}
+        \item $\pi$ is small $\Rightarrow$ size of $H$ is small.
+        \pause
+        \item Pick the most frequent literal $x$ in $H$.
+        \pause
+        \only<-9>{\item Set $x$ to $0$ in $\pi$. This operation kills all terms that contain $x$.}
+        \only<10->{\item \textcolor{red}{Set $x$ to $0$ in $\pi$. This operation kills all terms that
+            contain $x$.}}
+        \pause
+        \item $\pi \rest (x = 0)$ is still a proof of $\Fs \rest (x = 0)$.
+        \pause
+        \only<-5>{\item Keep $\Fs \rest (x = 0)$ hard in terms of degree. \input{pics/cat.tex}}
+        \only<6->{\item Try to avoid local contradictions in $\Fs \rest (x = 0)$. \input{pics/cat.tex}}
+        \pause
+        \pause    
+        \item Repeat until we have terms of big degree.
+    \end{enumerate}
+
+    \vspace{0.3cm}
+    \pause
+    We kill all terms of big degree but remaining system is still hard in terms of degree.
+
+    \vspace{0.3cm}
+    \pause
+    \begin{center}
+        \Huge Degree is the source of hardness.
+    \end{center}
+\end{frame}
+
+
+\begin{frame}{Degree and the $\{\pm 1\}$ basis}
+    \begin{center}
+        \textcolor{red}{Set $x$ to $0$ in $\pi$. This operation kills all terms that contain $x$}
+    \end{center}
+
+    \pause
+    \vspace{0.5cm}
+
+    Attempts.
+    \begin{enumerate}
+        \item Set $x$ to $0$. \pause \hspace{1cm} $x^2 - 1 \rest (x = 0) \to -1$.
+        \pause
+        \item $\tau(p) \coloneqq \frac{p \rest (x = -1) + p \rest (x = 1)}{2}$. Consider $\tau(\pi)$.
+    \end{enumerate}
+
+    \pause
+
+    \begin{minipage}{0.3\linewidth}
+        \begin{prooftree}
+            \AxiomC{$p$}
+            \UnaryInfC{$xp$}
+            \UnaryInfC{$p$}
+        \end{prooftree}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.3\linewidth}
+        \begin{prooftree}
+            \AxiomC{$\tau(p)$}
+            \UnaryInfC{$\tau(xp)$}
+            \UnaryInfC{$\tau(p)$}
+        \end{prooftree}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.3\linewidth}
+        \begin{prooftree}
+            \AxiomC{$p$}
+            \UnaryInfC{$0$}
+            \UnaryInfC{$p$}
+        \end{prooftree}
+    \end{minipage}
+
+    \pause
+
+    Multiplication is invertible.
+
+    \pause
+
+
+    \begin{block}{Grigoriev 98; Buss, Grigoriev, Impagliazzo, Pitassi 01; Grigoriev 01}
+        \begin{enumerate}
+            \item Tseitin formulas has small $\PCRf[\field]$ and $\SOSf$-proofs.
+            \item There are Tseitin formulas that has $\PCR[\field]$ or $\SOS$-degree $\Omega(n)$.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Degree and the $\{\pm 1\}$ basis. Part 2}
+
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$.
+
+    Can we reduce the degree of $p_i$?
+    \pause
+
+    \begin{enumerate}
+        \item $p_i \coloneqq \prod\limits_{i = 1}^{n} x_i$ \pause \hspace{0.5cm} \textcolor{green}{YES}
+            \pause
+            
+            \begin{prooftree}
+                \AxiomC{$p$}
+                \UnaryInfC{$x_1 p$}
+                \UnaryInfC{$\vdots$}
+                \UnaryInfC{$1$}
+            \end{prooftree}
+            \pause
+        \item $p_i \coloneqq \prod\limits_{i = 1}^{n} x_i - 1$ \pause \hspace{0.5cm} \textcolor{red}{NOT REALLY}
+    \end{enumerate}
+
+    \vspace{0.5cm}
+    \pause
+    $p_i \coloneqq \sum\limits_j t_j$. Degree of the symmetric differences between $t_j$'s is the new
+    source of hardness.    
+\end{frame}
+
+
+\begin{frame}{Quadratic representation and $\Split{x}$}
+
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$.  $p_i \coloneqq \sum\limits_j t_{i, j}$.
+
+    \pause
+
+    $p_i^2 \coloneqq \sum\limits_{j, j'} t_{i, j} t_{i, j'}$.
+    
+    We want to see all possible pairs, hence we prohibit cancellations.
+
+
+    \begin{block}{Quadratic representation (QR)}
+        The \deftext{QR} of $\pi$ is the sequence $(p_1^2, \dots, p_{\ell}^2)$ where squares are computed
+        without cancellations.
+    \end{block}
+
+    \pause
+    Reminder:
+    $\tau(p) \coloneqq \frac{p \rest (x = -1) + p \rest (x = 1)}{2}$.
+
+    \pause
+
+    We want operation that apply $\tau$ to the QR of $\pi$.
+
+    \pause
+
+    \input{parts/split.tex}
+    
+    \pause
+    $\Split{x}(\pi)$ is a proof of \deftext{damaged} version of $\Fs$.
+    
+\end{frame}
+
+
+\begin{frame}{Strategy for the $\{\pm 1\}$ basis ($\PCR[\field]$)}
+    
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$ is a proof of $\Fs$. $H \coloneqq \{t \mid t \in \text{ QR of }
+    \pi, \deg(t) \text{ is big}\}$.
+
+    \begin{enumerate}
+        \item $\pi$ is small $\Rightarrow$ size of $H$ is small.
+        \pause
+        \item Pick the most frequent literal $x$ in $H$.
+        \pause
+        \item Apply $\Split{x}$ to $\pi$. This operation kills all terms that contain $x$ in the QR of $\pi$.
+        \pause
+        \item $\Split{x}(\pi)$ is still a proof of \deftext{damaged} $\Fs$.
+        \pause
+        \item Try to avoid local contradictions in $\Split{x}(\Fs)$. \input{pics/cat.tex}
+        \pause
+        \item Repeat until we have terms of big degree in the QR.
+        \vspace{0.3cm}
+        \pause
+        \item Try to satisfy all \deftext{broken} constraints. \pause \textcolor{red}{Impossible for
+            Tseitin formulas.}
+    \end{enumerate}
+
+    \pause
+    \begin{lemma}
+        Let $\pi$ be a $\PCRf[\field]$-proof of $\Fs$ and QR of $\pi$ has degree $d$. Then there is a
+        $\PCRf[\field]$-proof $\pi'$ of $\Fs$ of degree $2d$.
+    \end{lemma}
+    \pause
+    \textcolor{red}{This is wrong Lemma, we need to change definition of QR to fix it.}
+\end{frame}
+
+\begin{frame}{Lazy computations \hspace{5pt} \input{pics/lazy.tex}}
+    
+    $\pi \coloneqq (p_1, \dots, p_{\ell})$ is a proof of $\Fs$.
+
+    \pause
+    \deftext{Lazy representation} of $p_i$ ($\lazy{p_i})$ in the proof $\pi$:
+    \begin{itemize}
+        \item $\lazy{p}_i \coloneqq p_i$, if $p_i \in \Fs$ or $p_i \coloneqq p_j$ for some $j < i$;
+        \item $\lazy{p}_i \coloneqq \alpha p_j + \beta p_k$ \textcolor{blue}{without cancellations}, if
+            $p_i \coloneqq \alpha p_j + \beta p_k$.
+    \end{itemize}
+
+    \pause
+    \deftext{QR} of $\pi$: $(\lazy{p}_1^2, \dots, \lazy{p}_{\ell}^2)$. Squares are computed without
+    cancellations.
+
+    \pause
+    \begin{lemma}
+        Let $\pi$ be a $\PCRf[\field]$-proof of $\Fs$ and QR of $\pi$ has degree $d$. Then there is a
+        $\PCRf[\field]$-proof $\pi'$ of $\Fs$ of degree $2d$.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}{QR and small degree}
+    
+    \begin{lemma}
+        Let $\pi$ be a $\PCRf[\field]$-proof of $\Fs$ and QR of $\pi$ has degree $d$. Then there is a
+        $\PCRf[\field]$-proof $\pi'$ of $\Fs$ of degree $2d$.
+    \end{lemma}
+
+    \pause
+    $p_i \coloneqq \sum\limits_{j} \gamma_{i, j} t_{i, j}$ and $s_i \coloneqq \sum\limits_{j}
+    \gamma_{i, j} t_{i, 1} t_{i, j}$
+    \hspace{0.4cm} $\Rightarrow$ \hspace{0.4cm} $p_i = t_{i, 1} s_i$ and $s_i = t_{i, 1} p_i$.
+
+    \pause
+    $\pi'' \coloneqq (s_1, \dots, s_{\ell})$
+    \pause
+    \begin{enumerate}
+        \item $\mathbf{p_i \in \boldsymbol{\Fs}}$: \hspace{0.3cm} $s_i = t_{i, 1} p_i$.
+        \item $\mathbf{p_i \coloneqq x p_j}$: \hspace{0.3cm} $s_i = s_j$.
+        \item $\mathbf{p_i \coloneqq \boldsymbol{\alpha} p_a + \boldsymbol{\beta} p_b}$: \hspace{0.3cm}
+            \pause $q \coloneqq \alpha \sum\limits_{j} \gamma_{a, j} t_{a, 1} t_{a, j} + \beta
+            \sum\limits_{j} \gamma_{b, j} t_{a, 1}
+            t_{b, j}$.
+
+            \pause
+            $q = \alpha s_{a} +  \beta \sum\limits_{j} \gamma_{b, j} t_{a, 1} t_{b, j} = \alpha s_a +
+            \beta t_{a, 1} t_{b, 1} \sum\limits_{j} \gamma_{b, j} t_{b, 1} t_{b, j} = \alpha s_a +
+            \beta t_{a, 1} t_{b, 1} s_b$.
+
+            \pause
+            $s_i = \sum\limits_{j} t_{i, 1} t_{i, j}$. Wlog $t_{i, 1} \coloneqq t_{a, k}$ hence $s_i =
+            t_{a, k} t_{a, 1} q$.
+    \end{enumerate}
+
+    \pause
+    \begin{center}
+        \includegraphics[scale = 0.1]{pics/utya-lift.png}
+    \end{center}
+\end{frame}

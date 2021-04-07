@@ -1,0 +1,214 @@
+\begin{frame}{Notation}
+    $(\Fs, \Hs) =
+    \begin{cases}
+        f_1(x_1, \dots, x_n) = 0 \\
+        f_2(x_1, \dots, x_n) = 0 \\
+        \dots \\
+        f_a(x_1, \dots, x_n) = 0 \\
+        \hline
+        h_1(x_1, \dots, x_n) \ge 0 \\
+        h_2(x_1, \dots, x_n) \ge 0 \\
+        \dots \\
+        h_s(x_1, \dots, x_n) \ge 0 \\
+    \end{cases}
+    $
+
+    \vspace{0.1cm}
+    $f_i, h_j$ are polynomials.
+
+    \vspace{0.1cm}
+    \pause
+
+    \begin{block}{Range axiom $R_i$ for a variable $x_i$:}
+        \begin{itemize}
+            \item $\mathbf{\{0, 1\}}$ basis: $x_i^2 - x_i$;
+            \item $\mathbf{\{\pm 1\}}$ basis: $x_i^2 - 1$.
+        \end{itemize}
+    \end{block}
+
+   
+\end{frame}
+
+
+\begin{frame}{Proof systems}
+
+    The \deftext{Sum-of-Squares} ($\SOS$) proof of $(\Fs, \Hs)$:
+    $$
+        \sum_{u = 1}^{a} p_u f_u + \sum_{j = 1}^{n} r_j R_j + \sum_{v = 1}^{b} q_v^2 h_v = -1
+    $$
+    $f_u \in \Fs, h_v \in \Hs \cup {1}$
+
+    \pause
+    \vspace{0.4cm}
+
+    The \deftext{Polynomial Calculus} ($\PCR[\field]$) proof of $\Fs$ is a sequence
+    $(p_1, p_2, p_3, \dots, p_{\ell})$:
+    \pause
+    \begin{itemize}
+        \item $p_i \in \Fs \cup \bigcup\limits_{j = 1}^{n} \{R_j\}$;
+        \pause
+        \item $p_i = x_j p_k$ for some $j$ and $k < i$;
+        \pause    
+        \item $p_i = \alpha p_k + \beta p_s$ for some $k, s < i$ and $\alpha, \beta \in \field$;
+        \pause
+            \item $p_{\ell} = 1$.
+    \end{itemize}
+
+    \pause
+    \vspace{-0.2cm}
+    \begin{minipage}{0.4\linewidth}
+        $\Fs =
+        \begin{cases}
+            xy - 1 = 0 \\
+            yz + 1 = 0 \\
+            x + z - 2 = 0
+        \end{cases}$
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.58\linewidth}
+        \begin{prooftree}
+            \AxiomC{$x + z - 2$}
+            \UnaryInfC{$x y + y z - 2y$}
+            \AxiomC{$xy - 1$}
+            \AxiomC{$yz + 1$}
+            \BinaryInfC{$xy + yz$}
+            \BinaryInfC{$2y$}
+            \UnaryInfC{$2 y^2$}
+            \AxiomC{$y^2 - 1$}
+            \BinaryInfC{$1$}
+        \end{prooftree}
+    \end{minipage}
+\end{frame}
+
+
+\begin{frame}{Motivation}
+
+    \pause
+    \begin{itemize}
+        \item Lower bounds on the length of proofs $\Rightarrow$ lower bounds on the running time of
+            algorithms.
+            \pause
+        \item Cook's program: $\NP \stackrel{?}{=} \coNP$.
+            \pause
+        \item Lower bounds on the length of proofs $\Rightarrow$ lower bounds on some computational
+            models.
+            \pause
+        \item There are unconditional lower bounds!
+    \end{itemize}
+
+    \pause
+    \vspace{0.3cm}
+    Why do we pay attention to different encodings: $x \in \{0, 1\}$ and $x \in \{\pm 1\}$?
+    \pause
+    \begin{itemize}
+        \item Sizes may be really different in these encodings.
+            \pause
+        \item It shows the limitations of current techniques for proving lower bounds.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{It really helps!}
+
+    \begin{block}{Grigoriev 98; Buss, Grigoriev, Impagliazzo, Pitassi 01; Grigoriev 01}
+        \begin{enumerate}
+            \item Tseitin formulas has small $\PCRf[\field]$ and $\SOSf$-proofs.
+            \item There are Tseitin formulas that has $\PCR[\field]$ or $\SOS$-degree $\Omega(n)$.
+        \end{enumerate}
+    \end{block}
+
+    \begin{minipage}{0.5 \linewidth}
+        \input{pics/graph.tex}
+    \end{minipage}%
+    \begin{minipage}{0.5 \linewidth}
+        \pause
+        \begin{itemize}
+            \item $v\colon ~ f_v \coloneqq \sum\limits_{e \in E_v} x_{e} + c(v) \pmod 2$;
+            \item $\sum\limits_{v} c(v) \neq 0 \Rightarrow$ system is unsat. 
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+
+    System is unsat $\Leftrightarrow$ $\exists \lambda_v \in \{0, 1\}, \sum\limits_{v \in V} \lambda_v
+    f_v = 1$ and $\PCR[\field_2]$ has a short proof.
+\end{frame}
+
+\begin{frame}{It really helps!}
+
+    Representation of parity over $\field$, $\mathrm{char}(\field) \neq 2$:
+    \begin{itemize}
+        \item has exponential size in $\{0, 1\}$ variables;
+        \item is extremely short in $\{\pm 1\}$ variables: $\prod\limits_{e \in E_v} y_{e} - (-1)^{c(v)}
+            = 0$.
+    \end{itemize}
+
+    \pause
+    \begin{center}
+        \begin{minipage}{0.4\linewidth}
+            \centering
+            \textcolor{blue}{$\prod x_i \prod y_{j} - (-1)^{a}$}
+        \end{minipage}
+        \begin{minipage}{0.4\linewidth}
+            \centering
+            \textcolor{blue}{$\prod y_j \prod z_{k} - (-1)^{b}$}
+        \end{minipage}
+
+        \pause
+        \vspace{0.1cm}
+
+        \begin{prooftree}
+            \AxiomC{\textcolor{blue}{$\prod x_i \prod y_{j} - (-1)^{a}$}}
+            \UnaryInfC{$\prod x_i \prod y^2_{j} - (-1)^{a} \prod y_{j}$}
+            \AxiomC{$y_1^2 - 1$}
+            \UnaryInfC{$y_1^2y_2^2 - y_2^2$}
+            \AxiomC{$y_2^2 - 1$}
+            \BinaryInfC{$y_1^2y_2^2 - 1$}
+            \UnaryInfC{$\vdots$}
+            \UnaryInfC{$\prod y_j^2 - 1$}
+            \UnaryInfC{$\prod x_i \prod y_j^2 - \prod x_i$}
+            \BinaryInfC{$\prod x_i - (-1)^{a} \prod y_j$}
+            \AxiomC{\textcolor{blue}{$\prod y_j \prod z_k - (-1)^{b}$}}
+            \UnaryInfC{$\vdots$}
+            \UnaryInfC{$\prod z_k - (-1)^{b} \prod y_j$}
+            \BinaryInfC{$\prod x_i - (-1)^{a + b} \prod z_k$}
+            \UnaryInfC{$\vdots$}
+            \UnaryInfC{$\prod x_i \prod z_k - (-1)^{a + b}$}
+        \end{prooftree}
+    \end{center}
+\end{frame}
+
+
+\begin{frame}{Hierarchy}
+
+    \input{pics/hier.tex}
+    
+\end{frame}
+
+
+
+\begin{frame}{Results}
+
+    $d_0$ is the degree of $(\Fs, \Hs)$. $n$ is the number of variables of $(\Fs, \Hs)$.
+    
+    \begin{theorem}
+        Any $\SOSf$-proof of $(\Fs, \Hs) \circ \Maj(z_1, z_2, z_3)$ has size
+        $\exp\left[\Omega\left(\frac{(d - d_0)^2}{n}\right)\right]$. There $d$ is an
+        $\SOS$-degree of $(\Fs, \Hs)$.
+    \end{theorem}
+
+    \pause
+
+    \begin{theorem}
+        If $\varphi$ is a random $11$-CNF formula then whp any $\SOSf$-proof or $\PCRf[\field]$-proof of
+        $\varphi$ has size $\exp(\Omega(n))$.
+    \end{theorem}
+
+    \pause
+    \begin{theorem}
+        Any $\PCRf[\field]$-proof of Pigeonhole Principle has size $\exp(\Omega(n))$.
+    \end{theorem}
+
+    $\SOSf$ is strictly stronger than $\PCRf[\mathbb{R}]$.
+
+\end{frame}
