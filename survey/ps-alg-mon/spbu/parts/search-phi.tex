@@ -1,0 +1,161 @@
+\section{Часть II: Сертификаты невыполнимости}
+
+\begin{frame}
+    \centering
+    \usebeamerfont{title}\insertsectionhead
+
+    \vspace{0.3cm}
+    \includegraphics[scale = 0.3]{pics/pigeon1.png}
+\end{frame}
+
+
+\begin{frame}{$\Search_{\varphi}$ [Lov{\'{a}}sz, Naor, Newman, Wigderson et al. 94]}
+    
+    $\varphi(z) \coloneqq \bigvee\limits_{i = 1}^{m} C_i$~--- невыполнимая формула в КНФ.
+    \pause
+    
+    $\Search_{\varphi} \subseteq \{0, 1\}^n \times [m]$:
+    \begin{itemize}
+        \item $(\alpha, i) \in \Search_{\varphi} \Leftrightarrow C_{i}(\alpha) = 0.$
+    \end{itemize}
+
+    \pause
+    \vspace{0.1cm}
+    Коммуникационная версия:
+    \begin{itemize}
+        \item $g\colon X \times Y \to \{0, 1\}$~--- <<гаджет>>;
+        \item $\Ind\colon [k] \times \{0, 1\}^k \to \{0, 1\}$, $\Ind(x, y) = y_x$.
+    \end{itemize}
+
+    \pause
+    \begin{center}
+        \input{pics/composition.tex}
+    \end{center}
+
+
+    $\Search_{\varphi} \circ g \equiv \Search_{\varphi \circ g}$.
+\end{frame}
+
+
+
+
+\begin{frame}{Системы доказательств}
+
+    \deftext{Резолюция}: доказательство $\varphi \coloneqq \bigvee\limits_{i} C_i$~--- последовательность
+    клозов $(D_1, D_2, D_3, \dots, D_{\ell})$:
+    \pause
+    
+    \begin{minipage}{0.3\linewidth}
+        \begin{itemize}
+            \item $D_i \in \{C_i\}$;
+                \pause
+            \item $\frac{A \lor x ~~~~~ B \lor \bar{x}}{A \lor B}$, $D_i \coloneqq A \lor B$;
+                \pause
+            \item $D_{\ell} = \emptyset$.
+        \end{itemize}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.68\linewidth}
+        \centering
+        \input{pics/res-proof.tex}
+    \end{minipage}
+
+
+    \pause
+    \vspace{0.3cm}
+
+    \deftext{Cutting Planes}: доказательство~--- последовательность неравенств над $\mathbb{Z}$
+    $(p_1 \ge 0, p_2 \ge 0, p_3 \ge 0, \dots, p_{\ell} \ge 0)$:
+    \begin{itemize}
+        \item $p_i$ кодировка клоза формулы, $x_k \ge 0$ или $-x_k + 1 \ge 0$;
+        \item $\frac{p_i ~~~~~ p_j}{p_k}$, где $p_k$ семантически следует из $p_i$ и $p_j$ на
+            $\mathbb{Z}^n$;
+        \item $p_{\ell} = 1$.
+    \end{itemize}
+
+    \pause
+    \vspace{0.3cm}
+
+    \deftext{Nullstellensatz}: доказательство для системы полиномиальных уравнений $f_1 = 0, f_2 = 0,
+    \dots$:
+    $$
+        \sum_{u = 1}^{a} p_u f_u = 1.
+    $$
+\end{frame}
+
+\begin{frame}{Резолюция и деревья решений}
+
+    \begin{lemma}
+        Tree-like резолюция $\Leftrightarrow$ деревья решений для задачи $\Search_{\varphi}$ (не
+        коммуникационной).
+    \end{lemma}
+    \pause
+
+    \begin{minipage}{0.58\linewidth}
+        \centering
+        \input{pics/dpll-2.tex}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.4\linewidth}
+        \centering
+        $\frac{A \lor x ~~~ B \lor \neg x}{A \lor B} ~~~~~ \frac{A}{A \lor z}$
+        \begin{itemize}
+            \item Вершина $\Rightarrow$ дизъюнкция отрицаний запросов.
+            \item $(x \lor \neg y \lor \neg z \lor u)$.
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+    $\DCC(\Search_{\varphi \circ g}) \le \DCC(g) \cdot \mathrm{res\text{-}depth}(\varphi).$
+\end{frame}
+
+
+\begin{frame}{Модели}
+    \setlength{\extrarowheight}{0.4cm}
+        \begin{tabular}{c c c c}
+          \textbf{Сис. док.} & \textbf{Модель поиска} & \textbf{Коммуник. модель} & \textbf{Выч. модель}
+          \\
+          \pause
+          Tree Res. & Деревья решений & Комм. протоколы & Мон. формулы \\
+          \pause
+          Dag-like Res. & Dag решений & Dag протоколы & Мон. схемы \\
+          \pause
+          CP & ?? & \textcolor{blue}{Dag протоколы} & Вещ. Мон. схемы \\
+          \pause
+          Tree R(CP) & Stabbing Planes & \textcolor{blue}{Комм. протоколы}  & ?? \\
+          \pause
+          NS & ?? & Algebraic tiling & Mon. Span Programs \\
+        \end{tabular}
+    
+\end{frame}
+
+\begin{frame}{Лифтинг \includegraphics[scale = 0.04]{pics/utia-lift.png}}
+
+    \begin{theorem}[Raz, McKenzie 99; G\"{o}\"{o}s, Pitassi, Watson 16]
+        Резолюционная глубина $\varphi$ не менее $d$, тогда:
+        $\DCC(\Search_{\varphi} \circ \Ind_m) \ge n^{\bigO{d}},$
+        где $m \coloneqq \poly(n)$. \alert{$\DCC(\Search_{\varphi} \circ \Ind_m) \approx
+            \DCC(\Ind) \cdot \mathrm{res\text{-}depth}(\varphi)$.}
+    \end{theorem}
+
+    Следствие: нижняя оценка на мон. формулы $2^{n^{\varepsilon}}$.
+    \pause
+
+    \begin{theorem}[Garg, G\"{o}\"{o}s, Kamath, S 18]
+        Резолюционная ширина $\varphi$ не менее $w$, тогда:
+        размер dag протокола для $\Search_{\varphi} \circ \Ind_m$ не менее $n^{\bigO{w}},$
+        где $m \coloneqq \poly(n)$.
+    \end{theorem}
+
+    Следствие: нижняя оценка на мон. \textcolor{blue}{схемы} $2^{n^{\varepsilon}}$.
+    \pause
+
+    \begin{theorem}[Pitassi, Robere 16; Robere, Pitassi 18]
+        Nullstellensatz степень $\varphi$ не менее $d$, тогда:
+        размер \alert{algebraic tiling} для $\Search_{\varphi} \circ g$ не менее $2^{\bigO{w}},$
+        для некоторой $g$.
+    \end{theorem}
+
+    Следствие: нижняя оценка на мон. Span Programs и мон. формулы $2^{\bigO{n}}$.
+
+\end{frame}

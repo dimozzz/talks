@@ -1,0 +1,168 @@
+\section{Часть I: Протоколы и монотонные модели}
+
+\begin{frame}
+    \centering
+    \usebeamerfont{title}\insertsectionhead
+
+    \vspace{0.3cm}
+    \includegraphics[scale = 0.3]{pics/utia-garden.png}
+\end{frame}
+
+\begin{frame}{Монотонные модели}
+
+    \begin{minipage}{0.33\linewidth}
+        \centering
+        Формулы
+        \vspace{0.2cm}
+        
+        \input{pics/mon-form.tex}
+    \end{minipage}
+    \begin{minipage}{0.33\linewidth}
+        \centering
+        Схемы
+        \vspace{0.2cm}
+        
+        \input{pics/mon-ckt.tex}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \centering
+        Еще схемы
+        \vspace{0.2cm}
+        
+        \input{pics/mon-r-ckt.tex}
+    \end{minipage}
+
+    \pause
+    Зачем нужны нижние оценки?
+    \begin{itemize}
+        \item Ведь получается!
+            \pause
+        \item Контроль погрешности.
+            \pause
+        \item Сильные монотонные оценки $\Rightarrow$ оценки на все схемы.
+            \pause
+        \item Задача о разделении секрета.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Ранние результаты}
+    \pause
+    Оценки на схемы:
+    \begin{itemize}
+        \item{} [Разборов 85] Задача о клике. $n^{\omega(1)}$.
+        \item{} [Alon, Boppana 87] Задача о клике. $2^{n^{\varepsilon}}$.
+        \item{} [Tardos 87] Задачи <<типа>> клики. $\mathbf{mon}\P$ vs $\P$.
+        \item{} [Pudlak 97] Задача о клике. Вещественные схемы. $2^{n^{\varepsilon}}$.
+        \item{} [Harnik, Raz 03] Спец. функция. $2^{\sqrt[3]{n}}$.
+    \end{itemize}
+
+    \vspace{0.5cm}
+    \pause
+    Оценки на формулы:
+    \begin{itemize}
+        \item{} [Karchmer, Wigderson 90] Задача о достижимости в графе. $n^{\log n}$.
+        \item{} [Raz, McKenzie 99] Большой класс спец. функций. $2^{\sqrt{n}}$.
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Коммуникационные протоколы. $f\colon U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+	\pause
+
+    \begin{itemize}
+        \item Глубина~--- число раундов в худшем случае.
+        \item $\DCC(f) = \min\limits_{P \in \mathcal{P}} \mathrm{depth}(P)$, где $\mathcal{P}$ протоколы
+            для $f$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Протоколы и деревья}
+
+    Алиса получает $u \in U$, Боб $v \in V$. Протокол~--- это дерево:
+
+    \begin{columns}[t]
+		\begin{column}{0.7\textwidth}
+            \begin{itemize}
+                \item<2-> вершины помечены игроками;
+    		    \item<8-> листья ответами.
+	        \end{itemize}
+
+    		\onslide<9->{
+                Размер протокола~--- размер дерева. $\mathrm{Size}(f) = \min\limits_{P \in \mathcal{P}}
+                \mathrm{Size}(P)$.
+            }
+            \onslide<10->{
+                \begin{lemma}
+                    $\DCC(f) = \Omega(\log(\mathrm{Size}(f)))$.
+                \end{lemma}
+            }
+        \end{column}
+        
+		\begin{column}{0.25\textwidth}
+            \input{pics/first_tree.tex}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}{Отношение $\KW$ [Karchmer, Wigderson 90]}
+    Пусть $U, V \subseteq \{0, 1\}^{n}$ и $U \cap V = \emptyset$.
+
+    \vspace{0.1cm}
+    $\KW$:
+    \begin{itemize}
+        \item Алиса получает $u \in U$, Боб $v \in V$;
+        \item задача найти такой $i$, что $u_i \neq v_i$.
+    \end{itemize}
+    \pause
+    Монотонная версия $\KWm$:
+    \begin{itemize}
+        \item задача найти такой $i$, что $u_i = 1 \land v_i = 0$.
+    \end{itemize}
+
+    \pause
+
+    \begin{theorem}[Karchmer, Wigderson 90]
+        \alert{Монотонная} формула для $f$ размера $S$ $\Leftrightarrow$ коммуникационный протокол для
+        \alert{$\KWm$} $\KW$, где $U \coloneqq f^{-1}(1), V \coloneqq f^{-1}(0)$.
+    \end{theorem}
+\end{frame}
+
+
+\begin{frame}{$\KW^m$~--- <<полное отношение>>}
+
+    \begin{itemize}
+        \item $\mathcal{S} \subseteq U \times V \times \mathcal{O}$;
+        \item определим $F_{\mathcal{S}}\colon \{0, 1\}^m \to \{0, 1\}$ так, чтобы
+            $\DCC(\KWm[F_{\mathcal{S}}]) = \DCC(S)$.
+    \end{itemize}
+
+    \pause
+
+    \vspace{-0.2cm}
+    \begin{center}
+        \input{pics/rect-mon.tex}
+    \end{center}
+
+    \pause
+    $F_{\mathcal{S}}(1, 1, 0, \dots) \coloneqq 1$\pause, ~~~$F_{\mathcal{S}}(1, 0, 0, \dots) \coloneqq 0$
+
+    \pause
+    \begin{lemma}
+        $F_{\mathcal{S}}$ может быть дополнена до монотонной так, что $\DCC(\KWm[F_{\mathcal{S}}]) =
+        \DCC(S)$.
+    \end{lemma}
+
+    \pause
+    \putpos{250}{110}{\includegraphics[scale = 0.1]{pics/utia-think.png}}
+
+\end{frame}
