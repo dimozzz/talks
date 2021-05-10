@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+
+    \pgfmathsetseed{1000007}
+    \foreach \i in {0, 1, 2}{
+        \node[graph-vert] (b\i) at
+            (1, 0.4 * \i - 0.2) {};
+    }
+
+    \foreach \i in {0, 1}{
+        \node[graph-vert = {LEIorange!80!black}{0.15cm}] (a\i) at
+            (0, 0.4 * \i) {};
+
+        \draw[->] (a\i) -- ++(-0.3, 0);
+
+    }
+
+    \draw[thick, red] (a0) -- (b0);
+    \draw[thick, red] (a0) -- (b1);
+    \draw (a1) -- (b0);
+    \draw (a1) -- (b1);
+    \draw (a1) -- (b2);
+\end{tikzpicture}
