@@ -1,0 +1,74 @@
+\begin{frame}{$\Search_{\varphi}$ [Lov{\'{a}}sz, Naor, Newman, Wigderson et al. 94]}
+    
+    $\varphi(z) \coloneqq \bigvee\limits_{i = 1}^{m} C_i$ is unsatisfiable CNF formula.
+    \pause
+    
+    $\Search_{\varphi} \subseteq \{0, 1\}^n \times [m]$:
+    \begin{itemize}
+        \item $(\alpha, i) \in \Search_{\varphi} \Leftrightarrow C_{i}(\alpha) = 0.$
+    \end{itemize}
+
+    \pause
+    \vspace{0.1cm}
+    Communication version:
+    \begin{itemize}
+        \item ``gadget'' $g\colon X \times Y \to \{0, 1\}$;
+        \item $\Ind\colon [k] \times \{0, 1\}^k \to \{0, 1\}$, $\Ind(x, y) = y_x$.
+    \end{itemize}
+
+    \pause
+    \begin{center}
+        \input{pics/composition.tex}
+    \end{center}
+
+
+    $\Search_{\varphi} \circ g \equiv \Search_{\varphi \circ g}$.
+\end{frame}
+
+
+\begin{frame}{Lifting \includegraphics[scale = 0.04]{pics/utia-lift.png}}
+
+    \begin{theorem}[Raz, McKenzie 99; G\"{o}\"{o}s, Pitassi, Watson 16]
+        Resolution depth of $\varphi$ is at least $d$ $\Rightarrow$
+        $\DCC(\Search_{\varphi} \circ \Ind_m) \ge n^{\bigO{d}},$
+        where $m \coloneqq \poly(n)$. \alert{$\DCC(\Search_{\varphi} \circ \Ind_m) \approx
+            \DCC(\Ind) \cdot \mathrm{res\text{-}depth}(\varphi)$.}
+    \end{theorem}
+
+    Corollary: lower bound on monotone formulas $2^{n^{\varepsilon}}$.
+    \pause
+
+    \begin{theorem}[Garg, G\"{o}\"{o}s, Kamath, S 18]
+        Resolution size $\varphi$ at least $S$ $\Rightarrow$
+        size of \alert{dag-like} protocols for $\Search_{\varphi} \circ \Ind_m$ at least $\Omega(S),$
+        where $m \coloneqq \poly(n)$.
+    \end{theorem}
+
+    Corollary: lower bound on monotone \textcolor{blue}{circuits} $2^{n^{\varepsilon}}$.
+    \pause
+
+    \begin{theorem}[Pitassi, Robere 16; Robere, Pitassi 18, informal]
+        Nullstellensatz $\Leftrightarrow$ \alert{algebraic tiling} for $\Search_{\varphi} \circ g$.
+    \end{theorem}
+
+\end{frame}
+
+\begin{frame}{Easy Function?}
+
+    $f\colon \{0, 1\}^{2 n^3} \to \{0, 1\}$
+
+    \begin{itemize}
+        \item Enumerate equalities $z_i \oplus z_j \oplus z_k = c$ (at most $2 n^3$);
+        \item $x_i = 1 \Leftrightarrow$ add the equality to the system;
+        \item $f(x) = 1 \Leftrightarrow$ system is unsatisfiable.
+    \end{itemize}
+
+    \pause
+    Facts about $f$:
+    \begin{itemize}
+        \item $f \in \NC^2$;
+        \item $F_{\Flow}$ can be embedded into $f$ (since there is an efficient NS proof of $\Flow$!);
+        \item there is no small monotone circuit for $f$ (since there is no efficient proofs in
+            resolution of $\Flow$ + lifting Theorem).
+    \end{itemize}
+\end{frame}

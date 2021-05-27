@@ -1,0 +1,23 @@
+\begin{tikzpicture}[>=latex]
+
+    \foreach \i in {1, 2, ..., 6}{
+        \node[draw, circle, fill = LEIblue!40, inner sep = 0pt, minimum size = 5pt]
+            (a\i) at (0, -0.7 * \i) {};
+    }
+
+    \foreach \i in {1, 2, ..., 4}{
+        \node[draw, circle, fill = LEIblue!40, inner sep = 0pt, minimum size = 5pt]
+            (b\i) at (1.5, {-0.7 * (\i + 1)}) {};
+    }
+
+    \node[below = 8pt] at (a6) {$m$};
+    \node[below = 8pt] at (b4) {$n$};
+    
+    \draw (a4) -- (b2);
+    \draw (a4) -- (b3);
+    \draw (a4) -- (b4);
+
+    \node[right = 3pt] at (b2) {$x_1$};
+    \node[right = 3pt] at (b4) {$x_2$};
+    \node[right = 3pt] at (b3) {$x_3$};
+\end{tikzpicture}
