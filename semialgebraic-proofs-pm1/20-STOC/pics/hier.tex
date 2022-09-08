@@ -1,0 +1,158 @@
+
+\tikzset{
+    >=latex,
+    vert/.style = {
+        draw,
+        ellipse
+    },
+    tikzart-fire/.pic = {
+        \draw[fill = red!60] (0, 0) .. controls (0.3, 0) and (0.6, 0.1) .. (0.7, 0.3)
+            .. controls (0.8, 0.5) and (0.85, 0.6) .. (0.8, 0.9)
+            .. controls (0.75, 1.1) and (0.7, 1.2) .. (0.6, 1.4)
+            .. controls (0.65, 1.2) and (0.6, 1.05) .. (0.5, 0.9)
+            .. controls (0.5, 1.2) and (0.2, 1.3) .. (0.1, 1.6)
+            .. controls (0.05, 1.75) and (0.1, 2) .. (0.2, 2.1)
+            .. controls (-0.1, 2) and (-0.2, 1.85) .. (-0.3, 1.7)
+            .. controls (-0.4, 1.5) and (-0.45, 1.3) .. (-0.4, 1.1)
+            .. controls (-0.5, 1.2) and (-0.51, 1.4) .. (-0.5, 1.5)
+            .. controls (-0.75, 1.2) and (-0.8, 0.7) .. (-0.7, 0.5)
+            .. controls (-0.6, 0.28) and (-0.4, 0) .. (0, 0);
+            \fill[white] (0, 0) .. controls (0.3, 0) and (0.52, 0.34) .. (0.37, 0.61)
+            .. controls (0.4, 0.54) and (0.32, 0.32) .. (0.25, 0.25)
+            .. controls (0.3, 0.35) and (0.25, 0.5) .. (0.2, 0.6)
+            .. controls (0.1, 0.8) and (-0.05, 1) .. (0, 1.2)
+            .. controls (-0.32, 1) and (-0.3, 0.72) .. (-0.2, 0.47)
+            .. controls (-0.3, 0.51) and (-0.31, 0.6) .. (-0.33, 0.7)
+            .. controls (-0.4, 0.6) and (-0.4, 0.5) .. (-0.4, 0.4)
+            .. controls (-0.35, 0.18) and (-0.2, 0) .. (0, 0);
+    },
+    semisim/.style = {
+        ->,
+        blue,
+        dashed,
+        decorate,
+        decoration = {
+            snake,
+            amplitude = 0.5,
+            segment length = 2
+        }
+    },        
+}
+
+
+    
+\begin{tikzpicture}
+    \node[vert] (res) at (1, 0) {$\Res$};
+    \node[vert] (ns) at (-3, 0) {$\NS$};
+    \node[vert] (cp) at (3, 1) {$\CP$};
+    \node[vert] (acf) at (1, 1.5) {$\AC_0$-Frege};
+    \node[vert] (resl) at (-1.3, 2.7) {$\ResL$};
+    \node[vert] (acfp) at (0.5, 3.5) {$\AC_0[p]$-Frege};
+    \node[vert] (fre) at (0.5, 5) {Frege};
+    \node[vert] (ips) at (-2, 6) {$\PrSys{IPS}$};
+    \node[vert] (pcr) at (-2.8, 1.9) {$\PCR[]$};
+    \node[vert] (sos) at (-4, 2.5) {$\SOS$};    
+    \node[vert] (cps) at (-4, 6.5) {$\PrSys{CPS}$};
+
+    
+
+    \draw[->, semisim] (pcr) -- (sos);
+    \draw[->] (res) -- (cp);
+    \draw[->] (cp) to[out = 90, in = -20] (fre);
+    \draw[->] (res) -- (resl);
+    \draw[->] (res) -- (acf);
+    \draw[->] (res) to[out = 138, in = -30] (pcr);
+    \draw[->] (ns) -- (pcr);
+    \draw[->] (resl) -- (acfp);
+    \draw[->] (acf) -- (acfp);
+    \draw[->] (acfp) -- (fre);
+    \draw[->] (fre) -- (ips);
+    \draw[->, semisim] (ips) -- (cps);
+
+    \only<-5>{
+        \draw[->] (pcr) -- (ips);
+        \draw[->] (sos) -- (cps);
+    }
+
+    \node at (0, 6.9) {};
+
+    \pause
+
+    \only<2-3>{
+        \begin{scope}[on background layer]
+            \fill[orange!5] (-4, -1) to[out = 90, in = 180] (-2.3, 0.75) to[out = 0, in = 180] (0.5, 0.7)
+                to[out = 0, in = 90] (2, -1) -- cycle;
+            \draw[ultra thick, orange] (-4, -1) to[out = 90, in = 180] (-2.3, 0.75) to[out = 0, in = 180]
+            (0.5, 0.7) to[out = 0, in = 90] (2, -1);
+        \end{scope}
+        \node[blue] at (-0.5, -0.7) {Mon. ``Circuits''};
+    }
+
+    \pause
+
+    \only<3>{
+        \begin{scope}[on background layer]
+            \fill[orange!5] (-5, 6.9) to[out = -90, in = 180] (-4, 5.3) to[out = 0, in = 180]
+                (-2, 5.3) to[out = 0, in = -90] (-1, 6.9) -- cycle;
+            \draw[ultra thick, orange] (-5, 6.9) to[out = -90, in = 180] (-4, 5.3) to[out = 0, in = 180]
+                (-2, 5.3) to[out = 0, in = -90] (-1, 6.9);
+        \end{scope}
+        \node[blue] at (-2.5, 6.6) {``Circuits''};
+    }
+    
+
+    \pause
+    \only<4->{
+        \begin{scope}[on background layer]
+            \draw[ultra thick, fill = black!5] (-4, -1) to[out = 110, in = 220] (-4.4, 3)
+                to[out = 40, in = 180] (-1, 2) to[out = 0, in = 125] (2.3, 2) to[out = -55, in = 90]
+                (1.5, -1);
+        \end{scope}
+        \node[blue] at (-1.5, 0.95) {Restriction};
+    }
+
+    \only<5->{
+        \begin{scope}[on background layer]
+            \fill[orange!5] (-4, -1) to[out = 90, in = 180] (-2.3, 0.75) to[out = 0, in = 180] (0.5, 0.7)
+                to[out = 0, in = 200] (3.5, 2) -- (3.5, -1) -- cycle;
+            \draw[ultra thick, orange] (-4, -1) to[out = 90, in = 180] (-2.3, 0.75) to[out = 0, in = 180]
+                (0.5, 0.7) to[out = 0, in = 200] (3.5, 2);
+            \draw[ultra thick] (-4, -1) to[out = 110, in = 220] (-4.4, 3) to[out = 40, in = 180] (-1, 2)
+            to[out = 0, in = 125] (2.3, 2) to[out = -55, in = 90] (1.5, -1);
+        \end{scope}
+        \node[blue] at (0, -0.7) {Mon. Interpolation};
+    }
+
+    \pause
+    \pause
+    \node[vert] (ns2) at (-5.5, 0) {$\NS_{\{\pm 1\}}$};
+    \node[vert] (pcr2) at (-6.1, 2) {$\PCR[]_{\{\pm 1\}}$};
+    \node[vert] (sos2) at (-6.8, 3) {$\SOS_{\{\pm 1\}}$};
+    \node[vert] (spcr) at (-2.6, 4.4) {$\SPCR$};
+    \node[vert] (ssos) at (-4.5, 4.6) {$\SSOS$};
+    
+
+    \draw[->] (ns2) -- (pcr2);
+    \draw[->, semisim] (pcr2) -- (sos2);
+    \draw[->] (pcr) -- (spcr);
+    \draw[->] (pcr2) -- (spcr);
+    \draw[->] (spcr) -- (ips);
+    \draw[->] (sos) -- (ssos);
+    \draw[->] (sos2) -- (ssos);
+    \draw[->] (ssos) -- (cps);
+
+    \pause
+
+    \node[inner sep = 0pt] at (-7, 5.5) {\includegraphics[width = 0.2\textwidth]{pics/dragon.png}};
+    \node[inner sep = 0pt] at (-7, 4.2) {$\Mod_p$};
+    
+
+    \pause
+    \node[inner sep = 0pt] at (-7, -0.5) {\includegraphics[width = 0.15\textwidth]{pics/firehead.png}};
+%    \draw[ultra thick, blue] (-4, -1) to[out = 110, in = 230] (-4.4, 3) to[out = 50, in = 180] (3.5, 1.8);
+    \foreach \point in {(1.5, 3), (-2, 4), (-6, 1)}{
+        \pic at \point {tikzart-fire};
+    }
+
+    \onslide<1->
+\end{tikzpicture}

@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+
+    \pgfmathsetseed{1000007}
+    \foreach \i in {0, 1, ..., 5}{
+        \node[graph-vert] (b\i) at
+            (1.5, 0.4 * \i + 0.4) {};
+    }
+
+    \foreach \i in {0, 1, 3, 4, ..., 7}{
+        \node[graph-vert = {LEIorange!80!black}{0.15cm}] (a\i) at
+            (0, 0.4 * \i) {};
+
+        \foreach \j in {0, 1, 2}{
+            \pgfmathsetmacro{\temp}{random(0, 5)}
+            \draw (a\i) -- (b\temp);
+        }
+    }
+
+    \node[graph-vert, fill = green!50] (a2) at (0, 0.8) {};
+    \foreach \j in {0, 1, 2}{
+        \pgfmathsetmacro{\temp}{random(0, 5)}
+        \draw[red, thick] (a2) -- (b\temp);
+    }
+
+    \node[below = 0.2cm] at (a0) {$m$};
+    \node[below = 0.2cm] at (b0) {$n$};
+\end{tikzpicture}

@@ -1,0 +1,42 @@
+\begin{tikzpicture}
+
+    \pgfmathsetseed{1000009}
+    \foreach \i in {3, 5}{
+        \node[graph-vert] (b\i) at (1.5, 0.4 * \i + 0.4) {};
+    }
+
+    \node[graph-vert, alt = <7->{opacity = 0}{}] (b2) at (1.5, 1.2) {};
+    
+    \foreach \i in {0, 1, 4}{
+        \node[graph-vert, alt = <5->{opacity = 0}{}] (b\i) at (1.5, 0.4 * \i + 0.4) {};
+    }
+    
+    \foreach \i in {3, 4, ..., 7}{
+        \node[graph-vert = {LEIorange!80!black}{0.15cm}] (a\i) at
+            (0, 0.4 * \i) {};
+
+        \draw[->] (a\i) -- ++(-0.3, 0);
+        \draw[alt = <7->{opacity = 0}{}] (a\i) -- (b2);
+        \draw (a\i) -- (b3);
+        \draw (a\i) -- (b5);
+    }
+
+    \node[graph-vert, alt = <{3-}>{fill = green!50}{fill = LEIorange!80!black}] (a2) at (0, 0.8) {};
+    \node[left = 0.3] at (a2) {$v$};
+    
+    \draw[alt = <{3-}>{red, thick}{}, alt = <5->{opacity = 0}{}] (a2) -- (b0);
+    \draw[alt = <{3-}>{red, thick}{}, alt = <5->{opacity = 0}{}] (a2) -- (b1);
+    \draw[alt = <{3-}>{red, thick}{}, alt = <5->{opacity = 0}{}] (a2) -- (b4);
+    \draw[->] (a2) -- ++(-0.3, 0);
+
+    \node[graph-vert, alt = <{6-}>{fill = green!50}{fill = LEIorange!80!black}] (a0) at (0, 0) {};
+    \node[graph-vert, alt = <{6-}>{fill = green!50}{fill = LEIorange!80!black}] (a1) at (0, 0.4) {};
+
+    \foreach \i in {0, 1}{
+        \draw[alt = <{5-}>{opacity = 0}{}] (a\i) -- (b0);
+        \draw[alt = <{5-}>{opacity = 0}{}] (a\i) -- (b1);
+        \draw[alt = <{6-}>{red, thick}{}, alt = <{7-}>{opacity = 0}{}] (a\i) -- (b2);
+        \draw[->] (a\i) -- ++(-0.3, 0);
+    }
+    
+\end{tikzpicture}

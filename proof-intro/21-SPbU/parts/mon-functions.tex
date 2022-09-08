@@ -1,0 +1,50 @@
+\begin{frame}{Формулы и функции}
+
+    <<Слабые>> системы доказательств простая модель, а схемы <<сложная>>. 
+
+    \pause
+
+    \begin{itemize}
+        \item $\varphi(x) \coloneqq \bigvee C_j$ ~--- формула от $n$ переменных;
+        \item $g\colon \{0, 1\}^k \times \{0, 1\}^{\ell} \to \{0, 1\}$;
+        \pause
+        \item $\varphi \circ g \coloneqq \varphi(g(y_1, z_1), g(y_2, z_2), g(y_3, z_3), \dots)$.
+    \end{itemize}
+
+    \pause
+    $\psi(y, z) \coloneqq \varphi \circ g = \bigvee\limits_{j = 1}^{m} D_j$, определим функцию
+    $F_{\psi}\colon \{0, 1\}^m \to \{0, 1\}$.
+    \pause
+    \vspace{-0.2cm}
+    \begin{center}
+        \input{pics/rect-mon.tex}
+    \end{center}
+
+    \pause
+    $F_{\psi}(1, 1, 0, \dots) \coloneqq 1$\pause, ~~~$F_{\psi}(1, 0, 0, \dots) \coloneqq 0$
+\end{frame}
+
+\begin{frame}{Формулы и функции}
+
+    \pause
+    \begin{itemize}
+        \item $F_{\psi}$ определена частично;
+            \pause
+        \item $F_{\psi}$ можно дополнить до монотонной.
+    \end{itemize}
+
+    \begin{theorem}
+        Если $\varphi$ сложна для резолюционной системы $\Rightarrow$ $F_{\varphi \circ g}$ требует
+        большой \alert{монотонной} схемы, где $g$~--- <<хорошая>> функция.
+    \end{theorem}
+
+    \pause
+
+    <<Обратная>> теорема тоже существует.
+\end{frame}
+
+\begin{frame}{Иерархия}
+
+    \input{pics/hier.tex}
+    
+\end{frame}

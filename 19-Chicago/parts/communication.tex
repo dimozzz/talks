@@ -100,7 +100,7 @@
 
 \begin{frame}{$\KWm$ relation (Karchmer, Wigderson 1990)}
 
-    $f:\{0, 1\}^n \to \{0, 1\}$ is a monotone partial function
+    $f\colon \{0, 1\}^n \to \{0, 1\}$ is a monotone partial function
     
     \begin{itemize}
         \item Alice receives $x \in f^{-1}(1)$, Bob receives $y \in f^{-1}(0)$;
@@ -111,14 +111,14 @@
 
     \begin{theorem}[Razborov 95; Pudl{\'{a}}k 10; S 17]
         Monotone boolean circuit for $f$ of size $S$ $\Leftrightarrow$ rectangle dag protocol of size $S$
-        for the $\KWm_f$ relation.
+        for the $\KWm[f]$ relation.
     \end{theorem}
 
     \pause
 
     \begin{theorem}[Hrube{\v{s}} Pudl{\'{a}}k 17]
         Monotone real circuit for $f$ of size $S$ $\Leftrightarrow$ triangle dag protocol of size $S$
-        for the $\KWm_f$ relation.
+        for the $\KWm[f]$ relation.
     \end{theorem}
 \end{frame}
 

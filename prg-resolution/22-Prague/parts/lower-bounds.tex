@@ -1,0 +1,354 @@
+\section{Part II: Lower bounds}
+
+\begin{frame}
+    \centering
+    \usebeamerfont{title}\insertsectionhead
+
+    \vspace{0.4cm}
+    \includegraphics[scale = 0.25]{pics/utia-depression.png}
+\end{frame}
+
+\begin{frame}{Restriction Technique}
+    
+    $\pi \coloneqq (D_1, \dots, D_{\ell})$ is a Resolution proof of $\varphi$. $H \coloneqq \{C \in \pi
+    \mid w(D) \ge w_0 \}$.
+
+    \begin{enumerate}
+        \item $\pi$ is small $\Rightarrow$ size of $H$ is small.
+        \pause
+        \item Pick the most frequent literal $x$ in $H$. \alert{$w_0 / (m 2^{2^{\Delta} + 1})$ fraction!}
+        \pause
+        \item Set $x$ to $0$ in $\pi$. This operation kills all clauses that contain $x$.
+        \pause
+        \item $\pi \rest (x = 1)$ is still a proof of a restricted formula.
+            \pause
+        \item \only<-5>{\textcolor{blue}{Keep $\varphi \rest (x = 1)$ hard in terms of width.}}
+            \only<6->{\textcolor{blue}{Try to avoid local contradictions in $\varphi \rest (x = 1)$.}}
+        \pause
+        \pause    
+        \item Repeat while we have clauses of big width.
+    \end{enumerate}
+
+    \pause
+    \vspace{0.3cm}
+    \begin{minipage}{0.7\linewidth}
+        \begin{itemize}
+            \item We kill all clauses of big width.
+            \item \onslide<9->{The remaining formula is still hard in terms of width.}
+        \end{itemize}        
+    \end{minipage}
+    \begin{minipage}{0.25\linewidth}
+        \centering
+        \includegraphics[scale = 0.1]{pics/utia-blood.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{``Functional'' Form}
+
+    
+    Width $\Rightarrow$ number of output bits \alert{mentioned} by a clause.
+
+    \begin{itemize}
+        \item $D \coloneqq (y^{c_1}_{g_1} \lor y^{c_2}_{g_2} \lor \dots \lor y^{c_{\ell}}_{g_{\ell}})$;
+        \item $B_1, B_2, \dots, B_m \subseteq Y$;
+        \item $\forall i \in [m], j \in [\ell]$: $y^{c_j}_{g_j} \in B_i \Rightarrow \Vars(g_j) \subseteq
+            \mathrm{N}(i)$;
+        \item $\forall j \in [\ell]$: $\exists i \in [m], y^{c_j}_{g_j} \in B_i$.
+    \end{itemize}
+
+    \vspace{0.2cm}
+    \pause
+    \begin{minipage}[c]{0.45\linewidth}
+        \begin{equation*}
+            \neg \left\{
+              \begin{aligned}
+                  g_1(x) &= c_1 \\
+                  g_2(x) &= c_2 \\
+                  \vdots \\
+                  g_{\ell}(x) &= c_{\ell} \\
+              \end{aligned}
+            \right.
+        \end{equation*}
+    \end{minipage}
+    \pause
+    \begin{minipage}[c]{0.05\linewidth}
+        $\Rightarrow$
+    \end{minipage}
+    \begin{minipage}[c]{0.45\linewidth}
+        \begin{equation*}
+            \neg \left\{
+              \begin{aligned}
+                  h_1(x) &= 0 \\
+                  h_2(x) &= 0 \\
+                  \vdots \\
+                  h_{m}(x) &= 0 \\
+              \end{aligned}
+            \right.
+        \end{equation*}
+    \end{minipage}
+
+    \pause
+    \vspace{0.2cm}
+    $h_i \coloneqq \bigvee\limits_{g^{c} \in B_i} (1 \oplus c \oplus g)$.
+
+    \pause
+    \vspace{0.4cm}
+    $h_1, h_2, \dots, h_m$ is a functional form of $D$.
+\end{frame}
+
+\begin{frame}{Problems \hspace{0.1cm} \includegraphics[scale = 0.03]{pics/utia-shame.png}}
+
+    \begin{itemize}
+        \item This representation depends on graph.
+            \pause
+        \item This representation is \alert{not} unique.
+            \pause
+        \item This representation is \alert{syntactic}!
+    \end{itemize}
+    \pause
+
+    \vspace{0.2cm}
+    \begin{minipage}{0.2\linewidth}
+        \centering
+        \input{pics/nw-gen-3.tex}
+    \end{minipage}
+    \begin{minipage}{0.75\linewidth}
+        \vspace{-0.2cm}
+        $$
+        \ell(x) \coloneqq x_1 \oplus x_2 \oplus x_3
+        $$
+        $$
+        \ell'(x) \coloneqq x_1 \oplus x_2, ~~
+        $$
+        $$
+        \ell''(x) \coloneqq x_3
+        $$
+    \end{minipage}
+
+    \vspace{0.2cm}
+    \pause
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        $D \coloneqq y_{\ell} \lor y_{\ell'}$
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        $D' \coloneqq y_{\ell} \lor y_{\ell''}$
+    \end{minipage}
+
+    \pause
+    \vspace{0.2cm}
+    \begin{minipage}{0.48\linewidth}
+        \begin{itemize}
+            \item $h_1 \coloneqq (x_1 \oplus x_2 \oplus x_3) \lor (x_1 \oplus x_2)$
+                
+                  $h_2 \coloneqq 0$
+        \end{itemize}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.48\linewidth}
+        \begin{itemize}
+            \item $h_1 \coloneqq (x_1 \oplus x_2 \oplus x_3) \lor x_3$
+
+                $h_2 \coloneqq 0$;
+                \pause
+            \item $h_1 \coloneqq (x_1 \oplus x_2 \oplus x_3)$
+
+                $h_2 \coloneqq x_3$
+                \pause
+            \item $h_1 \coloneqq (x_1 \oplus x_2 \oplus x_3) \lor x_3$
+
+                $h_2(x) \coloneqq x_3$
+        \end{itemize}
+    \end{minipage}
+
+\end{frame}
+
+
+\begin{frame}{First Attempt \hspace{0.2cm} \includegraphics[scale = 0.03]{pics/utia-blood.png}}
+
+    $i$-th bit is mentioned $\Leftrightarrow \Pr[h_i(x) = 1 \land P_i(x) = b_i] \only<1>{\neq
+        0}\only<2->{\alert{\ge \frac{1}{2^{\Delta}}}}$.
+
+    \pause
+    \pause
+    $\pi \coloneqq (D_1, \dots, D_{\ell})$ is a Resolution proof of $\varphi$. $H \coloneqq \{C \in \pi
+    \mid \text{ $C$ mention at least $w_0$ bits} \}$.
+
+    \begin{enumerate}
+        \item $\pi$ is small $\Rightarrow$ size of $H$ is small.
+        \pause
+        \item Pick the most frequent output bit $i$ in $H$. \alert{$w_0 / m$ fraction!}
+        \pause
+        \item Set \alert{neighbours} of $i$ uniformly at random on $P_i^{-1}(b_i)$. This
+            operation kills \alert{$1 / 2^{\Delta}$ fraction} of clauses that mention $i$.
+        \pause
+        \item $\pi \rest \rho$ is still a proof of a restricted formula.
+        \pause
+        \item \textcolor{blue}{Try to avoid local contradictions in $\varphi \rest \rho$.}
+        \pause    
+        \item Repeat while we have clauses that \alert{mention at least $w_0$ output bits}.
+    \end{enumerate}
+
+    
+    $$\exp\left[\frac{n^2}{m 2^{\bigO{\Delta}}}\right]$$
+    
+\end{frame}
+
+
+\begin{frame}{Heavy Width}
+
+    \begin{center}
+        \includegraphics[scale = 0.12]{pics/utia-lift.png}        
+    \end{center}
+
+    \vspace{0.3cm}
+
+    $i$-th bit is $\gamma$-mentioned $\Leftrightarrow \Pr[h_i(x) = 1 \land P_i(x) = b_i] \ge \gamma$.
+
+    \begin{definition}
+        The $\gamma$-heavy width of a clause $D$ $\Rightarrow$ number of $\gamma$-mentioned output bits.
+    \end{definition}
+
+    \pause
+    \vspace{-1.5cm}
+    \begin{minipage}[t][4cm][t]{0.5\linewidth}
+        It is bad measure!
+        
+        \pause
+        \vspace{0.2cm}
+        $\mathrm{hw}(D) \stackrel{?}{\ge} \mathrm{hw}(D \rest \rho)$ \pause \hspace{0.4cm} \alert{NO}        
+    \end{minipage}
+    \pause
+    \begin{minipage}[c][4cm][c]{0.45\linewidth}
+        \vspace{2cm}
+        \centering
+        \input{pics/hw-assign.tex}        
+    \end{minipage}
+
+\end{frame}
+
+
+\begin{frame}{Self Reduction \hspace{0.2cm} \includegraphics[scale = 0.03]{pics/utia-blood.png}}
+
+    $G$ is an $(r, \Delta, (1 - \varepsilon) \Delta)$-expander, $\gamma \coloneqq 2^{-\varepsilon \Delta}$,
+    $\pi \coloneqq (D_1, \dots, D_{\ell})$ is a Resolution proof of $\varphi$.
+
+    $H \coloneqq \{C \in \pi \mid \gamma^5\text{-}\mathrm{hw}(C) \ge w_0 \}$.
+
+    \begin{enumerate}
+        \item $\pi$ is small $\Rightarrow$ size of $H$ is small.
+        \pause
+        \item Pick the most frequent output bit $i$ in $H$. \alert{$w_0 / m$ fraction!}
+        \pause
+        \item Set \alert{neighbours} of $i$ uniformly at random on $P_i^{-1}(b_i)$. This
+            operation kills \alert{$1 / \gamma^5$ fraction} of clauses that mention $i$.
+        \pause
+        \item $\pi \rest \rho$ is still a proof of a restricted formula.
+        \pause
+        \item \textcolor{blue}{Try to avoid local contradictions in $\varphi \rest \rho$.}
+        \pause    
+        \item Repeat while we have clauses of big \alert{heavy width}.
+    \end{enumerate}
+
+    \pause
+    \vspace{0.3cm}
+    We do NOT kill all clauses with large $\gamma^5\text{-}\mathrm{hw}$.
+
+    \vspace{0.3cm}
+    \pause
+    \textcolor{blue}{Magical step}: in the end we have $(r, \Delta, (1 - 3 \varepsilon) \Delta)$-expander
+    $\Rightarrow$ we kill all clauses with large $\gamma^2\text{-}\mathrm{hw}$.
+\end{frame}
+
+
+\begin{frame}{Heavy Width Lower Bound}
+
+    \begin{minipage}{0.6\linewidth}
+        \centering
+        \input{pics/hw-lower.tex}
+    \end{minipage}
+    \putpos{-50}{40}{\includegraphics[scale = 0.1]{pics/utia-duck.png}}
+    \pause
+    \begin{minipage}{0.35\linewidth}
+        \vspace{0.5cm}
+        \begin{itemize}
+            \item Trace a path;
+                \pause
+                \pause
+            \item \only<-5>{$D \rest \rho = 0$;}\only<6->{\alert{$D \rest \rho = 0$;}}
+                \pause
+            \item \only<-5>{$C \in \varphi \Rightarrow C \rest \rho \neq 0$.}\only<6->{\alert{$C \in
+                \varphi \Rightarrow C \rest \rho \neq 0$.}}
+                \pause
+                \vspace{0.3cm}
+                \pause
+            \item for all sets $S$ of output bits, $|S| \le r$:
+                \begin{itemize}
+                    \item $\exists \sigma \supseteq \rho$;
+                    \item $D \rest \sigma \neq 1$;
+                    \item $C \in S \Rightarrow
+                        C \rest \sigma = 1$.
+                \end{itemize}
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+    \vspace{0.2cm}
+    \begin{minipage}{0.4\linewidth}
+        In the leaf:
+        \begin{itemize}
+            \item $S = \{D\}$;
+                \pause
+            \item $\exists \sigma \supseteq \rho$;
+            \item $D \rest \sigma \neq 1$;
+                \pause
+            \item \alert{$D \rest \sigma = 1$}.
+        \end{itemize}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.5\linewidth}
+        \centering
+        \Huge Contradiction!
+    \end{minipage}
+
+\end{frame}
+
+
+\begin{frame}{Heavy Width Lower Bound}
+
+    $\rho$ assigns inputs for heavy mentioned outputs $+$ closure
+
+    \vspace{0.2cm}
+
+    \begin{minipage}{0.3\linewidth}
+        \input{pics/nw-gen-4.tex}        
+    \end{minipage}
+    \begin{minipage}{0.65\linewidth}
+        \pause
+        For all sets $S$ of output bits, $|S| \le r$:
+        \begin{itemize}
+            \item $\exists \sigma \supseteq \rho$;
+            \item $D \rest \sigma \neq 1$;
+            \item $C \in S \Rightarrow
+                C \rest \sigma = 1$.
+        \end{itemize}
+
+        \pause
+        \pause
+        \vspace{0.3cm}
+        \begin{itemize}
+            \item $v \in S$ is a problem $\Rightarrow$ $\rho$ should care about it;
+                \pause
+                \pause
+            \item other nodes violate expansion:
+                \begin{itemize}
+                    \item the same problem;
+                    \item not so easy to satisfy $P_i(x) = b_i$;
+                \end{itemize}
+                \pause
+            \item repeat while the problem exists.
+        \end{itemize}
+    \end{minipage}
+    
+\end{frame}

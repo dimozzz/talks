@@ -1,0 +1,77 @@
+\begin{frame}{$\DPLL$ алгоритмы}
+
+    \begin{center}
+        \input{pics/dpll.tex}        
+    \end{center}
+
+    
+	\pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \begin{itemize}
+        \item Эвристика $\mathbf{A}$ выбирает переменную для расщепления.
+    	\pause
+	    \item Эвристика $\mathbf{B}$ выбирает значения.
+    	\pause
+    	\item Правила упрощения: \alert{предположим, что их нет}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{$\DPLL$ и резолюция}
+    
+    \begin{theorem}
+        $\DPLL$ алгоритм делает $t$ расщеплений на невыполнимой формуле
+        $$\varphi \coloneqq \bigvee\limits_i C_i$$
+        $\Rightarrow$ существует резолюционное доказательство $\varphi$ размера $2t$.
+    \end{theorem}
+
+    \pause
+
+    \begin{minipage}{0.58\linewidth}
+        \centering
+        \input{pics/dpll-2.tex}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.4\linewidth}
+        \centering
+        $\frac{A \lor x ~~~ B \lor \neg x}{A \lor B} ~~~~~ \frac{A}{A \lor z}$
+        \begin{itemize}
+            \item Вершина $\Rightarrow$ дизъюнкция отрицаний запросов.
+            \item $(x \lor \neg y \lor \neg z \lor u)$.
+        \end{itemize}
+    \end{minipage}
+
+\end{frame}
+
+
+\begin{frame}{Pigeonhole Principle и $\DPLL$ алгоритмы}
+
+    Переменные: $x_{i, j}$, $i \in \{1, 2, \dots, n + 1\}$, $j \in \{1, 2, \dots, n\}$.
+    \vspace{0.1cm}
+
+    \pause
+    \begin{itemize}
+        \item $\bigvee\limits_{j = 1}^{n} x_{i, j}$;
+        \item $\neg x_{i, j} \lor \neg x_{i', j}$.
+    \end{itemize}
+
+    \pause
+
+    \vspace{0.2cm}
+    \begin{minipage}{0.3\linewidth}
+        \centering
+        \input{pics/graph.tex}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.68\linewidth}
+        \centering
+        \includegraphics[width = 0.3\textwidth]{pics/pigeon3.png}
+        \pause
+        \begin{theorem}[Haken 85]
+            Любое резолюционное доказательство данной формулы имеет размер $2^{\Omega(n)}$.
+        \end{theorem}
+    \end{minipage}
+    
+\end{frame}

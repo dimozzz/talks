@@ -1,0 +1,51 @@
+Основы сложности пропозициональных доказательств были заложены в работе \cite{!!!}. Рассмотрим язык $\UNSAT$
+
+Рассмотрим двух игроков: Оптимист и Пессимист, у которых есть некоторый набор уравнений $\mathcal{H}
+\coloneqq \{h_1, \dots, h_m\}$ на $n$ переменных $x_1, \dots, x_n \in \Omega$, где $\Omega$~--- некоторое
+конечное пространство. Обычно мы предполагаем, что $\Omega \coloneqq \{0, 1\}$ и $h_i$ представляет собой
+дизъюнкции наборов переменных или полиномиальные уравнения. Оптимист верит, что есть некоторая точка $a
+\in \Omega^n$, удовлетворяющая всем ограничениям $h_i$, а Пессимист в противоположный факт.
+
+Если прав Оптимист, то он может показать точку $a \in \Omega^n$, удовлетворяющую всем условиям,
+Пессимисту. Предполагая, что Пессимист может вычислить значения $h_i$ в точке $a$ могут удостовериться,
+что система $\mathcal{H}$ совместна. Если же прав Пессимист, то на текущий момент мы не знаем
+<<простого>> способа убедить в этом оптимиста (предполагая, что вычислительная мощность Оптимиста
+ограничена). Дадим формальное определение.
+
+Системой доказательств для языка $L \subseteq \{0, 1\}^*$ будем называть такую полиномиально вычислимую
+функцию $\Pi\colon \{0, 1\}^* \times \{0, 1\}^∗ \to \{0, 1\}$, что:
+\begin{itemize}
+    \item если $x \in L$, то существует такой $y \in {0, 1}^∗$, что $\Pi(x, y) = 1$ (будем говорить, что
+        такой y~--- доказательство для x);
+    \item если $x \notin L$, то для всех $y \in \{0, 1\}^∗, \Pi(x, y) = 0$.        
+\end{itemize}
+
+Основной задачей сложности доказательств является оценка размера кратчайших доказательств принадлежности 
+
+The main task of proof complexity is to quantify the size of the smallest proof required to
+prove that some given system $\mathcal{H}$ is unsatisfiable.
+
+Let us focus on the main case: $\Omega \coloneqq \{0, 1\}$, $h_i$ is a disjunction and Optimist is a
+polynomial-time Turing machine.
+
+
+There are several motivations to pay attention to the sizes of proofs.
+\begin{enumerate}
+    \item Without limitations of the power of Optimist any superpolynomial lower bound on the sizes of proofs
+        will imply that $\NP \neq \coNP$ \cite{CookRec79}. 
+    \item Even if Optimist is limited to check the application of resolution rule:
+        $$
+            \frac{A \lor x ~~~~~ B \lor \neg x}{A \lor B},
+        $$
+        lower bounds on the size of proof will give us lower bounds on the running time of the
+        popular algorithms for some $\NP$-complete problems \cite{DP60, AHI05}.
+    \item Again if the focus on \textit{weak} Optimist models like Resolution or so-called
+        Nullstellensatz, lower bounds will imply lower bounds on the strong enough computational models
+        line \textit{monotone span programs} and \textit{monotone circuits} \cite{PR18, GGKS18}.
+\end{enumerate}
+
+In this talk we focus on the \textit{Restriction Technique} that is the most popular technique for
+proving lower bounds on the size of proofs of unsatisfiability. And we discuss the limitations of this
+technique and give some open problems.
+
+

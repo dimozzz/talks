@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+    \node[thick, circle, draw] (S) at (0, 0) {\Large $S$};
+    
+    \foreach \i in {1, 2, ..., 5}{
+        \node (z\i) at (-3 + \i, -1.5) {$z_{\i}$};
+        \draw[->] (z\i) -- (S);
+    }
+    
+    \node[minimum height = 1cm, single arrow, draw] at (3, 0) {composition};
+
+    \node[thick, circle, draw] (S1) at (6, 0) {\Large $S$};
+
+    \foreach \i in {1, 2, ..., 5}{
+        \node[draw, circle] (i\i) at (3 + \i, -1.5) {\scriptsize $g$};
+        \draw[->] (i\i) -- (S1);
+
+        \node (x\i) at (2.75 + \i, -2.4) {\scriptsize $x_{\i}$};
+        \node (y\i) at (3.25 + \i, -2.4) {\scriptsize $y_{\i}$};
+        \draw[->] (x\i) -- (i\i);
+        \draw[->] (y\i) -- (i\i);
+    }
+\end{tikzpicture}

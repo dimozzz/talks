@@ -1,0 +1,63 @@
+\documentclass[a4paper, 12pt]{article}
+% math symbols
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fontenc}
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[unicode]{hyperref}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsthm}
+\usepackage{cmlgc}
+\usepackage{bussproofs}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\let\C\undefined
+\usepackage{complexity}
+
+%\usepackage{mathseries}
+%\setdefaultlanguage{english}
+\usepackage[
+    style = alphabetic,
+    maxbibnames = 99,
+    backend = bibtex]{biblatex}
+\addbibresource{references.bib}
+
+\newtheorem{definition}{Определение}[section]
+\newtheorem{definition*}{Определение}
+
+\newlang{\UNSAT}{UNSAT}
+
+\usepackage[margin = 2cm]{geometry}
+
+\tolerance = 1000
+\emergencystretch = 0.74cm
+
+
+\pagestyle{empty}
+%\parindent = 0mm
+
+
+\title{
+    Несколько слов о сложности доказательств
+}
+
+\author{
+    Дмитрий Соколов\\
+    \small{Санкт-Петербургский государственный университет} \\
+    \small{Санкт-Петербургское отделение Математического института им. В.А.Стеклова РАН}
+}
+
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \input{parts/text.tex}
+    
+
+    \printbibliography
+    
+
+\end{document}

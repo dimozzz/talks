@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale = 0.4]
+    \def\r{3.5}
+    \clip (0, 0) circle (\r + 0.025);
+
+
+    \draw[thick, green, fill = green, opacity = 0.4, rounded corners = 3pt] (-80:\r - 0.05) arc
+    (-80:-260:\r - 0.05) --
+        cycle;
+    \draw[LEIorange, fill = green, opacity = 0.4, rounded corners = 3pt] (-80:\r) arc (-80:-260:\r) -- cycle;
+    \draw[LEIorange, fill = LEIorange, opacity = 0.4] (\r + 0.3, -6.5) circle (\r + 2);
+
+  	\draw[thick] (0, 0) circle (\r);
+
+    \node at (-\r / 2, \r / 2) {\scriptsize $P_i = b_i$};
+    \node at (\r / 2, -0.6 * \r) {\scriptsize $h_i = 1$};
+
+    \only<6->{
+        \node at (0.2 * \r, 0.7 * \r) {$x = 0$};
+        \node at (0.6 * \r, 0.1 * \r) {$x = 1$};
+        \draw[very thick, red] (45:\r) -- (225:\r);
+    }
+    
+\end{tikzpicture}

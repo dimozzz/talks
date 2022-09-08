@@ -1,0 +1,25 @@
+\onslide<1->{
+    \tikzstyle{op1} = [opacity = 0]
+    \tikzstyle{op2} = [opacity = 0]
+    \tikzstyle{op3} = [opacity = 0]
+    \tikzstyle{op4} = [opacity = 0]
+}
+\only<2->{\tikzstyle{op2} = [opacity = 1]}
+\only<3->{\tikzstyle{op3} = [opacity = 1]}
+\only<4->{\tikzstyle{op4} = [opacity = 1]}
+
+\begin{tikzpicture}[>=latex]
+    \node (alice) at (0, 0) {\includegraphics[scale = 0.15]{pics/utia-food-1.png}};
+    \node (bob) at (7, 0) {\includegraphics[scale = 0.15]{pics/utia-food-2.png}};
+    \node[above = 0.3 of alice] {$x \in U$};
+    \node[above = 0.3 of bob] {$y \in V$};
+
+    \path (alice.east) -- (bob.west) node[midway, above = 2.3] {\Large $f(x, y) = ?$};
+    \draw[op2, ->, thick] ($(alice.east) + (0.3, 1)$) -- ($(bob.west) + (-0.3, 1)$) node[midway, above]
+        {$r_1 = a(x)$};
+    \draw[op3, <-, thick] ($(alice.east) + (0.3, 0.2)$) -- ($(bob.west) + (-0.3, 0.2)$)
+        node[midway, above] {$r_2 = b(y, r_1)$};
+    \draw[op4, ->, thick] ($(alice.east) + (0.3, -0.2)$) -- ($(bob.west) + (-0.3, -0.2)$);
+    \draw[op4, ->, thick] ($(alice.east) + (0.3, -0.6)$) -- ($(bob.west) + (-0.3, -0.6)$)
+        node[midway, below] {$\vdots$}; 
+\end{tikzpicture}

@@ -1,0 +1,120 @@
+\begin{frame}{Системы доказательств}
+
+	Язык: $L \subseteq \{0, 1\}^*$. $\UNSAT$: язык невыполнимых пропозициональных формул в КНФ.
+    \pause
+
+    \begin{definition}[Cook, Reckhow 79]
+        Система доказательств для языка $L$~--- такой полиномиальный по времени алгоритм $\Pi\colon \{0,
+        1\}^* \times \{0, 1\}^* \rightarrow \{0, 1\}$, что:
+        \begin{itemize}
+            \item (полнота) $x \in L \Rightarrow \exists w ~ \Pi(x, w) = 1$;
+            \item (корректность) $\exists w ~ \Pi(x, w) = 1 \Rightarrow x \in L$.
+        \end{itemize}
+    \end{definition}
+
+    Мера сложности~--- длина $|w|$.
+
+    \pause
+
+    \begin{block}{Программа Кука}
+        Будем доказывать оценки для \textcolor{blue}{все более сильных} систем, пока не удастся обобщить
+        методы на произвольную систему доказательств.
+
+        Цель: показать, что язык $\UNSAT$ сложный ($\NP \neq \coNP, \P \neq \NP$).
+    \end{block}
+
+\end{frame}
+
+
+\begin{frame}{Примеры}
+
+    $$
+        \varphi \coloneqq (x \lor y \lor \neg z) \land (\neg w \land u) \land (\neg x \land \neg u) \land \dots
+    $$
+
+    \pause
+    \begin{itemize}
+        \item Резолюция. $A, B$~--- дизъюнкты.
+            \begin{itemize}
+                \item $\frac{A \lor x ~~~ B \lor \neg x}{A \lor B} ~~~~~ \frac{A}{A \lor z}$
+            \end{itemize}
+            Доказательство: вывод пустого дизъюнкта из дизъюнктов исходной формулы.
+        \pause
+        \item Cutting Planes. $(x \lor y \lor \neg z) \Rightarrow x + y + (1 - z) \ge 1$.
+            \begin{itemize}
+                \item $\frac{A \ge a ~~~ B \ge b}{\alpha A + \beta B \ge \alpha a + \beta b} ~~~~~
+                    \frac{ka_1 x_1 + ka_2 x_2 + \dots \ge c}{a_1 x_1 + a_2 x_2 + \dots \ge \lceil
+                    \frac{c}{k} \rceil}$
+            \end{itemize}
+            Доказательство: вывод неравенства $0 \ge 1$ из неравенств, кодирующих дизъюнкты формулы.
+        \pause
+        \item Nullstellensatz.
+            \begin{itemize}
+                \item $\field$~--- поле;
+                \item $(x \lor y \lor \neg z) \Rightarrow f_i \coloneqq (1 - x) (1 - y) z = 0$;
+                \item $x^2 - x = 0$.
+            \end{itemize}
+            Доказательство: такой набор полиномов $h_i$, что $\sum\limits_{i} h_i f_i = 1$.
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Pebbling}
+
+    \begin{center}
+        \input{pics/pebbling.tex}        
+    \end{center}
+
+    \pause
+    \begin{itemize}
+        \item $(\neg r)$;
+            \pause
+        \item $(z), (u), (w)$;
+            \pause
+        \item $(\neg z \lor \neg u \lor x), (\neg w \lor \neg u \lor y), (\neg x \lor \neg y \lor r)$.
+    \end{itemize}
+
+    \pause
+    \input{pics/pebbling-proof.tex}
+\end{frame}
+
+\begin{frame}{Принцип Дирихле (Pigeonhole Principle), $\PHP_{n}^{m}$}
+
+    Переменные: $x_{i, j}$, $i \in \{1, 2, \dots, m\}$, $j \in \{1, 2, \dots, n\}$.
+    \vspace{0.1cm}
+
+    \pause
+    \begin{itemize}
+        \item $\bigvee\limits_{j = 1}^{n} x_{i, j}$;
+        \item $\neg x_{i, j} \lor \neg x_{i', j}$.
+    \end{itemize}
+
+    \pause
+
+    \vspace{0.2cm}
+    \begin{minipage}{0.3\linewidth}
+        \centering
+        \input{pics/graph.tex}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.68\linewidth}
+        \begin{theorem}[Haken 85]
+            Любое резолюционное доказательство $\PHP_{n}^{n + 1}$ имеет размер $2^{\Omega(n)}$. 
+        \end{theorem}
+        \pause
+        \begin{theorem}[Raz 04; Razborov 03]
+            Любое резолюционное доказательство $\PHP_{n}^{\infty}$ имеет размер $2^{\Omega(n^{1 / 3})}$.
+        \end{theorem}
+        \pause
+        \begin{minipage}{0.3\linewidth}
+            \centering
+            \includegraphics[width = 0.8\textwidth]{pics/pigeon3.png}
+        \end{minipage}
+        \begin{minipage}{0.67\linewidth}
+            Открытый вопрос: улучшить нижнюю оценку на размер доказательств $\PHP_{n}^{\infty}$ до
+            $2^{\Omega(n^{1 / 2})}$.
+        \end{minipage}
+    \end{minipage}
+    
+\end{frame}

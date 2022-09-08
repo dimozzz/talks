@@ -1,0 +1,34 @@
+\begin{tikzpicture}
+
+    \pgfmathsetseed{1000007}
+    \foreach \i in {0, 1, ..., 6}{
+        \node[graph-vert] (b\i) at
+            (1.5, 0.4 * \i + 0.4) {};
+    }
+
+    \foreach \i in {0, 1, ..., 8}{
+        \node[graph-vert = {LEIorange!80!black}{0.15cm}] (a\i) at
+            (0, 0.4 * \i) {};
+
+
+    }
+
+    \draw (a3) -- (b2);
+    \draw (a3) -- (b3);
+    \draw (a3) -- (b4);
+    \draw (a4) -- (b4);
+    \draw (a4) -- (b5);
+    \draw (a4) -- (b6);
+
+    \fill[rounded corners = 3pt, orange, opacity = 0.2] (-0.2, 1) rectangle (0.2, 1.8);
+    \draw[rounded corners = 3pt, orange, thick] (-0.2, 1) rectangle (0.2, 1.8);
+
+    \fill[rounded corners = 3pt, blue!80!black, opacity = 0.2] (1.3, 1) rectangle (1.7, 3);
+    \draw[rounded corners = 3pt, blue!80!black, thick] (1.3, 1) rectangle (1.7, 3);
+
+
+    \node at (-0.4, 1.8) {$S$};
+    \node at (2.12, 2.4) {$\mathrm{N}(S)$};
+    \node[below = 0.2cm] at (a0) {$m$};
+    \node[below = 0.2cm] at (b0) {$n$};
+\end{tikzpicture}

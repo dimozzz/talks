@@ -1,0 +1,147 @@
+\begin{frame}{Монотонные вычисления}
+
+    \begin{minipage}{0.33\linewidth}
+        \centering
+        Формулы
+        \vspace{0.2cm}
+        
+        \input{pics/mon-form.tex}
+    \end{minipage}
+    \begin{minipage}{0.33\linewidth}
+        \centering
+        Схемы
+        \vspace{0.2cm}
+        
+        \input{pics/mon-ckt.tex}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \centering
+        Еще схемы
+        \vspace{0.2cm}
+        
+        \input{pics/mon-r-ckt.tex}
+    \end{minipage}
+
+    \pause
+    Почему монотонные вычисления это важно?
+    \begin{itemize}
+        \item У нас получается что-то доказать ([Разборов 85; Alon, Boppana 87] Функция клики в графе на
+            $n$ вершинах требует монотонных схем размера $2^{\Omega(n^{1 / 4})}$)! 
+            \pause
+        \item Монотонные вычисления дают контроль над погрешностью вычислений.
+            \pause
+        \item Сильные нижние оценки на монотонные схемы $\Rightarrow$ нижние оценки на общие схемы.
+            \pause
+        \item Протоколы разделения секрета/криптография.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{<<Лифтинг>> \includegraphics[scale = 0.04]{pics/utia-lift.png}}
+
+    <<Слабые>> системы доказательств простая модель, а схемы <<сложная>>.
+    \pause
+
+    \begin{theorem}[Raz, McKenzie 99; G\"{o}\"{o}s, Pitassi, Watson 16]
+        Формула $\varphi$ сложна для <<древесной>> резолюции $\Rightarrow$ функция $F_{\varphi}$ сложна
+        для монотонных формул.
+    \end{theorem}
+
+    Следствие: нижния оценка на монотонные формулы $2^{n^{\varepsilon}}$.
+    \pause
+
+    \begin{theorem}[Garg, G\"{o}\"{o}s, Kamath, S 18]
+        Формула $\varphi$ сложна для резолюции $\Rightarrow$ функция $F_{\varphi}$ сложна
+        для монотонных схем.
+    \end{theorem}
+
+    Следствие: нижния оценка на монотонные схемы $2^{n^{\varepsilon}}$.
+    \pause
+
+    \begin{theorem}[Pitassi, Robere 16; Robere, Pitassi 18]
+        Nullstellensatz $\Leftrightarrow$ функция $F_{\varphi}$ сложна
+        для монотонных <<span programs>>.
+    \end{theorem}
+
+\end{frame}
+
+
+\begin{frame}{Формулы и функции}
+
+
+
+    \pause
+
+    \begin{itemize}
+        \item $\varphi(x) \coloneqq \bigvee C_j$ ~--- формула от $n$ переменных;
+        \item $g\colon \{0, 1\}^k \times \{0, 1\}^{\ell} \to \{0, 1\}$;
+        \pause
+        \item $\varphi \circ g \coloneqq \varphi(g(y_1, z_1), g(y_2, z_2), g(y_3, z_3), \dots)$.
+    \end{itemize}
+
+    \pause
+    $\psi(y, z) \coloneqq \varphi \circ g = \bigvee\limits_{j = 1}^{m} D_j$, определим функцию
+    $F_{\psi}\colon \{0, 1\}^m \to \{0, 1\}$.
+    \pause
+    \vspace{-0.2cm}
+    \begin{center}
+        \input{pics/rect-mon.tex}
+    \end{center}
+
+    \pause
+    $F_{\psi}(1, 1, 0, \dots) \coloneqq 1$\pause, ~~~$F_{\psi}(1, 0, 0, \dots) \coloneqq 0$
+\end{frame}
+
+\begin{frame}{Простые функции?}
+    \begin{minipage}{0.5 \linewidth}
+        \input{pics/graph-flow.tex}
+        \putpos{15}{100}{\includegraphics[scale = 0.1]{pics/utia-duck.png}}
+    \end{minipage}%
+    \begin{minipage}{0.5 \linewidth}
+        \pause
+        \pause
+        \begin{itemize}
+            \item $v\colon ~ \sum\limits_{e \in E^{\mathrm{in}}_v} x_{e} -
+                \sum\limits_{e \in E^{\mathrm{out}}_v} x_{e} = c(v)$ 
+                \textcolor{red}{$(\mathbb{R})$};
+            \item $\sum\limits_{v} c(v) = 1$ \textcolor{red}{$(\mathbb{R})$};
+            \item степень графа: $d$.
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item{} $\Flow$ эффективно доказывается в системе Nullstellensatz.
+        \item{} [Alekhnovich, Razborov 03] Если $G$~--- $(n, d, \alpha)$-экспандер $\Rightarrow$ любое
+            резолюционное доказательство $\Flow$ имеет размер $2^{\Omega(n)}$.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Простые функции?}
+
+    $f\colon \{0, 1\}^{2 n^3} \to \{0, 1\}$
+
+    \begin{itemize}
+        \item Занумеруем равенства $z_i \oplus z_j \oplus z_k = c$ (не более $2 n^3$ равенств);
+        \item $x_i = 1 \Leftrightarrow$ добавляем равенство в систему;
+        \item $f(x) = 1 \Leftrightarrow$ система несовместна.
+    \end{itemize}
+
+    \pause
+    Факты о функции $f$:
+    \begin{itemize}
+        \item $f \in \NC^2$;
+        \item $F_{\Flow}$ может быть вложена в $f$ (поскольку есть эффективное Nullstellensatz
+            доказательство $\Flow$!);
+        \item нет маленьких монотонных схем для $f$ (поскольку нет эффективного резолюционного
+            доказательства $\Flow$).
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Иерархия}
+
+    \input{pics/hier.tex}
+    
+\end{frame}

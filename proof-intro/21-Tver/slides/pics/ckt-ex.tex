@@ -1,0 +1,29 @@
+\tikzstyle{inner} = [thin, circle, minimum size = 0.4cm, draw, inner sep = 0.1pt, black, opacity = 1]
+\tikzstyle{inner_g} = [thin, circle, minimum size = 0.4cm, draw, inner sep = 0.1pt, black, fill =
+    green, opacity = 1]
+\tikzstyle{ed} = [thick, <-, draw, black, opacity = 1]
+
+    
+\begin{tikzpicture}[>=stealth', yscale = -0.98, xscale = 1.5]
+    \node[inner] (a) at (0, 0) {\scriptsize $\land$};
+    \node[inner] (b) at (-0.9, -1.2) {\scriptsize $\oplus$};
+    \node[inner] (c) at (0.9, -1.2) {\scriptsize $\lor$};
+    \node[inner_g] (d) at (-1.5, -2.4) {\scriptsize $x_1$};
+    \node[inner] (e) at (-0.3, -2.4) {\scriptsize $\lor$};
+    \node[inner] (f) at (1, -2.4) {\scriptsize $\oplus$};
+    \node[inner_g] (g) at (-1.5, -4.3) {\scriptsize $x_2$};
+    \node[inner_g] (h) at (-0.25, -4.3) {\scriptsize $x_3$};
+    \node[inner_g] (g2) at (1.5, -4.3) {\scriptsize $x_3$};
+    \node[inner_g] (h2) at (0.25, -4.3) {\scriptsize $x_2$};
+    
+    \path (a) edge[ed] (b);
+    \path (a) edge[ed] (c);
+    \path (b) edge[ed] (d);
+    \path (b) edge[ed] (e);
+    \path (c) edge[ed] (e);
+    \path (c) edge[ed] (f);
+    \path (e) edge[ed] (g);
+    \path (e) edge[ed] (h);
+    \path (f) edge[ed] (g2);
+    \path (f) edge[ed] (h2);
+\end{tikzpicture}

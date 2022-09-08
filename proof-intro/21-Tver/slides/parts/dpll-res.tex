@@ -1,0 +1,62 @@
+\begin{frame}{$\DPLL$ алгоритмы}
+
+    \begin{center}
+        \input{pics/dpll.tex}        
+    \end{center}
+
+    
+	\pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \begin{itemize}
+        \item Эвристика $\mathbf{A}$ выбирает переменную для расщепления.
+    	\pause
+	    \item Эвристика $\mathbf{B}$ выбирает значения.
+    	\pause
+    	\item Правила упрощения: \alert{предположим, что их нет}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{$\DPLL$ и резолюция}
+    
+    \begin{theorem}
+        $\DPLL$ алгоритм делает $t$ расщеплений на невыполнимой формуле
+        $$\varphi \coloneqq \bigvee\limits_i C_i$$
+        $\Rightarrow$ существует резолюционное доказательство $\varphi$ размера $2t$.
+    \end{theorem}
+
+    \pause
+
+    \begin{minipage}{0.58\linewidth}
+        \centering
+        \input{pics/dpll-2.tex}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.4\linewidth}
+        \centering
+        $\frac{A \lor x ~~~ B \lor \neg x}{A \lor B} ~~~~~ \frac{A}{A \lor z}$
+        \begin{itemize}
+            \item Вершина $\Rightarrow$ дизъюнкция отрациний запросов.
+            \item $(x \lor \neg y \lor \neg z \lor u)$.
+        \end{itemize}
+    \end{minipage}
+
+\end{frame}
+
+
+\begin{frame}{Следствия}
+
+    \begin{itemize}
+        \item{} [Следствие из Haken 85] $\DPLL$ алгоритмы будут работать не менее $2^{\Omega(n)}$ шагов
+            на формулах $\PHP_{n}^{n + 1}$.
+            \pause
+        \item{} [Алехнович, Гирш, Ицыксон 05; \alert{неформально}] На выполнимых формулах
+            <<ограниченные>> $\DPLL$ алгоритмы требуют экспоненциального времени.
+            \pause
+        \item{} [Ицыксон, C 11; \alert{неформально}] <<В среднем>> на выполнимых формулах
+            <<ограниченные>> $\DPLL$ алгоритмы требуют экспоненциального времени.
+    \end{itemize}
+
+\end{frame}

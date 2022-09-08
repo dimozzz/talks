@@ -13,13 +13,12 @@
     \begin{itemize}
         \item $G\colon \{0, 1\}^n \to \{0, 1\}^m$;
             \pause
-        \item $\forall C \in \mathfrak{C}, ~ \Pr\limits_{x \in \{0, 1\}^n}[C(G(x)) = 1] - \Pr\limits_{y
-            \in \{0, 1\}^m}[C(y) = 1]
-            \to 0$;
+        \item $\forall C \in \mathfrak{C}, ~ \Pr\limits_{x \in \{0, 1\}^n}[C(G(x)) = 1] -
+            \Pr\limits_{y \in \{0, 1\}^m}[C(y) = 1] \to 0$;
             \pause
         \item $\textcolor{red}{\forall}b \stackrel{?}{\in} \Img(G)$;
             \pause
-        \item Is the formula $\varphi_b \coloneqq "b \in \Img(G)"$ hard for a proof system?          
+        \item Is the formula $\varphi_b \coloneqq "b \in \Img(G)"$ hard for a proof system?
     \end{itemize}
 
     \pause
@@ -71,7 +70,7 @@
     \pause
     \begin{minipage}{0.56\linewidth}
         \begin{lemma}
-            Resolution with extesion variables $\Leftrightarrow$ Extended Frege.
+            Resolution with extension variables $\Leftrightarrow$ Extended Frege.
         \end{lemma}
     \end{minipage}
 \end{frame}
@@ -90,7 +89,7 @@
                 \pause
             \item encode $b_i = P(x_1, x_2, \dots, x_{\Delta})$ in CNF;
                 \pause
-            \item for all $f(x_1, x_2, \dots, x_d)$ there is a variable $y_f$;
+            \item for all $f(x_1, x_2, \dots, x_{\Delta})$ there is a variable $y_f$;
             \item $y_f = 1 \Leftrightarrow f(x_1, x_2, \dots, x_{\Delta}) = 1$;
                 \pause
             \item $f \coloneqq g \oplus h \Leftrightarrow

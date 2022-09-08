@@ -1,0 +1,22 @@
+\begin{tikzpicture}    
+    \draw[
+        orange,
+        thick,
+        fill = orange!50,
+        rounded corners = 5pt,
+        opacity = 0.4] (0, 4) -- (-2.2, 0) -- (2.2, 0) -- cycle;
+
+    \node at (0, 4.1) {$\bot$};
+
+
+    \def\xpos{{0, 0.4, 0.2, -1, -1.5, -0.5}}
+
+    \foreach \i in {0, 1, ..., 5}{
+        \node[alt = <3->{opacity = 1}{opacity = 0}, graph-vert] (a\i) at (\xpos[\i], 3.75 - 3.75 / 5 * \i) {};
+    }
+
+    \foreach \i [evaluate = \i as \j using int(\i - 1)] in {1, ..., 5}{
+        \draw[alt = <3->{opacity = 1}{opacity = 0}, ->] (a\j) -- (a\i);
+    }
+    
+\end{tikzpicture}

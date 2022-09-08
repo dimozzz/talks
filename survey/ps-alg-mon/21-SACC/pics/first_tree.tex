@@ -1,0 +1,36 @@
+\tikzstyle{inner} = [thin, circle, minimum size = 0.3cm, draw, inner sep = 0.1pt, black]
+\tikzstyle{gstyle} = [alt = <{#1}>{fill = green}{}]
+\tikzstyle{inner_r} = [thin, circle, minimum size = 0.3cm, draw, inner sep = 0.1pt, black, fill = red]
+\tikzstyle{inner_b} = [thin, circle, minimum size = 0.3cm, draw, inner sep = 0.1pt, black, fill = blue!50!white]
+\tikzstyle{ed} = [thick, ->, draw, black]
+
+    
+\begin{tikzpicture}
+    \node[inner, gstyle = {3}] (a) at (0, 0) {\scriptsize $a$};
+    \node[inner, gstyle = {4}] (b) at (-0.9, -1.2) {\scriptsize $b$};
+
+    \node[inner] (c) at (0.9, -1.2) {\scriptsize $a$};
+    \node[inner, label = below:$t_1$] (d) at (-1.5, -2.4) {};
+
+    \node[inner, gstyle = 5] (e) at (-0.3, -2.4) {\scriptsize $b$};
+
+    \node[inner] (e2) at (0.3, -2.4) {\scriptsize $b$};
+    \node[inner, label = below:$t_4$] (f) at (1.5, -2.4) {};
+
+    \node[inner, label = below:$t_2$, gstyle = {6-7}] (g) at (-1.5, -4.3) {};
+    
+    \node[inner, label = below:$t_3$] (h) at (-0.25, -4.3) {};
+	\node[inner, label = below:$t_3$] (g2) at (1.5, -4.3) {};
+    \node[inner, label = below:$t_2$] (h2) at (0.25, -4.3) {};
+    
+    \path (a) edge[ed] (b);
+    \path (a) edge[ed] (c);
+    \path (b) edge[ed] (d);
+    \path (b) edge[ed] (e);
+    \path (c) edge[ed] (e2);
+    \path (c) edge[ed] (f);
+    \path (e) edge[ed] (g);
+    \path (e) edge[ed] (h);
+    \path (e2) edge[ed] (g2);
+    \path (e2) edge[ed] (h2);
+\end{tikzpicture}
