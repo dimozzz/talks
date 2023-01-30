@@ -1,0 +1,238 @@
+\begin{frame}{Complexity theory}
+
+    Let $f\colon X^n \to Y$ be a function. How much resources we have to spend to compute this function?
+    \pause
+    Examples:
+    \begin{itemize}
+        \item Is there a road on the map between two points?
+        \item Is there a solution of equation $a x^2 + b x + c = 0$ for given $a, b, c$?
+    \end{itemize}
+
+    \pause
+
+    Applications in CS:
+    \begin{itemize}
+        \item Algorithm design
+        \item Secure and efficient cryptography
+        \item etc.
+    \end{itemize}
+
+
+    \pause
+    Applications in Math:
+    \begin{itemize}
+        \item{} [13-th Hilbert's Problem] Can we represent a root of polynomial as a composition of
+            ``simple'' functions?
+            \begin{itemize}
+                \item How many ``simple'' functions in this composition do we need to find a root of
+                    polynomial?
+            \end{itemize}
+        \item Math Logic
+        \item etc.
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Proof complexity}
+
+    Language $L$ is a subset of $\{0, 1\}^*$.
+
+    \begin{definition}[Cook, Reckhow 79]
+        Proof system for a language $L$ $\Leftrightarrow$ polynomial-time algorithm $\Pi\colon \{0,
+        1\}^* \times \{0, 1\}^* \rightarrow \{0, 1\}$ such that:
+        \begin{itemize}
+            \item $x \in L \Rightarrow \exists w ~ \Pi(x, w) = 1$;
+            \item $\exists w ~ \Pi(x, w) = 1 \Rightarrow x \in L$.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+
+    Complexity measure is a length of $w$.
+
+    \pause
+
+    Basic language: unsatisfiable propositional formulas in CNF ($\UNSAT$).
+
+\end{frame}
+
+
+\begin{frame}{Example and motivation}
+
+    Proof system \textit{Nullstellensatz}.
+    \begin{itemize}
+        \item Input: system of polynomial equations $\{p_1(x_1, x_2, \dots) = 0, p_2(x_1, x_2, \dots) =
+            0, \dots\}$.
+            \pause
+        \item Proof: collection of polynomials $h_i$, such that $\sum\limits_{i} h_i p_i = 1$.
+    \end{itemize}
+
+    Motivation:
+    \begin{itemize}
+        \item Cook's program: prove lower bounds for stronger and stronger proof systems (if we will
+            prove lower bounds for all of them then $\P \neq \NP$);
+        \pause
+        \item Lower bounds on \textcolor{blue}{weak} proof systems
+            $\Rightarrow$:
+            \begin{itemize}
+                \item lower bounds for algorithms for important problems;
+                \item lower bounds for \textcolor{blue}{monotone} algorithms.
+            \end{itemize}
+        \pause
+        \item Lower bounds on \textcolor{blue}{strong} proof systems $\Rightarrow$ unconditional lower
+            bounds for various computational models.
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{History}
+
+    \begin{itemize}
+        \item First lower bounds (Tseitin 68).
+        \pause
+        \item Lower bounds on \textit{Resolution} (Haken 85; Kraj{\'{\i}}{\v{c}}ek 97; Ben-Sasson, Wigderson 02; ...;
+            Razborov 16).
+        \pause
+        \item Lower bounds on \textit{Cutting Planes} (Pudl{\'{a}}k 95; Haken, Cook 98).
+        \pause
+        \item Lower bounds on \textit{Nullstellensatz} and generalizations (Beame, Impagliazzo,
+            Kraj{\'{\i}}{\v{c}}ek, Pitassi, Pudl{\'{a}}k 94; Razborov 98; Alekhovich, Razborov 2003;
+            Nordstr{\"{o}}m, Mik{\v{s}}a 15).
+        \pause
+        \item Оценки на ограниченные версии систем через коммуникационную сложность (Beame, Impagliazzo,
+            Pitassi 94; Beame и др. 08; Huynh, Nordstr{\"{o}}m 12; G{\"{o}}{\"{o}}s, Pitassi 14).
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{My results. Dag-like communication}
+    \begin{itemize}   
+        \item ``Communication'' model that related to proof complexity.
+        \pause
+        \item New lower bounds on the communication model (and on the proof systems as a corollary).
+        \pause
+        \item New lower bound on the running time of ``monotone'' algorithms. And new separations between
+            monotone models of computation.
+    \end{itemize}
+
+    \pause
+    \begin{enumerate}
+        \item[] [\textcolor{blue}{S}]. Dag-Like Communication and Its Applications. CSR 2017.
+        \item[] [Garg, G\"{o}\"{o}s, Kamath, \textcolor{blue}{S}]. Monotone Circuit Lower Bounds from
+            Resolution. STOC 2018.
+        \item[] [G\"{o}\"{o}s, Kamath, Robere, \textcolor{blue}{S}]. Adventures in Monotone Complexity and
+            TFNP. ITCS 2019.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{My results. Beyond current techniques}
+        
+    \begin{itemize}
+        \item Lower bounds for Nullstellensatz (and generalizations) proofs over $\pm 1$
+            variables. Solution to an open problem posted by Impagliazzo, Pitassi and Mouli 2019.
+        \pause
+        \item Lower bound for Resolution proofs of systems of equations that encodes Pseudorandom
+            generators. Solution to an open problem posted by:
+            \begin{itemize}
+                \item Alekhnovich, Ben-Sasson, Razborov, Wigderson 2004;
+                \item Razborov 2015.
+            \end{itemize}
+        \pause
+        \item Lower bound for Resolution systems of equations that encodes \textit{Sparse Weak Pigeonhole
+            Principle}. Solution to an open problem posted by:
+            \begin{itemize}
+                \item Razborov 2004;
+                \item Urquhart 2008.
+            \end{itemize}
+    \end{itemize}
+
+    \begin{enumerate}
+        \item[] [\textcolor{blue}{S}]. (Semi) Algebraic proofs over $\pm 1$ variables. STOC 2020.
+        \item[] [\textcolor{blue}{S}]. Pseudorandom generators, resolution and
+            heavy width. CCC 2022.
+        \item[] [F. de Rezende, Nordstr{\"{o}}m, Risse, \textcolor{blue}{S}] Exponential resolution lower
+            bounds for weak pigeonhole principle and perfect matching formulas over sparse graphs. CCC
+            2020.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Other areas}
+
+    \begin{itemize}
+        \item Lower bounds for DPLL algorithms on satisfiable instances. [Itsykson, \textcolor{blue}{S} 11, 12, 14]
+        \item Hierarchy of heuristic computations. [Itsykson, Knop, \textcolor{blue}{S} 15, 16]
+        \item Hierarchy of computable distributions. [Itsykson, Knop, \textcolor{blue}{S} 15, 16]
+        \item Unambiguous hierarchy and Toda's Theorem. [Hirsch, \textcolor{blue}{S} 15]
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Future research plans}
+
+    \begin{itemize}
+        \item More on new techniques for proving lower bounds in proof complexity.
+            \begin{itemize}
+                \item Lower bounds for more powerful algebraic proof systems (generalizations of
+                    Nullstellsatz).
+                \item Apply recent development for circuit complexity in proof complexity (information
+                    theory, notion of unpredictability, etc.).
+            \end{itemize}
+        \item More on ``classical'' communication complexity.
+            \begin{itemize}
+                \item Lower bounds on parallel algorithms (aka $\AC[0]$-circuits) via communication
+                    complexity.
+                \item Lower and upper bound on 
+            \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Students}
+
+    Anastasia Sofronova (2016-- )
+
+    Joint results:
+    \begin{itemize}
+        \item[] [Sofronova, S] $k$-DNF Resolution and Pseudorandom Generators. (In preparation)
+        \item[] [Sofronova, S] A Lower Bound for $k$-DNF Resolution on Random CNF Formulas via
+            Expansion. (\alert{Submitted} STOC 2023)
+        \pause
+        \item[] [Sofronova, S] Branching Programs with Bounded Repetitions and Flow Formulas
+            Expansion. (CCC 2021)
+    \end{itemize}
+
+    Independent results:
+    \begin{itemize}
+        \item[] [Mihajlin, Sofronova] A better-than-3 log n depth lower bound for De Morgan formulas with
+            restrictions on top gates. (CCC 2022) 
+        \pause
+        \item[] [Galesi, Itsykson, Riazanov, Sofronova] Bounded-depth Frege
+            complexity of Tseitin formulas for all graphs. (MFCS 2021)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Teaching experience}
+
+    \begin{itemize}
+        \item Summer School in Physics (high-school students, 2005--2019)
+            \pause
+        \item Academic University (bachelor, master students, 2011--2017)
+            \begin{itemize}
+                \item Discrete Math;
+                \item Complexity Theory;
+                \item Math Logic
+                \item etc.
+            \end{itemize}
+        \item St. Petersburg State University (bachelor, master students, 2020--2022)
+            \begin{itemize}
+                \item Information Theory;
+                \item Complexity Theory;
+                \item Math Logic
+                \item etc.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
