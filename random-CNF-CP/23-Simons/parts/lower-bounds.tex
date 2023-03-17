@@ -1,0 +1,154 @@
+\begin{frame}{Lower bounds}
+
+
+    $\varphi \only<4->{\alert{\xRightarrow[\hspace{1cm}]{} \text{dag-like communication}}}
+    \only<2-4>{\xRightarrow[\hspace{1cm}]{} f_{\varphi}} \only<3-4>{\xRightarrow[\hspace{1cm}]{}
+        \text{mon ckt. lower bounds}}
+    \only<5->{\alert{\xRightarrow[\hspace{1cm}]{} \text{bottleneck counting}}}
+    $
+
+
+    \vspace{1cm}
+
+    \pause
+    $f_{\varphi}$ is hard for monotone circuits $\Rightarrow$ $\varphi$ is hard for CP
+    \begin{itemize}
+        \item{} [IPU 94, K96, P97] interpolation;
+        \item{} [HP18, FPPR18] sertificate fo unsatisfiability.
+    \end{itemize}
+
+    \pause
+    Monotone ckt. lower bounds
+    \begin{itemize}
+        \item{} [P97] approximation (clique);
+        \item{} [HP18, FPPR18] Jukna's criteria.
+    \end{itemize}
+
+    \vspace{1cm}
+    We need monotone \alert{real} circuits for the full version.
+  
+\end{frame}
+
+\begin{frame}{Unsat clause search problem $\Search_{\varphi}$ (Lov{\'{a}}sz et al. 1994)}
+    $\varphi(x, y)$ is an unsatisfiable CNF formula:
+    \begin{itemize}
+        \item Alice gets $a \in \{0, 1\}^n$;
+        \item Bob gets $b \in \{0, 1\}^n$;
+        \item goal: find a clause $C \in \varphi$, such that $C(a, b) = 0$.
+    \end{itemize}
+
+    \pause
+    \vspace{1cm}
+    Balanced CNF:
+    $\approx \Delta / 2$ variables from \alert{each} belongs to each player.
+
+    \pause
+    \begin{theorem}[Informal; Kraj{\'{\i}}{\v{c}}ek 98, S 17]
+        There is a CP-proof of $\varphi$ of size $S$ $\Rightarrow$ dag-like protocol for
+        $\Search_{\varphi}$ of size $S$.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{Dag-like protocols}
+    \vspace{-0.8cm}
+    \begin{columns}[t]
+        \begin{column}{0.58\textwidth}
+            \begin{itemize}
+                \item $H$ is a graph with out degree $2$, $\forall h \in H, ~ R_h \subseteq X \times Y$;
+                \item $R_{root} = X \times Y$;
+                \item $a, b$ are children of $h$ $\Rightarrow$ $R_{h} \subseteq R_{a} \cup R_{b}$;
+                \item $h$ is a leaf $\Rightarrow$ $h$ is marked by common solution for $R_h$.
+            \end{itemize}
+        \end{column}
+
+		\begin{column}{0.38\textwidth}
+            \begin{center}
+                \input{pics/dag.tex}
+            \end{center}
+		\end{column}
+	\end{columns}
+
+    \pause
+    \begin{center}
+        Rectangle (boolean) dag:
+        
+        \vspace{0.2cm}
+        \input{pics/rectangle.tex}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Proof Idea}
+
+    \begin{itemize}
+        \item $\mu\colon X \cup Y \to H$ (partial mapping);
+        \item $|\Dom(\mu)| > \Omega(\min{|X|, |Y|}) \approx 2^{\Omega(n)}$;
+        \item $\forall h \in H, |\mu^{-1}(h)| \le 2^{o(n)}$.
+    \end{itemize}
+
+    \pause
+    Idea: $\mu(x) = h \Leftrightarrow h$ is the bottommost node where $R_h$ contains ``useful
+    information'' about $x$.
+
+    \pause
+
+    \begin{minipage}{0.38\linewidth}
+        \centering
+        \input{pics/rectangle-measure.tex}
+    \end{minipage}
+    \begin{minipage}{0.58\linewidth}
+        \pause
+        \begin{itemize}
+            \item $w(h, x) \coloneqq$ size of minimal monochr. covering
+            \item $k \coloneqq n / \log(n)$
+            \item $\mu(x) =$ the bottommost $h$ such that $w(h, x) \ge k$.
+        \end{itemize}
+    \end{minipage}
+
+\end{frame}
+
+\begin{frame}{Definition of $\mu$}
+
+    \begin{enumerate}
+        \item For all $h \in H$ from leafs to root.
+            \pause
+        \item $\forall x \in X, w(h, x) > k \Rightarrow$
+            \begin{itemize}
+                \item $\mu(x) \coloneqq h$;
+                \item erase $\{x\} \times Y$ from \alert{all} rectangles in $H$.
+            \end{itemize}
+        \item $\forall y \in X, w(h, y) > k \Rightarrow$
+            \begin{itemize}
+                \item $\mu(y) \coloneqq h$;
+                \item erase $X \times \{y\}$ from \alert{all} rectangles in $H$.
+            \end{itemize}
+        \pause
+        \item Goto next $h$.
+    \end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Expansion}
+
+    \begin{minipage}{0.38\linewidth}
+        \centering
+        \input{pics/graph-expansion.tex}
+    \end{minipage}
+    \begin{minipage}{0.58\linewidth}
+        \begin{itemize}
+            \item $(r, \Delta, c)$-expander;
+            \item $\forall S \subseteq L, |S| \le r \Rightarrow$
+                \begin{itemize}
+                    \item $\mathrm{N}_{X}(S) \ge c |S|$;
+                    \item $\mathrm{N}_{y}(S) \ge c |S|$.
+                \end{itemize}
+        \end{itemize}
+    \end{minipage}
+
+
+\end{frame}
+
+
+\begin{frame}{Open problems}
+
+\end{frame}

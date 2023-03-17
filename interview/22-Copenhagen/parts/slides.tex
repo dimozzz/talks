@@ -55,6 +55,8 @@
 
     Basic language: unsatisfiable propositional formulas in CNF ($\UNSAT$).
 
+    In other words: $L$ consists of systems of equations without solution.
+
 \end{frame}
 
 
@@ -80,7 +82,7 @@
                 \item lower bounds for \textcolor{blue}{monotone} algorithms.
             \end{itemize}
         \pause
-        \item Lower bounds on \textcolor{blue}{strong} proof systems $\Rightarrow$ unconditional lower
+        \item Lower bounds for \textcolor{blue}{strong} proof systems $\Rightarrow$ unconditional lower
             bounds for various computational models.
     \end{itemize}
 
@@ -96,15 +98,24 @@
             Razborov 16).
         \pause
         \item Lower bounds on \textit{Cutting Planes} (Pudl{\'{a}}k 95; Haken, Cook 98).
-        \pause
         \item Lower bounds on \textit{Nullstellensatz} and generalizations (Beame, Impagliazzo,
             Kraj{\'{\i}}{\v{c}}ek, Pitassi, Pudl{\'{a}}k 94; Razborov 98; Alekhovich, Razborov 2003;
             Nordstr{\"{o}}m, Mik{\v{s}}a 15).
         \pause
-        \item Оценки на ограниченные версии систем через коммуникационную сложность (Beame, Impagliazzo,
-            Pitassi 94; Beame и др. 08; Huynh, Nordstr{\"{o}}m 12; G{\"{o}}{\"{o}}s, Pitassi 14).
+        \item Lower bounds via communication complexity (Beame, Impagliazzo,
+            Pitassi 94; Beame et al. 08; Huynh, Nordstr{\"{o}}m 12; G{\"{o}}{\"{o}}s, Pitassi 14).
     \end{itemize}
 
+\end{frame}
+
+\begin{frame}{Communication protocols. $f\colon U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
 \end{frame}
 
 \begin{frame}{My results. Dag-like communication}
@@ -127,7 +138,7 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}{My results. Beyond current techniques}
+\begin{frame}{My results. Beyond ``classical'' techniques}
         
     \begin{itemize}
         \item Lower bounds for Nullstellensatz (and generalizations) proofs over $\pm 1$
@@ -184,7 +195,7 @@
             \begin{itemize}
                 \item Lower bounds on parallel algorithms (aka $\AC[0]$-circuits) via communication
                     complexity.
-                \item Lower and upper bound on 
+                \item Lower and upper bounds on some generalizations of dag-like communication. 
             \end{itemize}
     \end{itemize}
     
@@ -200,16 +211,15 @@
         \item[] [Sofronova, S] $k$-DNF Resolution and Pseudorandom Generators. (In preparation)
         \item[] [Sofronova, S] A Lower Bound for $k$-DNF Resolution on Random CNF Formulas via
             Expansion. (\alert{Submitted} STOC 2023)
-        \pause
         \item[] [Sofronova, S] Branching Programs with Bounded Repetitions and Flow Formulas
             Expansion. (CCC 2021)
     \end{itemize}
 
-    Independent results:
+    \pause
+    Other results:
     \begin{itemize}
         \item[] [Mihajlin, Sofronova] A better-than-3 log n depth lower bound for De Morgan formulas with
             restrictions on top gates. (CCC 2022) 
-        \pause
         \item[] [Galesi, Itsykson, Riazanov, Sofronova] Bounded-depth Frege
             complexity of Tseitin formulas for all graphs. (MFCS 2021)
     \end{itemize}
