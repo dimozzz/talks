@@ -1,9 +1,7 @@
-\tikzstyle{inner} = [thin, circle, minimum size = 0.3cm, draw, inner sep = 0.1pt, opacity = 1]
-
-\tikzstyle{ed} = [thick, ->, draw, black, opacity = 1]
+\tikzstyle{inner} = [circle, minimum size = 0.3cm, draw, inner sep = 0.1pt]
 
     
-\begin{tikzpicture}[>=stealth']
+\begin{tikzpicture}
     \node[inner] (a) at (0, 0) {};
     \node[inner] (b) at (-0.9, -0.7) {};
     \node[inner] (c) at (0.9, -0.7) {};
@@ -15,14 +13,14 @@
     \node[inner] (g2) at (1.5, -3) {\scriptsize $t_3$};
     \node[inner] (h2) at (0.25, -3) {\scriptsize $t_2$};
     
-    \path (a) edge[ed] (b);
-    \path (a) edge[ed] (c);
-    \path (b) edge[ed] (d);
-    \path (b) edge[ed] (e);
-    \path (c) edge[ed] (e);
-    \path (c) edge[ed] (f);
-    \path (e) edge[ed] (g);
-    \path (e) edge[ed] (h);
-    \path (f) edge[ed] (g2);
-    \path (f) edge[ed] (h2);
+    \draw[->] (a) -- (b);
+    \draw[->] (a) -- (c);
+    \draw[->] (b) -- (d);
+    \draw[->] (b) -- (e);
+    \draw[->] (c) -- (e);
+    \draw[->] (c) -- (f);
+    \draw[->] (e) -- (g);
+    \draw[->] (e) -- (h);
+    \draw[->] (f) -- (g2);
+    \draw[->] (f) -- (h2);
 \end{tikzpicture}

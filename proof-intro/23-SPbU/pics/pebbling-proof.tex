@@ -1,0 +1,55 @@
+\tikzset{
+    pr-vert/.style = {
+        draw,
+        rounded rectangle,
+        minimum width = 1cm,
+        minimum height = 0.4cm,
+        outer sep = 0pt,
+        fill = #1
+    },
+    pr-vert/.default = LEIblue!10
+}
+
+\tikzstyle{ops} = [alt = <{#1-}>{opacity = 1}{opacity = 0}]
+
+\begin{tikzpicture}
+    \node[pr-vert, ops = 6] (a) at (0, 0) {$u$};
+    \node[pr-vert, ops = 6] (b) at (0, -1) {$z$};
+    \node[pr-vert, ops = 6] (c) at (0, -2) {$\neg z \lor \neg u \lor x$};
+    
+    \node[pr-vert = LEIorange!10, ops = 7] (d) at (2, -1.9) {$\neg u \lor x$};
+    \node[pr-vert = LEIorange!10, ops = 7] (e) at (3, -1.25) {$x$};
+
+    \node[pr-vert, ops = 8] (f) at (4, 0) {$\neg u \lor \neg w \lor y$};
+    \node[pr-vert, ops = 8] (g) at (6, 0) {$w$};
+    
+    \node[pr-vert = LEIorange!10, ops = 8] (h) at (5, -0.75) {$\neg w \lor y$};
+    \node[pr-vert = LEIorange!10, ops = 8] (i) at (6.5, -1) {$y$};
+
+    \node[pr-vert, ops = 9] (j) at (5, -2) {$\neg x \lor \neg y \lor r$};
+
+    \node[pr-vert = LEIorange!10, ops = 9] (k) at (7.5, -2) {$\neg y \lor r$};
+    \node[pr-vert = LEIorange!10, ops = 9] (l) at (8.5, -1.2) {$r$};
+
+    \node[pr-vert, ops = 10] (m) at (8.5, 0) {$\neg r$};
+
+    \node[pr-vert = red!30, ops = 10] (n) at (9.5, -0.6) {$\emptyset$};
+
+    \draw[->, ops = 7] (b) -- (d);
+    \draw[->, ops = 7] (c) -- (d);
+    \draw[->, ops = 7] (a) -- (e);
+    \draw[->, ops = 7] (d) -- (e);
+
+    \draw[->, ops = 8] (a) -- (h);
+    \draw[->, ops = 8] (f) -- (h);
+    \draw[->, ops = 8] (h) -- (i);
+    \draw[->, ops = 8] (g) -- (i);
+
+    \draw[->, ops = 9] (e) -- (k);
+    \draw[->, ops = 9] (j) -- (k);
+    \draw[->, ops = 9] (k) -- (l);
+    \draw[->, ops = 9] (i) -- (l);
+
+    \draw[->, ops = 10] (l) -- (n);
+    \draw[->, ops = 10] (m) -- (n);
+\end{tikzpicture}
