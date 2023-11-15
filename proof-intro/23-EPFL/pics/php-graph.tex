@@ -1,0 +1,19 @@
+\begin{tikzpicture}[>=latex]
+
+    \foreach \i in {1, 2, ..., 6}{
+        \node[draw, circle, fill = LEIblue!40, inner sep = 0pt, minimum size = 5pt]
+            (a\i) at (0, -0.7 * \i) {};
+    }
+
+    \foreach \i in {1, 2, ..., 5}{
+        \node[draw, circle, fill = LEIblue!40, inner sep = 0pt, minimum size = 5pt]
+            (b\i) at (1.5, -0.7 * \i) {};
+    }
+
+    \node[below = 8pt] at (a6) {$m$};
+    \node[below = 8pt] at (b5) {$n$};
+
+    
+    \draw (a4) -- (b3) node[midway, above] {$x_{i, j}$};
+    \draw (a4) -- (b5) node[midway, below] {$x_{i, j'}$};
+\end{tikzpicture}
