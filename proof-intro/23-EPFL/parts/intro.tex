@@ -80,7 +80,8 @@
             \pause
         \item $(z), (u), (w)$;
             \pause
-        \item $(\neg z \lor \neg u \lor x)$.    
+        \item $(\neg z \lor \neg u \lor x), (\neg u \lor \neg w \lor y),
+            (\neg x \lor \neg y \lor r)$.
     \end{itemize}
 
     \pause
@@ -173,22 +174,18 @@
             \includegraphics[width = .3\textwidth]{pics/pigeon3.png}
         \end{center}
         \begin{itemize}
-            \item $\prod\limits_{j} x_{i, j} = 0$;
-            \item $(1 - x_{i, j})(1 - x_{i', j}) = 0$.
+            \item $\bigvee\limits_{j} x_{i, j}$;
+            \item $\neg x_{i, j} \lor \neg x_{i', j}$.
         \end{itemize}
     \end{minipage}
 
-    \pause
-    \vspace{0.5cm}
-
-    Another distribution, another measure, but the same idea [Razborov' 98; Alekhnovich, Razborov 03].
-
-    \vspace{0.2cm}
+    \vspace{0.7cm}
     \pause
     \begin{minipage}{0.3\linewidth}
         \centering
         \begin{itemize}
             \item $m = n + 1$ \pause $\color{green!80!black}\checkmark$
+            \item{} [Haken 85]
         \end{itemize}
     \end{minipage}
     \pause
@@ -196,6 +193,7 @@
         \centering
         \begin{itemize}
             \item $m \ll n^2$ \pause $\color{green!80!black}\checkmark$
+            \item{} [BW 99]
         \end{itemize}
     \end{minipage}
     \pause
@@ -203,6 +201,7 @@
         \centering
         \begin{itemize}
             \item $m \gg n^2$ \pause \input{pics/pigeon4.tex}
+            \item{} [Raz 04]
         \end{itemize}
     \end{minipage}
 \end{frame}
