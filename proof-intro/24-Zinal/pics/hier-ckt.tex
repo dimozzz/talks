@@ -1,6 +1,5 @@
 
 \tikzset{
-    >=latex,
     vert/.style = {
         draw,
         ellipse
@@ -51,10 +50,11 @@
     \node[vert] (fre) at (0.5, 5) {Frege};
     \node[vert] (ips) at (-2, 6) {$\PrSys{IPS}$};
     \node[vert] (pcr) at (-2.8, 1.9) {$\PCR[]$};
-    \node[vert] (sos) at (-4, 2.5) {$\SOS$};    
+    \node[vert] (sos) at (-4, 2.5) {$\SOS$};
+    
     \node[vert] (cps) at (-4, 6.5) {$\PrSys{CPS}$};
 
-    
+    \node at (-6, -2) {};
 
     \draw[->, semisim] (pcr) -- (sos);
     \draw[->] (res) -- (cp);
@@ -68,57 +68,35 @@
     \draw[->] (acfp) -- (fre);
     \draw[->] (fre) -- (ips);
     \draw[->, semisim] (ips) -- (cps);
+
     \draw[->] (pcr) -- (ips);
     \draw[->] (sos) -- (cps);
 
     \node at (0, 6.9) {};
 
+    \begin{scope}[on background layer]
+        \fill[orange!5] (-4, -1) to[out = 90, in = 180] (-2.3, 0.75)
+            to[out = 0, in = 180] (0.5, 0.7) to[out = 0, in = 90] (2, -1)
+            -- cycle;
+         \draw[ultra thick, orange] (-4, -1) to[out = 90, in = 180]
+            (-2.3, 0.75) to[out = 0, in = 180] (0.5, 0.7)
+            to[out = 0, in = 90] (2, -1);
+    \end{scope}
+    \node[blue] at (-0.5, -0.7) {Mon. ``Circuits''};
+
+    \pause
+
     \only<2->{
         \begin{scope}[on background layer]
-            \draw[ultra thick, fill = black!5] (-4, -1) to[out = 110, in = 220] (-4.4, 3)
-                to[out = 40, in = 180] (-1, 2) to[out = 0, in = 125] (2.3, 2) to[out = -55, in = 90]
-                (1.5, -1);
+            \fill[orange!5] (-5, 6.9) to[out = -90, in = 180] (-4, 5.3) to[out = 0, in = 180]
+                (-2, 5.3) to[out = 0, in = -90] (-1, 6.9) -- cycle;
+            \draw[ultra thick, orange] (-5, 6.9) to[out = -90, in = 180] (-4, 5.3) to[out = 0, in = 180]
+                (-2, 5.3) to[out = 0, in = -90] (-1, 6.9);
         \end{scope}
-        \node[blue] at (-1.5, 0.95) {Restriction};
+        \node[blue] at (-2.5, 6.6) {``Circuits''};
     }
-
-    \only<3->{
-        \begin{scope}[on background layer]
-            \fill[orange!5] (-4, -1) to[out = 90, in = 180] (-2.3, 0.75) to[out = 0, in = 180] (0.5, 0.7)
-                to[out = 0, in = 200] (3.5, 2) -- (3.5, -1) -- cycle;
-            \draw[ultra thick, orange] (-4, -1) to[out = 90, in = 180] (-2.3, 0.75) to[out = 0, in = 180]
-                (0.5, 0.7) to[out = 0, in = 200] (3.5, 2);
-            \draw[ultra thick] (-4, -1) to[out = 110, in = 220] (-4.4, 3) to[out = 40, in = 180] (-1, 2)
-            to[out = 0, in = 125] (2.3, 2) to[out = -55, in = 90] (1.5, -1);
-        \end{scope}
-        \node[blue] at (0, -0.7) {Mon. Interpolation};
-    }
-
-    \pause
-    \pause
-    \pause
-    \node[vert] (ns2) at (-5.5, 0) {$\NS_{\{\pm 1\}}$};
-    \node[vert] (pcr2) at (-6.1, 2) {$\PCR[]_{\{\pm 1\}}$};
-    \node[vert] (sos2) at (-6.8, 3) {$\SOS_{\{\pm 1\}}$};
     
 
-    \draw[->] (ns2) -- (pcr2);
-    \draw[->, semisim] (pcr2) -- (sos2);
-    \draw[->] (pcr2) -- (ips);
-    \draw[->] (sos2) -- (cps);
- 
-    \pause
-
-    \node[inner sep = 0pt] at (-7, 5.5) {\includegraphics[width = 0.2\textwidth]{pics/dragon.png}};
-    \node[inner sep = 0pt] at (-7, 4.2) {$\Mod_p$};
-    
-
-    \pause
-    \node[inner sep = 0pt] at (-7, -0.5) {\includegraphics[width = 0.15\textwidth]{pics/firehead.png}};
-%    \draw[ultra thick, blue] (-4, -1) to[out = 110, in = 230] (-4.4, 3) to[out = 50, in = 180] (3.5, 1.8);
-    \foreach \point in {(1.5, 3), (-2, 4), (-6, 1)}{
-        \pic at \point {tikzart-fire};
-    }
 
     \onslide<1->
 \end{tikzpicture}

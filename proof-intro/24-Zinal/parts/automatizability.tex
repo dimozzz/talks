@@ -9,17 +9,33 @@
 \begin{frame}{Searching for $\Pi$-proofs}
 
     \begin{itemize}
-        \item Number of $\Pi$-proofs of size $s \approx 2^s$.  
+        \item Number of $\Pi$-proofs of size $s \approx 2^s$.
+        \item Non-trivial algorithms exist for Resolution, $\SOS$. 
     \end{itemize}
+
+    \pause
     \begin{definition}[Bonet--Pitassi--Raz]
         A proof system $\Pi$ is automatizable iff there is an algorithm $M$ such that:
         \begin{itemize}
             \item $\Pi(\varphi, M(\varphi)) = 1$ for all unsat $\varphi$;
-            \item running time of $M(\varphi)$: $\poly(\text{size of the smallest proof of $\varphi$})$.
+            \item running time of $M(\varphi)$: $\poly(\text{size of
+                the smallest proof of $\varphi$})$.
         \end{itemize}
     \end{definition}
-\end{frame}
 
-\begin{theorem}[Krajicek, Pudlak 95]
-    If one-way function exists Frege is not automatizable.
-\end{theorem}
+    \vspace{0.2cm}
+    \pause
+    \begin{itemize}
+        \item{} [Kraj{\'{i}}{\v{c}}ek, Pudlak 95] One-way function
+            exists $\Rightarrow$ Frege is not automatizable.
+            \pause
+        \item{} [Kraj{\'{i}}{\v{c}}ek, Pudlak 98] RSA is ok
+            $\Rightarrow$ Extended Frege is not automatizable.
+            \pause
+        \item{} [Atserias, Muller 2019] $\P \neq \NP \Rightarrow$
+            Resolution is not automatizable.
+            \pause
+        \item{} \alert{Open problem:} what about $\SOS$?
+    \end{itemize}
+    
+\end{frame}

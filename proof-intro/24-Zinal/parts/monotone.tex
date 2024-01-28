@@ -27,14 +27,14 @@
     \vspace{0.2cm}
     \begin{itemize}
         \item{} There is an efficient Nullstellensatz proof of $\Flow$.
-        \item{} [Alekhnovich, Razborov 03] If $G$ is an $(n, d, \alpha)$-expander $\Rightarrow$ any
+        \item{} [Alekhnovich, Razborov 03] If $G$ is an expander $\Rightarrow$ any
             resolution proof has size $2^{\Omega(n)}$.
     \end{itemize}
 
     \pause
 
     \begin{corollary}[G\"{o}\"{o}s, Kamath, Robere, S 19]
-        There is a monotone function in $\NC_2$ that cannot be computed by subexponential monotone
+        There is a monotone function in $\NC^2$ that cannot be computed by subexponential monotone
         circuits.
     \end{corollary}
 
@@ -93,32 +93,10 @@
 
     \begin{itemize}
         \item Depth is the number of rounds (in the worst case).
+        \item Size is the number of possible configurations.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Protocols and Trees}
-
-    Alice gets $u \in U$, Bob gets $v \in V$. Protocol is a tree:
-
-    \begin{columns}[t]
-		\begin{column}{0.7\textwidth}
-            \begin{itemize}
-                \item<2-> nodes are marked by players;
-    		    \item<7-> leaves by answers.
-	        \end{itemize}
-
-    		\onslide<8->{
-                Size of protocol is a size of the tree. $\mathrm{Size}(f) = \min\limits_{P \in
-                    \mathcal{P}} \mathrm{Size}(P)$.
-            }
-        \end{column}
-        
-		\begin{column}{0.25\textwidth}
-            \input{pics/first_tree.tex}
-		\end{column}
-	\end{columns}
-
-\end{frame}
 
 \begin{frame}{$\KW$ Relation [Karchmer, Wigderson 90]}
     Let $U, V \subseteq \{0, 1\}^{n}$ and $U \cap V = \emptyset$.
@@ -174,7 +152,7 @@
 
 \begin{frame}{$\Search_{\varphi}$ [Lov{\'{a}}sz, Naor, Newman, Wigderson et al. 94]}
     
-    $\varphi(z) \coloneqq \bigvee\limits_{i = 1}^{m} C_i$ is unsatisfiable CNF formula.
+    $\varphi(z) \coloneqq \bigwedge\limits_{i = 1}^{m} C_i$ is unsatisfiable CNF formula.
     \pause
     
     $\Search_{\varphi} \subseteq \{0, 1\}^n \times [m]$:
@@ -187,7 +165,6 @@
     Communication version:
     \begin{itemize}
         \item ``gadget'' $g\colon X \times Y \to \{0, 1\}$;
-        \item $\Ind\colon [k] \times \{0, 1\}^k \to \{0, 1\}$, $\Ind(x, y) = y_x$.
     \end{itemize}
 
     \pause
@@ -202,11 +179,10 @@
 
 \begin{frame}{Lifting \includegraphics[scale = 0.04]{pics/utia-lift.png}}
 
+    Function $g$ is carefully chosen!
     \begin{theorem}[Raz, McKenzie 99; G\"{o}\"{o}s, Pitassi, Watson 16]
         Resolution depth of $\varphi$ is at least $d$ $\Rightarrow$
-        $\DCC(\Search_{\varphi} \circ \Ind_m) \ge n^{\bigO{d}},$
-        where $m \coloneqq \poly(n)$. \alert{$\DCC(\Search_{\varphi} \circ \Ind_m) \approx
-            \DCC(\Ind) \cdot \mathrm{res\text{-}depth}(\varphi)$.}
+        $\DCC(\Search_{\varphi} \circ g) \ge d \cdot \DCC(g)$.
     \end{theorem}
 
     Corollary: lower bound on monotone formulas $2^{n^{\varepsilon}}$.
@@ -214,8 +190,8 @@
 
     \begin{theorem}[Garg, G\"{o}\"{o}s, Kamath, S 18]
         Resolution size $\varphi$ at least $S$ $\Rightarrow$
-        size of \alert{dag-like} protocols for $\Search_{\varphi} \circ \Ind_m$ at least $\Omega(S),$
-        where $m \coloneqq \poly(n)$.
+        size of \alert{dag-like} protocols for $\Search_{\varphi}
+        \circ g$ at least $\Omega(S)$.
     \end{theorem}
 
     Corollary: lower bound on monotone \textcolor{blue}{circuits} $2^{n^{\varepsilon}}$.
@@ -241,9 +217,14 @@
     Facts about $f$:
     \begin{itemize}
         \item $f \in \NC^2$;
-        \item $F_{\Flow}$ can be embedded into $f$ (since there is an efficient NS proof of $\Flow$!);
+        \item $F_{\Flow}$ can be embedded into $f$ (since there is an efficient $\NS$ proof of $\Flow$!);
         \item there is no small monotone circuit for $f$ (since there is no efficient proofs in
             resolution of $\Flow$ + lifting Theorem).
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Hierarchy}
+
+    \input{pics/hier-ckt.tex}
+    
+\end{frame}
