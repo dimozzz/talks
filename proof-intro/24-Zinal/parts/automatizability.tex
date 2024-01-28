@@ -1,0 +1,25 @@
+\begin{frame}
+
+    \begin{center}
+        \Huge Part IV: Automatizability
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Searching for $\Pi$-proofs}
+
+    \begin{itemize}
+        \item Number of $\Pi$-proofs of size $s \approx 2^s$.  
+    \end{itemize}
+    \begin{definition}[Bonet--Pitassi--Raz]
+        A proof system $\Pi$ is automatizable iff there is an algorithm $M$ such that:
+        \begin{itemize}
+            \item $\Pi(\varphi, M(\varphi)) = 1$ for all unsat $\varphi$;
+            \item running time of $M(\varphi)$: $\poly(\text{size of the smallest proof of $\varphi$})$.
+        \end{itemize}
+    \end{definition}
+\end{frame}
+
+\begin{theorem}[Krajicek, Pudlak 95]
+    If one-way function exists Frege is not automatizable.
+\end{theorem}

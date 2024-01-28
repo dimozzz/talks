@@ -1,0 +1,93 @@
+\begin{frame}
+
+    \begin{center}
+        \Huge Part V: Barriers
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Problems with lower bounds}
+
+    \begin{enumerate}
+        \item Lack of candidates that should be hard.
+        \item Lack of technique.
+    \end{enumerate}
+
+    \pause
+    What so hard to find candidate?
+    \pause
+    \begin{enumerate}
+        \item Candidate is a collection of \alert{unsat} formulas.
+        \item There is a human proof of unsatisfiability.
+        \item And this proof maybe realized in some proof system.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Random $\Delta$-CNF}
+
+    \begin{minipage}{0.38\linewidth}
+        \centering
+        \input{pics/rand-graph.tex}
+    \end{minipage}
+    \begin{minipage}{0.58\linewidth}
+        \begin{itemize}
+            \item $m$ clauses;
+            \item $n$ variables;
+            \item $\Delta$ neighbours: $\binom{n}{\Delta}$ possibilities;
+            \item negations (uniformly at random);
+            \item $\mathfrak{D} \coloneqq \frac{m}{n}$ clause density.
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+    \begin{itemize}
+        \item $\mathfrak{D} > c_{\Delta} 2^{\Delta} \Rightarrow$ formula is unsat whp;
+            \pause
+        \item Fiege's conjecture: $\mathfrak{D} = \bigO{1} \Rightarrow$ no poly-time algorithm may
+            ``prove'' unsatisfiability of random $\bigO{1}$-CNF.
+            \begin{itemize}
+                \item Non-approximability of many problems.
+            \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Lower bounds in proof complexity}
+
+    \input{pics/hier-rand.tex}
+\end{frame}
+
+\begin{frame}{Restriction Technique}
+
+    \begin{lemma}
+        Any CNF representation of $\Parity\colon \{0, 1\}^n \to \{0, 1\}$ has size at least
+        $2^{\bigO{n}}$.
+    \end{lemma}
+
+    \pause
+    \begin{enumerate}
+        \item Assume that $\varphi \coloneqq \bigwedge C_i$ of small size computes $\Parity$.
+            \pause
+        \item Assign $\varepsilon n$ variables uniformly at random.
+            \pause
+        \item Only clauses with few variables can survive. But $\Parity$ is still $\Parity$.
+            \pause
+        \item It remains to show that any CNF representation of $\Parity$ require clauses with large
+            number of variables.
+    \end{enumerate}
+
+    \pause
+    \vspace{0.5cm}
+    \begin{itemize}
+        \item Same ideas works for: resolution, $\CP$, $\NS$, $\SOS$, etc.
+        \item For all proof systems such that the size of proof is easy to shrink by
+            restriction.  
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Hierarchy}
+
+    \input{pics/hier-restriction.tex}
+    
+\end{frame}

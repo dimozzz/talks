@@ -1,0 +1,39 @@
+\tikzstyle{ops} = [alt=<{#1-}>{opacity = 1}{opacity = 0}]
+\tikzstyle{end} = [circle, minimum size = 0.6cm, draw, inner sep = 0.1pt]
+            
+\tikzstyle{level 1} = [level distance = 1.5cm, sibling distance = 5cm]
+\tikzstyle{level 2} = [sibling distance = 2cm]
+    
+\begin{tikzpicture}[label distance = 8mm, >=latex]
+	\node [end] (z){$\varphi$}
+        child[ops = 2]{
+            node [end] (b) {$\varphi'$}
+			child[ops = 3]{
+	           	node {$\vdots$}
+                edge from parent[->]
+	  	        node[left] {$x_{j} \coloneqq c_1$}
+            }
+		    child[ops = 4]{
+               	node {$\vdots$}
+                edge from parent[->]
+	   	        node[right] {$x_{j} \coloneqq 1 - c_1$}
+            }
+           	edge from parent[->]
+            node[left] {$x_{i} \coloneqq c$}
+        }
+        child[ops = 5]{
+            node [end] (c) {$\varphi''$}
+           	child[ops = 5]{
+               	node {$\vdots$}
+                edge from parent[->]
+	            node[left] {$x_{k} \coloneqq c_2$}
+            }
+		    child[ops = 5]{
+               	node {$\vdots$}
+                edge from parent[->]
+	            node[right] {$x_{k} \coloneqq 1 - c_2$}
+            }
+            edge from parent[->]
+	   	    node[right] {$x_{i} \coloneqq 1 - c$}
+        };
+\end{tikzpicture}

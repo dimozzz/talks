@@ -1,0 +1,249 @@
+\begin{frame}
+
+    \begin{center}
+        \Huge Part III: Monotone Computations
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Flow formulas}
+    \begin{minipage}{0.5 \linewidth}
+        \input{pics/graph-flow.tex}
+        \putpos{15}{100}{\includegraphics[scale = 0.1]{pics/utia-duck.png}}
+    \end{minipage}%
+    \begin{minipage}{0.5 \linewidth}
+        \pause
+        \pause
+        \begin{itemize}
+            \item $v\colon ~ \sum\limits_{e \in E^{\mathrm{in}}_v} x_{e} -
+                \sum\limits_{e \in E^{\mathrm{out}}_v} x_{e} = c(v)$ 
+                \textcolor{red}{$(\mathbb{R})$};
+            \item $\sum\limits_{v} c(v) = 1$ \textcolor{red}{$(\mathbb{R})$};
+            \item graph degree: $d$.
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item{} There is an efficient Nullstellensatz proof of $\Flow$.
+        \item{} [Alekhnovich, Razborov 03] If $G$ is an $(n, d, \alpha)$-expander $\Rightarrow$ any
+            resolution proof has size $2^{\Omega(n)}$.
+    \end{itemize}
+
+    \pause
+
+    \begin{corollary}[G\"{o}\"{o}s, Kamath, Robere, S 19]
+        There is a monotone function in $\NC_2$ that cannot be computed by subexponential monotone
+        circuits.
+    \end{corollary}
+
+\end{frame}
+
+
+
+\begin{frame}{Monotone Computations}
+
+    \begin{minipage}{0.33\linewidth}
+        \centering
+        Formulas
+        \vspace{0.2cm}
+        
+        \input{pics/mon-form.tex}
+    \end{minipage}
+    \begin{minipage}{0.33\linewidth}
+        \centering
+        Circuits
+        \vspace{0.2cm}
+        
+        \input{pics/mon-ckt.tex}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \centering
+        More circuits
+        \vspace{0.2cm}
+        
+        \input{pics/mon-r-ckt.tex}
+    \end{minipage}
+
+    \pause
+    Why do we care about lower bounds on monotone computations?
+    \begin{itemize}
+        \item We can proof something!
+            \pause
+        \item We can control relative error.
+            \pause
+        \item Strong enough lower bounds on monotone circuits $\Rightarrow$ lower bounds on general
+            circuits.
+            \pause
+        \item Secret sharing/cryptography.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Communication Protocols. $f\colon U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+	\pause
+
+    \begin{itemize}
+        \item Depth is the number of rounds (in the worst case).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Protocols and Trees}
+
+    Alice gets $u \in U$, Bob gets $v \in V$. Protocol is a tree:
+
+    \begin{columns}[t]
+		\begin{column}{0.7\textwidth}
+            \begin{itemize}
+                \item<2-> nodes are marked by players;
+    		    \item<7-> leaves by answers.
+	        \end{itemize}
+
+    		\onslide<8->{
+                Size of protocol is a size of the tree. $\mathrm{Size}(f) = \min\limits_{P \in
+                    \mathcal{P}} \mathrm{Size}(P)$.
+            }
+        \end{column}
+        
+		\begin{column}{0.25\textwidth}
+            \input{pics/first_tree.tex}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}{$\KW$ Relation [Karchmer, Wigderson 90]}
+    Let $U, V \subseteq \{0, 1\}^{n}$ and $U \cap V = \emptyset$.
+
+    \vspace{0.1cm}
+    $\KW$:
+    \begin{itemize}
+        \item Alice gets $u \in U$, Bob gets $v \in V$;
+        \item goal: find $i$ such that $u_i \neq v_i$.
+    \end{itemize}
+    \pause
+    Monotone version $\KWm$:
+    \begin{itemize}
+        \item goal: find $i$ such that $u_i = 1 \land v_i = 0$.
+    \end{itemize}
+
+    \pause
+
+    \begin{theorem}[Karchmer, Wigderson 90]
+        \alert{Monotone} formula for a function $f$ of size $S$ $\Leftrightarrow$ communication protocol
+        for \alert{$\KWm$} $\KW$ of size $S$, where $U \coloneqq f^{-1}(1), V \coloneqq f^{-1}(0)$.
+    \end{theorem}
+\end{frame}
+
+
+\begin{frame}{$\KWm$ is a ``Complete Relation''}
+
+    \begin{itemize}
+        \item $\mathcal{S} \subseteq U \times V \times \mathcal{O}$;
+        \item define $F_{\mathcal{S}}\colon \{0, 1\}^m \to \{0, 1\}$ such that
+            $\DCC(\KWm[F_{\mathcal{S}}]) = \DCC(S)$.
+    \end{itemize}
+
+    \pause
+
+    \vspace{-0.2cm}
+    \begin{center}
+        \input{pics/rect-mon.tex}
+    \end{center}
+
+    \pause
+    $F_{\mathcal{S}}(1, 1, 0, \dots) \coloneqq 1$\pause, ~~~$F_{\mathcal{S}}(1, 0, 0, \dots) \coloneqq 0$
+
+    \pause
+    \begin{lemma}
+        $\DCC(\KWm[F_{\mathcal{S}}]) = \DCC(S)$.
+    \end{lemma}
+
+    \pause
+    \putpos{250}{110}{\includegraphics[scale = 0.1]{pics/utia-think.png}}
+
+\end{frame}
+
+\begin{frame}{$\Search_{\varphi}$ [Lov{\'{a}}sz, Naor, Newman, Wigderson et al. 94]}
+    
+    $\varphi(z) \coloneqq \bigvee\limits_{i = 1}^{m} C_i$ is unsatisfiable CNF formula.
+    \pause
+    
+    $\Search_{\varphi} \subseteq \{0, 1\}^n \times [m]$:
+    \begin{itemize}
+        \item $(\alpha, i) \in \Search_{\varphi} \Leftrightarrow C_{i}(\alpha) = 0.$
+    \end{itemize}
+
+    \pause
+    \vspace{0.1cm}
+    Communication version:
+    \begin{itemize}
+        \item ``gadget'' $g\colon X \times Y \to \{0, 1\}$;
+        \item $\Ind\colon [k] \times \{0, 1\}^k \to \{0, 1\}$, $\Ind(x, y) = y_x$.
+    \end{itemize}
+
+    \pause
+    \begin{center}
+        \input{pics/composition.tex}
+    \end{center}
+
+
+    $\Search_{\varphi} \circ g \equiv \Search_{\varphi \circ g}$.
+\end{frame}
+
+
+\begin{frame}{Lifting \includegraphics[scale = 0.04]{pics/utia-lift.png}}
+
+    \begin{theorem}[Raz, McKenzie 99; G\"{o}\"{o}s, Pitassi, Watson 16]
+        Resolution depth of $\varphi$ is at least $d$ $\Rightarrow$
+        $\DCC(\Search_{\varphi} \circ \Ind_m) \ge n^{\bigO{d}},$
+        where $m \coloneqq \poly(n)$. \alert{$\DCC(\Search_{\varphi} \circ \Ind_m) \approx
+            \DCC(\Ind) \cdot \mathrm{res\text{-}depth}(\varphi)$.}
+    \end{theorem}
+
+    Corollary: lower bound on monotone formulas $2^{n^{\varepsilon}}$.
+    \pause
+
+    \begin{theorem}[Garg, G\"{o}\"{o}s, Kamath, S 18]
+        Resolution size $\varphi$ at least $S$ $\Rightarrow$
+        size of \alert{dag-like} protocols for $\Search_{\varphi} \circ \Ind_m$ at least $\Omega(S),$
+        where $m \coloneqq \poly(n)$.
+    \end{theorem}
+
+    Corollary: lower bound on monotone \textcolor{blue}{circuits} $2^{n^{\varepsilon}}$.
+    \pause
+
+    \begin{theorem}[Pitassi, Robere 16; Robere, Pitassi 18, informal]
+        Nullstellensatz $\Leftrightarrow$ \alert{algebraic tiling} for $\Search_{\varphi} \circ g$.
+    \end{theorem}
+
+\end{frame}
+
+\begin{frame}{Easy Function?}
+
+    $f\colon \{0, 1\}^{2 n^3} \to \{0, 1\}$
+
+    \begin{itemize}
+        \item Enumerate equalities $z_i \oplus z_j \oplus z_k = c$ (at most $2 n^3$);
+        \item $x_i = 1 \Leftrightarrow$ add the equality to the system;
+        \item $f(x) = 1 \Leftrightarrow$ system is unsatisfiable.
+    \end{itemize}
+
+    \pause
+    Facts about $f$:
+    \begin{itemize}
+        \item $f \in \NC^2$;
+        \item $F_{\Flow}$ can be embedded into $f$ (since there is an efficient NS proof of $\Flow$!);
+        \item there is no small monotone circuit for $f$ (since there is no efficient proofs in
+            resolution of $\Flow$ + lifting Theorem).
+    \end{itemize}
+\end{frame}
+

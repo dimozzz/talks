@@ -1,15 +1,18 @@
 \documentclass[9pt, english]{beamer}
+\PassOptionsToPackage{table}{xcolor}
 \usepackage{slides-style}
 \usepackage{math-macros}
+\usepackage{colortbl}
 %\usepackage{dsfont}
+
+
 \usepackage{faktor}
-\usepackage{mdwlist}
-\RequirePackage{polyglossia} % instead of babel in xelatex
-\setdefaultlanguage[spelling = modern]{russian}
+
 
 
 \usetheme[style = fwn]{leidenuniv}
 
-\newlang{\Flow}{Flow}
 \newcommand{\Fs}{\mathcal{F}}
 \newcommand{\Hs}{\mathcal{H}}
+\newcommand{\lazy}[2][\pi]{{(\ell_{#1}{#2})}}
+

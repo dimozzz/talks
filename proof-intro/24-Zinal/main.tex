@@ -1,0 +1,35 @@
+\input{defs.tex}
+%\setdefaultlanguage[spelling = modern]{russian}
+
+\titlegraphic{
+    \input{pics/title.tex}
+}
+
+
+\title[Proof Complexity]{
+    Proof Complexity and Beyond
+}
+
+\author{
+    Dmitry Sokolov
+}  
+
+
+\date{Zinal\\ January 29, 2024}
+
+\newcommand{\SPCR}{\PrSys{S}\text{-}\PrSys{PCR}}
+\newcommand{\SSOS}{\PrSys{S}\text{-}\PrSys{SOS}}
+\newlang{\Flow}{Flow}
+
+
+\begin{document}
+
+    \maketitle
+
+    \input{parts/intro.tex}
+    \input{parts/dpll.tex}
+    \input{parts/monotone.tex}
+    \input{parts/automatizability.tex}
+    \input{parts/barriers.tex}
+    
+\end{document}

@@ -1,0 +1,77 @@
+\begin{frame}
+
+    \begin{center}
+        \Huge Part II: SAT solving and Proof Complexity
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{$\DPLL$ Algorithms}
+
+    \begin{center}
+        \input{pics/dpll.tex}        
+    \end{center}
+
+    
+	\pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \begin{itemize}
+        \item Heuristic $\mathbf{A}$ chooses a variable for splitting.
+    	\pause
+	    \item Heuristic $\mathbf{B}$ chooses the first value.
+    	\pause
+    	\item Simplification rules: \alert{no simplifications!}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{$\DPLL$ and Resolution}
+    
+    \begin{theorem}
+        $\DPLL$ algoritm makes $t$ splitting on \alert{unsatisfiable} CNF formula
+        $$\varphi \coloneqq \bigwedge\limits_i C_i$$
+        $\Rightarrow$ there exists a resolution proof of $\varphi$ of size $2t$.
+    \end{theorem}
+
+    \pause
+
+    \begin{minipage}{0.58\linewidth}
+        \centering
+        \input{pics/dpll-2.tex}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.4\linewidth}
+        \centering
+        $\frac{A \lor x ~~~ B \lor \neg x}{A \lor B} ~~~~~ \frac{A}{A \lor z}$
+        \begin{itemize}
+            \item Node $\Rightarrow$ disjunction of negations of queries.
+            \item $(x \lor \neg y \lor \neg z \lor u)$.
+        \end{itemize}
+    \end{minipage}
+
+\end{frame}
+
+\begin{frame}{Corollaries}
+
+    \begin{itemize}
+        \item{} Running time of $\DPLL$ on $\PHP_{n}^{n + 1}$ is at least $2^{\Omega(n)}$.
+            \pause
+        \item{} [Alekhnovich, Hirsch, Itsykson 05; \alert{informal}] Running time of \alert{restricted}
+            $\DPLL$ on some \alert{sat. formulas} is at least $2^{\Omega(n)}$. 
+    \end{itemize}
+
+    \pause
+    \vspace{0.5cm}
+    \begin{block}{Remark}
+        $\alg{CDCL} \approx$ general resolution.
+    \end{block}
+
+    \pause
+    \begin{itemize}
+        \item{} Running time of $\alg{CDCL}$ on $\PHP_{n}^{n + 1}$ is at least $2^{\Omega(n)}$.
+        \item{} \alert{Open problem}: what about sat. formulas and $\alg{CDCL}$?
+    \end{itemize}
+
+\end{frame}

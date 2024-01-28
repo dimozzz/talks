@@ -1,0 +1,182 @@
+\begin{frame}
+
+    \begin{center}
+        \Huge Part I: Intro
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Proof Systems}
+
+	$L \subseteq \{0, 1\}^*$. $\UNSAT$ is a language of unsatisfiable boolean CNF formulas.
+    \pause
+
+    \begin{definition}[Cook, Reckhow 79]
+        Proof system for $L \Leftrightarrow$ poly-time algorithm
+        $\Pi\colon \{0, 1\}^* \times \{0, 1\}^* \rightarrow \{0, 1\}$:
+        \begin{itemize}
+            \item (completeness) $x \in L \Rightarrow \exists w ~ \Pi(x, w) = 1$;
+            \item (soundness) $\exists w ~ \Pi(x, w) = 1 \Rightarrow x \in L$.
+        \end{itemize}
+    \end{definition}
+
+    Length of $|w|$ is the complexity measure.
+
+    \pause
+
+    \begin{block}{Cook's Program}
+        Prove superpolynomial lower bounds for stronger and stronger proof systems until the techniques
+        are developed to do it in a general case.
+
+        Goal: $\NP \neq \coNP$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Proof Systems}
+
+    \deftext{Resolution}: proof of $\varphi \coloneqq \bigwedge\limits_{i} C_i$ is a sequence of clauses
+    $(D_1, D_2, D_3, \dots, D_{\ell})$:
+    \pause
+    
+    \begin{minipage}{0.3\linewidth}
+        \begin{itemize}
+            \item $D_i \in \{C_i\}$;
+                \pause
+            \item $\frac{A \lor x ~~~~~ B \lor \bar{x}}{A \lor B}$, $D_i \coloneqq A \lor B$;
+                \pause
+            \item $D_{\ell} = \emptyset$.
+        \end{itemize}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.68\linewidth}
+        \centering
+        \input{pics/res-proof.tex}
+    \end{minipage}
+
+
+    \pause
+    \vspace{0.3cm}
+
+    \deftext{Cutting Planes}: proof is a sequence of inequalities over $\mathbb{Z}$
+    $(p_1 \ge 0, p_2 \ge 0, p_3 \ge 0, \dots, p_{\ell} \ge 0)$:
+    \begin{itemize}
+        \item $p_i$ is an encoding of $C \in \varphi$, $x_k \ge 0$ or $-x_k + 1 \ge 0$;
+        \item $\frac{p_i ~~~~~ p_j}{p_k}$,  $(p_i \ge 0) \land (p_j \ge 0)$ imply $(p_k \ge 0)$
+            \alert{over $\mathbb{Z}^n$};
+        \item $p_{\ell} = 1$.
+    \end{itemize}
+
+    \pause
+    \vspace{0.3cm}
+
+    \deftext{Nullstellensatz}: proof of a system of polynomial equalities $f_1 = 0, f_2 = 0, \dots$:
+    $$
+        \sum_{u = 1}^{a} p_u f_u = 1.
+    $$
+\end{frame}
+
+
+\begin{frame}{Pebbing}
+
+    \begin{center}
+        \input{pics/pebbling.tex}        
+    \end{center}
+
+    \pause
+    \begin{itemize}
+        \item $(\neg r)$;
+            \pause
+        \item $(z), (u), (w)$;
+            \pause
+        \item $(\neg z \lor \neg u \lor x), (\neg u \lor \neg w \lor y),
+            (\neg x \lor \neg y \lor r)$.
+    \end{itemize}
+
+    \pause
+    \input{pics/pebbling-proof.tex}
+\end{frame}
+
+\begin{frame}{Motivation}
+
+    \begin{enumerate}
+        \item Lower bounds on the proof length.
+            \begin{itemize}
+                \item If there is no short proofs of unsatisfiability $\Rightarrow$ no poly-time
+                    algorithm for $\SAT$ and $\P \neq \NP$.
+                    \pause
+                \item Resolution lower bounds $\Rightarrow$ explicit hard examples for some classes of
+                    algorithms for $\SAT$.
+                    \pause
+                \item Weak proof systems (Resolution etc.) lower bounds $\Rightarrow$ explicit hard
+                    examples for \alert{monotone} computations.
+                    \pause
+                \item etc.
+            \end{itemize}
+        \pause
+        \item Upper bounds on the proof length.
+            \begin{itemize}
+                \item Provability in some theories.
+            \end{itemize}
+        \pause
+        \item Proof search via algorithms (automatizability).
+            \begin{itemize}
+                \item $\SAT$ solving.
+                \pause
+                \item PAC learning.
+                \pause
+                \item Cryptographic primitives and cryptoattacks.
+            \end{itemize}            
+    \end{enumerate}
+
+    \pause
+    \vspace{0.7cm}
+    \begin{block}{Remark}
+        For some applications we should deal with specific formulas.        
+    \end{block}
+\end{frame}
+
+\begin{frame}{Lower bounds are reachable. Pigeonhole Principle: $\PHP_{n}^{m}$}
+
+    Variables: $x_{i, j}$, $i \in \{1, 2, \dots, m\}$, $j \in \{1, 2, \dots, n\}$.
+    \vspace{0.1cm}
+
+    \pause
+    \begin{itemize}
+        \item $\bigvee\limits_{j = 1}^{n} x_{i, j}$;
+        \item $\neg x_{i, j} \lor \neg x_{i', j}$.
+    \end{itemize}
+
+    \pause
+
+    \vspace{0.2cm}
+    \begin{minipage}{0.3\linewidth}
+        \centering
+        \input{pics/php-graph.tex}
+    \end{minipage}
+    \pause
+    \begin{minipage}{0.68\linewidth}
+        \begin{theorem}[Haken 85]
+            Any resolution proof of $\PHP_{n}^{n + 1}$ has size $2^{\Omega(n)}$. 
+        \end{theorem}
+        \pause
+        \begin{theorem}[Raz 04; Razborov 03]
+            Any resolution proof of $\PHP_{n}^{\infty}$ has size $2^{\Omega(n^{1 / 3})}$.
+        \end{theorem}
+        \pause
+        \begin{minipage}{0.3\linewidth}
+            \centering
+            \includegraphics[width = 0.8\textwidth]{pics/pigeon3.png}
+        \end{minipage}
+        \begin{minipage}{0.67\linewidth}
+            Open problem: show $2^{\Omega(n^{1 / 2})}$ lower bound for $\PHP_{n}^{\infty}$.
+        \end{minipage}
+    \end{minipage}
+    
+\end{frame}
+
+
+\begin{frame}{Lower bounds in proof complexity}
+
+    \input{pics/hier.tex}
+    
+\end{frame}
