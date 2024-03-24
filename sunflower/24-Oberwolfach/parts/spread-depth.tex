@@ -1,0 +1,90 @@
+\begin{frame}{Depth-$3$ lower bounds. $k$-limit}
+
+
+    \begin{itemize}
+        \item $\varphi$ is a $k$-DNF;
+        \item $A \coloneqq \{a \in X \mid \varphi(a) = 1\}$;
+        \item what can we say about $A$?
+    \end{itemize}
+
+    \pause
+
+    \begin{block}{$k$-limit [H{\aa}stad, Jukna, Pudlak 95]}
+        $x \in \{0, 1\}^n$ is a \deftext{$k$-limit} of $A \subseteq \{0, 1\}^n$ $\Leftrightarrow$
+        $\forall I \subseteq [n]$ of size $k$, $\exists a \in A$ such that $x_I = a_I$.
+    \end{block}
+
+    \pause
+    \begin{center}
+        \input{pics/limit.tex}
+    \end{center}
+\end{frame}
+
+
+
+\begin{frame}{Spreadness}
+
+    $X \subseteq \binom{n}{k}$ is $\delta$-spread $\Leftrightarrow
+    \forall I \in [n]$:
+    $$
+        \Pr\limits_{x \sim \mathbf{X}}[x_I = 1_I] \le \left(\frac{k}{n}\right)^{\delta |I|}.
+    $$
+
+    \pause
+
+    \begin{center}
+        \input{pics/spread.tex}
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+
+    \begin{itemize}
+        \item $0.9$-spread set is a robust sunflower with an empty core.
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Spreadness $\Rightarrow$ $k$-limit}
+
+    Let $X \subseteq \{0, 1\}^n$ collection of points of weight $k < \sqrt{n}$.
+    
+    \begin{lemma}    
+        $X$ is $0.9$-spread $\Rightarrow$ $0$ is a $n^{0.45}$-limit.
+    \end{lemma}
+
+    \pause
+
+    \begin{enumerate}
+        \item Fix $I \subseteq [n]$ of size $k$.
+        \item For each $i \in I$: $\Pr\limits_{x \sim \mathbf{X}}[x_i = 1] \le \left( k / n \right)^{0.9}
+            \le n^{-0.45}$.
+            \pause
+        \item $\Pr\limits_{x \sim \mathbf{X}}[\exists i \in I, x_i = 1] < 1$.
+    \end{enumerate}
+    
+\end{frame}
+
+
+\begin{frame}{$\Maj$ req. depth-$3$ ckt of size $2^{n^{\varepsilon}}$}
+
+    \input{pics/steps.tex}
+    
+    Let $X \subseteq \{0, 1\}^n$ collection of points of weight $k < \sqrt{n}$.
+    
+    \begin{lemma}    
+        $X$ is $0.9$-spread $\Rightarrow$ $0$ is a $n^{0.45}$-limit.
+    \end{lemma}
+
+    \pause
+
+    \begin{enumerate}
+        \item Fix $I \subseteq [n]$ of size $k$.
+        \item For each $i \in I$: $\Pr\limits_{x \sim \mathbf{X}}[x_i = 1] \le \left( k / n \right)^{0.9}
+            < n^{-0.45}$.
+  
+    \end{enumerate}
+    
+\end{frame}

@@ -1,0 +1,129 @@
+\begin{frame}{Sunflowers [Erd\H{o}s, Rado 60; Rossman 14]}
+
+    \begin{minipage}{0.55\linewidth}
+        $(k, \ell)$-sunflower:
+        \begin{itemize}
+            \item $S_1, S_2, S_3, \dots, S_{\ell} \subseteq \{0, 1\}^n$ of size $k$;
+            \item $Z \coloneqq \bigcap S_i$;
+            \item $\forall i, j ~~~ S_i \cap S_j = Z$.
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.2\linewidth}
+        \centering
+        \pause
+        \input{pics/sunflower.tex}
+    \end{minipage}
+    \begin{minipage}{0.2\linewidth}
+        \centering
+        \pause
+        \includegraphics[scale = 0.1]{pics/cagney.png}
+    \end{minipage}
+
+    \pause
+    \vspace{0.3cm}
+    
+    \begin{minipage}{0.55\linewidth}
+        $(p, \varepsilon)$-robust sunflower:
+        \begin{itemize}
+            \item $S_1, S_2, S_3, \dots \subseteq \{0, 1\}^n$ of size $k$;
+            \item $Z \coloneqq \bigcap S_i$;
+            \item $\Pr\limits_{W \sim \mathbf{U}_p}[\exists i, W \subseteq (S_i \setminus Z)] \ge 1 -
+                \varepsilon$.
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.4\linewidth}
+        \centering
+        \pause
+        \includegraphics[scale = 0.1]{pics/cagney2.png}
+    \end{minipage}
+
+    \pause
+    \begin{block}{}
+        Every $\left( 1 / \ell, 1 / \ell\right)$ robust sunflower contains a sunflower with
+        $\ell$ petals.
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Clique vs. Monotone ckt [Razborov 85; Cavalar, Kumar, Rossman 22]}
+
+    \begin{center}
+        \input{pics/monotone-ckt.tex}        
+    \end{center}
+
+
+    \pause
+    \begin{itemize}
+        \item \textsc{No}: $\mathbf{G}_{n, p}$, whp there is no $r$-clique;
+            \pause
+        \item Approximation of gates via $\bigvee\limits_{j = 1}^{m} \mathds{1}_{C_j}$.
+        \item Size of $C_j$ at most $k$ (whp $\mathbf{G}_{n, p}$ has an $n^{\varepsilon} k$-clique).
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{\textsc{No}: $\mathbf{G}_{n, p}$}
+
+    \begin{center}
+        \input{pics/graph-clique.tex}        
+    \end{center}
+
+
+    \pause
+    \begin{itemize}
+        \item Ideal situation: many independent indicators. \alert{$\OR \circ \Ind \approx 1$}.
+            \pause
+        \item $\Pr\limits_{W \sim \mathbf{G}_{n, p}}[\exists i, W \supseteq C_i] \to 1$.
+        \item Size of $C_j$ at most $k \ll r$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Reality}
+
+    \begin{center}
+        \input{pics/sunflower.tex}        
+    \end{center}
+
+    \begin{itemize}
+        \item Sunflower $S_1, S_2, \dots$ exists among $C_i$.
+            \pause
+        \item $\Pr\limits_{W \sim \mathbf{G}_{n, p}}[\exists i, W \supseteq C_i \alert{\mid W \supseteq Z}] \to
+            1$.
+            \pause
+        \item Replace all $S_j$ by the $Z$.
+    \end{itemize}
+
+
+    \pause
+    \vspace{0.3cm}
+
+    \begin{block}{$(p, \varepsilon)$-robust sunflower}
+        \begin{itemize}
+            \item $S_1, S_2, S_3, \dots \subseteq \{0, 1\}^n$ of size $k$;
+            \item $Z \coloneqq \bigcap S_i$;
+            \item $\Pr\limits_{W \sim \mathbf{U}_p}[\exists i, W \supseteq (S_i \setminus Z)] \ge 1 -
+                \varepsilon$. \pause
+                $\Pr\limits_{W \sim \mathbf{U}_p}[\exists i, W \supseteq S_i \alert{\mid W \supseteq Z}]
+                \ge 1 - \varepsilon$. 
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+
+\begin{frame}{Take away!}
+
+    \begin{itemize}
+        \item $x_1, x_2, \dots, x_n \in \{0, 1\}$.
+        \item $E_i \coloneqq x_{i_1} \land x_{i_2} \land \dots \land x_{i_k}$.
+        \item $\Pr[\exists i, E_i = 1] = ?$
+            \pause
+        \item Ideal situation: many independent $E_i \Rightarrow \Pr[\exists i, E_i = 1] \approx 1$.
+            \pause
+        \item Reality: sunflower $\Rightarrow$ Plucking operation (replacement sunflower by the core).
+            \pause
+        \item New reality: robust sunflower $\Rightarrow$ Plucking operation (replacement sunflower by
+            the core).
+    \end{itemize}
+    
+\end{frame}

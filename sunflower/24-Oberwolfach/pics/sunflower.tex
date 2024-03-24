@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+
+    \foreach \i in {0, 40, ..., 330}{
+        \begin{scope}[rotate = \i]
+            \draw[fill = yellow!80!black] (0, 0) to[out = 75, in = 0] (0, 1) to[out = 180, in = 105]
+                cycle;
+        \end{scope}
+    }
+    
+    \node[circle, fill = yellow!40!black, draw, inner sep = 0, minimum size = 0.5cm] at (0, 0)
+        {\textcolor{blue}{$Z$}};
+\end{tikzpicture}

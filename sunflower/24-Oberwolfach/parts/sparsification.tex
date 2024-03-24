@@ -1,0 +1,122 @@
+\begin{frame}{CNF sparsificaton}
+
+    \begin{itemize}
+        \item $x_1, x_2, \dots, x_n \in \{0, 1\}$.
+        \item $t_i \coloneqq x_{i_1} \land x_{i_2} \land \dots \land x_{i_k}$.
+        \item \only<1>{$\Pr[\exists i, E_i = 1] = ?$}
+            \only<2->{$\Pr\left[\alert{ \bigvee t_i = 1}\right] = ?$}
+    \end{itemize}
+
+    \pause
+    \pause
+
+    \begin{theorem}[Gopala, Meka, Reingold 2012]
+        \alert{$\forall$} $w$-CNF $f$, \alert{$\exists$} $w$-CNF $g$ of size $(w \log(1 /
+        \varepsilon))^{\bigO{w}}$ such that:
+        $$
+            \Pr[f(x) \neq g(x)] \le \varepsilon.
+        $$
+    \end{theorem}
+
+    \pause
+    \begin{itemize}
+        \item Pseudorandom generators against $w$-CNF.
+        \item Mansour's conjecture.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Lower bound for $\Res(k)$}
+
+    \begin{itemize}
+        \item Resolution-style proof system.
+        \item Proof lines are $k$-DNF.
+    \end{itemize}
+
+    \pause
+    \begin{theorem}
+        Any $\Res(\log n / \log \log n)$-proof of random $\log(n)$-CNF has size:
+        \begin{itemize}
+            \item{} [Razborov 2003] $2^{n^{\varepsilon}}$.
+            \item{} [This talk. Simple proof] $n^{\log^{\varepsilon} n}$.
+        \end{itemize}
+    \end{theorem}
+
+    \pause
+    \vspace{1cm}
+    Open problems:
+    \begin{itemize}
+        \item Superpoly lower bound $\Res(\log^{1 / 2 + \varepsilon} n)$-proof of random $\bigO{1}$-CNF.
+        \item Sunflowers against affine restrictions?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Proof strategy}
+
+    General idea:
+    \begin{itemize}
+        \item Hit a proof by random restriction $\rho$ of size $\delta n$.
+            \pause
+        \item Random $\log(n)$-CNF \alert{almost} not affected by $\rho$.
+            \pause
+        \item Each proof line $t|_{\rho}$ depends on $\sqrt{n}$ variables. \input{pics/cat.tex}
+            \pause
+        \item Transform the proof into Resolution proof of width $\sqrt{n}$.
+            \pause
+        \item Lower bound on resolution width.
+    \end{itemize}
+
+    \pause
+    \vspace{0.5cm}
+
+    $t \coloneqq t_1 \lor t_2 \lor t_3 \dots t_{\ell}$ is a proof line ($k$-DNF).
+
+    \pause
+    \vspace{0.3cm}
+    While $\ell > \sqrt{n}$:
+    \begin{enumerate}
+        \item Choose \alert{quasi}-monotone subformula $t_{i_1} \lor t_{i_2} \lor \dots$.
+        \item Choose $(\delta / 2, \varepsilon)$-robust sunflower within $t_{i_j}$.
+        \item Replace petals by the core $t'$.
+    \end{enumerate}
+
+    \begin{block}{Claim}
+        $\Pr\limits_{\rho}[(t_{i_1} \lor t_{i_2} \lor \dots)|_{\rho} \not\equiv t'|_{\rho}] \le \varepsilon$. 
+    \end{block}
+\end{frame}
+
+
+\begin{frame}
+
+    \begin{block}{Claim}
+        $\Pr\limits_{\rho}[(t_{i_1} \lor t_{i_2} \lor \dots)|_{\rho} \not\equiv t'|_{\rho}] \le \varepsilon$. 
+    \end{block}
+
+    \begin{enumerate}
+        \item \alert{Quasi}-monotone formula $\Rightarrow$ $\rho(x_i) = \alert{1}$ with probability
+            $\delta / 2$.
+        \pause
+        \item $\Pr[\exists j, t_{i_j} \setminus t' = 1] \ge 1 - \varepsilon$.
+            \pause
+            \hspace{0.1cm}
+            \input{pics/cagney.tex}
+            \pause
+        \item $\forall x \in \{0, 1\}^{n - |\rho|},  t'|_{\rho}(x) = 1 \Leftrightarrow t_{i_j}|_{\rho}(x) = 1$.
+    \end{enumerate}
+
+    \vspace{1cm}
+    \pause
+
+    Parameters:
+    \begin{itemize}
+        \item $\varepsilon \coloneqq n^{- \log n}$;
+        \item{} [Alweiss, Lovett, Wu, Zhang 19]
+            \begin{itemize}
+                \item $\mathcal{F}$ contains set of size $\kappa \log n / \log \log n$;
+                \item $|\mathcal{F}| > \sqrt{n}$
+            \end{itemize}
+            $\Rightarrow$ $\mathcal{F}$ contains $(\log^{-1} n, n^{-\log n})$-robust sunflower.
+    \end{itemize}
+\end{frame}
+
+
