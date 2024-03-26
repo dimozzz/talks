@@ -2,8 +2,8 @@
     \def\elements{{
             {1, 1, 0, 1, 1},
             {0, 1, 0, 1, 0},
-            {1, 1, 1, 1, 1},
-            {0, 1, 1, 1, 0},
+            {0, 0, 1, 1, 1},
+            {1, 1, 1, 1, 0},
             {1, 1, 1, 0, 1},
             {0, 1, 0, 1, 1},
             {1, 1, 1, 0, 1},
@@ -11,15 +11,11 @@
             {1, 1, 1, 1, 1}
         }}
     \def\result{{1, 0, 1, 1, 1, 1, 1, 0, 1}} 
-    \def\n{8}
+    \def\n{3}
     \def\m{4}
     \def\step{0.65}
 
     \draw[step = \step, thick] (0, 0) grid ({\step * (\n + 1)}, {-\step * (\m + 1)});
-    \draw[thick, blue!30!black, rounded corners = 2pt, fill = blue, fill opacity = 0.5]
-        (3 * \step, {-\step * (\m + 1)}) rectangle (4 * \step, {-\step * \m});
-    \draw[thick, green!30!black, rounded corners = 2pt, fill = green, fill opacity = 0.2]
-        (-0.02, {-\step * (\m + 1) - 0.02}) rectangle ({\step * (\n + 1) + 0.02}, {-\step * \m + 0.02});
     
         
     \foreach \i in {0, 1, ..., \n}{
@@ -29,10 +25,11 @@
         }
     }
 
-    \begin{scope}[shift = {(0, {-\step * (\m + 1) - 1})}]
+    \begin{scope}[shift = {(0, {-\step * (\m + 1) - 0.7})}]
         \draw[step = \step, thick] (0, 0) grid ({\step * (\n + 1)}, -\step);
-        \draw[thick, blue!30!black, rounded corners = 2pt, fill = blue, fill opacity = 0.5]
-            (3 * \step, 0) rectangle (4 * \step, -\step);
+        \draw[thick, green!30!black, rounded corners = 2pt,
+            fill = green, fill opacity = 0.2, alt = <{4-}>{}{opacity = 0}]
+            (\step - 0.02, 0 + 0.02) rectangle (4 * \step + 0.02, -\step - 0.02);
             
         \foreach \i in {0, 1, ..., \n}{
             \node at ({\step / 2 + \i * \step}, {-\step / 2})
@@ -40,7 +37,11 @@
         }
     \end{scope}
 
-    \node at (-0.5, {-\step * (\m + 1) / 2}) {\Large $X$};
-    \node at (-0.5, {-\step * (\m + 1.5) - 1}) {Limit:};
+    \node at (-0.5, {-\step * (\m + 1) / 2}) {\Large $A$};
+    \node at (-0.5, {-\step * (\m + 1.5) - 0.7}) {$3$-limit};
 
+    \draw[thick, green!30!black, rounded corners = 2pt, fill = green,
+        fill opacity = 0.2, alt = <{4-}>{}{opacity = 0}]
+        (\step - 0.02, {-\step * 3 - 0.02}) rectangle
+        ({\step * (\n + 1) + 0.02}, {-\step * 2 + 0.02});
 \end{tikzpicture}
