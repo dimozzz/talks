@@ -1,3 +1,3 @@
 mkdir pdf
-pdflatex -output-directory pdf main.tex
+xelatex -output-directory pdf main.tex
 #pdflatex -output-directory pdf main.tex

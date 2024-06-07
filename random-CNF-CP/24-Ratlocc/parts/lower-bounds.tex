@@ -49,6 +49,40 @@
     \end{theorem}
 \end{frame}
 
+\begin{frame}{Comunication protocols. $f\colon U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+\end{frame}
+
+\begin{frame}{Protocols and trees}
+
+%    Alice receives $u \in U$ and Bob receives $v \in V$. A communication protocols corresponds to a tree:
+
+    \begin{columns}[t]
+		\begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Alice $\Leftarrow$ $u \in U$;
+                \item Bob $\Leftarrow$ $v \in V$;
+                \item protocol is a tree;
+                \item<2-> inner vertices are marked by players;
+	            \item<3-> player sends a bit $\Rightarrow$ move to next vertex;
+    		    \item<8-> leaves are marked by answers.
+	        \end{itemize}
+        \end{column}
+		\begin{column}{0.25\textwidth}
+            \input{pics/first_tree.tex}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+
+
 \begin{frame}{Dag-like protocols}
     \vspace{-0.8cm}
     \begin{columns}[t]
@@ -164,6 +198,42 @@
     \end{proof}    
 \end{frame}
 
+\begin{frame}{Open Problems: Nisan--Wigderson Generators (naive encoding)}
+
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \input{pics/nw-gen.tex}
+    \end{minipage}
+    \putpos{-40}{50}{\includegraphics[scale = 0.1]{pics/utia-rest.png}}
+    \begin{minipage}{0.48\linewidth}
+        \begin{itemize}
+            \item $\Delta$ is the left degree;
+            \item $P(x_1, \dots, x_{\Delta})$ is a predicate.
+        \end{itemize}
+        
+        \vspace{0.2cm}
+        \pause
+        \begin{itemize}
+            \item Strategy do not work for balanced predicates;
+            \item Upper bound if $P$ is $\Parity$;
+            \item $\Ppoly$ vs $\NP$;
+        \end{itemize}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{Open problems}
+
+    \begin{itemize}
+        \item PRG. Other encodings.
+        \item $\bigO{1}$-random CNF.
+        \item ``Separation'' between CP and monotone circuits.
+    \end{itemize}
+
+    \vspace{1cm}
+    \centering
+    \includegraphics[scale = 0.1]{pics/utia-think.png}
+\end{frame}
+
 
 \begin{frame}{Expansion}
 
@@ -210,40 +280,4 @@
             \item Altogether: $|\mu^{-1}(h)| \le 2^{n - ck + k \log 2k}$ 
         \end{itemize}
     \end{proof}
-\end{frame}
-
-\begin{frame}{Open Problems: Nisan--Wigderson Generators (naive encoding)}
-
-    \begin{minipage}{0.48\linewidth}
-        \centering
-        \input{pics/nw-gen.tex}
-    \end{minipage}
-    \putpos{-40}{50}{\includegraphics[scale = 0.1]{pics/utia-rest.png}}
-    \begin{minipage}{0.48\linewidth}
-        \begin{itemize}
-            \item $\Delta$ is the left degree;
-            \item $P(x_1, \dots, x_{\Delta})$ is a predicate.
-        \end{itemize}
-        
-        \vspace{0.2cm}
-        \pause
-        \begin{itemize}
-            \item Strategy do not work for balanced predicates;
-            \item Upper bound if $P$ is $\Parity$;
-            \item $\Ppoly$ vs $\NP$;
-        \end{itemize}
-    \end{minipage}
-\end{frame}
-
-\begin{frame}{Open problems}
-
-    \begin{itemize}
-        \item PRG. Other encodings.
-        \item $\bigO{1}$-random CNF.
-        \item ``Separation'' between CP and monotone circuits.
-    \end{itemize}
-
-    \vspace{1cm}
-    \centering
-    \includegraphics[scale = 0.1]{pics/utia-think.png}
 \end{frame}

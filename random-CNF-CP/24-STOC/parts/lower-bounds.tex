@@ -1,0 +1,121 @@
+\begin{frame}{Lower bounds}
+
+
+    $\varphi \only<4->{\alert{\xRightarrow[\hspace{1cm}]{} \text{dag-like communication}}}
+    \only<2-4>{\xRightarrow[\hspace{1cm}]{} f_{\varphi}} \only<3-4>{\xRightarrow[\hspace{1cm}]{}
+        \text{mon ckt. lower bounds}}
+    \only<5->{\alert{\xRightarrow[\hspace{1cm}]{} \text{bottleneck counting}}}
+    $
+
+
+    \vspace{1cm}
+
+    \pause
+    $f_{\varphi}$ is hard for monotone circuits $\Rightarrow$ $\varphi$ is hard for CP
+    \begin{itemize}
+        \item{} [IPU 94, K96, P97] interpolation;
+        \item{} [HP18, FPPR18] sertificate fo unsatisfiability.
+    \end{itemize}
+
+    \pause
+    Monotone ckt. lower bounds
+    \begin{itemize}
+        \item{} [P97] approximation (clique);
+        \item{} [HP18, FPPR18] Jukna's criteria.
+    \end{itemize}
+
+    \pause
+    \pause
+    \pause
+    \vspace{1cm}
+    \begin{theorem}
+        For $c > 800$ whp any $\CP$-proof of random $c \log n$-CNF has size $2^{\Omega(n)}$.
+    \end{theorem}
+  
+\end{frame}
+
+\begin{frame}{Unsat clause search problem $\Search_{\varphi}$ (Lov{\'{a}}sz et al. 1994)}
+    $\varphi(x, y)$ is an unsatisfiable CNF formula:
+    \begin{itemize}
+        \item Alice gets $a \in \{0, 1\}^n$;
+        \item Bob gets $b \in \{0, 1\}^n$;
+        \item goal: find a clause $C \in \varphi$, such that $C(a, b) = 0$.
+    \end{itemize}
+
+    \pause
+    \vspace{1cm}
+
+    \pause
+    \begin{theorem}[Informal; Kraj{\'{\i}}{\v{c}}ek 98, Pudlak 99, S 17]
+        There is a CP-proof of $\varphi$ of size $S$ $\Rightarrow$ dag-like protocol for
+        $\Search_{\varphi}$ of size $S$.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{Dag-like protocols}
+    \vspace{-0.8cm}
+    \begin{columns}[t]
+        \begin{column}{0.58\textwidth}
+            \begin{itemize}
+                \item $H$ is a graph with out degree $2$, $\forall h \in H, ~ R_h \subseteq X \times Y$;
+                \item $R_{\mathrm{root}} = X \times Y$;
+                \item $a, b$ are children of $h$ $\Rightarrow$ $R_{h} \subseteq R_{a} \cup R_{b}$;
+                \item $h$ is a leaf $\Rightarrow$ $h$ is marked by common solution for $R_h$.
+            \end{itemize}
+        \end{column}
+
+		\begin{column}{0.38\textwidth}
+            \begin{center}
+                \input{pics/dag.tex}
+            \end{center}
+		\end{column}
+	\end{columns}
+
+    \pause
+    \begin{center}
+        Rectangle (boolean) dag:
+        
+        \vspace{0.2cm}
+        \input{pics/rectangle.tex}
+    \end{center}
+
+    We need \alert{triangles} instead of rectangles.
+
+\end{frame}
+
+
+\begin{frame}{Open Problems: Nisan--Wigderson Generators (naive encoding)}
+
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \input{pics/nw-gen.tex}
+    \end{minipage}
+    \putpos{-40}{50}{\includegraphics[scale = 0.1]{pics/utia-rest.png}}
+    \begin{minipage}{0.48\linewidth}
+        \begin{itemize}
+            \item $\Delta$ is the left degree;
+            \item $P(x_1, \dots, x_{\Delta})$ is a predicate.
+        \end{itemize}
+        
+        \vspace{0.2cm}
+        \pause
+        \begin{itemize}
+            \item Strategy do not work for balanced predicates;
+            \item Upper bound if $P$ is $\Parity$;
+            \item $\Ppoly$ vs $\NP$;
+        \end{itemize}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{Open problems}
+
+    \begin{itemize}
+        \item PRG. Other encodings.
+        \item $\bigO{1}$-random CNF.
+        \item ``Separation'' between CP and monotone circuits.
+    \end{itemize}
+
+    \vspace{1cm}
+    \centering
+    \includegraphics[scale = 0.1]{pics/utia-think.png}
+\end{frame}

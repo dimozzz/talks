@@ -1,0 +1,34 @@
+\begin{tikzpicture}
+
+    \node[graph-vert] (t0) at (0, 0) {};
+    \node at (-3, 0) {};
+    \node at (1.8, -2.9) {};
+
+    %\pause
+    \only<3->{
+        \foreach \i in {1, 2, 3}{
+            \node[graph-vert] (t1\i) at (1.2 * \i - 2.4, -1) {};
+            \draw (t0) -- (t1\i);
+        }
+        \draw[blue, <->] (-10:0.5) arc (-10:-170:0.5) node[below left] {$\le 2k$};
+    }
+
+    \only<6->{
+        \foreach \i in {1, 2, 3}{
+            \node[graph-vert] (t2\i) at (\i - 3.4, -2) {};
+            \draw (t11) -- (t2\i);
+        }
+
+        \draw[blue, <->] (t11) ++(-10:0.5) arc (-10:-170:0.5) node[below left] {$\le 2k$};
+    }
+    
+    \pause
+    \only<7->{
+        \node (t) at (-2.9, -2.7){$\vdots$};
+        \draw (t21) -- (t);
+
+        \draw[<->] (1.5, 0) -- (1.5, -3) node[midway, right] {$k$};
+    }   
+        
+    \onslide<1->
+\end{tikzpicture}

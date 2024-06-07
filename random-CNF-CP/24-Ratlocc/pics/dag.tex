@@ -1,0 +1,28 @@
+\tikzstyle{inner} = [thin, circle, minimum size = 0.3cm, draw, inner sep = 0.1pt, opacity = 1]
+
+\tikzstyle{ed} = [thick, ->, draw, black, opacity = 1]
+
+    
+\begin{tikzpicture}[>=stealth']
+    \node[inner] (a) at (0, 0) {};
+    \node[inner] (b) at (-0.9, -0.7) {};
+    \node[inner] (c) at (0.9, -0.7) {};
+    \node[inner] (d) at (-1.5, -1.6) {\scriptsize $t_1$};
+    \node[inner] (e) at (-0.3, -1.6) {};
+    \node[inner] (f) at (1, -2) {};
+    \node[inner] (g) at (-1.5, -3) {\scriptsize $t_2$};
+    \node[inner] (h) at (-0.25, -3) {\scriptsize $t_3$};
+    \node[inner] (g2) at (1.5, -3) {\scriptsize $t_3$};
+    \node[inner] (h2) at (0.25, -3) {\scriptsize $t_2$};
+    
+    \path (a) edge[ed] (b);
+    \path (a) edge[ed] (c);
+    \path (b) edge[ed] (d);
+    \path (b) edge[ed] (e);
+    \path (c) edge[ed] (e);
+    \path (c) edge[ed] (f);
+    \path (e) edge[ed] (g);
+    \path (e) edge[ed] (h);
+    \path (f) edge[ed] (g2);
+    \path (f) edge[ed] (h2);
+\end{tikzpicture}
