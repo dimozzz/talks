@@ -1,0 +1,60 @@
+\begin{frame}{Core Theorem. Bracket formulas}
+
+    \begin{center}
+        \input{pics/brackets.tex}            
+    \end{center}
+
+    \begin{columns}
+        \begin{column}[t]{0.48\linewidth}
+            \uncover<6->{
+                Prohibited configs:
+                \begin{itemize}
+                    \item \input{pics/bad-brackets.tex}
+                    \item \input{pics/bad-colors.tex}
+                    \item inconsistent pointers.
+                \end{itemize}
+            }
+        \end{column}
+        \begin{column}[t]{0.5\linewidth}
+            \uncover<7->{
+                Facts:
+                \begin{itemize}
+                    \item \alert{$\exists$} res-proof of poly size;
+                    \item \alert{$\exists$} res-proof of ``bracket-width'' $\log n$;
+                    \item \textcolor{blue}{$\forall$} res-proofs ``bracket-width'' $w$
+                        $\Rightarrow$ depth $n^{\log n / \log w}$;
+                \end{itemize}
+            }
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+
+    \alert{$\exists$} res-proof of poly size.
+
+    \begin{center}
+        \input{pics/brackets-width-n.tex}
+    \end{center}
+
+    \pause
+
+    \vspace{0.5cm}
+    \uncover<6->{
+        \alert{$\exists$} res-proof of ``bracket-width'' $\log n$;
+        \begin{center}
+            \input{pics/brackets-width-log.tex}
+        \end{center}
+    }
+
+    \vspace{0.5cm}
+    \uncover<7->{
+        \textcolor{blue}{$\forall$} res-proofs ``bracket-width'' $w$ $\Rightarrow$ depth
+        $n^{\log n /\log w}$.
+
+        \vspace{0.3cm}
+        \begin{itemize}
+            \item Strategy above is optimal. \uncover<8->{ \input{pics/cat.tex} }
+        \end{itemize}
+    }    
+\end{frame}

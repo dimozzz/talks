@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+    \def\l{4}
+    \def\s{0.4}
+
+    \draw[thick, black!40] (0, 0.07) -- (0, 0) -- (\l, 0) -- ++(0, 0.07);
+    \pgfmathsetmacro\result{\l - 2 * \s}
+    \foreach \i in {0, \s, ..., \result}{
+        \draw[thick, black!40] ({\i + \s}, 0) -- ++(0, 0.07);
+    }
+
+    \pic[shift = {(3 * \s / 2, 0.2)}] {br = {LEIblue!70}};
+    \pic[shift = {(11 * \s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+    \pic[shift = {(7 * \s / 2, 0.2)}] {br = {LEIblue!70}};
+    \pic[shift = {(15 * \s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+\end{tikzpicture}

@@ -1,0 +1,31 @@
+\begin{tikzpicture}
+    \def\l{8}
+    \def\s{0.4}
+
+    \draw[thick, black!40] (0, 0.07) -- (0, 0) -- (\l, 0) -- ++(0, 0.07);
+    \pgfmathsetmacro\result{\l - 2 * \s}
+    \foreach \i in {0, \s, ..., \result}{
+        \draw[thick, black!40] ({\i + \s}, 0) -- ++(0, 0.07);
+    }
+
+    \pic[shift = {(-3 * \s / 2, 0.2)}] {br = {LEIblue!70}};
+    \pic[shift = {(-\s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+    \pic[shift = {(\l + \s / 2, 0.2)}] {br = {LEIred}};
+    \pic[shift = {(\l + 3 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred}};
+
+    \uncover<2->{
+        \pic[shift = {(\s / 2, 0.2)}] {br = {LEIblue!70}};
+    }
+    \uncover<3->{
+        \draw[thick, ->] (\s / 2 + 0.2, 0.8) to[bend left = 15] ++(0.8, 0);
+        \pic[shift = {(7 * \s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+    }
+    \uncover<4->{
+        \pic[shift = {(9 * \s / 2, 0.2)}] {br = {LEIblue!70}};
+    }
+    \uncover<5->{
+        \draw[thick, ->] (9 * \s / 2 + 0.2, 0.8) to[bend left = 15] ++(2, 0);
+        \pic[shift = {(21 * \s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+    }
+
+\end{tikzpicture}

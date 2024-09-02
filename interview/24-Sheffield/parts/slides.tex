@@ -1,0 +1,283 @@
+\begin{frame}{Complexity theory}
+
+    Let $f\colon X^n \to Y$ be a function. How much resources we have to spend to compute this function?
+    \pause
+    Examples:
+    \begin{itemize}
+        \item Is there a road on the map between two points?
+        \item Is there a solution of equation $a x^2 + b x + c = 0$ for given $a, b, c$?
+    \end{itemize}
+
+    \pause
+
+    Applications in CS:
+    \begin{itemize}
+        \item Algorithm design
+        \item Secure and efficient cryptography
+        \item etc.
+    \end{itemize}
+
+
+    \pause
+    Applications in Math:
+    \begin{itemize}
+        \item{} [13-th Hilbert's Problem] Can we represent a root of polynomial as a composition of
+            ``simple'' functions?
+            \begin{itemize}
+                \item How many ``simple'' functions in this composition do we need to find a root of
+                    polynomial?
+            \end{itemize}
+        \item Math Logic
+        \item etc.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{My research}
+
+    \begin{itemize}
+        \item Circuit complexity (how hard it is to compute function via boolean circuits/Turing Machines).
+            \pause
+        \item Proof complexity (complexity of \alert{nondeterministic computations}).
+            \pause
+         \item Distribution generation (how hard it is to generate distribution with required
+            properties?).
+            \pause
+        \item Lower bounds for algorithms, etc...
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Circuits}
+
+        \begin{minipage}{0.33\linewidth}
+        \centering
+        Formulas
+        \vspace{0.2cm}
+        
+        \input{pics/mon-form.tex}
+    \end{minipage}
+    \begin{minipage}{0.33\linewidth}
+        \centering
+        Circuits
+        \vspace{0.2cm}
+        
+        \input{pics/mon-ckt.tex}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \centering
+        More circuits
+        \vspace{0.2cm}
+        
+        \input{pics/mon-r-ckt.tex}
+    \end{minipage}
+
+    \pause
+
+    \vspace{1cm}
+    \begin{center}
+        Circuits are stronger than Turing Machines!
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Results}
+
+    \begin{itemize}   
+        \item New technique for proving lower bounds for depth-4 circuits.
+            \begin{itemize}
+                \item Open problem:
+                    \begin{itemize}
+                        \item H{\aa}stad, Jukna, Pudlak 1995;
+                        \item Meir, Wigderson 2019.
+                    \end{itemize}
+            \end{itemize}
+        \pause
+        \item New communication model and techniques for proving lower bounds.
+            \begin{itemize}
+                \item Corollaries:
+                    \begin{itemize}
+                        \item Lower bounds for monotone circuit (\alert{general technique}).
+                        \item Connection between: Proof Complexity, Circuit Complexity, TFNP.
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+
+
+    \begin{enumerate}
+        \item[] [G{\"{o}}{\"{o}}s, Riazanov, Sofronova, \textcolor{blue}{S} 23] Top-Down Lower Bounds for
+            Depth-Four Circuits. FOCS 2023.
+        \item[] [Garg, G\"{o}\"{o}s, Kamath, \textcolor{blue}{S} 18]. Monotone Circuit Lower Bounds from
+            Resolution. STOC 2018.
+        \item[] [G\"{o}\"{o}s, Kamath, Robere, \textcolor{blue}{S} 19]. Adventures in Monotone Complexity and
+            TFNP. ITCS 2019.
+        \item[] [\textcolor{blue}{S} 17]. Dag-like Communication and Its Applications. CSR 2017.
+    \end{enumerate}
+    
+\end{frame}
+
+
+
+\begin{frame}{Proof complexity}
+
+    Language $L$ is a subset of $\{0, 1\}^*$.
+
+    \begin{definition}[Cook, Reckhow 79]
+        Proof system for a language $L$ $\Leftrightarrow$ polynomial-time algorithm $\Pi\colon \{0,
+        1\}^* \times \{0, 1\}^* \rightarrow \{0, 1\}$ such that:
+        \begin{itemize}
+            \item $x \in L \Rightarrow \exists w ~ \Pi(x, w) = 1$;
+            \item $\exists w ~ \Pi(x, w) = 1 \Rightarrow x \in L$.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    \begin{itemize}
+        \item Complexity measure is a length of $w$.
+        \item Basic language: unsatisfiable propositional formulas in CNF ($\UNSAT$).
+        \item In other words: $L$ consists of systems of equations without solution.
+    \end{itemize}
+ 
+\end{frame}
+
+
+\begin{frame}{Example and motivation}
+
+    Proof system \textit{Nullstellensatz}.
+    \begin{itemize}
+        \item Input: system of polynomial equations $\{p_1(x_1, x_2, \dots) = 0, p_2(x_1, x_2, \dots) =
+            0, \dots\}$.
+            \pause
+        \item Proof: collection of polynomials $h_i$, such that $\sum\limits_{i} h_i p_i = 1$.
+    \end{itemize}
+
+    Motivation:
+    \begin{itemize}
+        \item Cook's program: prove lower bounds for stronger and stronger proof systems (if we will
+            prove lower bounds for all of them then $\P \neq \NP$).
+        \pause
+        \item Algorithm design for $\NP$-complete problems.
+        \pause
+        \item Cryptography.
+        \item etc.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{My results. Beyond ``classical'' techniques}
+        
+    \begin{itemize}
+        \item Lower bounds for (Semi)Algebraic proofs over $\pm 1$ variables.
+            \begin{itemize}
+                \item Open problem: Impagliazzo, Pitassi and Mouli 2019.
+            \end{itemize}
+        \pause
+        \item Hardness of inversion of Pseudorandom generators in Resolution.
+            \begin{itemize}
+                \item Open problem:
+                    \begin{itemize}
+                        \item Alekhnovich, Ben-Sasson, Razborov, Wigderson 2004;
+                        \item Razborov 2015.
+                    \end{itemize}
+            \end{itemize}
+        \pause
+        \item Lower bound for Resolution systems of equations that encodes \textit{Sparse Weak Pigeonhole
+            Principle} (\alert{$\NP$ vs. $\Ppoly$}).
+            \begin{itemize}
+                \item Open problem:
+                    \begin{itemize}
+                        \item Razborov 2004;
+                        \item Urquhart 2008.
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+
+    \begin{enumerate}
+        \item[] [\textcolor{blue}{S} 24] Random $(\log n)$-CNF are Hard for Cutting Planes. STOC 2024.
+        \item[] [\textcolor{blue}{S} 20] (Semi)Algebraic proofs over $\pm 1$ variables. STOC 2020.
+        \item[] [\textcolor{blue}{S} 22] Pseudorandom generators, resolution and
+            heavy width. CCC 2022.
+        \item[] [F. de Rezende, Nordstr{\"{o}}m, Risse, \textcolor{blue}{S} 20] Exponential resolution lower
+            bounds for weak pigeonhole principle and perfect matching formulas over sparse graphs. CCC
+            2020.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Other areas}
+
+    \begin{itemize}
+        \item Sampling and Certifying Symmetric Functions. [Filmus, Leigh, Riazanov, \textcolor{blue}{S} 23]
+        \item Lower bounds for DPLL algorithms on satisfiable instances. [Itsykson, \textcolor{blue}{S} 11, 12, 14]
+        \item Lower bounds for DPLL algorithms on satisfiable instances. [Itsykson, \textcolor{blue}{S} 11, 12, 14]
+        \item Hierarchy of heuristic computations. [Itsykson, Knop, \textcolor{blue}{S} 15, 16]
+        \item Hierarchy of computable distributions. [Itsykson, Knop, \textcolor{blue}{S} 15, 16]
+        \item Unambiguous hierarchy and Toda's Theorem. [Hirsch, \textcolor{blue}{S} 15]
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Future research plans}
+
+    Ultimate goals.
+    \begin{itemize}
+        \item General circuit lower bounds.
+        \item Frege proof system lower bounds.
+        \item Connection with new areas (more on foundations of cryptography and analysis of algorithms).
+    \end{itemize}
+
+    \pause
+    Reachable (but hard) goals.
+    \begin{itemize}
+        \item Combinatorial lower bounds for constant depth circuits.
+        \item Lower bounds for resolution over parities.
+        \item New techniques for $\AC_0[p]$-circuits.
+    \end{itemize}
+
+    \pause 
+    For grant application (doable problems):
+    \begin{itemize}
+        \item New lower bounds for $k$-DNF resolution (partial progress [Sofronova, \textcolor{blue}{S} 23]).
+        \item Combinatorial proof analog of Bazzi's Theorem ($r$-wise independence fools
+            $\AC_0$-circuits).
+        \item Lower bounds for more powerful algebraic proof systems (generalizations of Nullstellsatz).
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Students}
+
+    \begin{itemize}
+        \item Sofronova Anastasia (PhD, 2021--Present) (now joint adv. with Mika G{\"{o}}{\"{o}}s)
+        \item Artur Riazanov (PhD, 2022--Present) (joint adv. with Mika G{\"{o}}{\"{o}}s)
+        \item Oskar Dabkowski (Bachelor Project, 2023)
+        \item Tiberiu Mosnoi (Master Project, 2023)
+        \item Sofronova Anastasia (master, 2019--2021)
+        \item Sofronova Anastasia (undergraduate, 2016--2019)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Teaching experience}
+
+    \begin{itemize}
+        \item Summer School in Physics (high-school students, 2005--2019)
+            \pause
+        \item Academic University (bachelor, master students, 2011--2017)
+            \begin{itemize}
+                \item Discrete Math;
+                \item Complexity Theory;
+                \item Math Logic;
+                \item etc.
+            \end{itemize}
+        \item St. Petersburg State University (bachelor, master students, 2020--2022)
+            \begin{itemize}
+                \item Information Theory;
+                \item Complexity Theory;
+                \item Math Logic;
+                \item etc.
+            \end{itemize}
+        \item EPFL (master students, 2023)
+            \begin{itemize}
+                \item Computational Complexity.
+            \end{itemize}
+    \end{itemize}
+\end{frame}

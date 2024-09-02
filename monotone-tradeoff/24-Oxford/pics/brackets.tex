@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+    \def\l{8}
+    \def\s{0.4}
+
+    \draw[thick, black!40] (0, 0.07) -- (0, 0) -- (\l, 0) -- ++(0, 0.07);
+    \pgfmathsetmacro\result{\l - 2 * \s}
+    \foreach \i in {0, \s, ..., \result}{
+        \draw[thick, black!40] ({\i + \s}, 0) -- ++(0, 0.07);
+    }
+
+    \pic[shift = {(-3 * \s / 2, 0.2)}] {br = {LEIblue!70}};
+    \pic[shift = {(-\s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+    \pic[shift = {(\l + \s / 2, 0.2)}] {br = {LEIred}};
+    \pic[shift = {(\l + 3 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred}};
+
+    \uncover<2->{
+        \node[above = 1.2cm] (a) at (9 * \s / 2, 0.2) {bracket};
+        \draw[->, thick] (a) -- ++(0, -0.8);
+    }
+    \uncover<3->{
+        \pic[shift = {(9 * \s / 2, 0.2)}] {br = {LEIred}};
+    }
+    \uncover<4->{
+        \draw[thick, ->] (9 * \s / 2 + 0.2, 0.8) to[bend left = 15]
+            node[midway, above = 0.5cm] (b) {pointer} ++(4, 0);
+        \draw[thick, ->] (b) -- ++(0, -0.6);
+    }
+    \uncover<5->{
+        \pic[shift = {(31 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred}};
+    }
+
+\end{tikzpicture}
