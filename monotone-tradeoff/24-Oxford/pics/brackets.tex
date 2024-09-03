@@ -10,15 +10,15 @@
 
     \pic[shift = {(-3 * \s / 2, 0.2)}] {br = {LEIblue!70}};
     \pic[shift = {(-\s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
-    \pic[shift = {(\l + \s / 2, 0.2)}] {br = {LEIred}};
-    \pic[shift = {(\l + 3 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred}};
+    \pic[shift = {(\l + \s / 2, 0.2)}] {br = {LEIred!70}};
+    \pic[shift = {(\l + 3 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred!70}};
 
     \uncover<2->{
         \node[above = 1.2cm] (a) at (9 * \s / 2, 0.2) {bracket};
         \draw[->, thick] (a) -- ++(0, -0.8);
     }
     \uncover<3->{
-        \pic[shift = {(9 * \s / 2, 0.2)}] {br = {LEIred}};
+        \pic[shift = {(9 * \s / 2, 0.2)}] {br = {LEIred!70}};
     }
     \uncover<4->{
         \draw[thick, ->] (9 * \s / 2 + 0.2, 0.8) to[bend left = 15]
@@ -26,7 +26,7 @@
         \draw[thick, ->] (b) -- ++(0, -0.6);
     }
     \uncover<5->{
-        \pic[shift = {(31 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred}};
+        \pic[shift = {(31 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred!70}};
     }
 
 \end{tikzpicture}
