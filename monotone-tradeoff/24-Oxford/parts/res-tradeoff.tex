@@ -19,9 +19,8 @@
             \uncover<7->{
                 Facts:
                 \begin{itemize}
-                    \item \alert{$\exists$} res-proof of poly size;
-                    \item \alert{$\exists$} res-proof of ``bracket-width'' $\log n$;
-                    \item \textcolor{blue}{$\forall$} res-proofs ``bracket-width'' $w$
+                    \item \alert{$\exists$} res-proof of width $\log n$;
+                    \item \textcolor{blue}{$\forall$} res-proofs width $w$
                         $\Rightarrow$ depth $n^{\log n / \log w}$;
                 \end{itemize}
             }
@@ -31,22 +30,20 @@
 
 \begin{frame}
 
-    \alert{$\exists$} res-proof of poly size.
-
+    \alert{$\exists$} res-proof of ``bracket-width'' $\log n$;
     \begin{center}
-        \input{pics/brackets-width-n.tex}
+        \input{pics/brackets-width-log.tex}
     \end{center}
 
-    \pause
-
-    \vspace{0.5cm}
+    \vspace{0.3cm}
     \uncover<6->{
-        \alert{$\exists$} res-proof of ``bracket-width'' $\log n$;
-        \begin{center}
-            \input{pics/brackets-width-log.tex}
-        \end{center}
+        Recursive call:
+        \begin{itemize}
+            \item solution inside the region;
+            \uncover<7->{\item escape.}
+        \end{itemize}
     }
-
+        
     \vspace{0.5cm}
     \uncover<7->{
         \textcolor{blue}{$\forall$} res-proofs ``bracket-width'' $w$ $\Rightarrow$ depth
