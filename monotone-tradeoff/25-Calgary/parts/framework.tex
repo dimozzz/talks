@@ -1,0 +1,125 @@
+\input{parts/framework-slide.tex}
+
+\begin{frame}{Communication Protocols. $f\colon U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+	\pause
+
+    \begin{itemize}
+        \item Depth is the number of rounds (in the worst case).
+        \item Size is the number of possible configurations.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{$\Search_{\varphi}$ [Lov{\'{a}}sz, Naor, Newman, Wigderson et al. 94]}
+
+    \begin{minipage}{0.48\linewidth}
+        $\varphi(z) \coloneqq \bigwedge\limits_{i = 1}^{m} C_i$ is unsatisfiable CNF formula.
+        \pause
+
+        $\Search_{\varphi} \subseteq \{0, 1\}^n \times [m]$:
+        \begin{itemize}
+            \item $(\alpha, i) \in \Search_{\varphi} \Leftrightarrow C_{i}(\alpha) = 0.$
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{itemize}
+            \item {[Folklore?]} Tree-like resolution $\approx$ decision tree $\Search_{\varphi}$.
+            \item {[Pudlak 02]} Resolution $\approx$ decision \alert{dag} $\Search_{\varphi}$.
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+    \vspace{0.4cm}
+    Communication version:
+    \begin{itemize}
+        \item ``gadget'' $g\colon X \times Y \to \{0, 1\}$;
+    \end{itemize}
+
+    \pause
+    \begin{center}
+        \input{pics/composition.tex}
+    \end{center}
+\end{frame}
+
+\input{parts/framework-slide.tex}
+
+\begin{frame}{$\KWm$ Relation [Karchmer, Wigderson 90]}
+    Let $U, V \subseteq \{0, 1\}^{n}$ and $U \cap V = \emptyset$.
+
+    \vspace{0.1cm}
+    $\KWm$:
+    \begin{itemize}
+        \item Alice gets $u \in U$, Bob gets $v \in V$;
+        \item goal: find $i$ such that $u_i = 1 \land v_i = 0$.
+    \end{itemize}
+
+    \pause
+
+    \begin{theorem}[Karchmer, Wigderson 90]
+        $\mathrm{F\text{-}Size}(f) \le S$ $\Leftrightarrow$ communication protocol
+        for $\KWm$ of size $S$, where $U \coloneqq f^{-1}(1), V \coloneqq f^{-1}(0)$.
+    \end{theorem}
+
+    \pause
+    \begin{theorem}[Razborov 95; Pudlak 10; S 17]
+        $\mathrm{C\text{-}Size}(f) \le S$ $\Leftrightarrow$ communication \alert{dag}
+        for $\KWm$ of size $S$, where $U \coloneqq f^{-1}(1), V \coloneqq f^{-1}(0)$.
+    \end{theorem}
+\end{frame}
+
+
+
+\begin{frame}{$\KWm$ is a ``Complete Relation''}
+
+    \begin{itemize}
+        \item $\mathcal{S} \subseteq U \times V \times \mathcal{O}$;
+        \item define $F_{\mathcal{S}}\colon \{0, 1\}^m \to \{0, 1\}$ such that
+            $\DCC(\KWm[F_{\mathcal{S}}]) = \DCC(S)$.
+    \end{itemize}
+
+    \pause
+
+    \vspace{-0.2cm}
+    \begin{center}
+        \input{pics/rect-mon.tex}
+    \end{center}
+
+    \pause
+    $F_{\mathcal{S}}(1, 1, 0, \dots) \coloneqq 1$\pause, ~~~$F_{\mathcal{S}}(1, 0, 0, \dots) \coloneqq 0$
+
+    \pause
+    \begin{lemma}
+        $\DCC(\KWm[F_{\mathcal{S}}]) = \DCC(S)$.
+    \end{lemma}
+
+    \pause
+    \putpos{250}{110}{\includegraphics[scale = 0.1]{pics/utia-think.png}}
+
+\end{frame}
+
+
+
+\begin{frame}{Lifting (informal) [Garg, G\"{o}\"{o}s, Kamath, S 18]}
+
+
+    \begin{itemize}
+        \item Function $g$ is carefully chosen!
+    \end{itemize}
+
+    \vspace{1cm}
+    \begin{center}
+        \alert{$\exists$} Resolution proof for $\varphi$ of width $w$ and depth $d$.
+
+        $\Updownarrow$
+        
+        \alert{$\exists$} dag protocol for $\Search_{\varphi} \circ g$ of size $n^w$ and depth $\poly(n)
+        \cdot d$.
+    \end{center}
+
+\end{frame}

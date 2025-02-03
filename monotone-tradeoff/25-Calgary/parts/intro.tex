@@ -1,0 +1,203 @@
+\begin{frame}{Effectiveness vs. parallel computation}
+
+    \begin{itemize}
+        \item Function $f$ can be efficiently computed.
+        \item Can we compute $f$ effectively via parallel computation?
+    \end{itemize}
+
+    \vspace{1cm}
+    \pause
+
+    \begin{itemize}
+        \item Algorithms, circuits, ...;
+            \pause
+        \item $\P \stackrel{\tiny ?}{=} \NC_1$;
+            \pause
+        \item Can we balance all circuits?
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Circuits}
+
+        \begin{minipage}{0.33\linewidth}
+        \centering
+        Formulas
+        \vspace{0.2cm}
+        
+        \input{pics/mon-form.tex}
+    \end{minipage}
+    \begin{minipage}{0.33\linewidth}
+        \centering
+        Circuits
+        \vspace{0.2cm}
+        
+        \input{pics/mon-ckt.tex}
+    \end{minipage}
+    \begin{minipage}{0.32\linewidth}
+        \centering
+        More circuits
+        \vspace{0.2cm}
+        
+        \input{pics/mon-r-ckt.tex}
+    \end{minipage}
+
+    \pause
+
+    \vspace{0.5cm}
+    
+    Why do we care about lower bounds on monotone computations?
+    \begin{itemize}
+        \item We can prove something!
+            \pause
+        \item We can control relative error.
+            \pause
+        \item Strong enough lower bounds for monotone circuits
+            $\Rightarrow$ lower bounds for general circuits.
+            \pause
+        \item Secret sharing/cryptography.
+    \end{itemize}
+    
+\end{frame}
+
+
+
+\begin{frame}{Size and depth. $f\colon \{0, 1\}^n \to \{0, 1\}$}
+    \begin{columns}
+        \begin{column}[t]{0.32\linewidth}
+            \centering
+            \textbf{F-Size}
+
+            \vspace{0.2cm}
+            \uncover<3->{$2^{\bigO{n}}$}
+
+            \vspace{0.2cm}
+            \uncover<4->{$\alert{s}$}
+
+            \vspace{0.2cm}
+            \uncover<8->{$2^{\bigO{n}}$}
+        \end{column}
+        \begin{column}[t]{0.32\linewidth}
+            \centering 
+            \textbf{C-Size}
+
+            \vspace{0.2cm}
+            \uncover<3->{$2^{\bigO{n}}$}
+
+            
+            \vspace{0.2cm}
+            \uncover<5->{$\le s$}
+
+            \vspace{0.2cm}
+            \uncover<7->{$\alert{s}$}
+        \end{column}
+        \begin{column}[t]{0.32\linewidth}
+            \centering
+            \textbf{Depth}
+
+            \vspace{0.2cm}
+            \uncover<2->{$\alert{n}$}
+
+            \vspace{0.2cm}
+            \uncover<6->{$\log s$}
+
+            \vspace{0.2cm}
+            \uncover<9->{$???$}
+        \end{column}
+    \end{columns}
+
+    \vspace{0.35cm}
+    \begin{center}
+        \uncover<10->{
+            \input{pics/axis-pic.tex}
+        }
+    \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+
+    \begin{theorem}
+        $\alert{\exists}$ a monotone function $f\colon \{0, 1\}^{n} \to \{0, 1\}$ such that:
+        \begin{itemize}
+            \item $\mathrm{mSize}(f) \le n^{\log n}$;
+            \item Any monotone ckt of depth $\poly(n)$ for $f$ has size $2^{n^{\Omega(1)}}$.
+        \end{itemize}
+    \end{theorem}
+
+    \pause
+    \begin{center}
+        \tikz{
+            \node[scale = 0.45, rotate = 180, fancy-arrow = {black}{LEIred!40!white}{LEIblue}] {};
+        }
+    \end{center}
+
+    \vspace{-0.6cm}
+    \begin{theorem}
+        $\alert{\exists}$ unsat $\bigO{1}$-CNF formula $\varphi$ such that:
+        \begin{itemize}
+            \item $\alert{\exists}$ resolution proof of $\varphi$ of width $\log n$;
+            \item any resolution proof of $\varphi$ of width $w$ has depth $n^{\log n / \log w}$.
+        \end{itemize}
+    \end{theorem}
+
+    \pause
+    \begin{center}
+        \tikz{
+            \node[scale = 0.45, fancy-arrow = {black}{LEIred!40!white}{LEIblue}] {};
+        }
+    \end{center}
+
+    \vspace{-0.6cm}
+    \begin{theorem}
+        $\alert{\exists}$ unsat CNF formula $\varphi$ such that:
+        \begin{itemize}
+            \item $\alert{\exists}$ $\CP$-proof of $\varphi$ of size $n^{\log n}$;
+            \item any $\CP$-proof of $\varphi$ of size $2^{n^{o(1)}}$ has depth $n^{w(1)}$.
+        \end{itemize}
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{Resolution as Games [Pudlak, 00]}
+
+    \begin{itemize}
+        \item $x_1, x_2, \dots, x_n$ boolean variables;
+        \item $C_1, C_2, \dots, C_m$ constraints (clauses);
+            \pause
+            \begin{itemize}
+                \item example: $(x_1 \lor x_2), (x_1 \lor \neg x_2 \lor x_5)$;
+            \end{itemize}
+            \pause
+        \item $\Search \subseteq \{0, 1\}^n \times [m]$:
+        \begin{itemize}
+            \item $(\alpha, i) \in \Search \Leftrightarrow C_{i}(\alpha) = 0.$
+        \end{itemize}
+    \end{itemize}
+
+    \pause
+    \vspace{0.5cm}
+    Resolution game:
+    \begin{columns}
+        \begin{column}[t]{0.48\linewidth}
+            \begin{itemize}
+                \item Prover and Delayer;
+                    \pause
+                \item Prover queries a variable $x_i$;
+                \item Delayer gives an answer $0$ or $1$;
+                    \pause
+                \item Memory: $w$ answers.
+                \item Win: solution for $\Search$ in memory.
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.48\linewidth}
+            \pause
+            \begin{itemize}
+                \item $w$: resolution width;
+                    \pause
+                \item $\sharp$ of queries: resolution depth.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+\end{frame}

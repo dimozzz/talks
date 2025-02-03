@@ -1,0 +1,76 @@
+\begin{frame}{Core Theorem. Bracket formulas}
+
+    \begin{center}
+        \input{pics/brackets.tex}            
+    \end{center}
+
+    \begin{columns}
+        \begin{column}[t]{0.48\linewidth}
+            \uncover<6->{
+                Prohibited configs:
+                \begin{itemize}
+                    \item \input{pics/bad-brackets.tex}
+                    \item \input{pics/bad-colors.tex}
+                    \item inconsistent pointers.
+                \end{itemize}
+            }
+        \end{column}
+        \begin{column}[t]{0.5\linewidth}
+            \uncover<7->{
+                Facts:
+                \begin{itemize}
+                    \item \alert{$\exists$} res-proof of width $\log n$;
+                    \item \textcolor{blue}{$\forall$} res-proofs width $w$
+                        $\Rightarrow$ depth $n^{\log n / \log w}$;
+                \end{itemize}
+            }
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+
+    \alert{$\exists$} res-proof of ``bracket-width'' $\log n$;
+    \begin{center}
+        \input{pics/brackets-width-log.tex}
+    \end{center}
+
+    \vspace{0.3cm}
+    \uncover<6->{
+        \begin{minipage}[t]{0.48\linewidth}
+            Recursive call:
+            \begin{itemize}
+                \item solution inside the region;
+                \uncover<7->{\item escape.}
+            \end{itemize}        
+        \end{minipage}
+        \uncover<11->{
+            \begin{minipage}[t]{0.48\linewidth}
+                Proof size:
+                \begin{itemize}
+                    \uncover<11->{\item at most $n / 2$ recursive
+                        calls;}
+                \end{itemize}
+                \vspace{0.2cm}
+                $$
+                    \uncover<12->{T(n) \le \frac{n}{2} T(n / 2)}
+                $$
+                \vspace{-0.2cm}
+                \begin{itemize}
+                    \uncover<13->{\item $T(n) = \bigO{n^{\log n}}$.}
+                \end{itemize}
+            \end{minipage}
+        }
+    }
+        
+    \vspace{0.5cm}
+    \uncover<14->{
+        \textcolor{blue}{$\forall$} res-proofs ``bracket-width'' $w$ $\Rightarrow$ depth
+        $n^{\log n /\log w}$.
+
+        \vspace{0.3cm}
+        \begin{itemize}
+            \item Strategy above is optimal. \uncover<15->{ \input{pics/cat.tex} }
+        \end{itemize}
+    }    
+\end{frame}
