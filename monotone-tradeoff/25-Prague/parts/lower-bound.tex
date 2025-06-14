@@ -1,0 +1,52 @@
+\begin{frame}{Lower bound. Idea}
+
+    \input{pics/brackets-width-log-2.tex}
+
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \pause
+    \begin{itemize}
+        \item We force Prover to use this strategy!
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Formal strategy}
+
+    \begin{minipage}[c]{0.45\linewidth}
+        $\text{Delayer}(I, \ell)$:
+        \begin{itemize}
+            \item for $i \in [n^{\varepsilon}]$
+                \begin{itemize}
+                    \item $I_i \subseteq I$ max \emph{free} interval;
+                    \item \emph{move} solution to $I_i$;
+                    \item $\text{Delayer}(I_i, \ell + 1)$:                        
+                \end{itemize}
+        \end{itemize}        
+    \end{minipage}
+    \begin{minipage}[c]{0.45\linewidth}
+        Delayer $([a, b], \ell_0 \coloneqq \varepsilon \log n / \log w)$:
+        \begin{itemize}
+            \item query $i$;
+            \item $i < (a + b) / 2$ answer $\textcolor{blue}{[]}$;
+            \item $i \ge (a + b) / 2$ answer $\textcolor{red}{[]}$.
+        \end{itemize}        
+    \end{minipage}
+
+    \pause
+    \begin{lemma}
+        If delayer executed on $(I, \ell)$ then $|I| \ge n / (4w)^{\ell}$.
+        \pause
+        \begin{center}
+            $\Uparrow$
+        \end{center}
+        If $|I| \ge n / (4w)^{\ell}$ then $\text{Delayer}(I, \ell)$ covers at most $O(n^{2 \varepsilon})$
+        indices.
+    \end{lemma}
+    
+\end{frame}

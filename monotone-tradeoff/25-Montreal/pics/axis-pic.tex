@@ -1,0 +1,97 @@
+\begin{tikzpicture}[
+    /pgfplots/axis labels at tip/.style = {
+        xlabel style = {
+            at = {(current axis.right of origin)},
+            yshift = 2ex,
+            anchor = east,
+            fill = white,
+            rounded corners = 5pt
+        }, 
+        ylabel style = {
+            at = {(current axis.above origin)},
+            xshift = 1pt,
+            yshift = -1pt,
+            anchor = north west,
+            fill = white,
+            rounded corners = 5pt
+        }
+    }]
+
+
+    \alt<-17>{
+        \pgfmathsetmacro{\xa}{5}
+        \pgfmathsetmacro{\xb}{20}
+        \pgfmathsetmacro{\xc}{50}
+    }{
+        \pgfmathsetmacro{\xa}{2}
+        \pgfmathsetmacro{\xb}{5}
+        \pgfmathsetmacro{\xc}{23}
+    }
+    
+    \begin{axis}[
+        width = \linewidth,
+        height = 6.5cm,
+        xmin = 0,
+        xmax = 27,
+        ymin = 0,
+        ymax = 7.5,
+        axis line style = thick,
+        axis x line = bottom,
+        axis y line = middle,
+        axis labels at tip,
+        xlabel = {$\mathrm{Depth}$},
+        ylabel = {$\mathrm{Size}$},
+        minor xtick = {1, 2, ..., 30},
+        minor ytick = {0, 0.5, ..., 8},
+        xtick = {\xa, \xb, \xc},
+        %xtickstyle,
+        ytick = {1, 5},
+        yticklabels = {$n^{\bigO{\log n}}$, $2^{n^{\bigO{1}}}$},
+        xticklabels = {$\polylog{n}$, $n$, $n^{\bigO{\log n}}$},
+        major tick length = 7pt,
+        every major tick/.style = {
+            red,
+            very thick,
+        },
+        tick label style = {font=\small},
+        label style = {font=\small},
+        grid = both]
+
+        \draw (\xa, 0) -- ++(0, 20);
+        \draw (\xb, 0) -- ++(0, 20);
+        \draw (\xc, 0) -- ++(0, 20);
+
+        \only<11-15>{
+            \node[fill = white, rectangle, rounded corners = 5pt] at (20, 6.5)
+                {\Large \textcolor{LEIdarkgreen!80}{$\mathrm{F\text{-}Size}(f) = n^{\log(n)}$}};
+        }
+        \only<16->{
+            \node[fill = white, rectangle, rounded corners = 5pt] at (20, 6.5)
+                {\Large \textcolor{LEIred}{$\mathrm{C\text{-}Size}(f) = n^{\log(n)}$}};
+        }
+
+        \only<12-14>{
+            \node[fill = LEIdarkgreen!80, circle, inner sep = 0, minimum size = 0.16cm] at (20, 5) {};
+        }
+
+        \only<13-15>{
+            \node[fill = LEIdarkgreen!80, circle, inner sep = 0, minimum size = 0.16cm] (a) at (5, 1) {};
+
+        }
+        \only<14-15>{
+            \draw[line width = 4pt, LEIdarkgreen!80] (5, 1) -- (30, 1);
+        }
+
+        \only<17->{
+            \node[fill = LEIred, circle, inner sep = 0, minimum size = 0.16cm] at (\xb, 5) {};
+        }
+        \only<19->{
+            \node[fill = LEIred, circle, inner sep = 0, minimum size = 0.16cm] at (\xc, 1) {};
+        }
+
+        \only<20->{
+            \draw[rounded corners = 30pt, line width = 4pt, LEIred] (\xb, 5) -- ({\xc - 0.5}, 5) --
+                (\xc, 1);
+        }
+    \end{axis}
+\end{tikzpicture}

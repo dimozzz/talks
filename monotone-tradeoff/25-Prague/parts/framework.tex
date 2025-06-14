@@ -1,0 +1,76 @@
+\input{parts/framework-slide.tex}
+
+\begin{frame}{$\KWm$ Relation [Karchmer, Wigderson 90]}
+    Let $U, V \subseteq \{0, 1\}^{n}$ and $U \cap V = \emptyset$.
+
+    \vspace{0.1cm}
+    $\KWm$:
+    \begin{itemize}
+        \item Alice gets $u \in U$, Bob gets $v \in V$;
+        \item goal: find $i$ such that $u_i = 1 \land v_i = 0$.
+    \end{itemize}
+
+    \pause
+
+    \begin{theorem}[Karchmer, Wigderson 90]
+        $\mathrm{F\text{-}Size}(f) \le S$ $\Leftrightarrow$ communication protocol
+        for $\KWm$ of size $S$, where $U \coloneqq f^{-1}(1), V \coloneqq f^{-1}(0)$.
+    \end{theorem}
+
+    \pause
+    \begin{theorem}[Razborov 95; Pudlak 10; S 17]
+        $\mathrm{C\text{-}Size}(f) \le S$ $\Leftrightarrow$ communication \alert{dag}
+        for $\KWm$ of size $S$, where $U \coloneqq f^{-1}(1), V \coloneqq f^{-1}(0)$.
+    \end{theorem}
+\end{frame}
+
+
+
+\begin{frame}{$\KWm$ is a ``Complete Relation''}
+
+    \begin{itemize}
+        \item $\mathcal{S} \subseteq U \times V \times \mathcal{O}$;
+        \item define $F_{\mathcal{S}}\colon \{0, 1\}^m \to \{0, 1\}$ such that
+            $\DCC(\KWm[F_{\mathcal{S}}]) = \DCC(S)$.
+    \end{itemize}
+
+    \pause
+
+    \vspace{-0.2cm}
+    \begin{center}
+        \input{pics/rect-mon.tex}
+    \end{center}
+
+    \pause
+    $F_{\mathcal{S}}(1, 1, 0, \dots) \coloneqq 1$\pause, ~~~$F_{\mathcal{S}}(1, 0, 0, \dots) \coloneqq 0$
+
+    \pause
+    \begin{lemma}
+        $\DCC(\KWm[F_{\mathcal{S}}]) = \DCC(S)$.
+    \end{lemma}
+
+    \pause
+    \putpos{250}{110}{\includegraphics[scale = 0.1]{pics/utia-think.png}}
+
+\end{frame}
+
+
+
+\begin{frame}{Lifting (informal) [Garg, G\"{o}\"{o}s, Kamath, S 18]}
+
+
+    \begin{itemize}
+        \item Function $g$ is carefully chosen!
+    \end{itemize}
+
+    \vspace{1cm}
+    \begin{center}
+        \alert{$\exists$} Resolution proof for $\varphi$ of width $w$ and depth $d$.
+
+        $\Updownarrow$
+        
+        \alert{$\exists$} dag protocol for $\Search_{\varphi} \circ g$ of size $n^w$ and depth $\poly(n)
+        \cdot d$.
+    \end{center}
+
+\end{frame}

@@ -1,0 +1,36 @@
+\begin{tikzpicture}[>=latex]
+
+    \node[vert] (fp) at (0, -0.5) {$\classcplx{FP}$};
+    \node[vert] (ueopl) at (0, 0.5) {$\classcplx{UEOPL}$};
+    \node[vert] (eopl) at (0, 2) {$\classcplx{EOPL}$};
+    \node[vert] (ppad) at (2, 3) {$\classcplx{PPAD}$};
+    \node[vert] (ppa) at (2, 5) {$\classcplx{PPA}$};
+    \node[vert] (tfnp) at (0, 6) {$\classcplx{TFNP}$};
+    \node[vert] (sopl) at (-2, 3) {$\classcplx{SOPL}$};
+    \node[vert] (pls) at (-2, 5) {$\classcplx{PLS}$};
+
+    \node[vert] (ppads) at (0, 4) {$\classcplx{PPADS}$};
+    \node[vert] (ppp) at (0, 5) {$\classcplx{PPP}$};
+
+    \draw[->] (fp) -- (ueopl);
+    \draw[->] (ueopl) -- (eopl)
+        node[pos = 0.7, circle, red, fill = red, inner sep = 0, minimum size = 5pt] (a) {};
+    \path (a) -- ++(2, 0) node[vert] (br) {$\classcplx{Braket}$};
+    \draw[->] (br) -- (a);
+    \draw[->] (eopl) -- (ppad);
+    \draw[->] (eopl) -- (sopl);
+
+    \draw[->] (sopl) -- (pls);
+    \draw[->] (sopl) -- (ppads);
+    \draw[->] (ppad) -- (ppads);
+    \draw[->] (ppad) -- (ppa);
+
+    \draw[->] (ppads) -- (ppp);
+
+    \draw[->] (ppp) -- (tfnp);
+    \draw[->] (pls) -- (tfnp);
+    \draw[->] (ppa) -- (tfnp);
+
+
+
+\end{tikzpicture}

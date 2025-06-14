@@ -21,7 +21,7 @@
                 \begin{itemize}
                     \item \alert{$\exists$} res-proof of width $\log n$;
                     \item \textcolor{blue}{$\forall$} res-proofs width $w$
-                        $\Rightarrow$ depth $n^{\log n / \log w}$.
+                        $\Rightarrow$ depth $n^{\log n / \log w}$;
                 \end{itemize}
             }
         \end{column}
@@ -30,7 +30,7 @@
 
 \begin{frame}
 
-    \alert{$\exists$} res-proof of width $\log n$;
+    \alert{$\exists$} res-proof of ``bracket-width'' $\log n$;
     \begin{center}
         \input{pics/brackets-width-log.tex}
     \end{center}
@@ -65,7 +65,7 @@
         
     \vspace{0.5cm}
     \uncover<14->{
-        \textcolor{blue}{$\forall$} res-proofs width $w$ $\Rightarrow$ depth
+        \textcolor{blue}{$\forall$} res-proofs ``bracket-width'' $w$ $\Rightarrow$ depth
         $n^{\log n /\log w}$.
 
         \vspace{0.3cm}
@@ -73,4 +73,34 @@
             \item Strategy above is optimal. \uncover<15->{ \input{pics/cat.tex} }
         \end{itemize}
     }    
+\end{frame}
+
+
+\begin{frame}{TFNP}
+
+    \begin{itemize}
+        \item Input:
+            \begin{itemize}
+                \item Circuit $C \colon [N] \to \{\textcolor{red}{[}, \textcolor{red}{]},
+                    \textcolor{blue}{[}, \textcolor{blue}{]}\} \times [N]$. 
+            \end{itemize}
+            \pause
+        \item Output:
+            \begin{itemize}
+                \item transition: $C(i) C(i + 1) = \textcolor{red}{]} \textcolor{blue}{[}$;
+                \item boundary violation: $C(1) \neq (\textcolor{red}{[}, \cdot)$;
+                \item wrong pairing: $C(i) = (\textcolor{red}{]}, j)$ and $C(j) \neq (\textcolor{red}{]},
+                    \cdot)$, \dots;
+                \item wrong nesting: \dots
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Hollender, Mayster, Risse 25}
+
+    \begin{center}
+        \input{pics/tfnp-hier.tex}        
+    \end{center}
+    
 \end{frame}
