@@ -1,0 +1,83 @@
+\begin{frame}{Communication Protocols. $f\colon U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+	\pause
+
+    \begin{itemize}
+        \item Depth is the number of rounds (in the worst case).
+        \item Size is the number of possible configurations.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{$\Search_{\varphi}$ [Lov{\'{a}}sz, Naor, Newman, Wigderson et al. 94]}
+
+    $\varphi(z) \coloneqq \bigwedge\limits_{i = 1}^{m} C_i$ is unsatisfiable CNF formula.
+    \pause
+    
+    $\Search_{\varphi} \subseteq \{0, 1\}^n \times [m]$:
+    \begin{itemize}
+        \item $(\alpha, i) \in \Search_{\varphi} \Leftrightarrow C_{i}(\alpha) = 0.$
+    \end{itemize}
+    
+    \pause
+    \vspace{0.4cm}
+    Communication version:
+    \begin{itemize}
+        \item partition of variables $Z = X \sqcup Y$ between Alice and Bob;
+        \item $\varphi(x, y)$.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Why communication complexity?}
+
+    \begin{itemize}
+        \item Lower bounds for proofs of unsatisfiability of $\varphi$.
+        \item Reduction of (monotone)Karchmer--Wigderson game $\Rightarrow$ circuit lower bounds.
+        \item New techniques for comunication complexity.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{$\Search_{\varphi}$ can be hard. Prior results}
+    
+\end{frame}
+
+
+\begin{frame}{Random $\Delta$-CNF}
+
+    \begin{minipage}{0.38\linewidth}
+        \centering
+        \input{pics/rand-graph.tex}
+    \end{minipage}
+    \begin{minipage}{0.58\linewidth}
+        \begin{itemize}
+            \item $m$ clauses;
+            \item $n$ variables;
+            \item $\Delta$ neighbours: $\binom{n}{\Delta}$ possibilities;
+            \item negations (uniformly at random);
+            \item $\mathfrak{D} \coloneqq \frac{m}{n}$ clause density.
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+    \begin{itemize}
+        \item $\mathfrak{D} > c_{\Delta} 2^{\Delta} \Rightarrow$ formula is unsat whp;
+            \pause
+        \item Fiege's conjecture: $\mathfrak{D} = \bigO{1} \Rightarrow$ no poly-time algorithm may
+            ``prove'' unsatisfiability of random $\bigO{1}$-CNF.
+            \begin{itemize}
+                \item Non-approximability of many problems.
+            \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Random CNF. Proir results}
+    
+\end{frame}

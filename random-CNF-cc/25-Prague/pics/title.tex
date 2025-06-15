@@ -1,0 +1,37 @@
+\begin{tikzpicture}[>=latex]
+    \node[rectangle, rounded corners = 3pt, draw, fill = LEIorange!30!black] (a) at (-3, 2)
+        {$x \lor \neg y \lor z$};
+    \node[rectangle, rounded corners = 3pt, draw, fill = LEIorange!30!black] (b) at (-1.5, 2)
+        {$\neg z$};
+    \node[rectangle, rounded corners = 3pt, draw, fill = LEIorange!30!black] (c) at (-2.5, 1)
+        {$x \lor \neg y$};
+    \node[rectangle, rounded corners = 3pt, draw, fill = LEIorange!30!black] (d) at (-0.7, 1)
+       {$y$};
+    \node[rectangle, rounded corners = 3pt, draw, fill = LEIorange!30!black] (e) at (-2, 0)
+        {$x$};
+
+    \draw[->] (a) -- (c);
+    \draw[->] (b) -- (c);
+    \draw[->] (c) -- (e);
+    \draw[->] (d) -- (e);
+    
+    \node[inner sep = 0pt] at (1, 1)
+        {\includegraphics[scale = 0.1]{pics/utia-lift.png}};
+
+    \node[circle, minimum size = 0.5cm, inner sep = 0pt, draw, fill = LEIorange!30!black] (a) at (5, 2)
+        {$u$};
+    \node[circle, minimum size = 0.5cm, inner sep = 0pt, draw, fill = LEIorange!30!black] (b) at (3.5, 2)
+        {$v$};
+    \node[circle, minimum size = 0.5cm, inner sep = 0pt, draw, fill = LEIorange!30!black] (c) at (4.5, 1)
+        {$\lor$};
+    \node[circle, minimum size = 0.5cm, inner sep = 0pt, draw, fill = LEIorange!30!black] (d) at (2.7, 1)
+       {$y$};
+    \node[circle, minimum size = 0.5cm, inner sep = 0pt, draw, fill = LEIorange!30!black] (e) at (4, 0.3)
+        {$\land$};
+
+    \draw[->] (a) -- (c);
+    \draw[->] (b) -- (c);
+    \draw[->] (c) -- (e);
+    \draw[->] (d) -- (e);
+    \draw[->] (e) -- ++(0, -0.5);
+\end{tikzpicture}
