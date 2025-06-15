@@ -1,0 +1,16 @@
+\begin{tikzpicture}[>=latex]
+
+    \node[vert] (det) at (0, 0) {Deterministic};
+    
+    \node[vert] (dagdet) at (-3, 2) {Dag-like det.};
+    \node[vert] (dageq) at (-3, 4) {Dag-like $\EQ$};
+    \node[vert] (rand) at (3, 3) {Randomized};
+    \node[vert] (dagrand) at (0, 6) {Dag-like rand.};
+    
+
+    \draw[->] (det) -- (dagdet);
+    \draw[->] (det) -- (rand);
+    \draw[->] (dagdet) -- (dageq);
+    \draw[->] (dageq) -- (dagrand);
+    \draw[->] (rand) -- (dagrand);
+\end{tikzpicture}

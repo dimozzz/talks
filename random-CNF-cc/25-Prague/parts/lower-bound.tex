@@ -1,73 +1,15 @@
-\begin{frame}{CC lower bound.}
-    
-\end{frame}
+\begin{frame}{Lower bound. Ideas}
 
-
-\begin{frame}{Lower bound. Idea}
-
-    \begin{center}
-        \input{pics/brackets-width-log-2.tex}        
-    \end{center}
-
-
-    \pause
-    \pause
-    \pause
-    \pause
-    \pause
-    \pause
-    \pause
-    \pause
     \begin{itemize}
-        \item We force Prover to use this strategy!
+        \item Decision tree lower bound (tree-like resolution).
             \pause
             \begin{itemize}
-                \item \emph{Monotonicity.}
-                    \pause
-                \item \emph{Move operation.}
+                \item \alert{Randomized} lower bound.
             \end{itemize}
+            \pause
+        \item \only<3>{Lifting?} \pause \sout{Lifting?} \alert{No gadget.}
+            \pause
+        \item Lifting! Structure vs. randomness.
     \end{itemize}
-
-
-
 \end{frame}
 
-\begin{frame}{Formal strategy}
-
-    \begin{minipage}[c]{0.45\linewidth}
-        $\text{Delayer}(I, \ell)$:
-        \begin{itemize}
-            \item for $i \in [n^{\varepsilon}]$
-                \begin{itemize}
-                    \item $I_i \subseteq I$ max \emph{free} interval;
-                    \item \emph{move} solution to $I_i$;
-                    \item $\text{Delayer}(I_i, \ell + 1)$:                        
-                \end{itemize}
-        \end{itemize}        
-    \end{minipage}
-    \begin{minipage}[c]{0.45\linewidth}
-        Delayer $([a, b], \ell_0 \coloneqq \varepsilon \log n / \log w)$:
-        \begin{itemize}
-            \item query $i$;
-            \item $i < (a + b) / 2$ answer $\textcolor{blue}{[]}$;
-            \item $i \ge (a + b) / 2$ answer $\textcolor{red}{[]}$.
-        \end{itemize}        
-    \end{minipage}
-
-    \pause
-    \begin{lemma}
-        If delayer executed on $(I, \ell)$ then $|I| \ge n / (4w)^{\ell}$.
-    \end{lemma}
-    \pause
-    \begin{center}
-        $\Uparrow$
-    \end{center}
-    \vspace{-0.2cm}
-    \begin{lemma}
-        If $|I| \ge n / (4w)^{\ell}$ then $\text{Delayer}(I, \ell)$ covers at most $n^{\varepsilon}
-        w^{\ell_0 - \ell} \alert{= O(n^{2 \varepsilon})}$ indices. \onslide<4->{ \alert{$+$ buffer condition}. }
-    \end{lemma}
-        
-
-    
-\end{frame}
