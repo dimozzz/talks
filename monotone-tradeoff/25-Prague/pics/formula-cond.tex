@@ -1,0 +1,40 @@
+\begin{tikzpicture}
+
+    \pgfmathsetseed{10000009}
+    \foreach \i in {0, 1, ..., 7}{
+        \node[graph-vert] (b\i) at
+            (1.5, 0.4 * \i) {};
+    }
+
+    \foreach \i in {0, 1, ..., 7}{
+        \node[graph-vert = {LEIorange!80!black}{0.15cm}] (a\i) at
+            (0, 0.4 * \i) {};
+
+        \foreach \j in {0, 1, 2}{
+            \pgfmathsetmacro{\temp}{random(0, 7)}
+            \draw (a\i) -- (b\temp);
+        }
+    }
+    
+    \node at (0, -0.4) {Clauses};
+    \node at (1.5, -0.4) {Vars};
+
+    \uncover<2->{
+        \foreach \i in {0, 1, ..., 5}{
+            \node[graph-vert] (d\i) at (3.5, 0.4 * \i + 0.4) {};
+            
+        }
+
+        \foreach \i in {0, 1, ..., 7}{
+            \node[graph-vert = {white}{0.2cm}] (c\i) at (2, 0.4 * \i) {$\oplus$};
+            \draw (b\i) -- (c\i);
+
+            \foreach \j in {0, 1, 2}{
+                \pgfmathsetmacro{\temp}{random(0, 5)}
+                \draw (c\i) -- (d\temp);
+            }
+        }
+    }
+
+    \node at (3.5, -0.4) {New vars};
+\end{tikzpicture}
