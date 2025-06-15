@@ -1,5 +1,53 @@
 \input{parts/framework-slide.tex}
 
+\begin{frame}{Communication Protocols. $f\colon U \times V \to T$}
+    \begin{center}
+    	\input{pics/protocol.tex}    
+    \end{center}
+
+    \pause
+    \pause
+    \pause
+	\pause
+
+    \begin{itemize}
+        \item Depth is the number of rounds (in the worst case).
+        \item Size is the number of possible configurations.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{$\Search_{\varphi}$ [Lov{\'{a}}sz, Naor, Newman, Wigderson et al. 94]}
+
+    \begin{minipage}{0.48\linewidth}
+        $\varphi(z) \coloneqq \bigwedge\limits_{i = 1}^{m} C_i$ is unsatisfiable CNF formula.
+        \pause
+
+        $\Search_{\varphi} \subseteq \{0, 1\}^n \times [m]$:
+        \begin{itemize}
+            \item $(\alpha, i) \in \Search_{\varphi} \Leftrightarrow C_{i}(\alpha) = 0.$
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{itemize}
+            \item {[Folklore?]} Tree-like resolution $\approx$ decision tree $\Search_{\varphi}$.
+            \item {[Pudlak 02]} Resolution $\approx$ decision \alert{dag} $\Search_{\varphi}$.
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+    \vspace{0.4cm}
+    Communication version:
+    \begin{itemize}
+        \item ``gadget'' $g\colon X \times Y \to \{0, 1\}$;
+    \end{itemize}
+
+    \pause
+    \begin{center}
+        \input{pics/composition.tex}
+    \end{center}
+\end{frame}
+
+
 \begin{frame}{$\KWm$ Relation [Karchmer, Wigderson 90]}
     Let $U, V \subseteq \{0, 1\}^{n}$ and $U \cap V = \emptyset$.
 

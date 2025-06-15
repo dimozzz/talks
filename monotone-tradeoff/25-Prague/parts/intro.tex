@@ -1,8 +1,8 @@
 \begin{frame}{Effectiveness vs. parallel computation}
 
     \begin{itemize}
-        \item Function $f$ can be efficiently computed.
-        \item Can we compute $f$ effectively via parallel computation?
+        \item Function $f$ can be computed in time $T$.
+        \item Can we compute $f$ by $K$ machines in time $\alert{\bigO{T / K}}$?
     \end{itemize}
 
     \vspace{1cm}
@@ -159,8 +159,15 @@
     \end{theorem}
 \end{frame}
 
-\begin{frame}{Previous Results}
+\begin{frame}{Prior Results. Razborov's Hardness Condensation}
 
+    \begin{center}
+        \input{pics/formula-cond.tex}        
+    \end{center}
+
+
+    \pause
+    \pause
     \begin{theorem}[de Rezende, Fleming, Janett, Nordstr{\"{o}}m, Pang, informal]
         $\alert{\exists}$ a monotone function $f\colon \{0, 1\}^{n} \to \{0, 1\}$ such that:
         \begin{itemize}

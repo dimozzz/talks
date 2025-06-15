@@ -1,6 +1,9 @@
 \begin{frame}{Lower bound. Idea}
 
-    \input{pics/brackets-width-log-2.tex}
+    \begin{center}
+        \input{pics/brackets-width-log-2.tex}        
+    \end{center}
+
 
     \pause
     \pause
@@ -12,7 +15,15 @@
     \pause
     \begin{itemize}
         \item We force Prover to use this strategy!
+            \pause
+            \begin{itemize}
+                \item \emph{Monotonicity.}
+                    \pause
+                \item \emph{Move operation.}
+            \end{itemize}
     \end{itemize}
+
+
 
 \end{frame}
 
@@ -41,12 +52,17 @@
     \pause
     \begin{lemma}
         If delayer executed on $(I, \ell)$ then $|I| \ge n / (4w)^{\ell}$.
-        \pause
-        \begin{center}
-            $\Uparrow$
-        \end{center}
-        If $|I| \ge n / (4w)^{\ell}$ then $\text{Delayer}(I, \ell)$ covers at most $O(n^{2 \varepsilon})$
-        indices.
     \end{lemma}
+    \pause
+    \begin{center}
+        $\Uparrow$
+    \end{center}
+    \vspace{-0.2cm}
+    \begin{lemma}
+        If $|I| \ge n / (4w)^{\ell}$ then $\text{Delayer}(I, \ell)$ covers at most $n^{\varepsilon}
+        w^{\ell_0 - \ell} \alert{= O(n^{2 \varepsilon})}$ indices. \onslide<4->{ \alert{$+$ buffer condition}. }
+    \end{lemma}
+        
+
     
 \end{frame}

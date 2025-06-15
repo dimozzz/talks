@@ -33,12 +33,12 @@
         \node at (4.5 * \s, -0.4) {recursive call};
     }
     
-    \uncover<6->{
+    \uncover<6-8>{
         \pic[shift = {(17 * \s / 2, 0.2)}] {br = {LEIblue!70}};
         \draw[thick, <->] (17 * \s / 2 + 0.2, 0.8) to[bend left = 35] ++(1.2, 0);
         \pic[shift = {(25 * \s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
     }
-    \uncover<7->{
+    \uncover<7-8>{
         \draw[
             rounded corners = 3pt,
             LEIdarkgreen!80,
@@ -46,4 +46,73 @@
             fill = LEIdarkgreen!40,
             fill opacity = 0.3] (13 * \s - 0.05, -0.05) rectangle (20 * \s + 0.05, 0.85);
     }
+
+    \uncover<10>{
+        \pic[shift = {(3 * \s / 2, 0.2)}] {br = {LEIblue!70}};
+        \pic[shift = {(9 * \s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+        \draw[
+            rounded corners = 3pt,
+            black!80,
+            thick,
+            fill = black,
+            fill opacity = 0.3] (3 * \s / 2 + 0.03, 0.23) rectangle (9 * \s / 2 - 0.03, 0.67);
+            
+        \pic[shift = {(13 * \s / 2, 0.2)}] {br = {LEIblue!70}};
+        \pic[shift = {(15 * \s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+
+        \pic[shift = {(27 * \s / 2, 0.2)}] {br = {LEIred!70}};
+        \pic[shift = {(33 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred!70}};
+        \draw[
+            rounded corners = 3pt,
+            black!80,
+            thick,
+            fill = black,
+            fill opacity = 0.3] (27 * \s / 2 + 0.03, 0.23) rectangle (33 * \s / 2 - 0.03, 0.67);
+        \draw[
+            rounded corners = 3pt,
+            LEIdarkgreen!80,
+            thick,
+            fill = LEIdarkgreen!40,
+            fill opacity = 0.3] (16 * \s / 2 - 0.05, -0.05) rectangle (26 * \s / 2 + 0.05, 0.85);
+        \node at (10.5 * \s, -0.4) {interesting region};
+    }
+
+    \uncover<11>{
+        \draw[
+            rounded corners = 3pt,
+            LEIdarkgreen!80,
+            thick,
+            fill = LEIdarkgreen!40,
+            fill opacity = 0.3] (-0.05, -0.05) rectangle (4 * \s / 2 + 0.05, 0.85);
+    }
+
+    \uncover<11-13>{
+        \pic[shift = {(5 * \s / 2, 0.2)}] {br = {LEIred!70}};
+        \pic[shift = {(7 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred!70}};
+        
+
+        \pic[shift = {(17 * \s / 2, 0.2)}] {br = {LEIred!70}};
+        \pic[shift = {(19 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred!70}};
+        \pic[shift = {(21 * \s / 2, 0.2)}] {br = {LEIred!70}};
+        \pic[shift = {(23 * \s / 2, 0.2)}, xscale = -1] {br = {LEIred!70}};
+    }
+    
+    \uncover<13->{
+        \pic[shift = {(3 * \s / 2, 0.2)}] {br = {LEIblue!70}};
+        \pic[shift = {(9 * \s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+
+        \pic[shift = {(15 * \s / 2, 0.2)}] {br = {LEIblue!70}};
+        \pic[shift = {(25 * \s / 2, 0.2)}, xscale = -1] {br = {LEIblue!70}};
+    }
+
+    \uncover<14->{
+        \draw[
+            rounded corners = 3pt,
+            LEIdarkgreen!80,
+            thick,
+            fill = LEIdarkgreen!40,
+            fill opacity = 0.3] (26 * \s / 2 -0.05, -0.05) rectangle (40 * \s / 2 + 0.05, 0.85);
+    }
+
+    
 \end{tikzpicture}
