@@ -38,13 +38,32 @@
 
     \begin{itemize}
         \item Lower bounds for proofs of unsatisfiability of $\varphi$.
-        \item Reduction of (monotone)Karchmer--Wigderson game $\Rightarrow$ circuit lower bounds.
+        \item Reduction of (monotone)Karchmer--Wigderson game
+            $\Rightarrow$ circuit lower bounds.
         \item New techniques for comunication complexity.
     \end{itemize}
 \end{frame}
 
 \begin{frame}{$\Search_{\varphi}$ can be hard. Prior results}
-    
+
+    Reductions of $\Disj$:
+    \begin{itemize}
+        \item $2$-fold Tseitin formulas [Beame, Pitassi, Segerlind
+            07];
+        \item critical block sensitivity [Huynh, Nordstrom 12;
+            G{\"{o}}{\"{o}}s Pitassi 14];
+            \pause
+        \item $\PHP^{n + n^{\varepsilon}}_{n}$ [Itsykson, Riazanov 21];
+    \end{itemize}
+
+    \pause
+    \vspace{0.5cm}
+    Direct approach:
+    \begin{itemize}
+        \item lifted Tseitin formulas [G{\"{o}}{\"{o}}s, Jain, Watson
+            18; G{\"{o}}{\"{o}}s, Jayram, Pitassi, Watson 18]
+        \item weak $\BPHP$ [Yang, Zhang 24].
+    \end{itemize}
 \end{frame}
 
 

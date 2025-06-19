@@ -1,5 +1,8 @@
 \begin{tikzpicture}[>=latex]
 
+    \node at (-4.5, 0) {};
+    \node at (4.5, 0) {};
+    
     \node[vert] (det) at (0, 0) {Deterministic};
     
     \node[vert] (dagdet) at (-3, 2) {Dag-like det.};
@@ -13,4 +16,16 @@
     \draw[->] (dagdet) -- (dageq);
     \draw[->] (dageq) -- (dagrand);
     \draw[->] (rand) -- (dagrand);
+
+    \node[right = 1.2cm] at (det) {\alert{Folklore?}};
+    \node[below left = 0.4cm] (a) at (dagdet)
+        {\alert{[HP 17; FPPR 17]}};
+    \node[below = 0.2cm] at (a) {\alert{[S 24]}}
+    \node[below right = 0.4cm] at (rand)
+        {\alert{???}};
+
+    \node[right = 1.2cm] at (dagrand)
+        {\includegraphics[scale = 0.04]{pics/utia-cry.png}};
+    \node[left = 1cm] at (dageq)
+        {\includegraphics[scale = 0.04]{pics/utia-cry.png}};
 \end{tikzpicture}

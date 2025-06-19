@@ -13,3 +13,129 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Decision tree. Expansion}
+
+    \begin{minipage}{0.38\linewidth}
+        \centering
+        \input{pics/graph-expansion.tex}
+    \end{minipage}
+    \begin{minipage}{0.58\linewidth}
+        \begin{itemize}
+            \item $(r, \Delta, c)$-expander;
+            \item $\forall S \subseteq L, |S| \le r \Rightarrow$
+                \begin{itemize}
+                    \item $\mathrm{N}(S) \ge c |S|$;
+                \end{itemize}
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+
+    \vspace{1cm}
+    \begin{itemize}
+        \item Easy to satisfy small subformulas;
+            \pause
+        \item Self-healing (closure): $J < \Delta r / 100 \Rightarrow
+            \exists \colon$
+            \begin{itemize}
+                \item $|I_J| < 100 |J_J| / \Delta$;
+                \item $G \setminus (I_J \cup J \cup \mathrm{N}(I_J))$
+                    is a good expander.
+            \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Decision tree. Strategy}
+
+    \begin{itemize}
+        \item Idea: any small subformula can be easily satisfied.
+    \end{itemize}
+
+    \pause
+    \vspace{0.5cm}
+
+    \begin{itemize}
+        \item $J \coloneqq \emptyset$, $\rho \coloneqq \emptyset$.
+            \pause
+        \item Query $x_i$. $J \gets x_i$.
+            \pause
+        \item If $\rho(x_i) \neq *$ then answer $\rho(x_i)$ else
+            answer any $a_i \in \{0, 1\}$, $\rho \gets (x_i = a_i)$.
+            \pause
+        \item Extend $\rho$ to $\mathrm{N}(I_J)$ such that $I_J$ is
+            satisfied.
+        \item Remove $I_J, \mathrm{supp}(\rho)$ from $G$.
+    \end{itemize}
+
+    \pause
+    \vspace{0.5cm}
+    \begin{itemize}
+        \item Invariant: $G$ is an $(r, \Delta, 2)$-expander.
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Communication. Balanced case [HP 17, FPPR 17, S 24]}
+    \begin{minipage}{0.38\linewidth}
+        \centering
+        \input{pics/graph-expansion-comm.tex}
+    \end{minipage}
+    \begin{minipage}{0.58\linewidth}
+        \begin{itemize}
+            \item $(r, \Delta, c)$-expander;
+            \item $\forall S \subseteq L, |S| \le r \Rightarrow$
+                \begin{itemize}
+                    \item $\mathrm{N}_{X}(S) \ge c |S|$;
+                    \item $\mathrm{N}_{y}(S) \ge c |S|$.
+                \end{itemize}
+        \end{itemize}
+    \end{minipage}
+
+    \pause
+    \begin{itemize}
+        \item Partition of variables uniformly at random.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Communication steps}
+    
+\end{frame}
+
+\begin{frame}{Randomness}
+
+
+\end{frame}
+
+
+\begin{frame}{Communication. Strategy}
+
+    \begin{itemize}
+        \item Idea: any small subformula can be easily satisfied.
+    \end{itemize}
+
+    \pause
+    \vspace{0.5cm}
+
+    \begin{itemize}
+        \item $J \coloneqq \emptyset$, $\rho \coloneqq \emptyset$.
+            \pause
+        \item Query $x_i$. $J \gets x_i$.
+            \pause
+        \item If $\rho(x_i) \neq *$ then answer $\rho(x_i)$ else
+            answer any $a_i \in \{0, 1\}$, $\rho \gets (x_i = a_i)$.
+            \pause
+        \item Extend $\rho$ to $\mathrm{N}(I_J)$ such that $I_J$ is
+            satisfied.
+        \item Remove $I_J, \mathrm{supp}(\rho)$ from $G$.
+    \end{itemize}
+
+    \pause
+    \vspace{0.5cm}
+    \begin{itemize}
+        \item Invariant: $G$ is an $(r, \Delta, 2)$-expander.
+    \end{itemize}
+
+\end{frame}
