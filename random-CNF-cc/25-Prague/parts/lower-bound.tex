@@ -1,5 +1,13 @@
 \begin{frame}{Lower bound. Ideas}
 
+    \begin{theorem}
+        Let $G$ be an $(r, \Delta, (1 - \eta) \Delta)$-expander. If
+        $\varphi$ is based on $G$ then RCC of $\Search_{\varphi}$ is
+        at least $\approx \min(\Delta r, 2^{\Delta})$.
+    \end{theorem}
+
+    \pause
+    \vspace{0.5cm}
     \begin{itemize}
         \item Decision tree lower bound (tree-like resolution).
             \pause
@@ -36,7 +44,7 @@
         \item Easy to satisfy small subformulas;
             \pause
         \item Self-healing (closure): $J < \Delta r / 100 \Rightarrow
-            \exists \colon$
+            \exists I_J \colon$
             \begin{itemize}
                 \item $|I_J| < 100 |J_J| / \Delta$;
                 \item $G \setminus (I_J \cup J \cup \mathrm{N}(I_J))$
@@ -71,7 +79,7 @@
     \pause
     \vspace{0.5cm}
     \begin{itemize}
-        \item Invariant: $G$ is an $(r, \Delta, 2)$-expander.
+        \item Invariant: $G$ is an $(r, \Delta, 0.9 \Delta)$-expander.
     \end{itemize}
 
 \end{frame}
@@ -101,11 +109,52 @@
 
 
 \begin{frame}{Communication steps}
-    
+
+    \begin{center}
+        \input{pics/comm-matr.tex}
+    \end{center}
+
 \end{frame}
 
 \begin{frame}{Randomness}
 
+    \begin{center}
+        \input{pics/spread.tex}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Minentropy. $X \subseteq \{0, 1\}^n$}
+
+    \begin{itemize}
+        \item Set of coordinates $S \subseteq [n]$ is $\delta$-bad
+            $\Leftrightarrow$
+            $$
+                \exists a \in \{0, 1\}^{|S|},
+                \Pr_{x \sim X}[x_{S} = a] \ge
+                \left( \frac{1}{2} \right)^{\delta |S|}.
+            $$
+        \item $X$ is $\delta$-spread iff there are no $\delta$-bad
+            sets.
+    \end{itemize}
+
+    \pause
+    \vspace{0.5cm}
+    Fix some $0.9$-spread $X$.
+    \begin{itemize}
+        \item For any clause with $\Delta$ literals:
+            $$
+                \Pr_{x \sim X}[C(x) = 0] \le 2^{-0.9 \Delta}.
+                        \pause
+            $$
+        \item Small subformulas of random $\Delta$-CNF are easy to
+            satisfy.
+            \pause
+        \item It was useful for decision trees. Assuming spreadness of
+            all sets we are ``done''.
+            \pause
+        \item $X$ is $\delta$-structured iff bad coordinates are fixed.
+    \end{itemize}
 
 \end{frame}
 
@@ -113,29 +162,30 @@
 \begin{frame}{Communication. Strategy}
 
     \begin{itemize}
-        \item Idea: any small subformula can be easily satisfied.
+        \item Split each rectangle into $0.9$-structured rectangles
+            (independently for Alice and Bob).
+            \pause
+        \item Simulate decision tree protocol.
     \end{itemize}
 
     \pause
-    \vspace{0.5cm}
 
-    \begin{itemize}
-        \item $J \coloneqq \emptyset$, $\rho \coloneqq \emptyset$.
-            \pause
-        \item Query $x_i$. $J \gets x_i$.
-            \pause
-        \item If $\rho(x_i) \neq *$ then answer $\rho(x_i)$ else
-            answer any $a_i \in \{0, 1\}$, $\rho \gets (x_i = a_i)$.
-            \pause
-        \item Extend $\rho$ to $\mathrm{N}(I_J)$ such that $I_J$ is
-            satisfied.
-        \item Remove $I_J, \mathrm{supp}(\rho)$ from $G$.
-    \end{itemize}
+    \begin{lemma}
+        $\Pi$ is a protocol of depth $d$. There exists a
+        structured protocol $\Pi'$ such that:
+        $$
+            \Pr_{(x, y) \sim U}[\Pi(x, y) \neq \Pi'(x, y)] \le 1 / 100.
+        $$
+        Moreover for each rectangle in $\Pi'$ there will be at most
+        $O(d)$ bad coordinates.
+    \end{lemma}
 
-    \pause
-    \vspace{0.5cm}
-    \begin{itemize}
-        \item Invariant: $G$ is an $(r, \Delta, 2)$-expander.
-    \end{itemize}
+\end{frame}
 
+\begin{frame}{Partition scheme}
+
+    \begin{center}
+        \input{pics/partition.tex}
+    \end{center}
+    
 \end{frame}
